@@ -1,4 +1,4 @@
-baseURL = "damrah.netlify.app"
+baseURL = "https://damrah.netlify.app"
 title = "Your title"
 theme = "m10c"
 paginate = 8
