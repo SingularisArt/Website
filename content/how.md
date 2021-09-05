@@ -1,23 +1,32 @@
+---
+title: "How I Take Notes With Latex"
+date: 2021-09-04T15:04:47-07:00
+draft: false
+tags: ["tutorials", "linux", "school", "programming"]
+categories: ["Development"]
+series: ["go web dev"]
+---
+
+```toml
 baseURL = "https://www.example.com"
 languageCode = "en-us"
-title = "Hashem A. Damrah"
-copyright = "Copyright © 2021, Hashem A. Damrah; all rights reserved."
+title = "title"
+copyright = "Copyright © 2008–2019, Steve Francia and the Hugo Authors; all rights reserved."
 theme = "npq-hugo"
 pygmentsUseClasses=true
 
 [params]
-  author = "Hashem A. Damrah"
+  author = "your name"
   description = "your description"
   keywords = "hugo blog"
   useAvatar = true
-  avatar = "profile.jpg"
   microBlogSection = "posts"
   displayMicroBlog = true
-  displayRecent = false
+  displayRecent = true
   recentMax = 4
-  mail = "dermdorm2@gmail.com"
-  #phone = "8888888888"
-  formspreeID = "http://formspree.io/f/xgerrljg"
+  mail = "mail@example.com"
+  phone = "8888888888"
+  formspreeID = "yourformspreeID"
 
 [menu]
   [[menu.main]]
@@ -26,25 +35,28 @@ pygmentsUseClasses=true
     url = "/"
     weight = -9 
   [[menu.main]]
+    name = "blog"
+    pre = "<i class=\"fas fa-keyboard fa-ms\"></i>"
+    url = "/blog/"
+    weight = -8
+  [[menu.main]]
     name = "tags"
     pre = "<i class=\"fas fa-tags fa-ms\"></i>"
     url = "/tags"
-    weight = -8 
+    weight = -7 
   [[menu.main]]
     name = "github"
     pre = "<i class=\"fab fa-github fa-ms\"></i>"
-    url = "https://github.com/SingularisArt"
-    weight = -7 
+    url = "https://github.com/yourgithubusername23434"
+    weight = -6 
   [[menu.main]]
     name = "RSS"
     pre = "<i class=\"fas fa-rss fa-ms\"></i>"
     url = "/index.xml"
-    weight = -6 
+    weight = -4 
   [[menu.main]]
     name = "contact"
     pre = "<i class=\"far fa-envelope\"></i>"
     url = "/contact"
-    weight = -5 
+    weight = -1 
 
-[taxonomia]
-  tags = ""

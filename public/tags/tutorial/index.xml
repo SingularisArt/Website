@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>My Blog</title>
-    <link>https://damrah.netlify.app/</link>
-    <description>Recent content on My Blog</description>
+    <title>tutorial on My Blog</title>
+    <link>https://damrah.netlify.app/tags/tutorial/</link>
+    <description>Recent content in tutorial on My Blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <lastBuildDate>Sat, 04 Sep 2021 15:04:47 -0700</lastBuildDate>
     
-	<atom:link href="https://damrah.netlify.app/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://damrah.netlify.app/tags/tutorial/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>

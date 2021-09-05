@@ -10,3 +10,6 @@
 [submodule "themes/m10c"]
 	path = themes/m10c
 	url = https://github.com/vaga/hugo-theme-m10c
+[submodule "themes/npq-hugo"]
+	path = themes/npq-hugo
+	url = https://github.com/saadnpq/npq-hugo.git

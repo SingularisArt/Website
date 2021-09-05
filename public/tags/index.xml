@@ -1,10 +1,77 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Tags on Terminal</title>
-    <link>/tags/</link>
-    <description>Recent content in Tags on Terminal</description>
+    <title>Tags on My Blog</title>
+    <link>https://damrah.netlify.app/tags/</link>
+    <description>Recent content in Tags on My Blog</description>
     <generator>Hugo -- gohugo.io</generator>
-    <language>en-us</language><atom:link href="/tags/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sat, 04 Sep 2021 15:04:47 -0700</lastBuildDate>
+    
+	<atom:link href="https://damrah.netlify.app/tags/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>configuration</title>
+      <link>https://damrah.netlify.app/tags/configuration/</link>
+      <pubDate>Sat, 04 Sep 2021 15:04:47 -0700</pubDate>
+      
+      <guid>https://damrah.netlify.app/tags/configuration/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>development</title>
+      <link>https://damrah.netlify.app/tags/development/</link>
+      <pubDate>Sat, 04 Sep 2021 15:04:47 -0700</pubDate>
+      
+      <guid>https://damrah.netlify.app/tags/development/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>docs</title>
+      <link>https://damrah.netlify.app/tags/docs/</link>
+      <pubDate>Sat, 04 Sep 2021 15:04:47 -0700</pubDate>
+      
+      <guid>https://damrah.netlify.app/tags/docs/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>go</title>
+      <link>https://damrah.netlify.app/tags/go/</link>
+      <pubDate>Sat, 04 Sep 2021 15:04:47 -0700</pubDate>
+      
+      <guid>https://damrah.netlify.app/tags/go/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>golang</title>
+      <link>https://damrah.netlify.app/tags/golang/</link>
+      <pubDate>Sat, 04 Sep 2021 15:04:47 -0700</pubDate>
+      
+      <guid>https://damrah.netlify.app/tags/golang/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>hugo</title>
+      <link>https://damrah.netlify.app/tags/hugo/</link>
+      <pubDate>Sat, 04 Sep 2021 15:04:47 -0700</pubDate>
+      
+      <guid>https://damrah.netlify.app/tags/hugo/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>tutorial</title>
+      <link>https://damrah.netlify.app/tags/tutorial/</link>
+      <pubDate>Sat, 04 Sep 2021 15:04:47 -0700</pubDate>
+      
+      <guid>https://damrah.netlify.app/tags/tutorial/</guid>
+      <description></description>
+    </item>
+    
   </channel>
 </rss>
