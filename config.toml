@@ -10,14 +10,13 @@ pygmentsUseClasses=true
   description = "your description"
   keywords = "hugo blog"
   useAvatar = true
-  avatar = "profile.jpg"
   microBlogSection = "posts"
   displayMicroBlog = true
-  displayRecent = false
+  displayRecent = true
   recentMax = 4
   mail = "dermdorm2@gmail.com"
   #phone = "8888888888"
-  formspreeID = "http://formspree.io/f/xgerrljg"
+  formspreeID = "http://formspree.io/dermdorm2@gmail.com"
 
 [menu]
   [[menu.main]]
@@ -34,17 +33,17 @@ pygmentsUseClasses=true
     name = "github"
     pre = "<i class=\"fab fa-github fa-ms\"></i>"
     url = "https://github.com/SingularisArt"
-    weight = -7 
+    weight = -6 
   [[menu.main]]
     name = "RSS"
     pre = "<i class=\"fas fa-rss fa-ms\"></i>"
     url = "/index.xml"
-    weight = -6 
+    weight = -5 
   [[menu.main]]
     name = "contact"
     pre = "<i class=\"far fa-envelope\"></i>"
     url = "/contact"
-    weight = -5 
+    weight = -4 
 
 [taxonomia]
   tags = ""
