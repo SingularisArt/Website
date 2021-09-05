@@ -1,0 +1,43 @@
+baseURL = "https://damrah.netlify.app"
+languageCode = "en-us"
+defaultContentLanguage = "en"
+title = "Hashem A. Damrah"
+theme = "cupper-hugo"
+googleAnalytics = "UA-123456789-1"
+
+[taxonomies]
+  tag = "tags"
+
+[permalinks]
+  post = "/:filename/"
+
+[imaging]
+  quality = 99
+
+[params]
+  description = "This is my bloging site. Also, I upload tutorials on different matters. Take a look at the tags page to see how diverse this website is!"
+  footer = "Made with [Hugo](https://gohugo.io/). Themed by [Cupper](https://github.com/zwbetz-gh/cupper-hugo-theme). Deployed to [Netlify](https://www.netlify.com/)."
+  dateFormat = "Jan 2, 2006"
+  codePenUser = "Hashem A. Damrah"
+
+[menu]
+  [[menu.nav]]
+    name = "Home"
+    url = "/"
+    weight = 1
+  [[menu.nav]]
+    name = "Blog"
+    url = "/post/"
+    weight = 2
+  [[menu.nav]]
+    name = "Tags"
+    url = "/tags/"
+    weight = 3
+  [[menu.nav]]
+    name = "About"
+    url = "/about/"
+    weight = 4
+  [[menu.nav]]
+    name = "RSS"
+    url = "/index.xml"
+    weight = 5

@@ -29,3 +29,7 @@
 [context.next.environment]
   HUGO_ENABLEGITINFO = "true"
 
+[[redirects]]
+  from = "/*"
+  to = "/404/"
+  status = 404
