@@ -16,7 +16,7 @@ googleAnalytics = "UA-123456789-1"
 
 [params]
   description = "This is my bloging site. Also, I upload tutorials on different matters. Take a look at the tags page to see how diverse this website is!"
-  footer = "Made with [Hugo](https://gohugo.io/). Themed by [Cupper](https://github.com/zwbetz-gh/cupper-hugo-theme). Deployed to [Netlify](https://www.netlify.com/)."
+  footer = "Made with [Hugo](https://gohugo.io/). Themed by [Cupper](https://github.com/zwbetz-gh/cupper-hugo-theme). Deployed to [Netlify](https://www.netlify.com/). Comments made with [Disqus](http://disqus.com/)."
   dateFormat = "Jan 2, 2006"
   codePenUser = "Hashem A. Damrah"
 
@@ -30,21 +30,25 @@ googleAnalytics = "UA-123456789-1"
     url = "/post/"
     weight = 2
   [[menu.nav]]
+    name = "Notes"
+    url = "/notes/"
+    weight = 3
+  [[menu.nav]]
     name = "Tags"
     url = "/tags/"
-    weight = 3
+    weight = 4
   [[menu.nav]]
     name = "About"
     url = "/about/"
-    weight = 4
+    weight = 5
   [[menu.nav]]
     name = "Contact"
     url = "/contact/"
-    weight = 5
+    weight = 6
   [[menu.nav]]
     name = "RSS"
     url = "/index.xml"
-    weight = 6
+    weight = 7
 
 [markup.goldmark.renderer]
   unsafe = true
