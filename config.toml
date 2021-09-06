@@ -16,7 +16,7 @@ googleAnalytics = "UA-123456789-1"
 
 [params]
   description = "This is my bloging site. Also, I upload tutorials on different matters. Take a look at the tags page to see how diverse this website is!"
-  footer = "Made with [Hugo](https://gohugo.io/). Themed by [Cupper](https://github.com/zwbetz-gh/cupper-hugo-theme). Deployed to [Netlify](https://www.netlify.com/). Comments made with [Disqus](http://disqus.com/)"
+  footer = "Made with [Hugo](https://gohugo.io/). Themed by [Cupper](https://github.com/zwbetz-gh/cupper-hugo-theme). Deployed to [Netlify](https://www.netlify.com/). Comments made with [Disqus](http://disqus.com/)."
   dateFormat = "Jan 2, 2006"
   codePenUser = "Hashem A. Damrah"
 
