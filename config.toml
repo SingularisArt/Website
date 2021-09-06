@@ -48,3 +48,5 @@ googleAnalytics = "UA-123456789-1"
 
 [markup.goldmark.renderer]
   unsafe = true
+
+disqusShortname = "damrah"

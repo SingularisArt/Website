@@ -3,4 +3,6 @@
     <h1>{{ .Title }}</h1>
     {{ .Content }}
   </main>
+
+  {{ template "_internal/disqus.html" }}
 {{ end }}
