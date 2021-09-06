@@ -2,11 +2,11 @@
 title: "About"
 ---
 
-# Who am I
+## Who am I
 
 My name is Hashem A. Damrah. Right now (Sep 5, 2021) I am a freshman. I have been coding for almost **2 years**.
 
-# What am I interested in
+## What am I interested in
 
 I am interested in many field. The fields that I am most interested in are:
 
@@ -27,9 +27,9 @@ I am interested in many field. The fields that I am most interested in are:
 * Anatomy
 * Botany
 
-# What languages do I now
+## What languages do I now
 
-## Programming languages
+### Programming languages
 
 As of now (Sep 5, 2021), I now:
 
@@ -68,7 +68,7 @@ As of now (Sep 5, 2021), I want to master:
 * Java
 * Rust
 
-## Human languages
+### Human languages
 
 As of now (Sep 5, 2021) I now:
 
