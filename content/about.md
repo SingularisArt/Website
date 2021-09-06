@@ -1,5 +1,6 @@
 ---
 title: "About"
+toc: true
 ---
 
 ## Who am I
@@ -101,3 +102,4 @@ As of now (Sep 5, 2021), languages that I want to master:
 * Hungarian
 * Romanian
 * Armenian
+

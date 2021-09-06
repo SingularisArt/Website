@@ -1,13 +1,11 @@
 {{ define "main" }}
-  <h1>{{ .Title }} </h1>
+  <h1>{{ .Title }}</h1>
   {{ if site.Params.search }}
   <input
     id="search"
     class="form-control"
     type="text"
-    aria-label="Case-insensitive search by title, content, or publish date"
-    placeholder="Disabled ..."
-    disabled>
+    placeholder="Search by title ..." >
   <div id="search_form">
     <div class="form-check">
       <input id="enable_search" class="form-check-input" type="checkbox">
@@ -35,4 +33,3 @@
     {{ end }}
   </ul>
 {{ end }}
-

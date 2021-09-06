@@ -1,5 +1,10 @@
 {{ define "main" }}
   <main id="main">
+    <style>
+      .nomargin {
+        margin: 0
+      }
+    </style>
     <h1>{{ .Title }}</h1>
     <ul class="patterns-list">
     {{ range .Pages.ByPublishDate.Reverse }}
@@ -9,7 +14,7 @@
             <svg class="bookmark" aria-hidden="true" viewBox="0 0 40 50" focusable="false">
               <use xlink:href="#bookmark"></use>
             </svg>
-            {{ .Title }}
+            {{ .Title }} <font size="4px"><p class="nomargin" align="right">- {{ .PublishDate }}</p></font>
           </a>
         </h2>
       </li>        

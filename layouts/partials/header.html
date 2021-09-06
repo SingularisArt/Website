@@ -1,4 +1,16 @@
+<head>
+  {{ if .Params.mathjax }}{{ partial "mathjax_support.html" . }}{{ end }}
+</head>
 <header class="intro-and-nav" role="banner">
+  <style>
+  code.has-jax {
+    -webkit-font-smoothing: antialiased;
+    background: inherit !important;
+    border: none !important;
+    font-size: 100%;
+  }
+  </style>
+
   <div>
     <div class="intro">
       <a class="logo" href="/" aria-label="{{ .Site.Title }} home page">

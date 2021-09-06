@@ -1,8 +1,12 @@
 {{ define "main" }}
   <main id="main">
     <h1>{{ .Title }}</h1>
+    <h3>Table of Contents</h3>
+    {{ .TableOfContents }}
     {{ .Content }}
   </main>
 
   {{ template "_internal/disqus.html" }}
+
 {{ end }}
+

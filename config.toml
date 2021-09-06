@@ -19,6 +19,9 @@ googleAnalytics = "UA-123456789-1"
   footer = "Made with [Hugo](https://gohugo.io/). Themed by [Cupper](https://github.com/zwbetz-gh/cupper-hugo-theme). Deployed to [Netlify](https://www.netlify.com/). Comments made with [Disqus](http://disqus.com/)."
   dateFormat = "Jan 2, 2006"
   codePenUser = "Hashem A. Damrah"
+  search = true
+  search_minify = false
+  katex = true
 
 [menu]
   [[menu.nav]]
@@ -52,5 +55,9 @@ googleAnalytics = "UA-123456789-1"
 
 [markup.goldmark.renderer]
   unsafe = true
+
+[outputs]
+  home = ["HTML", "RSS", "JSON"]
+  page = ["HTML", "RSS"]
 
 disqusShortname = "damrah"
