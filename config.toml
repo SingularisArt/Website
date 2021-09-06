@@ -38,6 +38,13 @@ googleAnalytics = "UA-123456789-1"
     url = "/about/"
     weight = 4
   [[menu.nav]]
+    name = "Contact"
+    url = "/contact/"
+    weight = 5
+  [[menu.nav]]
     name = "RSS"
     url = "/index.xml"
-    weight = 5
+    weight = 6
+
+[markup.goldmark.renderer]
+  unsafe = true
