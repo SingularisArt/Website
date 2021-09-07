@@ -60,4 +60,16 @@ googleAnalytics = "UA-123456789-1"
   home = ["HTML", "RSS", "JSON"]
   page = ["HTML", "RSS"]
 
+[markup]
+  [markup.highlight]
+    style = "arduino"
+    codeFences = true
+    hl_Lines = ""
+    lineNoStart = 1
+    lineNos = false
+    lineNumbersInTable = true
+    noClasses = true
+    tabWidth = 4
+
+
 disqusShortname = "damrah"
