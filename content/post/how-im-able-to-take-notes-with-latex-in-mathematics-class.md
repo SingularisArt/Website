@@ -369,7 +369,10 @@ boundaries. So, `helloim` won't expand, but `hello im` will.
 
 ### Sub and Super scripts
 
-Another handy snippet is this one, which is used for sub scripts. It changes **a1** to **a_1** and **a_12** to **a_{12}** and **a_\{12\}3** to **a_\{123\}**. It can also change **a_\{123456789\}0** to **a_\{1234567890\}**. Here, size doesn't matter!
+Another handy snippet is this one, which is used for sub scripts. It changes
+a1 to a_1 and a_12 to a_{12} and a_{12}3 to
+a_{123}. It can also change a_{123456789}0 to a_{1234567890}.
+Here, size doesn't matter!
 
 ![sub-scripts](/posts/gifs/sub-scripts.gif)
 
@@ -439,7 +442,7 @@ Here is my goal. To be able to perform snippets on these:
 
                                 //  ->  \frac{}{}
                                 3/  ->  \frac{3}{}
-                           *4\i^2/  -> \frac{4\pi^2}{}
+                            4\i^2/  -> \frac{4\pi^2}{}
                        (1 + 2 + 3)  ->  \frac{(1 + 2 + 3)}{}
                     (1 + (2 + 3)/)  ->  (1 + \frac{(1 + 2))}{}
                     (1 + (2 + 3))/  ->  \frac{1 + (2 + 3)}{}
