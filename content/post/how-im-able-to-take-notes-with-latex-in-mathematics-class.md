@@ -343,7 +343,7 @@ endsnippet
 
 These are my two most frequency used snippets. They are responsible for bringing me into math mode. They are `im` (Inline Math) and `dm` (Display Math).
 
-![inline-display](/posts/gifs/inline-display.gif)
+![inline-display](/posts/gifs/inline-math.gif)
 
 ```snippet
 snippet im "Inline Math" wA
@@ -381,11 +381,11 @@ first expands if there is a variable, followed by a number. Example **b3** ->
 **b_3**.
 
 The second snippet checks if there is a variable, followed by an
-underscore, followed by two numbers. Example **b_34** -> **b_{34}**.
+underscore, followed by two numbers. Example b_34 -> b_{34}.
 
 The last and final snippet checks if there is a variable, followed by an underscore,
 followed by a group of {} with numbers inside. It also checks if there is a
-number in front of the closing bracket. Example **b_{34}5** -> **b_{345}**
+number in front of the closing bracket. Example b_{34}5 -> b_{345}
 
 Here is the snippet code:
 
@@ -458,9 +458,9 @@ endsnippet
 ```
 
 The core of the second snippet is regular expressions. It's used to match expressions like:
-* $\pi^{2}/$
-* $39_{9\Theta}/$
-* $cf_2$
+* \pi^{2}/
+* 39_{9\Theta}/
+* cf_2
 * etc
 
 ```snippet
