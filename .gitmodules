@@ -16,3 +16,6 @@
 [submodule "themes/cupper-hugo"]
 	path = themes/cupper-hugo
 	url = https://github.com/luisdza/cupper-hugo-theme.git
+[submodule "third-party-tools/hugo-embed-pdf-shortcode"]
+	path = third-party-tools/hugo-embed-pdf-shortcode
+	url = https://github.com/anvithks/hugo-embed-pdf-shortcode
