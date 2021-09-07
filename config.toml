@@ -62,7 +62,7 @@ googleAnalytics = "UA-123456789-1"
 
 [markup.highlight]
   codeFences = true
-  noClasses = true
+  useClasses = false
   tabWidth = 4
   style = "dracula"
 
