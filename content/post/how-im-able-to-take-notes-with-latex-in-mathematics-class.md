@@ -190,12 +190,8 @@ You can also run shell commands inside snippets, but you have to use back ticks 
 Here is how the snippets look like:
 
 ```snippet
-snippet today "Date"
-`date +%F`
-endsnippet
-
-snippet today "Date"
-`date +%F`
+snippet date-time "Today's date and Current Time"
+`date "+%b %d %Y %a %R`
 endsnippet
 ```
 
