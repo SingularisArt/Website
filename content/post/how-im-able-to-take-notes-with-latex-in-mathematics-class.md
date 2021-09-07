@@ -103,11 +103,15 @@ Hashem A. Damrah
 endsnippet
 ```
 
-### Today
+### Today and Date
 
 ![today](/posts/gifs/today.gif)
 
 ```snippet
+snippet today "Date"
+`date +%F`
+endsnippet
+
 snippet today "Date"
 `date +%F`
 endsnippet
