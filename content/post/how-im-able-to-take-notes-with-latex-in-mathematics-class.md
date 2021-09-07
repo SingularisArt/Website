@@ -121,7 +121,7 @@ Next section, I will go over how to add snippets yourself.
 
 To add snippets, you first must configure UltiSnips itself. Now, add this to you're .vimrc or init.vim:
 
-```snippets
+```snippet
 let g:UltiSnipsExpandTrigger='<tab>'
 let g:UltiSnipsJumpForwardTrigger='<tab>'
 let g:UltiSnipsJumpBackwardTrigger='<s-tab>'
@@ -139,7 +139,7 @@ Place your snippets in `~/.config/nvim/UltiSnips/` or wherever you told UltiSnip
 
 Here is a basic skeleton for a snippet:
 
-```snippets
+```snippet
 snippet SNIPPET NAME "SNIPPET DESCRIPTION"
 ...
 endsnippet
@@ -147,7 +147,7 @@ endsnippet
 
 To add placeholders, do this:
 
-```snippets
+```snippet
 snippet document "Creates a document"
 Document Name: $1
 $0
@@ -156,7 +156,7 @@ endsnippet
 
 The `$1` and `$0` are where your placeholders will be. The `$0` is always the final placeholder. Now, you can create information within the placeholders like this:
 
-```snippets
+```snippet
 snippet document "Creates a document"
 Document Name: ${1:DOCUMENT NAME}
 $0
@@ -173,7 +173,7 @@ The code for this is probably the simplest.
 
 ![sign](/posts/gifs/sign.gif)
 
-```snippets
+```snippet
 snippet sign "Signature"
 Yours sincerely,
 
@@ -189,7 +189,7 @@ You can also run shell commands inside snippets, but you have to use back ticks 
 
 Here is how the snippets look like:
 
-```snippets
+```snippet
 snippet today "Date"
 `date +%F`
 endsnippet
@@ -211,7 +211,7 @@ snippets for different environments. The code for it is down below.
 
 ![environments](/posts/gifs/environments.gif)
 
-```snippets
+```snippet
 snippet beg "begin{} / end{}" b
 \begin{$1}
 	$0
@@ -345,7 +345,7 @@ These are my two most frequency used snippets. They are responsible for bringing
 
 ![inline-display](/posts/gifs/inline-math.gif)
 
-```snippets
+```snippet
 snippet im "Inline Math" wA
 $${1}$`!p
 if t[2] and t[2][0] not in [',', '.', '?', '-', ' ']:
@@ -389,7 +389,7 @@ number in front of the closing bracket. Example b_{34}5 -> b_{345}
 
 Here is the snippet code:
 
-```snippets
+```snippet
 snippet '([A-Za-z])(\d)' "Auto subscript" wrA
 `!p snip.rv = match.group(1)`_`!p snip.rv = match.group(2)`
 endsnippet
@@ -416,7 +416,7 @@ Here is a quick view of the snippets:
 ![super-scripts](/posts/gifs/super-scripts.gif)
 
 Here is the snippet code:
-```snippets
+```snippet
 snippet sq "Square" i
 ^2
 endsnippet
@@ -451,7 +451,7 @@ Here is my goal. To be able to perform snippets on these:
 
 Now, let's start off with something very easy. Creating a simple fraction:
 
-```snippets
+```snippet
 snippet // "Fraction" iA
 \frac{$1}{$2}$0
 endsnippet
@@ -463,7 +463,7 @@ The core of the second snippet is regular expressions. It's used to match expres
 * cf_2
 * etc
 
-```snippets
+```snippet
 snippet '((\d+)|(\d*)(\\)?([A-Za-z]+)((\^|_)(\{\d+\}|\d))*)/' "Fraction" wrA
 \\frac{`!p snip.rv = match.group(1)`}{$1}$0
 endsnippet
@@ -471,7 +471,7 @@ endsnippet
 
 In the fourth case, I tried to find matching parenthesis. But, all of the work went in vain because you cannot with UltiSnips. So, I used Python :).
 
-```snippets
+```snippet
 priority 1000
 snippet '^.*\)/' "() Fraction" wrA
 `!p
@@ -492,7 +492,7 @@ The last section that I want to show you is your selection to make your own frac
 
 ![tab-fraction](/posts/gifs/tab-fraction.gif)
 
-```snippets
+```snippet
 snippet / "Fraction" iA
 \\frac{${VISUAL}}{$1}$0
 endsnippet
@@ -502,7 +502,7 @@ endsnippet
 
 ![template](/posts/gifs/template.gif)
 
-```snippets
+```snippet
 snippet template "Template"
 \documentclass{article}
 
@@ -529,7 +529,7 @@ endsnippet
 
 ![school-lessons](/posts/gifs/school-lessons.gif)
 
-```snippets
+```snippet
 snippet les "Lesson"
 \lesson{${1:LESSON NUMBER}}{${2:DATE AND TIME}}{${3:LESSON NAME}}
 $0
