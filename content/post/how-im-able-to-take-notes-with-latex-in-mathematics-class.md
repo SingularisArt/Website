@@ -90,11 +90,89 @@ Now, you can have certain kind of **snippets** for certain kinds of languages. F
 
 You can take a look over
 [here](https://github.com/SingularisArt/Death.NeoVim/blob/UltiSnippets/tex.snippets)
-to see all of my **LaTeX snippets**, but I will be going over the most important ones in this blob post.
+to see all of my **LaTeX snippets**, but I will be going over the most important ones in this article.
+
+### Install Snippets
+
+To install snippets, you first need a snippet manager. I use [UltiSnippets](https://github.com/SirVer/ultisnips) for that. To install it, put these commands in your .vimrc, init.vim, or init.lua:
+
+```viml
+use { 'https://github.com/SirVer/ultisnips' } " If you use packer
+Plug 'https://github.com/SirVer/ultisnips'    " If you use vim-plug
+```
+
+After you install that, now run:
+
+```viml
+:PackerInstall  " If you are using packer
+:PlugInstall    " If you are using vim-plug
+```
+
+Congrats, you have installed UltiSnippets. Now, to start us off, let's install some snippets, that we can later on configure. To do that we need to install another plugin:
+
+```viml
+use { 'https://github.com/honza/vim-snippets' }         " If you use packer
+Plug 'https://github.com/SirVer/honza/vim-snippets'     " If you use vim-plug
+```
+
+Next section, I will go over how to add snippets yourself.
+
+### Adding snippets
+
+To add snippets, you first must configure UltiSnips itself. Now, add this to you're .vimrc or init.vim:
+
+```snippet
+let g:UltiSnipsExpandTrigger='<tab>'
+let g:UltiSnipsJumpForwardTrigger='<tab>'
+let g:UltiSnipsJumpBackwardTrigger='<s-tab>'
+
+let g:UltiSnipsEditSplit='vertical'
+
+let g:UltiSnipsSnippetDirectories=['~/.config/nvim/UltiSnips/']
+```
+
+Let's go over these quickly. The first line is telling UltiSnips what button you want to use to expand the actual snippet. After you have expanded the snippet, you have placeholders. On line 2-3, you are telling UltiSnips what key presses you want to use to jump back and forth between those placeholders. The 4th line is telling UltiSnips to open the file vertically when you run `:UltiSnipsEdit`. The last and final line tells UltiSnips where to find your snippets.
+
+#### Creating your own snippets
+
+Place your snippets in `~/.config/nvim/UltiSnips/` or wherever you told UltiSnips to find theme. Each language has it's own specific snippet file. For example, python snippets will be located at `~/.config/nvim/UltiSnips/python.snippets`. Or, instead of manually creating that file, open a file with that extension. For example: `test.py`. Then, inside that file, type `:UltiSnipsEdit`. That will create the file `~/.config/nvim/UltiSnips/python.snippets` for you.
+
+Here is a basic skeleton for a snippet:
+
+```snippet
+snippet SNIPPET NAME "SNIPPET DESCRIPTION"
+...
+endsnippet
+```
+
+To add placeholders, do this:
+
+```snippet
+snippet document "Creates a document"
+Document Name: $1
+$0
+endsnippet
+```
+
+The `$1` and `$0` are where your placeholders will be. The `$0` is always the final placeholder. Now, you can create information within the placeholders like this:
+
+```snippet
+snippet document "Creates a document"
+Document Name: ${1:DOCUMENT NAME}
+$0
+endsnippet
+```
+
+Now, the placeholder says **DOCUMENT NAME**, and when you reach that placeholder, it will be highlighted in visual mode, and you can overwrite it.
+
+Now you know the basics, let's get into some examples.
 
 ### Sign
 
+The code for this is probably the simplest.
+
 ![sign](/posts/gifs/sign.gif)
+
 ```snippet
 snippet sign "Signature"
 Yours sincerely,
@@ -105,7 +183,11 @@ endsnippet
 
 ### Today and Date
 
+You can also run shell commands inside snippets, but you have to use back ticks (\`\`) for that.
+
 ![today](/posts/gifs/today-date.gif)
+
+Here is how the snippets look like:
 
 ```snippet
 snippet today "Date"
@@ -118,6 +200,14 @@ endsnippet
 ```
 
 ### Environments
+
+To insert an environment, all I have to do is type **beg**, then hit **tab**.
+You start typing out what kind of environment you want. Then, once you're done,
+hit tab. That will move you into the environment.
+
+Now, I use a lot of different
+environments, and I've even created some. So, I created different kind of
+snippets for different environments. The code for it is down below.
 
 ![environments](/posts/gifs/environments.gif)
 
@@ -248,7 +338,10 @@ snippet conclusion "Conclusion" b
 \end{conclusion}
 endsnippet
 ```
+
 ### Inline and Display Math
+
+These are my two most frequency used snippets. They are responsible for bringing me into math mode. They are `im` (Inline Math) and `dm` (Display Math).
 
 ![inline-display](/posts/gifs/inline-display.gif)
 
@@ -269,19 +362,109 @@ ${1:${VISUAL}}
 endsnippet
 ```
 
+The **A** at the end of the snippet declaration means it will expand as soon as
+you type the key (`im`, `dm`). It doesn't wait for you to hit **tab**.  The
+**w** at the end of the first line means that this snippet will expand at word
+boundaries. So, `helloim` won't expand, but `hello im` will.
+
+### Sub and Super scripts
+
+Another handy snippet is this one, which is used for sub scripts. It changes **a1** to **a_1** and **a_12** to **a_{12}** and **a_{12}3** to **a_{123}**. It can also change **a_{123456789}0** to **a_{1234567890}**. Here, size doesn't matter!
+
+![sub-scripts](/posts/gifs/sub-scripts.gif)
+
+The code for these snippets use regular expressions for there trigger. The
+first expands if there is a variable, followed by a number. Example **b3** ->
+**b_3**.  The second snippet checks if there is a variable, followed by an
+underscore, followed by two numbers. Example **b_34** -> **b_{34}**.  The last
+and final snippet checks if there is a variable, followed by an underscore,
+followed by a group of {} with numbers inside. It also checks if there is a
+number in front of the closing bracket. Example **b_{34}5** -> **b_{345}**
+
+Here is the snippet code:
+
+```snippet
+snippet '([A-Za-z])(\d)' "Auto subscript" wrA
+`!p snip.rv = match.group(1)`_`!p snip.rv = match.group(2)`
+endsnippet
+
+snippet '([A-Za-z])_(\d\d)' "Auto subscript 2" wrA
+`!p snip.rv = match.group(1)`_{`!p snip.rv = match.group(2)`}
+endsnippet
+
+snippet '([A-Za-z])_\{(\d+)\}(\d)' "Auto subscript 3+" wrA
+`!p snip.rv = match.group(1)`_{`!p snip.rv = match.group(2) + match.group(3)`}
+endsnippet
+```
+
+Whenever you wrap parts of a regular expression in parenthesis, ex **(\d\d)**, you can use them in the expansion of the snippet via **math.group(i)**.
+
+As for the superscripts, I use **td** -> **^{}**. However, I use some quick snippets for basic things like squaring, cubing, raising to a variable.
+Here is a quick view of the snippets:
+* **sq** -> **^2**
+* **cb** -> **^3**
+* **compl** -> **^{c}**
+* **ss** -> **^{$1}$0**
+
+![super-scripts](/posts/gifs/super-scripts.gif)
+
+Here is the snippet code:
+```snippet
+snippet sq "Square" i
+^2
+endsnippet
+
+snippet cb "Square" i
+^3
+endsnippet
+
+snippet compl "Complement" i
+^{c}
+endsnippet
+
+snippet ss "Super Script" i
+^{$1}$0
+endsnippet
+```
+
 ### Fractions
 
+These snippets, are the funniest and they give you a big satisfaction whenever you pull them off.
+
+Here is my goal. To be able to perform snippets on these:
+
+                           **//**  ->  **\frac{}{}**
+                           **3/**  ->  **\frac{3}{}**
+                       **4\i^2/**  ->  **\frac{4\pi^2}{}**
+                  **(1 + 2 + 3)**  ->  **\frac{(1 + 2 + 3)}{}**
+               **(1 + (2 + 3)/)**  ->  **(1 + \frac{(1 + 2))}{}**
+               **(1 + (2 + 3))/**  ->  **\frac{1 + (2 + 3)}{}**
+
 ![fractions](/posts/gifs/fractions.gif)
+
+Now, let's start off with something very easy. Creating a simple fraction:
 
 ```snippet
 snippet // "Fraction" iA
 \frac{$1}{$2}$0
 endsnippet
+```
 
+The core of the second snippet is regular expressions. It's used to match expressions like:
+* $\pi^{2}/$
+* $39_{9\Theta}/$
+* $cf_2$
+* etc
+
+```snippet
 snippet '((\d+)|(\d*)(\\)?([A-Za-z]+)((\^|_)(\{\d+\}|\d))*)/' "Fraction" wrA
 \\frac{`!p snip.rv = match.group(1)`}{$1}$0
 endsnippet
+```
 
+In the fourth case, I tried to find matching parenthesis. But, all of the work went in vain because you cannot with UltiSnips. So, I used Python :).
+
+```snippet
 priority 1000
 snippet '^.*\)/' "() Fraction" wrA
 `!p
@@ -298,33 +481,13 @@ snip.rv = stripped[0:i] + "\\frac{" + stripped[i+1:-1] + "}"
 endsnippet
 ```
 
-### Sub and Super scripts
+The last section that I want to show you is your selection to make your own fraction using **visual mode**.
 
-![sub-super-scripts](/posts/gifs/sub-super-scripts.gif)
+![tab-fraction](/posts/gifs/tab-fraction.gif)
 
 ```snippet
-snippet '([A-Za-z])(\d)' "Auto subscript" wrA
-`!p snip.rv = match.group(1)`_`!p snip.rv = match.group(2)`
-endsnippet
-
-snippet '([A-Za-z])_(\d\d)' "Auto subscript 2" wrA
-`!p snip.rv = match.group(1)`_{`!p snip.rv = match.group(2)`}
-endsnippet
-
-snippet sq "Square" i
-^2
-endsnippet
-
-snippet cb "Square" i
-^3
-endsnippet
-
-snippet compl "Complement" i
-^{c}
-endsnippet
-
-snippet ss "Super Script" i
-^{$1}$0
+snippet / "Fraction" iA
+\\frac{${VISUAL}}{$1}$0
 endsnippet
 ```
 
@@ -378,6 +541,7 @@ setlocal spell
 set spelllang=en
 inoremap <C-l> <C-g>u<Esc>[s1z=`]a<C-g>u
 ```
+
 ## Credit
 
 I would like to give a thanks :clap: to [Gilles Castel](https://castel.dev) for teaching me all of this stuff. I would recommend to go and checkout his website!
@@ -385,7 +549,7 @@ I would like to give a thanks :clap: to [Gilles Castel](https://castel.dev) for 
 ## Conclusion
 
 So, I have just proven to you that you can write **LaTeX** fast, easily, and efficiently.
-Stay tuned to learn about:
-* How I **draw figures**
-* How I **manage my notes**
-* How I **take notes**
+Stay tuned to learn about how I:
+* **draw figures**
+* **manage my notes**
+* **take notes**

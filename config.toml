@@ -62,7 +62,7 @@ googleAnalytics = "UA-123456789-1"
 
 [markup]
   [markup.highlight]
-    style = "arduino"
+    style = "dracula"
     codeFences = false
     lineNoStart = 1
     lineNos = false
