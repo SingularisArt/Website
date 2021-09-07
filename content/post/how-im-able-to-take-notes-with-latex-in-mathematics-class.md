@@ -369,15 +369,18 @@ boundaries. So, `helloim` won't expand, but `hello im` will.
 
 ### Sub and Super scripts
 
-Another handy snippet is this one, which is used for sub scripts. It changes **a1** to **a_1** and **a_12** to **a_{12}** and **a_{12}3** to **a_{123}**. It can also change **a_{123456789}0** to **a_{1234567890}**. Here, size doesn't matter!
+Another handy snippet is this one, which is used for sub scripts. It changes **a1** to **a_1** and **a_12** to **a_{12}** and **a_\{12\}3** to **a_\{123\}**. It can also change **a_\{123456789\}0** to **a_\{1234567890\}**. Here, size doesn't matter!
 
 ![sub-scripts](/posts/gifs/sub-scripts.gif)
 
 The code for these snippets use regular expressions for there trigger. The
 first expands if there is a variable, followed by a number. Example **b3** ->
-**b_3**.  The second snippet checks if there is a variable, followed by an
-underscore, followed by two numbers. Example **b_34** -> **b_{34}**.  The last
-and final snippet checks if there is a variable, followed by an underscore,
+**b_3**.
+
+The second snippet checks if there is a variable, followed by an
+underscore, followed by two numbers. Example **b_34** -> **b_{34}**.
+
+The last and final snippet checks if there is a variable, followed by an underscore,
 followed by a group of {} with numbers inside. It also checks if there is a
 number in front of the closing bracket. Example **b_{34}5** -> **b_{345}**
 
@@ -401,6 +404,7 @@ Whenever you wrap parts of a regular expression in parenthesis, ex **(\d\d)**, y
 
 As for the superscripts, I use **td** -> **^{}**. However, I use some quick snippets for basic things like squaring, cubing, raising to a variable.
 Here is a quick view of the snippets:
+* **td** -> **^{}**
 * **sq** -> **^2**
 * **cb** -> **^3**
 * **compl** -> **^{c}**
@@ -433,12 +437,12 @@ These snippets, are the funniest and they give you a big satisfaction whenever y
 
 Here is my goal. To be able to perform snippets on these:
 
-                           **//**  ->  **\frac{}{}**
-                           **3/**  ->  **\frac{3}{}**
-                       **4\i^2/**  ->  **\frac{4\pi^2}{}**
-                  **(1 + 2 + 3)**  ->  **\frac{(1 + 2 + 3)}{}**
-               **(1 + (2 + 3)/)**  ->  **(1 + \frac{(1 + 2))}{}**
-               **(1 + (2 + 3))/**  ->  **\frac{1 + (2 + 3)}{}**
+                                //  ->  \frac{}{}
+                                3/  ->  \frac{3}{}
+                           *4\i^2/  -> \frac{4\pi^2}{}
+                       (1 + 2 + 3)  ->  \frac{(1 + 2 + 3)}{}
+                    (1 + (2 + 3)/)  ->  (1 + \frac{(1 + 2))}{}
+                    (1 + (2 + 3))/  ->  \frac{1 + (2 + 3)}{}
 
 ![fractions](/posts/gifs/fractions.gif)
 
