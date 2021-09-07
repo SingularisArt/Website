@@ -12,4 +12,3 @@ while True:
   line_number += 1
 ```
 
-<embed src="./pdfs/master.pdf" width="800px" />
