@@ -105,7 +105,7 @@ endsnippet
 
 ### Today and Date
 
-![today](/posts/gifs/today.gif)
+![today](/posts/gifs/today-date.gif)
 
 ```snippet
 snippet today "Date"
