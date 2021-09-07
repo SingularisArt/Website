@@ -6,6 +6,7 @@
       }
     </style>
     <h1>{{ .Title }}</h1>
+    <input type="text" placeholder="Search by title..." style="width:790px;height:50px;font-size:40px">
     <ul class="patterns-list">
     {{ range .Pages.ByPublishDate.Reverse }}
       <li>
