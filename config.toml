@@ -63,12 +63,10 @@ googleAnalytics = "UA-123456789-1"
 [markup]
   [markup.highlight]
     style = "arduino"
-    codeFences = true
-    hl_Lines = ""
+    codeFences = false
     lineNoStart = 1
     lineNos = false
     lineNumbersInTable = true
-    noClasses = true
     tabWidth = 4
 
 
