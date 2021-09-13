@@ -60,11 +60,10 @@ googleAnalytics = "UA-123456789-1"
   home = ["HTML", "RSS", "JSON"]
   page = ["HTML", "RSS"]
 
-#[markup.highlight]
-  #codeFences = true
-  #useClasses = false
-  #tabWidth = 4
-  #style = "dracula"
+[markup.highlight]
+  codefences = true
+  codefencesGuessSyntax = true
+  style = "dracula"
 
 disqusShortname = "damrah"
 
