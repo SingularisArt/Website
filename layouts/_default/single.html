@@ -52,6 +52,6 @@
   {{ partial "posts_pagination.html" . }}
   {{ end }}
 
-  {{ partial "comments.html" . }}
+  {{ template "_internal/disqus.html" . }}
 </div>
 {{ end }}
