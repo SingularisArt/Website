@@ -19,3 +19,6 @@
 [submodule "third-party-tools/hugo-embed-pdf-shortcode"]
 	path = third-party-tools/hugo-embed-pdf-shortcode
 	url = https://github.com/anvithks/hugo-embed-pdf-shortcode
+[submodule "themes/new-terminal"]
+	path = themes/new-terminal
+	url = https://github.com/GideonWolfe/hugo-theme-terminal/
