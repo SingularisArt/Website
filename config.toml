@@ -38,7 +38,7 @@ paginate = 5
   # it's set to `true` by default
   oneHeadingSize = false
 
-  disqusShortname = "damrah"
+  disqusShortname = "damrah-netlify-app"
 
 [params.twitter]
   # set Twitter handles for Twitter cards
