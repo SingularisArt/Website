@@ -91,4 +91,3 @@ paginate = 5
 
 [markup.goldmark.renderer]
   unsafe = true
-
