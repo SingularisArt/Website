@@ -1,4 +1,4 @@
-baseURL = "https://damrah.netlify.app"
+baseURL = "https://www.damrah.netlify.app"
 languageCode = "en-us"
 googleAnalytics = "G-E7EEGV16JB"
 theme = "terminal"
