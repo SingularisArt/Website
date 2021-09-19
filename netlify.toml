@@ -16,7 +16,12 @@
 
 [context.deploy-preview]
   command = "hugo --gc --minify --buildFuture -b $DEPLOY_PRIME_URL"
-
+git clone https://github.com/michielbdejong/snickers-proxy
+cd snickers-proxy
+npm install
+cp example/config.json .
+sudo cp -r example/snitch /etc
+sudo mkdir -p /data/domains
 [context.deploy-preview.environment]
   HUGO_VERSION = "0.88.1"
 
