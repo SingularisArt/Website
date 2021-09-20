@@ -25,106 +25,115 @@ for when I go to university. So I set myself **3** goals:
   **manageable** and easy to **access**.
 
 I will eventually have a ton of posts talking about this specific subject, but
-for now, I will go over **step 1 (Writing mathematical equations as fast (or faster) than my professer was an**.
+for now, I will go over **step 1 (Writing mathematical equations as fast (or faster) than my professor was an A MUST.)**
 
 ## NeoVim and LaTeX
 
-Quickly, NeoVim is a **fork** of Vim.
+Quickly, what is NeoVim.
+
+NeoVim is a **fork** of Vim.
 For writing my **notes**, I use NeoVim
-(You can find my custom [NeoVim](https://github.com/SingularisArt/Death.NeoVim) config
-[here](https://github.com/SingularisArt/Death.NeoVim).) Later on, I will create a blog post talking about how I setup my [NeoVim](https://github.com/SingularisArt/Death.NeoVim) setup.
+(You can find my custom NeoVim config
+[here](https://github.com/SingularisArt/Death.NeoVim).)
+Later on, I will create a blog post talking about how I setup my NeoVim setup.
 
 I literally use NeoVim for everything. I use it to write **LaTeX**, **markdown**, **actual code**. A
 lot of people complain saying **"Vim is to hard to learn and it's weird"**, but
-trust me. Yes, it does have a steep learning curve, but after you learn it, you
-will be rewarded. Here is what my screen looks like when I am working with LaTeX:
+trust me, once you learn it, you can ***NEVER UN-LEARN IT***, it saves you ***HOURS OF TYPING***, and feels ***AMAZING WHEN YOU'RE IN IT***.
+But, yes, it does have a steep learning curve, but after you learn it, you
+will be rewarded.
+
+Now, with that out of the way, here is what my screen looks like when I am working with LaTeX:
 
 ![code-with-latex](/posts/images/code-with-latex.png)
 
 On the left side, I have my editor (**NeoVim**) and on the right side, I have
-my pdf viewer **Zathura** (You can find my custom **Zathura** config
-[here](https://github.com/SingularisArt/Singularis).)
+my pdf viewer **Zathura**.
 
 Here is a quick list of all of my utilities:
-* OS: Linux Ubuntu
+* OS: Arch
 * WM: DWM
-* EDITOR: [NeoVim](https://github.com/SingularisArt/Death.NeoVim)
-* PDF VIEWER: [Zathura](https://github.com/SingularisArt/Singularis)
+* EDITOR: NeoVim
+* PDF VIEWER: Zathura
 
 I have a huge list of plugins that you can view
 [here](https://github.com/SingularisArt/Death.NeoVim#all-of-my-plugins), but
 the plugin that I use for **LaTeX** is [vimtex](https://github.com/lervag/vimtex). It provides:
+
 * Syntax highlighting
 * Auto compiling
 * Renaming entire environments
 * Shows you the toc (Table of Contents)
 
-I use the [Packer Plugin Manager](https://github.com/wbthomason/packer.nvim).
-So, here is how you install it:
+But, before I talk about how I configure NeoVim for **LaTeX**, let me explain to you how I setup my NeoVim. This won't be an in depth tutorial (that will be in a different post.)
+
+For installing NeoVim Plugins, I use [Packer](https://github.com/wbthomason/packer.nvim), which is a plugin-manager written in **lua**. It only works in NeoVim because vim doesn't support **lua** (because **VIM SUCKS** only **NEOVIM RULES**.) So, if you are unsure, go here (I will update this when I post a blog post about my NeoVim setup, until then, **WAIT 😭**.)
+
+Now, back to **LaTeX**, I use a gazillion plugins, but the most powerful one for **LaTeX** users is [VIMTEX](https://github.com/lervag/vimtex). Here is how I installed it:
+
+```lua
+use { 'lervag/vimtex' } " If you use packer
+```
+
+Add that to your plugins.lua, or wherever you place your plugins.
+
+Now, time to configure it. Add this to your init.vim or .vimrc:
 
 ```viml
-use { 'lervag/vimtex' } " If you are using packer
-Plug 'lervag/vimtex'    " If you are using vim-plug
 let g:vimtex_view_method='zathura'
 let g:tex_flavor='latex'
 set conceallevel=1
 ```
 
-The last two lines tell
-[NeoVim](https://github.com/SingularisArt/Death.NeoVim) to configure the
-concealment. This is a feature that
-[NeoVim](https://github.com/SingularisArt/Death.NeoVim) uses to hide certain
-parts of the code if your cursor isn't on it. By making **\\[**, **\\]**, **$**
-invisible, they aren't in the way, so you can better see the entire document.
-Also, it tries it's best to show you what it will look like when you compile
-the file. Here is a quick demonstration:
+The first line tells **VIMTEX** what pdf viewer you want to use to open your pdf. Simple.
+The next line tells what kind of **LaTeX** you want to use to compile your document.
+The last line tell NeoVim to configure the concealment. This is a feature that NeoVim uses to hide certain
+parts of the code if your cursor isn't on it. It hides **\\[**, **\\]**, **$**. By making **\\[**, **\\]**, **$**
+invisible, they aren't so distracting.
 
 ![conceallevel](/posts/gifs/conceallevel.gif)
 
 ## UltiSnippets
 
 One of the major reasons why I'm so fast at typing when it comes to **LaTeX**,
-is because of **snippets**. A snippet is a short reusable piece of text that
-can be triggered by some other text. Then, you have **snippet managers**, which
-manages the **snippets** that you make. There are many snippet managers out there, but I use
-[UltiSnippets](https://github.com/SirVer/ultisnips) as my **snippet manager**.
+is because of **snippets**.
+
+A snippet is a short reusable piece of text that can be triggered by some other text.
+
+Then, you have **snippet managers**, which manages the **snippets** that you make.
+There are many snippet managers out there, but I use [UltiSnippets](https://github.com/SirVer/ultisnips) as my **snippet manager**.
 
 Now, you can have certain kind of **snippets** for certain kinds of languages. For example, you might have **snippets** for python, while having different **snippets** for **LaTeX**.
 
-You can take a look over
-[here](https://github.com/SingularisArt/Death.NeoVim/blob/UltiSnippets/tex.snippets)
-to see all of my **LaTeX snippets**, but I will be going over the most important ones in this article.
+You can take a look over [here](https://github.com/SingularisArt/Death.NeoVim/blob/UltiSnippets/tex.snippets) to see all of my **LaTeX snippets**, but I will be going over the most important ones in this article.
 
-### Install Snippets
+### Installing Snippets
 
-To install snippets, you first need a snippet manager. I use [UltiSnippets](https://github.com/SirVer/ultisnips) for that. To install it, put these commands in your .vimrc, init.vim, or init.lua:
+Like before, put this in plugins.lua, or wherever you keep your plugins at:
 
-```viml
+```lua
 use { 'https://github.com/SirVer/ultisnips' } " If you use packer
-Plug 'https://github.com/SirVer/ultisnips'    " If you use vim-plug
 ```
 
 After you install that, now run:
 
 ```viml
-:PackerInstall  " If you are using packer
-:PlugInstall    " If you are using vim-plug
+:PackerInstall  " If you use packer
 ```
 
 Congrats, you have installed UltiSnippets. Now, to start us off, let's install some snippets, that we can later on configure. To do that we need to install another plugin:
 
-```viml
+```lua
 use { 'https://github.com/honza/vim-snippets' }         " If you use packer
-Plug 'https://github.com/SirVer/honza/vim-snippets'     " If you use vim-plug
 ```
 
-Next section, I will go over how to add snippets yourself.
+Next section, I will go over how to add/modify snippets yourself.
 
 ### Adding snippets
 
-To add snippets, you first must configure UltiSnips itself. Now, add this to you're init.vim:
+To add snippets, you first must configure UltiSnips itself. Now, add this to you're init.vim or .vimrc:
 
-```snippet
+```viml
 let g:UltiSnipsExpandTrigger='<tab>'
 let g:UltiSnipsJumpForwardTrigger='<tab>'
 let g:UltiSnipsJumpBackwardTrigger='<s-tab>'
@@ -150,7 +159,7 @@ Or, instead of manually creating that file, open a file with that extension. For
 
 Here is a basic skeleton for a snippet:
 
-```snippet
+```snippets
 snippet SNIPPET NAME "SNIPPET DESCRIPTION"
 ...
 endsnippet
@@ -158,7 +167,7 @@ endsnippet
 
 To add placeholders, do this:
 
-```snippet
+```snippets
 snippet document "Creates a document"
 Document Name: $1
 $0
@@ -167,7 +176,7 @@ endsnippet
 
 The `$1` and `$0` are where your placeholders will be. The `$0` is always the final placeholder. Now, you can create information within the placeholders like this:
 
-```snippet
+```snippets
 snippet document "Creates a document"
 Document Name: ${1:DOCUMENT NAME}
 $0
@@ -186,7 +195,7 @@ The code for this is probably the simplest.
 
 Here is the snippet code for it:
 
-```snippet
+```snippets
 snippet sign "Signature"
 Yours sincerely,
 
@@ -202,7 +211,7 @@ You can also run shell commands inside snippets, but you have to use back ticks 
 
 Here is the snippet code for it:
 
-```snippet
+```snippets
 snippet date-time "Today's date and Current Time"
 `date "+%b %d %Y %a %R`
 endsnippet
@@ -218,127 +227,133 @@ hit tab. That will move you into the environment.
 ```snippets
 snippet beg "begin{} / end{}" bA
 \begin{$1}
-	$0
+	${1:${VISUAL}}
 \end{$1}
 endsnippet
 ```
 
-![environments](/posts/gifs/environments.gif)
+![environments](/posts/gifs/beg-environment.gif)
 
 Now, I have a ton of different environments that I commonly use. So, I wasted even more time creating specific snippets for each environment:
+
+![environments](/posts/gifs/all-environment.gif)
+
+Now, sometimes you may want to surround specific text with the environment. So, what do you do? You can remove the text, create the environment, then paste. That feels **WRONG**. As you all know, us programmers are the laziest people. We spend hours trying to configure something to save us a couple of minutes. And, guess what? That's exactly what I did. I read through the documentation to learn about this (which took about 1.5 hours.)
+
+It's called visual select tab. You highlight whatever you want, hit tab, then go ahead and activate the snippet. There you go, the code you highlighted is know surrounded with the envrionment you want! 😮‍💨
 
 ```snippets
 snippet doc "Document" bA
 \begin{document}
-	$0
+	${1:${VISUAL}}
 \end{document}
 endsnippet
 
 snippet cnt "Center" bA
 \begin{center}
-	$1
+	${1:${VISUAL}}
 \end{center}
 endsnippet
 
 snippet desc "Description" bA
 \begin{description}
-	$1
+	${1:${VISUAL}}
 \end{description}
 endsnippet
 
 snippet lemma "Lemma" bA
 \begin{lemma}
-	$1
+	${1:${VISUAL}}
 \end{lemma}
 endsnippet
 
 snippet prop "Proposition" bA
 \begin{prop}[$1]
-	$2
+	${2:${VISUAL}}
 \end{prop}
 endsnippet
 
 snippet thrm "Theorem" bA
 \begin{theorem}[$1]
-	$2
+	${2:${VISUAL}}
 \end{theorem}
 endsnippet
 
 snippet post "postulate" bA
 \begin{postulate}[$1]
-	$2
+	${2:${VISUAL}}
 \end{postulate}
 endsnippet
 
 snippet myprf "Proof" bA
 \begin{myproof}[$1]
-	$2
+	${2:${VISUAL}}
 \end{myproof}
 endsnippet
 
 snippet def "Definition" bA
 \begin{definition}[$1]
-	$2
+	${2:${VISUAL}}
 \end{definition}
 endsnippet
 
 snippet nte "Note" bA
 \begin{note}[$1]
-	$2
+	${2:${VISUAL}}
 \end{note}
 endsnippet
 
 snippet prob "Problem" bA
 \begin{problem}[$1]
-	$2
+	${2:${VISUAL}}
 \end{problem}
 endsnippet
 
 snippet corl "Corollary" bA
 \begin{corollary}[$1]
-	$2
+	${2:${VISUAL}}
 \end{corollary}
 endsnippet
 
 snippet exp "Example" bA
 \begin{example}[$1]
-	$2
+	${2:${VISUAL}}
 \end{example}
 endsnippet
 
 snippet ntion "Notation" bA
 \begin{notation}[$1]
-	$2
+	${2:${VISUAL}}
 \end{notation}
 endsnippet
 
 snippet rep "Repetition" bA
 \begin{repetition}[$1]
-	$2
+	${2:${VISUAL}}
 \end{repetition}
 endsnippet
 
 snippet prop "Property" bA
 \begin{property}[$1]
-	$2
+	${2:${VISUAL}}
 \end{property}
 endsnippet
 
 snippet int "Intuition" bA
 \begin{intuition}[$1]
-	$2
+	${2:${VISUAL}}
 \end{intuition}
 endsnippet
 
 snippet obs "Observation" bA
 \begin{observation}[$1]
-	$2
+	${2:${VISUAL}}
 \end{observation}
 endsnippet
 
 snippet conc "Conclusion" bA
 \begin{conclusion}[$1]
-	$2
+	${2:${VISUAL}}
 \end{conclusion}
 endsnippet
 
@@ -353,19 +368,19 @@ endsnippet
 
 snippet enum "Enumerate" bA
 \begin{enumerate}
-	\item $0
+	\item ${1:${VISUAL}}
 \end{enumerate}
 endsnippet
 
 snippet item "Itemize" bA
 \begin{itemize}
-	\item $0
+	\item ${1:${VISUAL}}
 \end{itemize}
 endsnippet
 
 snippet case "cases" bA
 \begin{cases}
-	$1
+	${1:${VISUAL}}
 \end{cases}
 endsnippet
 
@@ -376,7 +391,8 @@ snippet ali "Align" bA
 endsnippet
 ```
 
-They are all kind of the same, but with just a few quirks here and there.
+The **b** means **If the trigger word is the first word on the line, and no writing comes afterword, then expand**.
+The **A** means **Expand without the trigger key, just expand right after the person types the trigger word**.
 
 ### Inline and Display Math
 
@@ -394,21 +410,25 @@ else:
 `$2
 endsnippet
 
-snippet dm "Display Math" wA
-\[
-${1:${VISUAL}}
-.\] $0
+snippet dm "Display Math" wAb
+\[ ${1:${VISUAL}} .\] $0
 endsnippet
 ```
 
 The **A** at the end of the snippet declaration means it will expand as soon as
-you type the key (`im`, `dm`). It doesn't wait for you to hit **tab**.  The
-**w** at the end of the first line means that this snippet will expand at word
+you type the key (`im`, `dm`). It doesn't wait for you to hit **tab**.
+
+The **w** at the end of the first line means that this snippet will expand at word
 boundaries. So, `helloim` won't expand, but `hello im` will.
+
+The **b** means it won't expand unless it's at the beginning and the first word on the line.
+So, `hello dm` won't expand, but `dm hello` will.
 
 ### Sub and Super scripts
 
-Another handy snippet is this one, which is used for sub scripts. It changes
+#### Sub Scripts
+
+Another handy snippet are these ones, which is used for sub scripts. It changes
 a1 to a_1 and a_12 to a_{12} and a_{12}3 to
 a_{123}. It can also change a_{123456789}0 to a_{1234567890}.
 Here, size doesn't matter!
@@ -417,10 +437,23 @@ Here, size doesn't matter!
 
 The code for these snippets use regular expressions for there trigger. The
 first expands if there is a variable, followed by a number. Example **b3** ->
-**b_3**.
+**b_3**. Here is the snippet code:
+
+```snippets
+snippet '([A-Za-z])(\d)' "Auto subscript" wrA
+`!p snip.rv = match.group(1)`_`!p snip.rv = match.group(2)`
+endsnippet
+```
 
 The second snippet checks if there is a variable, followed by an
 underscore, followed by two numbers. Example b_34 -> b_{34}.
+Here is the snippet code:
+
+```snippets
+snippet '([A-Za-z])_(\d\d)' "Auto subscript 2" wrA
+`!p snip.rv = match.group(1)`_{`!p snip.rv = match.group(2)`}
+endsnippet
+```
 
 The last and final snippet checks if there is a variable, followed by an underscore,
 followed by a group of {} with numbers inside. It also checks if there is a
@@ -429,14 +462,6 @@ number in front of the closing bracket. Example b_{34}5 -> b_{345}
 Here is the snippet code:
 
 ```snippets
-snippet '([A-Za-z])(\d)' "Auto subscript" wrA
-`!p snip.rv = match.group(1)`_`!p snip.rv = match.group(2)`
-endsnippet
-
-snippet '([A-Za-z])_(\d\d)' "Auto subscript 2" wrA
-`!p snip.rv = match.group(1)`_{`!p snip.rv = match.group(2)`}
-endsnippet
-
 snippet '([A-Za-z])_\{(\d+)\}(\d)' "Auto subscript 3+" wrA
 `!p snip.rv = match.group(1)`_{`!p snip.rv = match.group(2) + match.group(3)`}
 endsnippet
@@ -450,6 +475,8 @@ _{$1}$0
 endsnippet
 ```
 
+#### Super Scripts
+
 As for the superscripts, I use **td** -> **^{}**. However, I use some quick snippets for basic things like squaring, cubing, raising to a variable.
 Here is a quick view of the snippets:
 
@@ -462,7 +489,7 @@ Here is a quick view of the snippets:
 
 ![super-scripts](/posts/gifs/super-scripts.gif)
 
-Here is the snippet code:
+Here are the snippets:
 
 ```snippets
 snippet sq "Square" Aw
@@ -608,7 +635,7 @@ $0
 endsnippet
 
 snippet lec "Lecture"
-\lesson{${1:LECTURE NUMBER}}{${2:DATE AND TIME}}{${3:LECTURE NAME}}
+\lecture{${1:LECTURE NUMBER}}{${2:DATE AND TIME}}{${3:LECTURE NAME}}
 $0
 endsnippet
 ```
@@ -616,6 +643,8 @@ endsnippet
 ### Correct spelling mistakes
 
 I use this a **TON**. It's so handy because I don't have to leave insert mode, hover over the word, press **z=**, select the correct word, then go all the way back. UHHH, that was a lot of work! Also, if the word isn't corrected correctly, I can exit insert mode, press **u**, and select the correct word, and from now on, it will always be corrected to the correct one, which is the one that I chose. AMAZING!
+
+Now, put this in your init.vim or .vimrc:
 
 ```viml
 setlocal spell
