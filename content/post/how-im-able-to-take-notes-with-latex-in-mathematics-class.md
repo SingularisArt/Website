@@ -442,48 +442,51 @@ snippet '([A-Za-z])_\{(\d+)\}(\d)' "Auto subscript 3+" wrA
 endsnippet
 ```
 
-Whenever you wrap parts of a regular expression in parenthesis, ex **(\d\d)**, you can use them in the expansion of the snippet via **math.group(i)**.
+I also created a quick snippet that puts you in **subscript** mode:
+
+```snippets
+snippet __ "Super Script" Aw
+_{$1}$0
+endsnippet
+```
 
 As for the superscripts, I use **td** -> **^{}**. However, I use some quick snippets for basic things like squaring, cubing, raising to a variable.
 Here is a quick view of the snippets:
-* **td** -> **^{}**
+
 * **sq** -> **^2**
 * **cb** -> **^3**
-* **compl** -> **^{c}**
 * **ss** -> **^{$1}$0**
+* **rd** -> **^{($1)}$0**
+* **compl** -> **^{c}**
+* **invs** -> **^{-1}**
 
 ![super-scripts](/posts/gifs/super-scripts.gif)
 
 Here is the snippet code:
 
-```python
-class Hello;
-	def __init__(self):
-		self.hello = "hello"
-		
-	def __str__(self):
-		return(self.hello)
-		
-hello = Hello()
-
-print(hello)
-```
-
 ```snippets
-snippet sq "Square" i
+snippet sq "Square" Aw
 ^2
 endsnippet
 
-snippet cb "Square" i
+snippet cb "Cube" Aw
 ^3
 endsnippet
 
-snippet compl "Complement" i
+snippet ss "Super Script" Aw
+^{$1}$0
+endsnippet
+
+snippet rd "to the ... power" Aw
+^{($1)}$0
+endsnippet
+
+snippet compl "Complement" Aw
 ^{c}
 endsnippet
 
-snippet ss "Super Script" i
-^{$1}$0
+snippet invs "inverse" Aw
+^{-1}
 endsnippet
 ```
 
@@ -495,7 +498,7 @@ Here is my goal. To be able to perform snippets on these:
 
                                 //  ->  \frac{}{}
                                 3/  ->  \frac{3}{}
-                            4\i^2/  -> \frac{4\pi^2}{}
+                            4\i^2/  ->  \frac{4\pi^2}{}
                        (1 + 2 + 3)  ->  \frac{(1 + 2 + 3)}{}
                     (1 + (2 + 3)/)  ->  (1 + \frac{(1 + 2))}{}
                     (1 + (2 + 3))/  ->  \frac{1 + (2 + 3)}{}
@@ -580,6 +583,22 @@ endsnippet
 
 ### School lessons
 
+I don't really use these that often because I created scripts that do a lot of work when:
+
+* Organizing
+* Changing
+* Switching
+* Loading
+* Reloading
+
+Between:
+
+* Classes
+* Lessons
+* Lectures
+
+You can find these scripts [here](https://github.com/SingularisArt/Singularis/tree/master/local/scripts/school), but eventually, I will create a blog post about how I made those scripts, how I use them, etc.
+
 ![school-lessons](/posts/gifs/school-lessons.gif)
 
 ```snippets
@@ -596,6 +615,8 @@ endsnippet
 
 ### Correct spelling mistakes
 
+I use this a **TON**. It's so handy because I don't have to leave insert mode, hover over the word, press **z=**, select the correct word, then go all the way back. UHHH, that was a lot of work! Also, if the word isn't corrected correctly, I can exit insert mode, press **u**, and select the correct word, and from now on, it will always be corrected to the correct one, which is the one that I chose. AMAZING!
+
 ```viml
 setlocal spell
 set spelllang=en
@@ -608,7 +629,11 @@ I would like to give a thanks 👏 to [Gilles Castel](https://castel.dev) for te
 
 ## Conclusion
 
-So, I have just proven to you that you can write **LaTeX** fast, easily, and efficiently.
+So, I have just proven to you that you can write **LaTeX**
+* **fast**
+* **easily**
+* **efficiently**
+
 Stay tuned to learn about how I:
 * **draw figures**
 * **manage my notes**
