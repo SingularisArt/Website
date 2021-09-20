@@ -20,20 +20,21 @@ I created this method after the summer finished **9th grade**. I am preparing my
 for when I go to university. So I set myself **3** goals:
 * Writing mathematical equations as fast (or faster) than my professor was an
   **A MUST**.
-* Drawing the figures must be as **easy**, **fast**, **simple**
-* and must feel like I am writing them on paper.  My notes are very easily
+* Drawing the figures must be as **easy**, **fast**, **simple** and must feel like I am writing them on paper.
+* My notes are very easily
   **manageable** and easy to **access**.
 
 I will eventually have a ton of posts talking about this specific subject, but
-for now, I will go over **step 1**.
+for now, I will go over **step 1 (Writing mathematical equations as fast (or faster) than my professer was an**.
 
 ## NeoVim and LaTeX
 
-Quickly, NeoVim is a **fork** of Vim. \
+Quickly, NeoVim is a **fork** of Vim.
 For writing my **notes**, I use NeoVim
 (You can find my custom [NeoVim](https://github.com/SingularisArt/Death.NeoVim) config
-[here](https://github.com/SingularisArt/Death.NeoVim).) I literally use NeoVim
-for everything. I use it to write **LaTeX**, **markdown**, **actual code**. A
+[here](https://github.com/SingularisArt/Death.NeoVim).) Later on, I will create a blog post talking about how I setup my [NeoVim](https://github.com/SingularisArt/Death.NeoVim) setup.
+
+I literally use NeoVim for everything. I use it to write **LaTeX**, **markdown**, **actual code**. A
 lot of people complain saying **"Vim is to hard to learn and it's weird"**, but
 trust me. Yes, it does have a steep learning curve, but after you learn it, you
 will be rewarded. Here is what my screen looks like when I am working with LaTeX:
@@ -42,7 +43,9 @@ will be rewarded. Here is what my screen looks like when I am working with LaTeX
 
 On the left side, I have my editor (**NeoVim**) and on the right side, I have
 my pdf viewer **Zathura** (You can find my custom **Zathura** config
-[here](https://github.com/SingularisArt/Singularis).) Here is a quick list of all of my utilities:
+[here](https://github.com/SingularisArt/Singularis).)
+
+Here is a quick list of all of my utilities:
 * OS: Linux Ubuntu
 * WM: DWM
 * EDITOR: [NeoVim](https://github.com/SingularisArt/Death.NeoVim)
@@ -67,15 +70,14 @@ let g:tex_flavor='latex'
 set conceallevel=1
 ```
 
-The last two lines tell tell
+The last two lines tell
 [NeoVim](https://github.com/SingularisArt/Death.NeoVim) to configure the
 concealment. This is a feature that
 [NeoVim](https://github.com/SingularisArt/Death.NeoVim) uses to hide certain
 parts of the code if your cursor isn't on it. By making **\\[**, **\\]**, **$**
 invisible, they aren't in the way, so you can better see the entire document.
 Also, it tries it's best to show you what it will look like when you compile
-the file. Here
-is a quick demonstration:
+the file. Here is a quick demonstration:
 
 ![conceallevel](/posts/gifs/conceallevel.gif)
 
@@ -84,8 +86,8 @@ is a quick demonstration:
 One of the major reasons why I'm so fast at typing when it comes to **LaTeX**,
 is because of **snippets**. A snippet is a short reusable piece of text that
 can be triggered by some other text. Then, you have **snippet managers**, which
-manages the **snippets** that you make. I use
-[UltiSnippets](https://github.com/SirVer/ultisnips) as my **snippet** manager.
+manages the **snippets** that you make. There are many snippet managers out there, but I use
+[UltiSnippets](https://github.com/SirVer/ultisnips) as my **snippet manager**.
 
 Now, you can have certain kind of **snippets** for certain kinds of languages. For example, you might have **snippets** for python, while having different **snippets** for **LaTeX**.
 
@@ -120,7 +122,7 @@ Next section, I will go over how to add snippets yourself.
 
 ### Adding snippets
 
-To add snippets, you first must configure UltiSnips itself. Now, add this to you're .vimrc or init.vim:
+To add snippets, you first must configure UltiSnips itself. Now, add this to you're init.vim:
 
 ```snippet
 let g:UltiSnipsExpandTrigger='<tab>'
@@ -132,11 +134,19 @@ let g:UltiSnipsEditSplit='vertical'
 let g:UltiSnipsSnippetDirectories=['~/.config/nvim/UltiSnips/']
 ```
 
-Let's go over these quickly. The first line is telling UltiSnips what button you want to use to expand the actual snippet. After you have expanded the snippet, you have placeholders. On line 2-3, you are telling UltiSnips what key presses you want to use to jump back and forth between those placeholders. The 4th line is telling UltiSnips to open the file vertically when you run `:UltiSnipsEdit`. The last and final line tells UltiSnips where to find your snippets.
+Let's go over these quickly. The first line is telling UltiSnips what button you want to use to expand the actual snippet. After you have expanded the snippet, you have placeholders.
+
+On line 2-3, you are telling UltiSnips what key presses you want to use to jump back and forth between those placeholders.
+
+The 4th line is telling UltiSnips to open the file vertically when you run `:UltiSnipsEdit`.
+
+he last and final line tells UltiSnips where to find your snippets.
 
 #### Creating your own snippets
 
-Place your snippets in `~/.config/nvim/UltiSnips/` or wherever you told UltiSnips to find theme. Each language has it's own specific snippet file. For example, python snippets will be located at `~/.config/nvim/UltiSnips/python.snippets`. Or, instead of manually creating that file, open a file with that extension. For example: `test.py`. Then, inside that file, type `:UltiSnipsEdit`. That will create the file `~/.config/nvim/UltiSnips/python.snippets` for you.
+Place your snippets in `~/.config/nvim/UltiSnips/` or wherever you told UltiSnips to find theme. Each language has it's own specific snippet file. For example, python snippets will be located at `~/.config/nvim/UltiSnips/python.snippets`.
+
+Or, instead of manually creating that file, open a file with that extension. For example: `test.py`. Then, inside that file, type `:UltiSnipsEdit`. That will create the file `~/.config/nvim/UltiSnips/python.snippets` for you.
 
 Here is a basic skeleton for a snippet:
 
@@ -174,6 +184,8 @@ The code for this is probably the simplest.
 
 ![sign](/posts/gifs/sign.gif)
 
+Here is the snippet code for it:
+
 ```snippet
 snippet sign "Signature"
 Yours sincerely,
@@ -188,7 +200,7 @@ You can also run shell commands inside snippets, but you have to use back ticks 
 
 ![today](/posts/gifs/today-date.gif)
 
-Here is how the snippets look like:
+Here is the snippet code for it:
 
 ```snippet
 snippet date-time "Today's date and Current Time"
@@ -198,143 +210,173 @@ endsnippet
 
 ### Environments
 
-To insert an environment, all I have to do is type **beg**, then hit **tab**.
+To insert an environment, all I have to do is type **beg**. I created this snippet in a special manner. It only triggers whenever it's the first word typed on the line. Also, you don't need to hit **TAB** because it will automatically expand for you.
+
 You start typing out what kind of environment you want. Then, once you're done,
 hit tab. That will move you into the environment.
 
-Now, I use a lot of different
-environments, and I've even created some. So, I created different kind of
-snippets for different environments. The code for it is down below.
-
-![environments](/posts/gifs/environments.gif)
-
-```snippet
-snippet beg "begin{} / end{}" b
+```snippets
+snippet beg "begin{} / end{}" bA
 \begin{$1}
 	$0
 \end{$1}
 endsnippet
+```
 
-snippet doc "Document" b
+![environments](/posts/gifs/environments.gif)
+
+Now, I have a ton of different environments that I commonly use. So, I wasted even more time creating specific snippets for each environment:
+
+```snippets
+snippet doc "Document" bA
 \begin{document}
 	$0
 \end{document}
 endsnippet
 
-snippet cnt "Center" b
+snippet cnt "Center" bA
 \begin{center}
 	$1
 \end{center}
 endsnippet
 
-snippet itm "Itemize" b
-\begin{itemize}
-	\item $0
-\end{itemize}
-endsnippet
-
-snippet desc "Description" b
+snippet desc "Description" bA
 \begin{description}
 	$1
 \end{description}
 endsnippet
 
-snippet lemma "Lemma" b
+snippet lemma "Lemma" bA
 \begin{lemma}
 	$1
 \end{lemma}
 endsnippet
 
-snippet prop "Proposition" b
+snippet prop "Proposition" bA
 \begin{prop}[$1]
 	$2
 \end{prop}
 endsnippet
 
-snippet theorem "Theorem" b
+snippet thrm "Theorem" bA
 \begin{theorem}[$1]
 	$2
 \end{theorem}
 endsnippet
 
-snippet postulate "postulate" b
+snippet post "postulate" bA
 \begin{postulate}[$1]
 	$2
 \end{postulate}
 endsnippet
 
-snippet myproof "Proof" b
+snippet myprf "Proof" bA
 \begin{myproof}[$1]
 	$2
 \end{myproof}
 endsnippet
 
-snippet definition "Definition" b
+snippet def "Definition" bA
 \begin{definition}[$1]
 	$2
 \end{definition}
 endsnippet
 
-snippet note "Note" b
+snippet nte "Note" bA
 \begin{note}[$1]
 	$2
 \end{note}
 endsnippet
 
-snippet problem "Problem" b
+snippet prob "Problem" bA
 \begin{problem}[$1]
 	$2
 \end{problem}
 endsnippet
 
-snippet corollary "Corollary" b
+snippet corl "Corollary" bA
 \begin{corollary}[$1]
 	$2
 \end{corollary}
 endsnippet
 
-snippet example "Example" b
+snippet exp "Example" bA
 \begin{example}[$1]
 	$2
 \end{example}
 endsnippet
 
-snippet notation "Notation" b
+snippet ntion "Notation" bA
 \begin{notation}[$1]
 	$2
 \end{notation}
 endsnippet
 
-snippet repetition "Repetition" b
+snippet rep "Repetition" bA
 \begin{repetition}[$1]
 	$2
 \end{repetition}
 endsnippet
 
-snippet property "Property" b
+snippet prop "Property" bA
 \begin{property}[$1]
 	$2
 \end{property}
 endsnippet
 
-snippet intuition "Intuition" b
+snippet int "Intuition" bA
 \begin{intuition}[$1]
 	$2
 \end{intuition}
 endsnippet
 
-snippet observation "Observation" b
+snippet obs "Observation" bA
 \begin{observation}[$1]
 	$2
 \end{observation}
 endsnippet
 
-snippet conclusion "Conclusion" b
+snippet conc "Conclusion" bA
 \begin{conclusion}[$1]
 	$2
 \end{conclusion}
 endsnippet
+
+snippet fig "Figure environment" bA
+\begin{figure}[${1:htpb}]
+	\centering
+	${2:\includegraphics[width=0.8\textwidth]{$3}}
+	\caption{${4:$3}}
+	\label{fig:${5:${3/\W+/-/g}}}
+\end{figure}
+endsnippet
+
+snippet enum "Enumerate" bA
+\begin{enumerate}
+	\item $0
+\end{enumerate}
+endsnippet
+
+snippet item "Itemize" bA
+\begin{itemize}
+	\item $0
+\end{itemize}
+endsnippet
+
+snippet case "cases" bA
+\begin{cases}
+	$1
+\end{cases}
+endsnippet
+
+snippet ali "Align" bA
+\begin{align*}
+	${1:${VISUAL}}
+.\end{align*}
+endsnippet
 ```
+
+They are all kind of the same, but with just a few quirks here and there.
 
 ### Inline and Display Math
 
@@ -342,7 +384,7 @@ These are my two most frequency used snippets. They are responsible for bringing
 
 ![inline-display](/posts/gifs/inline-math.gif)
 
-```snippet
+```snippets
 snippet im "Inline Math" wA
 $${1}$`!p
 if t[2] and t[2][0] not in [',', '.', '?', '-', ' ']:
@@ -386,7 +428,7 @@ number in front of the closing bracket. Example b_{34}5 -> b_{345}
 
 Here is the snippet code:
 
-```snippet
+```snippets
 snippet '([A-Za-z])(\d)' "Auto subscript" wrA
 `!p snip.rv = match.group(1)`_`!p snip.rv = match.group(2)`
 endsnippet
@@ -413,7 +455,7 @@ Here is a quick view of the snippets:
 ![super-scripts](/posts/gifs/super-scripts.gif)
 
 Here is the snippet code:
-```snippet
+
 snippet sq "Square" i
 ^2
 endsnippet
@@ -448,7 +490,7 @@ Here is my goal. To be able to perform snippets on these:
 
 Now, let's start off with something very easy. Creating a simple fraction:
 
-```snippet
+```snippets
 snippet // "Fraction" iA
 \frac{$1}{$2}$0
 endsnippet
@@ -460,7 +502,7 @@ The core of the second snippet is regular expressions. It's used to match expres
 * cf_2
 * etc
 
-```snippet
+```snippets
 snippet '((\d+)|(\d*)(\\)?([A-Za-z]+)((\^|_)(\{\d+\}|\d))*)/' "Fraction" wrA
 \\frac{`!p snip.rv = match.group(1)`}{$1}$0
 endsnippet
@@ -468,7 +510,7 @@ endsnippet
 
 In the fourth case, I tried to find matching parenthesis. But, all of the work went in vain because you cannot with UltiSnips. So, I used Python :).
 
-```snippet
+```snippets
 priority 1000
 snippet '^.*\)/' "() Fraction" wrA
 `!p
@@ -489,7 +531,7 @@ The last section that I want to show you is your selection to make your own frac
 
 ![tab-fraction](/posts/gifs/tab-fraction.gif)
 
-```snippet
+```snippets
 snippet / "Fraction" iA
 \\frac{${VISUAL}}{$1}$0
 endsnippet
@@ -499,7 +541,7 @@ endsnippet
 
 ![template](/posts/gifs/template.gif)
 
-```snippet
+```snippets
 snippet template "Template"
 \documentclass{article}
 
@@ -526,7 +568,7 @@ endsnippet
 
 ![school-lessons](/posts/gifs/school-lessons.gif)
 
-```snippet
+```snippets
 snippet les "Lesson"
 \lesson{${1:LESSON NUMBER}}{${2:DATE AND TIME}}{${3:LESSON NAME}}
 $0
@@ -548,7 +590,7 @@ inoremap <C-l> <C-g>u<Esc>[s1z=`]a<C-g>u
 
 ## Credit
 
-I would like to give a thanks :clap: to [Gilles Castel](https://castel.dev) for teaching me all of this stuff. I would recommend to go and checkout his website!
+I would like to give a thanks 👏 to [Gilles Castel](https://castel.dev) for teaching me all of this stuff. I would recommend to go and checkout his website!
 
 ## Conclusion
 
