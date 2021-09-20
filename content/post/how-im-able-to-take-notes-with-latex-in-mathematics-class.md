@@ -630,12 +630,12 @@ You can find these scripts [here](https://github.com/SingularisArt/Singularis/tr
 
 ```snippets
 snippet les "Lesson"
-\lesson{${1:LESSON NUMBER}}{${2:DATE AND TIME}}{${3:LESSON NAME}}
+\lesson{${1:LESSON NUMBER}}{`date "+%b %d %Y %a (%H:%M:%S)"`}{${3:LESSON NAME}}
 $0
 endsnippet
 
 snippet lec "Lecture"
-\lecture{${1:LECTURE NUMBER}}{${2:DATE AND TIME}}{${3:LECTURE NAME}}
+\lecture{${1:LECTURE NUMBER}}{`date "+%b %d %Y %a (%H:%M:%S)"`}{${3:LECTURE NAME}}
 $0
 endsnippet
 ```
