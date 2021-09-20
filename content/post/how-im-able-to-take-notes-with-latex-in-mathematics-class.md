@@ -456,6 +456,20 @@ Here is a quick view of the snippets:
 
 Here is the snippet code:
 
+```python
+class Hello;
+	def __init__(self):
+		self.hello = "hello"
+		
+	def __str__(self):
+		return(self.hello)
+		
+hello = Hello()
+
+print(hello)
+```
+
+```snippets
 snippet sq "Square" i
 ^2
 endsnippet
