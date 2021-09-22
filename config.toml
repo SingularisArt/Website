@@ -1,6 +1,6 @@
 baseURL = "https://damrah.netlify.app"
 languageCode = "en-us"
-googleAnalytics = "G-E7EEGV16JB"
+googleAnalytics = "G-8MLV0NCNPP"
 theme = "terminal"
 paginate = 5
 
