@@ -5,6 +5,7 @@ date:         2021-09-07T02:45:27-07:00
 description:  "I go over using NeoVim and LaTeX to take notes with, but I specifically talk about talking notes with Mathematics"
 tags:         ["school", "study habits", "study flows"]
 cover:        "posts/images/code-with-latex.png"
+toc: true
 ---
 
 For a **very long time**, I have been trying to create the perfect setup for
