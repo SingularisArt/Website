@@ -1,5 +1,6 @@
 baseURL = "https://damrah.netlify.app"
 languageCode = "en-us"
+googleAnalytics = "G-8MLV0NCNPP"
 theme = "terminal"
 paginate = 5
 
@@ -37,7 +38,7 @@ paginate = 5
   # it's set to `true` by default
   oneHeadingSize = false
 
-  disqusShortname = "damrah"
+  disqusShortname = "damrah-netlify-app"
 
 [params.twitter]
   # set Twitter handles for Twitter cards
@@ -90,4 +91,3 @@ paginate = 5
 
 [markup.goldmark.renderer]
   unsafe = true
-

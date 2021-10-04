@@ -28,11 +28,11 @@ I am interested in many field. The fields that I am most interested in are:
 * Anatomy
 * Botany
 
-## What languages do I now
+## What languages do I know
 
 ### Programming languages
 
-As of now (Sep 5, 2021), I now:
+As of now (Sep 5, 2021), I know:
 
 * Python
 * C++
@@ -71,7 +71,7 @@ As of now (Sep 5, 2021), I want to master:
 
 ### Human languages
 
-As of now (Sep 5, 2021) I now:
+As of now (Sep 5, 2021) I know:
 
 * English
 * Arabic
