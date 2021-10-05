@@ -13,15 +13,30 @@ note taking in general (but more specifically, for **math**). Before, I used to
 use [notion](https://notion.so) to take my notes, which was okay, but I wanted
 something much more productive. And thus, my system was **BORN**!
 
-If you want to see how my notes look like now, go
-[here](https://damrah.netlify.app/notes). I also store all of my notes
-[here](https://github.com/SingularisArt/notes).
+Here is how some of my notes look like (I am still working on getting the pictures for this. Until then, you can wait 😢):
 
-I created this method after the summer finished **9th grade**. I am preparing my self
-for when I go to university. So I set myself **3** goals:
+![code-with-latex](/posts/images/notes-image-1.png)
+![code-with-latex](/posts/images/notes-image-2.png)
+![code-with-latex](/posts/images/notes-image-3.png)
+![code-with-latex](/posts/images/notes-image-4.png)
+![code-with-latex](/posts/images/notes-image-5.png)
+![code-with-latex](/posts/images/notes-image-6.png)
+![code-with-latex](/posts/images/notes-image-7.png)
+![code-with-latex](/posts/images/notes-image-8.png)
+![code-with-latex](/posts/images/notes-image-9.png)
+![code-with-latex](/posts/images/notes-image-10.png)
+
+If you want to see how my completed notes look like, visit [here](https://damrah.netlify.app/notes).
+I also store all of my notes [here](https://github.com/SingularisArt/notes).
+
+I created this method during the summer of my **10th year** in school. I am preparing my self
+for when I go to university. So I set myself **4** goals and these goals must be met for me to use the system.
+They are:
+
 * Writing mathematical equations as fast (or faster) than my professor was an
   **A MUST**.
-* Drawing the figures must be as **easy**, **fast**, **simple** and must feel like I am writing them on paper.
+* Drawing the figures must be as **easy**, **fast**, and **simple**.
+* It must feel like I am writing them on paper.
 * My notes are very easily
   **manageable** and easy to **access**.
 
@@ -35,7 +50,7 @@ Quickly, what is NeoVim.
 NeoVim is a **fork** of Vim.
 For writing my **notes**, I use NeoVim
 (You can find my custom NeoVim config
-[here](https://github.com/SingularisArt/Death.NeoVim).)
+[here](https://github.com/SingularisArt/Death.NeoVim)).
 Later on, I will create a blog post talking about how I setup my NeoVim setup.
 
 I literally use NeoVim for everything. I use it to write **LaTeX**, **markdown**, **actual code**. A
@@ -235,7 +250,7 @@ endsnippet
 
 ![environments](/posts/gifs/beg-environment.gif)
 
-Now, I have a ton of different environments that I commonly use. So, I wasted even more time creating specific snippets for each environment:
+Now, I have a ton of different environments that I commonly use. So, like the good programmer I am, I decided to waste even more time creating specific snippets for each environment:
 
 ![environments](/posts/gifs/all-environment.gif)
 
