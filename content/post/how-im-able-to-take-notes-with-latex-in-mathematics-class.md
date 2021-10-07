@@ -15,16 +15,16 @@ something much more productive. And thus, my system was **BORN**!
 
 Here is how some of my notes look like (I am still working on getting the pictures for this. Until then, you can wait 😢):
 
-![code-with-latex](/posts/images/notes-image-1.png)
-![code-with-latex](/posts/images/notes-image-2.png)
-![code-with-latex](/posts/images/notes-image-3.png)
-![code-with-latex](/posts/images/notes-image-4.png)
-![code-with-latex](/posts/images/notes-image-5.png)
-![code-with-latex](/posts/images/notes-image-6.png)
-![code-with-latex](/posts/images/notes-image-7.png)
-![code-with-latex](/posts/images/notes-image-8.png)
-![code-with-latex](/posts/images/notes-image-9.png)
-![code-with-latex](/posts/images/notes-image-10.png)
+![notes-image-1](/posts/images/notes-image-1.png)
+![notes-image-2](/posts/images/notes-image-2.png)
+![notes-image-3](/posts/images/notes-image-3.png)
+![notes-image-4](/posts/images/notes-image-4.png)
+![notes-image-5](/posts/images/notes-image-5.png)
+![notes-image-6](/posts/images/notes-image-6.png)
+![notes-image-7](/posts/images/notes-image-7.png)
+![notes-image-8](/posts/images/notes-image-8.png)
+![notes-image-9](/posts/images/notes-image-9.png)
+![notes-image-10](/posts/images/notes-image-10.png)
 
 If you want to see how my completed notes look like, visit [here](https://damrah.netlify.app/notes).
 I also store all of my notes [here](https://github.com/SingularisArt/notes).
