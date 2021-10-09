@@ -1,6 +1,6 @@
 ---
 title: "About"
-disqus: true
+noDisqus: true
 toc: false
 ---
 
