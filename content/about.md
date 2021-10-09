@@ -1,6 +1,7 @@
 ---
 title: "About"
-disqus: false
+disqus: true
+toc: false
 ---
 
 ## Who am I
