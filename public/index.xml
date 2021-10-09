@@ -1,27 +1,80 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>My Blog</title>
+    <title>Hashem A. Damrah</title>
     <link>https://damrah.netlify.app/</link>
-    <description>Recent content on My Blog</description>
+    <description>Recent content on Hashem A. Damrah</description>
     <generator>Hugo -- gohugo.io</generator>
-    <lastBuildDate>Sat, 04 Sep 2021 15:04:47 -0700</lastBuildDate>
-    
-	<atom:link href="https://damrah.netlify.app/index.xml" rel="self" type="application/rss+xml" />
-    
+    <language>en-us</language>
+    <copyright>Made with Hugo. Deployed by Netlify. Comments made with Disqus.</copyright>
+    <lastBuildDate>Tue, 07 Sep 2021 02:45:27 -0700</lastBuildDate><atom:link href="https://damrah.netlify.app/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>About</title>
+      <link>https://damrah.netlify.app/about/</link>
+      <pubDate>Sat, 09 Oct 2021 00:04:05 -0632</pubDate>
+      
+      <guid>https://damrah.netlify.app/about/</guid>
+      <description>Who am I My name is Hashem A. Damrah. Right now (Sep 5, 2021) I am a freshman. I have been coding for almost 2 years. I love to learn new things.
+What am I learning right now Some of things that I am learning right now is:
+ Blockchain Calculus Advanced LaTeX Lua (for NeoVim) C#, MongoDB, TS, Docker, Java, Rust, Ruby, Php Spanish, Greek, Latin Unit, Unreal  I love to play multiple sports including basketball, track, and swimming.</description>
+    </item>
     
     <item>
-      <title>How I Take Notes With Latex</title>
-      <link>https://damrah.netlify.app/posts/tutorials/how-i-take-notes-with-latex/</link>
-      <pubDate>Sat, 04 Sep 2021 15:04:47 -0700</pubDate>
+      <title>Contact</title>
+      <link>https://damrah.netlify.app/contact/</link>
+      <pubDate>Sat, 09 Oct 2021 00:04:05 -0632</pubDate>
       
-      <guid>https://damrah.netlify.app/posts/tutorials/how-i-take-notes-with-latex/</guid>
-      <description>Step 1. Install Hugo Go to Hugo releases and download the appropriate version for your OS and architecture.
-Save it somewhere specific as we will be using it in the next step.
-More complete instructions are available at Install Hugo
-Step 2. Build the Docs Hugo has its own example site which happens to also be the documentation site you are reading right now.
-Follow the following steps:
- Clone the Hugo repository Go into the repo Run hugo in server mode and build the docs Open your browser to http://localhost:1313  Corresponding pseudo commands:</description>
+      <guid>https://damrah.netlify.app/contact/</guid>
+      <description>
+
+
+Send</description>
+    </item>
+    
+    <item>
+      <title>How I&#39;m able to take notes with LaTeX in math class</title>
+      <link>https://damrah.netlify.app/post/how-im-able-to-take-notes-with-latex-in-mathematics-class/</link>
+      <pubDate>Tue, 07 Sep 2021 02:45:27 -0700</pubDate>
+      
+      <guid>https://damrah.netlify.app/post/how-im-able-to-take-notes-with-latex-in-mathematics-class/</guid>
+      <description>For a very long time, I have been trying to create the perfect setup for note taking in general (but more specifically, for math). Before, I used to use notion to take my notes, which was okay, but I wanted something much more productive. And thus, my system was BORN!
+Here is how some of my notes look like (I am still working on getting the pictures for this. Until then, you can wait 😢):</description>
+    </item>
+    
+    <item>
+      <title>Grade 10 Semester 1 Hs Algebra 2</title>
+      <link>https://damrah.netlify.app/notes/grade-10-semester-1-hs-algebra-2/</link>
+      <pubDate>Tue, 07 Sep 2021 00:06:24 -0700</pubDate>
+      
+      <guid>https://damrah.netlify.app/notes/grade-10-semester-1-hs-algebra-2/</guid>
+      <description>This browser does not support pdfs</description>
+    </item>
+    
+    <item>
+      <title>Grade 10 Semester 1 Hs Chemistry</title>
+      <link>https://damrah.netlify.app/notes/grade-10-semester-1-hs-chemistry/</link>
+      <pubDate>Tue, 07 Sep 2021 00:06:24 -0700</pubDate>
+      
+      <guid>https://damrah.netlify.app/notes/grade-10-semester-1-hs-chemistry/</guid>
+      <description>This browser does not support pdfs</description>
+    </item>
+    
+    <item>
+      <title>Grade 10 Semester 1 Hs English</title>
+      <link>https://damrah.netlify.app/notes/grade-10-semester-1-hs-english/</link>
+      <pubDate>Tue, 07 Sep 2021 00:06:24 -0700</pubDate>
+      
+      <guid>https://damrah.netlify.app/notes/grade-10-semester-1-hs-english/</guid>
+      <description>This browser does not support pdfs</description>
+    </item>
+    
+    <item>
+      <title>Grade 10 Semester 1 Hs Government</title>
+      <link>https://damrah.netlify.app/notes/grade-10-semester-1-hs-government/</link>
+      <pubDate>Tue, 07 Sep 2021 00:06:24 -0700</pubDate>
+      
+      <guid>https://damrah.netlify.app/notes/grade-10-semester-1-hs-government/</guid>
+      <description>This browser does not support pdfs</description>
     </item>
     
   </channel>

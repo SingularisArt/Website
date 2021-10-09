@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Blog on Hashem A. Damrah</title>
+    <link>https://damrah.netlify.app/post/</link>
+    <description>Recent content in Blog on Hashem A. Damrah</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <copyright>Made with Hugo. Deployed by Netlify. Comments made with Disqus.</copyright>
+    <lastBuildDate>Tue, 07 Sep 2021 02:45:27 -0700</lastBuildDate><atom:link href="https://damrah.netlify.app/post/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>How I&#39;m able to take notes with LaTeX in math class</title>
+      <link>https://damrah.netlify.app/post/how-im-able-to-take-notes-with-latex-in-mathematics-class/</link>
+      <pubDate>Tue, 07 Sep 2021 02:45:27 -0700</pubDate>
+      
+      <guid>https://damrah.netlify.app/post/how-im-able-to-take-notes-with-latex-in-mathematics-class/</guid>
+      <description>For a very long time, I have been trying to create the perfect setup for note taking in general (but more specifically, for math). Before, I used to use notion to take my notes, which was okay, but I wanted something much more productive. And thus, my system was BORN!
+Here is how some of my notes look like (I am still working on getting the pictures for this. Until then, you can wait 😢):</description>
+    </item>
+    
+  </channel>
+</rss>

@@ -1,75 +1,28 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Tags on My Blog</title>
+    <title>Tags on Hashem A. Damrah</title>
     <link>https://damrah.netlify.app/tags/</link>
-    <description>Recent content in Tags on My Blog</description>
+    <description>Recent content in Tags on Hashem A. Damrah</description>
     <generator>Hugo -- gohugo.io</generator>
-    <lastBuildDate>Sat, 04 Sep 2021 15:04:47 -0700</lastBuildDate>
-    
-	<atom:link href="https://damrah.netlify.app/tags/index.xml" rel="self" type="application/rss+xml" />
-    
-    
+    <language>en-us</language>
+    <copyright>Made with Hugo. Deployed by Netlify. Comments made with Disqus.</copyright>
+    <lastBuildDate>Tue, 07 Sep 2021 02:45:27 -0700</lastBuildDate><atom:link href="https://damrah.netlify.app/tags/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>configuration</title>
-      <link>https://damrah.netlify.app/tags/configuration/</link>
-      <pubDate>Sat, 04 Sep 2021 15:04:47 -0700</pubDate>
+      <title>note taking</title>
+      <link>https://damrah.netlify.app/tags/note-taking/</link>
+      <pubDate>Tue, 07 Sep 2021 02:45:27 -0700</pubDate>
       
-      <guid>https://damrah.netlify.app/tags/configuration/</guid>
+      <guid>https://damrah.netlify.app/tags/note-taking/</guid>
       <description></description>
     </item>
     
     <item>
-      <title>development</title>
-      <link>https://damrah.netlify.app/tags/development/</link>
-      <pubDate>Sat, 04 Sep 2021 15:04:47 -0700</pubDate>
+      <title>school notes</title>
+      <link>https://damrah.netlify.app/tags/school-notes/</link>
+      <pubDate>Tue, 07 Sep 2021 00:06:24 -0700</pubDate>
       
-      <guid>https://damrah.netlify.app/tags/development/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>docs</title>
-      <link>https://damrah.netlify.app/tags/docs/</link>
-      <pubDate>Sat, 04 Sep 2021 15:04:47 -0700</pubDate>
-      
-      <guid>https://damrah.netlify.app/tags/docs/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>go</title>
-      <link>https://damrah.netlify.app/tags/go/</link>
-      <pubDate>Sat, 04 Sep 2021 15:04:47 -0700</pubDate>
-      
-      <guid>https://damrah.netlify.app/tags/go/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>golang</title>
-      <link>https://damrah.netlify.app/tags/golang/</link>
-      <pubDate>Sat, 04 Sep 2021 15:04:47 -0700</pubDate>
-      
-      <guid>https://damrah.netlify.app/tags/golang/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>hugo</title>
-      <link>https://damrah.netlify.app/tags/hugo/</link>
-      <pubDate>Sat, 04 Sep 2021 15:04:47 -0700</pubDate>
-      
-      <guid>https://damrah.netlify.app/tags/hugo/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>tutorial</title>
-      <link>https://damrah.netlify.app/tags/tutorial/</link>
-      <pubDate>Sat, 04 Sep 2021 15:04:47 -0700</pubDate>
-      
-      <guid>https://damrah.netlify.app/tags/tutorial/</guid>
+      <guid>https://damrah.netlify.app/tags/school-notes/</guid>
       <description></description>
     </item>
     

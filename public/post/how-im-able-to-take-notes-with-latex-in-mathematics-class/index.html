@@ -1,0 +1,908 @@
+<!DOCTYPE HTML>
+<html lang="en-us">
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" /> 
+    <title>How I&#39;m able to take notes with LaTeX in math class - Hashem A. Damrah</title>
+    <meta name="keywords" content="蘭陵N散記,兰陵,独立,博客,程序员,架构师,个人,思考,读书,笔记,技术,分享,Golang">
+    
+    <meta property="og:title" content="How I&#39;m able to take notes with LaTeX in math class">
+    <meta property="og:site_name" content="Hashem A. Damrah">
+    <meta property="og:image" content="/img/author.jpg"> 
+    <meta name="title" content="How I&#39;m able to take notes with LaTeX in math class - Hashem A. Damrah" />
+    <meta name="description" content="I go over using NeoVim and LaTeX to take notes with, but I specifically talk about talking notes with Mathematics" />
+     
+    <link rel="shortcut icon" href="/img/favicon.ico" />
+    <link rel="apple-touch-icon" href="/img/apple-touch-icon.png" />
+    <link rel="apple-touch-icon-precomposed" href="/img/apple-touch-icon.png" />
+    <link href="/js/vendor/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+    <link href="/js/vendor/fancybox/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+    <link href="/css/main.css" rel="stylesheet" type="text/css" />
+    <link href="/css/syntax.css" rel="stylesheet" type="text/css" />
+    <script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Pisces',
+    sidebar: {"position":"left","display":"post"},
+     fancybox: true, 
+    motion: true
+  };
+</script>
+</head>
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+<div class="container one-collumn sidebar-position-left page-home  ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"> <div class="site-meta  custom-logo ">
+
+  <div class="custom-logo-site-title">
+    <a href="https://damrah.netlify.app"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">Hashem A. Damrah</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle"></p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+    <ul id="menu" class="menu">
+      
+      
+        <li class="menu-item ">
+          <a href="/" rel="section">
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />Front Page
+          </a>
+        </li>
+      
+        <li class="menu-item ">
+          <a href="/tags/technology/" rel="section">
+              <i class="menu-item-icon fa fa-fw fa-code"></i> <br />Technology
+          </a>
+        </li>
+      
+        <li class="menu-item ">
+          <a href="/tags/thoughts/" rel="section">
+              <i class="menu-item-icon fa fa-fw fa-tint"></i> <br />Thoughts
+          </a>
+        </li>
+      
+        <li class="menu-item ">
+          <a href="/tags/school-notes/" rel="section">
+              <i class="menu-item-icon fa fa-fw fa-book"></i> <br />Notes
+          </a>
+        </li>
+      
+        <li class="menu-item ">
+          <a href="/tags/other/" rel="section">
+              <i class="menu-item-icon fa fa-fw fa-leaf"></i> <br />Miscellaneous
+          </a>
+        </li>
+      
+        <li class="menu-item ">
+          <a href="/post/" rel="section">
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />Archive
+          </a>
+        </li>
+      
+        <li class="menu-item ">
+          <a href="/about/" rel="section">
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />About
+          </a>
+        </li>
+      
+      <li class="menu-item menu-item-search">
+        <a href="javascript:;" class="popup-trigger"> <i class="menu-item-icon fa fa-search fa-fw"></i> <br /> Search</a>
+      </li>
+    </ul>
+    <div class="site-search">
+      <div class="popup">
+ <span class="search-icon fa fa-search"></span>
+ <input type="text" id="local-search-input">
+ <div id="local-search-result"></div>
+ <span class="popup-btn-close">close</span>
+</div>
+
+    </div>
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+<section id="posts" class="posts-expand">
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+      <h1 class="post-title" itemprop="name headline">
+        <a class="post-title-link" href="https://damrah.netlify.app/post/how-im-able-to-take-notes-with-latex-in-mathematics-class/" itemprop="url">
+        How I&#39;m able to take notes with LaTeX in math class
+        </a>
+      </h1>
+      <div class="post-meta">
+      <span class="post-time">
+<span class="post-meta-item-icon">
+    <i class="fa fa-calendar-o"></i>
+</span>
+<span class="post-meta-item-text">Published at:</span>
+<time itemprop="dateCreated" datetime="2016-03-22T13:04:35+08:00" content="2021-09-07">
+    2021-09-07
+</time>
+</span> 
+      
+       <span>
+&nbsp; | &nbsp;
+<span class="post-meta-item-icon">
+    <i class="fa fa-eye"></i>
+</span>
+<span class="post-meta-item-text">Reading:</span>
+<span class="leancloud-visitors-count">2596 words ~13min</span>
+</span>
+      </div>
+    </header>
+    <div class="post-body" itemprop="articleBody">
+    <p>For a <strong>very long time</strong>, I have been trying to create the perfect setup for
+note taking in general (but more specifically, for <strong>math</strong>). Before, I used to
+use <a href="https://notion.so">notion</a> to take my notes, which was okay, but I wanted
+something much more productive. And thus, my system was <strong>BORN</strong>!</p>
+<p>Here is how some of my notes look like (I am still working on getting the pictures for this. Until then, you can wait 😢):</p>
+<p><img src="/posts/images/notes-image-1.png" alt="notes-image-1">
+<img src="/posts/images/notes-image-2.png" alt="notes-image-2">
+<img src="/posts/images/notes-image-3.png" alt="notes-image-3">
+<img src="/posts/images/notes-image-4.png" alt="notes-image-4">
+<img src="/posts/images/notes-image-5.png" alt="notes-image-5">
+<img src="/posts/images/notes-image-6.png" alt="notes-image-6">
+<img src="/posts/images/notes-image-7.png" alt="notes-image-7">
+<img src="/posts/images/notes-image-8.png" alt="notes-image-8">
+<img src="/posts/images/notes-image-9.png" alt="notes-image-9">
+<img src="/posts/images/notes-image-10.png" alt="notes-image-10"></p>
+<p>If you want to see how my completed notes look like, visit <a href="https://damrah.netlify.app/notes">here</a>.
+I also store all of my notes <a href="https://github.com/SingularisArt/notes">here</a>.</p>
+<p>I created this method during the summer of my <strong>10th year</strong> in school. I am preparing my self
+for when I go to university. So I set myself <strong>4</strong> goals and these goals must be met for me to use the system.
+They are:</p>
+<ul>
+<li>Writing mathematical equations as fast (or faster) than my professor was an
+<strong>A MUST</strong>.</li>
+<li>Drawing the figures must be as <strong>easy</strong>, <strong>fast</strong>, and <strong>simple</strong>.</li>
+<li>It must feel like I am writing them on paper.</li>
+<li>My notes are very easily
+<strong>manageable</strong> and easy to <strong>access</strong>.</li>
+</ul>
+<p>I will eventually have a ton of posts talking about this specific subject, but
+for now, I will go over <strong>step 1 (Writing mathematical equations as fast (or faster) than my professor was an A MUST.)</strong></p>
+<h2 id="neovim-and-latex">NeoVim and LaTeX</h2>
+<p>Quickly, what is NeoVim.</p>
+<p>NeoVim is a <strong>fork</strong> of Vim.
+For writing my <strong>notes</strong>, I use NeoVim
+(You can find my custom NeoVim config
+<a href="https://github.com/SingularisArt/Death.NeoVim">here</a>).
+Later on, I will create a blog post talking about how I setup my NeoVim setup.</p>
+<p>I literally use NeoVim for everything. I use it to write <strong>LaTeX</strong>, <strong>markdown</strong>, <strong>actual code</strong>. A
+lot of people complain saying <strong>&ldquo;Vim is to hard to learn and it&rsquo;s weird&rdquo;</strong>, but
+trust me, once you learn it, you can <em><strong>NEVER UN-LEARN IT</strong></em>, it saves you <em><strong>HOURS OF TYPING</strong></em>, and feels <em><strong>AMAZING WHEN YOU&rsquo;RE IN IT</strong></em>.
+But, yes, it does have a steep learning curve, but after you learn it, you
+will be rewarded.</p>
+<p>Now, with that out of the way, here is what my screen looks like when I am working with LaTeX:</p>
+<p><img src="/posts/images/code-with-latex.png" alt="code-with-latex"></p>
+<p>On the left side, I have my editor (<strong>NeoVim</strong>) and on the right side, I have
+my pdf viewer <strong>Zathura</strong>.</p>
+<p>Here is a quick list of all of my utilities:</p>
+<ul>
+<li>OS: Arch</li>
+<li>WM: DWM</li>
+<li>EDITOR: NeoVim</li>
+<li>PDF VIEWER: Zathura</li>
+</ul>
+<p>I have a huge list of plugins that you can view
+<a href="https://github.com/SingularisArt/Death.NeoVim#all-of-my-plugins">here</a>, but
+the plugin that I use for <strong>LaTeX</strong> is <a href="https://github.com/lervag/vimtex">vimtex</a>. It provides:</p>
+<ul>
+<li>Syntax highlighting</li>
+<li>Auto compiling</li>
+<li>Renaming entire environments</li>
+<li>Shows you the toc (Table of Contents)</li>
+</ul>
+<p>But, before I talk about how I configure NeoVim for <strong>LaTeX</strong>, let me explain to you how I setup my NeoVim. This won&rsquo;t be an in depth tutorial (that will be in a different post.)</p>
+<p>For installing NeoVim Plugins, I use <a href="https://github.com/wbthomason/packer.nvim">Packer</a>, which is a plugin-manager written in <strong>lua</strong>. It only works in NeoVim because vim doesn&rsquo;t support <strong>lua</strong> (because <strong>VIM SUCKS</strong> only <strong>NEOVIM RULES</strong>.) So, if you are unsure, go here (I will update this when I post a blog post about my NeoVim setup, until then, <strong>WAIT 😭</strong>.)</p>
+<p>Now, back to <strong>LaTeX</strong>, I use a gazillion plugins, but the most powerful one for <strong>LaTeX</strong> users is <a href="https://github.com/lervag/vimtex">VIMTEX</a>. Here is how I installed it:</p>
+<div class="highlight"><pre tabindex="0" style="color:#d8dee9;background-color:#2e3440;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-lua" data-lang="lua">use <span style="color:#eceff4">{</span> <span style="color:#a3be8c">&#39;lervag/vimtex&#39;</span> <span style="color:#eceff4">}</span> <span style="color:#a3be8c">&#34; If you use packer
+</span></code></pre></div><p>Add that to your plugins.lua, or wherever you place your plugins.</p>
+<p>Now, time to configure it. Add this to your init.vim or .vimrc:</p>
+<div class="highlight"><pre tabindex="0" style="color:#d8dee9;background-color:#2e3440;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-viml" data-lang="viml"><span style="color:#81a1c1;font-weight:bold">let</span> g:vimtex_view_method<span style="color:#eceff4">=</span><span style="color:#a3be8c">&#39;zathura&#39;</span><span style="color:#bf616a">
+</span><span style="color:#bf616a"></span><span style="color:#81a1c1;font-weight:bold">let</span> g:tex_flavor<span style="color:#eceff4">=</span><span style="color:#a3be8c">&#39;latex&#39;</span><span style="color:#bf616a">
+</span><span style="color:#bf616a"></span>set conceallevel<span style="color:#eceff4">=</span><span style="color:#b48ead">1</span><span style="color:#bf616a">
+</span></code></pre></div><p>The first line tells <strong>VIMTEX</strong> what pdf viewer you want to use to open your pdf. Simple.
+The next line tells what kind of <strong>LaTeX</strong> you want to use to compile your document.
+The last line tell NeoVim to configure the concealment. This is a feature that NeoVim uses to hide certain
+parts of the code if your cursor isn&rsquo;t on it. It hides <strong>\[</strong>, <strong>\]</strong>, <strong>$</strong>. By making <strong>\[</strong>, <strong>\]</strong>, <strong>$</strong>
+invisible, they aren&rsquo;t so distracting.</p>
+<p><img src="/posts/gifs/conceallevel.gif" alt="conceallevel"></p>
+<h2 id="ultisnippets">UltiSnippets</h2>
+<p>One of the major reasons why I&rsquo;m so fast at typing when it comes to <strong>LaTeX</strong>,
+is because of <strong>snippets</strong>.</p>
+<p>A snippet is a short reusable piece of text that can be triggered by some other text.</p>
+<p>Then, you have <strong>snippet managers</strong>, which manages the <strong>snippets</strong> that you make.
+There are many snippet managers out there, but I use <a href="https://github.com/SirVer/ultisnips">UltiSnippets</a> as my <strong>snippet manager</strong>.</p>
+<p>Now, you can have certain kind of <strong>snippets</strong> for certain kinds of languages. For example, you might have <strong>snippets</strong> for python, while having different <strong>snippets</strong> for <strong>LaTeX</strong>.</p>
+<p>You can take a look over <a href="https://github.com/SingularisArt/Death.NeoVim/blob/UltiSnippets/tex.snippets">here</a> to see all of my <strong>LaTeX snippets</strong>, but I will be going over the most important ones in this article.</p>
+<h3 id="installing-snippets">Installing Snippets</h3>
+<p>Like before, put this in plugins.lua, or wherever you keep your plugins at:</p>
+<div class="highlight"><pre tabindex="0" style="color:#d8dee9;background-color:#2e3440;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-lua" data-lang="lua">use <span style="color:#eceff4">{</span> <span style="color:#a3be8c">&#39;https://github.com/SirVer/ultisnips&#39;</span> <span style="color:#eceff4">}</span> <span style="color:#a3be8c">&#34; If you use packer
+</span></code></pre></div><p>After you install that, now run:</p>
+<div class="highlight"><pre tabindex="0" style="color:#d8dee9;background-color:#2e3440;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-viml" data-lang="viml"><span style="color:#eceff4">:</span>PackerInstall  <span style="color:#616e87;font-style:italic">&#34; If you use packer</span><span style="color:#bf616a">
+</span></code></pre></div><p>Congrats, you have installed UltiSnippets. Now, to start us off, let&rsquo;s install some snippets, that we can later on configure. To do that we need to install another plugin:</p>
+<div class="highlight"><pre tabindex="0" style="color:#d8dee9;background-color:#2e3440;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-lua" data-lang="lua">use <span style="color:#eceff4">{</span> <span style="color:#a3be8c">&#39;https://github.com/honza/vim-snippets&#39;</span> <span style="color:#eceff4">}</span>         <span style="color:#a3be8c">&#34; If you use packer
+</span></code></pre></div><p>Next section, I will go over how to add/modify snippets yourself.</p>
+<h3 id="adding-snippets">Adding snippets</h3>
+<p>To add snippets, you first must configure UltiSnips itself. Now, add this to you&rsquo;re init.vim or .vimrc:</p>
+<div class="highlight"><pre tabindex="0" style="color:#d8dee9;background-color:#2e3440;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-viml" data-lang="viml"><span style="color:#81a1c1;font-weight:bold">let</span> g:UltiSnipsExpandTrigger<span style="color:#eceff4">=</span><span style="color:#a3be8c">&#39;&lt;tab&gt;&#39;</span><span style="color:#bf616a">
+</span><span style="color:#bf616a"></span><span style="color:#81a1c1;font-weight:bold">let</span> g:UltiSnipsJumpForwardTrigger<span style="color:#eceff4">=</span><span style="color:#a3be8c">&#39;&lt;tab&gt;&#39;</span><span style="color:#bf616a">
+</span><span style="color:#bf616a"></span><span style="color:#81a1c1;font-weight:bold">let</span> g:UltiSnipsJumpBackwardTrigger<span style="color:#eceff4">=</span><span style="color:#a3be8c">&#39;&lt;s-tab&gt;&#39;</span><span style="color:#bf616a">
+</span><span style="color:#bf616a">
+</span><span style="color:#bf616a"></span><span style="color:#81a1c1;font-weight:bold">let</span> g:UltiSnipsEditSplit<span style="color:#eceff4">=</span><span style="color:#a3be8c">&#39;vertical&#39;</span><span style="color:#bf616a">
+</span><span style="color:#bf616a">
+</span><span style="color:#bf616a"></span><span style="color:#81a1c1;font-weight:bold">let</span> g:UltiSnipsSnippetDirectories<span style="color:#eceff4">=</span>[<span style="color:#a3be8c">&#39;~/.config/nvim/UltiSnips/&#39;</span>]<span style="color:#bf616a">
+</span></code></pre></div><p>Let&rsquo;s go over these quickly. The first line is telling UltiSnips what button you want to use to expand the actual snippet. After you have expanded the snippet, you have placeholders.</p>
+<p>On line 2-3, you are telling UltiSnips what key presses you want to use to jump back and forth between those placeholders.</p>
+<p>The 4th line is telling UltiSnips to open the file vertically when you run <code>:UltiSnipsEdit</code>.</p>
+<p>he last and final line tells UltiSnips where to find your snippets.</p>
+<h4 id="creating-your-own-snippets">Creating your own snippets</h4>
+<p>Place your snippets in <code>~/.config/nvim/UltiSnips/</code> or wherever you told UltiSnips to find theme. Each language has it&rsquo;s own specific snippet file. For example, python snippets will be located at <code>~/.config/nvim/UltiSnips/python.snippets</code>.</p>
+<p>Or, instead of manually creating that file, open a file with that extension. For example: <code>test.py</code>. Then, inside that file, type <code>:UltiSnipsEdit</code>. That will create the file <code>~/.config/nvim/UltiSnips/python.snippets</code> for you.</p>
+<p>Here is a basic skeleton for a snippet:</p>
+<div class="highlight"><pre tabindex="0" style="color:#d8dee9;background-color:#2e3440;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">snippet SNIPPET NAME &#34;SNIPPET DESCRIPTION&#34;
+...
+endsnippet
+</code></pre></div><p>To add placeholders, do this:</p>
+<div class="highlight"><pre tabindex="0" style="color:#d8dee9;background-color:#2e3440;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">snippet document &#34;Creates a document&#34;
+Document Name: $1
+$0
+endsnippet
+</code></pre></div><p>The <code>$1</code> and <code>$0</code> are where your placeholders will be. The <code>$0</code> is always the final placeholder. Now, you can create information within the placeholders like this:</p>
+<div class="highlight"><pre tabindex="0" style="color:#d8dee9;background-color:#2e3440;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">snippet document &#34;Creates a document&#34;
+Document Name: ${1:DOCUMENT NAME}
+$0
+endsnippet
+</code></pre></div><p>Now, the placeholder says <strong>DOCUMENT NAME</strong>, and when you reach that placeholder, it will be highlighted in visual mode, and you can overwrite it.</p>
+<p>Now you know the basics, let&rsquo;s get into some examples.</p>
+<h3 id="sign">Sign</h3>
+<p>The code for this is probably the simplest.</p>
+<p><img src="/posts/gifs/sign.gif" alt="sign"></p>
+<p>Here is the snippet code for it:</p>
+<div class="highlight"><pre tabindex="0" style="color:#d8dee9;background-color:#2e3440;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">snippet sign &#34;Signature&#34;
+Yours sincerely,
+
+Hashem A. Damrah
+endsnippet
+</code></pre></div><h3 id="today-and-date">Today and Date</h3>
+<p>You can also run shell commands inside snippets, but you have to use back ticks (``) for that.</p>
+<p><img src="/posts/gifs/today-date.gif" alt="today"></p>
+<p>Here is the snippet code for it:</p>
+<div class="highlight"><pre tabindex="0" style="color:#d8dee9;background-color:#2e3440;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">snippet date-time &#34;Today&#39;s date and Current Time&#34;
+`date &#34;+%b %d %Y %a %R`
+endsnippet
+</code></pre></div><h3 id="environments">Environments</h3>
+<p>To insert an environment, all I have to do is type <strong>beg</strong>. I created this snippet in a special manner. It only triggers whenever it&rsquo;s the first word typed on the line. Also, you don&rsquo;t need to hit <strong>TAB</strong> because it will automatically expand for you.</p>
+<p>You start typing out what kind of environment you want. Then, once you&rsquo;re done,
+hit tab. That will move you into the environment.</p>
+<div class="highlight"><pre tabindex="0" style="color:#d8dee9;background-color:#2e3440;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">snippet beg &#34;begin{} / end{}&#34; bA
+\begin{$1}
+	${1:${VISUAL}}
+\end{$1}
+endsnippet
+</code></pre></div><p><img src="/posts/gifs/beg-environment.gif" alt="environments"></p>
+<p>Now, I have a ton of different environments that I commonly use. So, like the good programmer I am, I decided to waste even more time creating specific snippets for each environment:</p>
+<p><img src="/posts/gifs/all-environment.gif" alt="environments"></p>
+<p>Now, sometimes you may want to surround specific text with the environment. So, what do you do? You can remove the text, create the environment, then paste. That feels <strong>WRONG</strong>. As you all know, us programmers are the laziest people. We spend hours trying to configure something to save us a couple of minutes. And, guess what? That&rsquo;s exactly what I did. I read through the documentation to learn about this (which took about 1.5 hours.)</p>
+<p>It&rsquo;s called visual select tab. You highlight whatever you want, hit tab, then go ahead and activate the snippet. There you go, the code you highlighted is know surrounded with the envrionment you want! 😮‍💨</p>
+<div class="highlight"><pre tabindex="0" style="color:#d8dee9;background-color:#2e3440;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">snippet doc &#34;Document&#34; bA
+\begin{document}
+	${1:${VISUAL}}
+\end{document}
+endsnippet
+
+snippet cnt &#34;Center&#34; bA
+\begin{center}
+	${1:${VISUAL}}
+\end{center}
+endsnippet
+
+snippet desc &#34;Description&#34; bA
+\begin{description}
+	${1:${VISUAL}}
+\end{description}
+endsnippet
+
+snippet lemma &#34;Lemma&#34; bA
+\begin{lemma}
+	${1:${VISUAL}}
+\end{lemma}
+endsnippet
+
+snippet prop &#34;Proposition&#34; bA
+\begin{prop}[$1]
+	${2:${VISUAL}}
+\end{prop}
+endsnippet
+
+snippet thrm &#34;Theorem&#34; bA
+\begin{theorem}[$1]
+	${2:${VISUAL}}
+\end{theorem}
+endsnippet
+
+snippet post &#34;postulate&#34; bA
+\begin{postulate}[$1]
+	${2:${VISUAL}}
+\end{postulate}
+endsnippet
+
+snippet myprf &#34;Proof&#34; bA
+\begin{myproof}[$1]
+	${2:${VISUAL}}
+\end{myproof}
+endsnippet
+
+snippet def &#34;Definition&#34; bA
+\begin{definition}[$1]
+	${2:${VISUAL}}
+\end{definition}
+endsnippet
+
+snippet nte &#34;Note&#34; bA
+\begin{note}[$1]
+	${2:${VISUAL}}
+\end{note}
+endsnippet
+
+snippet prob &#34;Problem&#34; bA
+\begin{problem}[$1]
+	${2:${VISUAL}}
+\end{problem}
+endsnippet
+
+snippet corl &#34;Corollary&#34; bA
+\begin{corollary}[$1]
+	${2:${VISUAL}}
+\end{corollary}
+endsnippet
+
+snippet exp &#34;Example&#34; bA
+\begin{example}[$1]
+	${2:${VISUAL}}
+\end{example}
+endsnippet
+
+snippet ntion &#34;Notation&#34; bA
+\begin{notation}[$1]
+	${2:${VISUAL}}
+\end{notation}
+endsnippet
+
+snippet rep &#34;Repetition&#34; bA
+\begin{repetition}[$1]
+	${2:${VISUAL}}
+\end{repetition}
+endsnippet
+
+snippet prop &#34;Property&#34; bA
+\begin{property}[$1]
+	${2:${VISUAL}}
+\end{property}
+endsnippet
+
+snippet int &#34;Intuition&#34; bA
+\begin{intuition}[$1]
+	${2:${VISUAL}}
+\end{intuition}
+endsnippet
+
+snippet obs &#34;Observation&#34; bA
+\begin{observation}[$1]
+	${2:${VISUAL}}
+\end{observation}
+endsnippet
+
+snippet conc &#34;Conclusion&#34; bA
+\begin{conclusion}[$1]
+	${2:${VISUAL}}
+\end{conclusion}
+endsnippet
+
+snippet fig &#34;Figure environment&#34; bA
+\begin{figure}[${1:htpb}]
+	\centering
+	${2:\includegraphics[width=0.8\textwidth]{$3}}
+	\caption{${4:$3}}
+	\label{fig:${5:${3/\W+/-/g}}}
+\end{figure}
+endsnippet
+
+snippet enum &#34;Enumerate&#34; bA
+\begin{enumerate}
+	\item ${1:${VISUAL}}
+\end{enumerate}
+endsnippet
+
+snippet item &#34;Itemize&#34; bA
+\begin{itemize}
+	\item ${1:${VISUAL}}
+\end{itemize}
+endsnippet
+
+snippet case &#34;cases&#34; bA
+\begin{cases}
+	${1:${VISUAL}}
+\end{cases}
+endsnippet
+
+snippet ali &#34;Align&#34; bA
+\begin{align*}
+	${1:${VISUAL}}
+.\end{align*}
+endsnippet
+</code></pre></div><p>The <strong>b</strong> means <strong>If the trigger word is the first word on the line, and no writing comes afterword, then expand</strong>.
+The <strong>A</strong> means <strong>Expand without the trigger key, just expand right after the person types the trigger word</strong>.</p>
+<h3 id="inline-and-display-math">Inline and Display Math</h3>
+<p>These are my two most frequency used snippets. They are responsible for bringing me into math mode. They are <code>im</code> (Inline Math) and <code>dm</code> (Display Math).</p>
+<p><img src="/posts/gifs/inline-math.gif" alt="inline-display"></p>
+<div class="highlight"><pre tabindex="0" style="color:#d8dee9;background-color:#2e3440;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">snippet im &#34;Inline Math&#34; wA
+$${1}$`!p
+if t[2] and t[2][0] not in [&#39;,&#39;, &#39;.&#39;, &#39;?&#39;, &#39;-&#39;, &#39; &#39;]:
+	snip.rv = &#39; &#39;
+else:
+	snip.rv = &#39;&#39;
+`$2
+endsnippet
+
+snippet dm &#34;Display Math&#34; wAb
+\[ ${1:${VISUAL}} .\] $0
+endsnippet
+</code></pre></div><p>The <strong>A</strong> at the end of the snippet declaration means it will expand as soon as
+you type the key (<code>im</code>, <code>dm</code>). It doesn&rsquo;t wait for you to hit <strong>tab</strong>.</p>
+<p>The <strong>w</strong> at the end of the first line means that this snippet will expand at word
+boundaries. So, <code>helloim</code> won&rsquo;t expand, but <code>hello im</code> will.</p>
+<p>The <strong>b</strong> means it won&rsquo;t expand unless it&rsquo;s at the beginning and the first word on the line.
+So, <code>hello dm</code> won&rsquo;t expand, but <code>dm hello</code> will.</p>
+<h3 id="sub-and-super-scripts">Sub and Super scripts</h3>
+<h4 id="sub-scripts">Sub Scripts</h4>
+<p>Another handy snippet are these ones, which is used for sub scripts. It changes
+a1 to a_1 and a_12 to a_{12} and a_{12}3 to
+a_{123}. It can also change a_{123456789}0 to a_{1234567890}.
+Here, size doesn&rsquo;t matter!</p>
+<p><img src="/posts/gifs/sub-scripts.gif" alt="sub-scripts"></p>
+<p>The code for these snippets use regular expressions for there trigger. The
+first expands if there is a variable, followed by a number. Example <strong>b3</strong> -&gt;
+<strong>b_3</strong>. Here is the snippet code:</p>
+<div class="highlight"><pre tabindex="0" style="color:#d8dee9;background-color:#2e3440;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-mysql" data-lang="mysql">snippet <span style="color:#a3be8c">&#39;([A-Za-z])(\d)&#39;</span> <span style="color:#a3be8c">&#34;Auto subscript&#34;</span> wrA
+<span style="color:#81a1c1">`!</span>p snip<span style="color:#eceff4">.</span>rv <span style="color:#81a1c1">=</span> <span style="color:#81a1c1;font-weight:bold">match</span><span style="color:#eceff4">.</span><span style="color:#81a1c1;font-weight:bold">group</span><span style="color:#eceff4">(</span><span style="color:#b48ead">1</span><span style="color:#eceff4">)</span><span style="color:#81a1c1">`</span>_<span style="color:#81a1c1">`!</span>p snip<span style="color:#eceff4">.</span>rv <span style="color:#81a1c1">=</span> <span style="color:#81a1c1;font-weight:bold">match</span><span style="color:#eceff4">.</span><span style="color:#81a1c1;font-weight:bold">group</span><span style="color:#eceff4">(</span><span style="color:#b48ead">2</span><span style="color:#eceff4">)</span><span style="color:#81a1c1">`</span>
+endsnippet
+</code></pre></div><p>The second snippet checks if there is a variable, followed by an
+underscore, followed by two numbers. Example b_34 -&gt; b_{34}.
+Here is the snippet code:</p>
+<div class="highlight"><pre tabindex="0" style="color:#d8dee9;background-color:#2e3440;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">snippet &#39;([A-Za-z])_(\d\d)&#39; &#34;Auto subscript 2&#34; wrA
+`!p snip.rv = match.group(1)`_{`!p snip.rv = match.group(2)`}
+endsnippet
+</code></pre></div><p>The last and final snippet checks if there is a variable, followed by an underscore,
+followed by a group of {} with numbers inside. It also checks if there is a
+number in front of the closing bracket. Example b_{34}5 -&gt; b_{345}</p>
+<p>Here is the snippet code:</p>
+<div class="highlight"><pre tabindex="0" style="color:#d8dee9;background-color:#2e3440;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">snippet &#39;([A-Za-z])_\{(\d+)\}(\d)&#39; &#34;Auto subscript 3+&#34; wrA
+`!p snip.rv = match.group(1)`_{`!p snip.rv = match.group(2) + match.group(3)`}
+endsnippet
+</code></pre></div><p>I also created a quick snippet that puts you in <strong>subscript</strong> mode:</p>
+<div class="highlight"><pre tabindex="0" style="color:#d8dee9;background-color:#2e3440;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">snippet __ &#34;Super Script&#34; Aw
+_{$1}$0
+endsnippet
+</code></pre></div><h4 id="super-scripts">Super Scripts</h4>
+<p>As for the superscripts, I use <strong>td</strong> -&gt; <strong>^{}</strong>. However, I use some quick snippets for basic things like squaring, cubing, raising to a variable.
+Here is a quick view of the snippets:</p>
+<ul>
+<li><strong>sq</strong> -&gt; <strong>^2</strong></li>
+<li><strong>cb</strong> -&gt; <strong>^3</strong></li>
+<li><strong>ss</strong> -&gt; <strong>^{$1}$0</strong></li>
+<li><strong>rd</strong> -&gt; <strong>^{($1)}$0</strong></li>
+<li><strong>compl</strong> -&gt; <strong>^{c}</strong></li>
+<li><strong>invs</strong> -&gt; <strong>^{-1}</strong></li>
+</ul>
+<p><img src="/posts/gifs/super-scripts.gif" alt="super-scripts"></p>
+<p>Here are the snippets:</p>
+<div class="highlight"><pre tabindex="0" style="color:#d8dee9;background-color:#2e3440;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">snippet sq &#34;Square&#34; Aw
+^2
+endsnippet
+
+snippet cb &#34;Cube&#34; Aw
+^3
+endsnippet
+
+snippet ss &#34;Super Script&#34; Aw
+^{$1}$0
+endsnippet
+
+snippet rd &#34;to the ... power&#34; Aw
+^{($1)}$0
+endsnippet
+
+snippet compl &#34;Complement&#34; Aw
+^{c}
+endsnippet
+
+snippet invs &#34;inverse&#34; Aw
+^{-1}
+endsnippet
+</code></pre></div><h3 id="fractions">Fractions</h3>
+<p>These snippets, are the funniest and they give you a big satisfaction whenever you pull them off.</p>
+<p>Here is my goal. To be able to perform snippets on these:</p>
+<pre><code>                            //  -&gt;  \frac{}{}
+                            3/  -&gt;  \frac{3}{}
+                        4\i^2/  -&gt;  \frac{4\pi^2}{}
+                   (1 + 2 + 3)  -&gt;  \frac{(1 + 2 + 3)}{}
+                (1 + (2 + 3)/)  -&gt;  (1 + \frac{(1 + 2))}{}
+                (1 + (2 + 3))/  -&gt;  \frac{1 + (2 + 3)}{}
+</code></pre>
+<p><img src="/posts/gifs/fractions.gif" alt="fractions"></p>
+<p>Now, let&rsquo;s start off with something very easy. Creating a simple fraction:</p>
+<div class="highlight"><pre tabindex="0" style="color:#d8dee9;background-color:#2e3440;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">snippet // &#34;Fraction&#34; iA
+\frac{$1}{$2}$0
+endsnippet
+</code></pre></div><p>The core of the second snippet is regular expressions. It&rsquo;s used to match expressions like:</p>
+<ul>
+<li>\pi^{2}/</li>
+<li>39_{9\Theta}/</li>
+<li>cf_2</li>
+<li>etc</li>
+</ul>
+<div class="highlight"><pre tabindex="0" style="color:#d8dee9;background-color:#2e3440;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">snippet &#39;((\d+)|(\d*)(\\)?([A-Za-z]+)((\^|_)(\{\d+\}|\d))*)/&#39; &#34;Fraction&#34; wrA
+\\frac{`!p snip.rv = match.group(1)`}{$1}$0
+endsnippet
+</code></pre></div><p>In the fourth case, I tried to find matching parenthesis. But, all of the work went in vain because you cannot with UltiSnips. So, I used Python :).</p>
+<div class="highlight"><pre tabindex="0" style="color:#d8dee9;background-color:#2e3440;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">priority 1000
+snippet &#39;^.*\)/&#39; &#34;() Fraction&#34; wrA
+`!p
+stripped = match.string[:-1]
+depth = 0
+i = len(stripped) - 1
+while True:
+	if stripped[i] == &#39;)&#39;: depth += 1
+	if stripped[i] == &#39;(&#39;: depth -= 1
+	if depth == 0: break;
+	i -= 1
+snip.rv = stripped[0:i] + &#34;\\frac{&#34; + stripped[i+1:-1] + &#34;}&#34;
+`{$1}$0
+endsnippet
+</code></pre></div><p>The last section that I want to show you is your selection to make your own fraction using <strong>visual mode</strong>.</p>
+<p><img src="/posts/gifs/tab-fraction.gif" alt="tab-fraction"></p>
+<div class="highlight"><pre tabindex="0" style="color:#d8dee9;background-color:#2e3440;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">snippet / &#34;Fraction&#34; iA
+\\frac{${VISUAL}}{$1}$0
+endsnippet
+</code></pre></div><h3 id="template">Template</h3>
+<p><img src="/posts/gifs/template.gif" alt="template"></p>
+<div class="highlight"><pre tabindex="0" style="color:#d8dee9;background-color:#2e3440;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">snippet template &#34;Template&#34;
+\documentclass{article}
+
+\usepackage{import}
+\usepackage{pdfpages}
+\usepackage{transparent}
+\usepackage{xcolor}
+$1
+
+\newcommand{\incfig}[2][1]{%
+		\def\svgwidth{#1\columnwidth}
+		\import{./figures/}{###pdf_tex}
+}
+$2
+\pdfsuppresswarningpagegroup=1
+
+\begin{document}
+		$0
+\end{document}
+endsnippet
+</code></pre></div><h3 id="school-lessons">School lessons</h3>
+<p>I don&rsquo;t really use these that often because I created scripts that do a lot of work when:</p>
+<ul>
+<li>Organizing</li>
+<li>Changing</li>
+<li>Switching</li>
+<li>Loading</li>
+<li>Reloading</li>
+</ul>
+<p>Between:</p>
+<ul>
+<li>Classes</li>
+<li>Lessons</li>
+<li>Lectures</li>
+</ul>
+<p>You can find these scripts <a href="https://github.com/SingularisArt/Singularis/tree/master/local/scripts/school">here</a>, but eventually, I will create a blog post about how I made those scripts, how I use them, etc.</p>
+<p><img src="/posts/gifs/school-lessons.gif" alt="school-lessons"></p>
+<div class="highlight"><pre tabindex="0" style="color:#d8dee9;background-color:#2e3440;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-fallback" data-lang="fallback">snippet les &#34;Lesson&#34;
+\lesson{${1:LESSON NUMBER}}{`date &#34;+%b %d %Y %a (%H:%M:%S)&#34;`}{${3:LESSON NAME}}
+$0
+endsnippet
+
+snippet lec &#34;Lecture&#34;
+\lecture{${1:LECTURE NUMBER}}{`date &#34;+%b %d %Y %a (%H:%M:%S)&#34;`}{${3:LECTURE NAME}}
+$0
+endsnippet
+</code></pre></div><h3 id="correct-spelling-mistakes">Correct spelling mistakes</h3>
+<p>I use this a <strong>TON</strong>. It&rsquo;s so handy because I don&rsquo;t have to leave insert mode, hover over the word, press <strong>z=</strong>, select the correct word, then go all the way back. UHHH, that was a lot of work! Also, if the word isn&rsquo;t corrected correctly, I can exit insert mode, press <strong>u</strong>, and select the correct word, and from now on, it will always be corrected to the correct one, which is the one that I chose. AMAZING!</p>
+<p>Now, put this in your init.vim or .vimrc:</p>
+<div class="highlight"><pre tabindex="0" style="color:#d8dee9;background-color:#2e3440;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-viml" data-lang="viml">setlocal spell<span style="color:#bf616a">
+</span><span style="color:#bf616a"></span>set spelllang<span style="color:#eceff4">=</span>en<span style="color:#bf616a">
+</span><span style="color:#bf616a"></span>inoremap <span style="color:#eceff4">&lt;</span>C<span style="color:#eceff4">-</span>l<span style="color:#eceff4">&gt;</span> <span style="color:#eceff4">&lt;</span>C<span style="color:#eceff4">-</span>g<span style="color:#eceff4">&gt;</span>u<span style="color:#eceff4">&lt;</span>Esc<span style="color:#eceff4">&gt;</span>[s1z<span style="color:#eceff4">=</span>`]a<span style="color:#eceff4">&lt;</span>C<span style="color:#eceff4">-</span>g<span style="color:#eceff4">&gt;</span>u<span style="color:#bf616a">
+</span></code></pre></div><h2 id="credit">Credit</h2>
+<p>I would like to give a thanks 👏 to <a href="https://castel.dev">Gilles Castel</a> for teaching me all of this stuff. I would recommend to go and checkout his website!</p>
+<h2 id="conclusion">Conclusion</h2>
+<p>So, I have just proven to you that you can write <strong>LaTeX</strong></p>
+<ul>
+<li><strong>fast</strong></li>
+<li><strong>easily</strong></li>
+<li><strong>efficiently</strong></li>
+</ul>
+<p>Stay tuned to learn about how I:</p>
+<ul>
+<li><strong>draw figures</strong></li>
+<li><strong>manage my notes</strong></li>
+<li><strong>take notes</strong></li>
+</ul>
+
+    </div>
+
+    
+    
+    <footer class="post-footer">
+     
+ 
+<div class="post-tags">     
+     
+    <a href="/tags/note-taking" rel="tag" title="note taking">#note taking#</a>
+    
+</div>
+
+
+
+     <div class="post-nav">
+    <div class="post-nav-next post-nav-item">
+    
+        <a href="https://damrah.netlify.app/contact/" rel="next" title="Contact">
+        <i class="fa fa-chevron-left"></i> Contact
+        </a>
+    
+    </div>
+
+    <div class="post-nav-prev post-nav-item">
+    
+        <a href="https://damrah.netlify.app/notes/grade-10-semester-1-hs-algebra-2/" rel="prev" title="Grade 10 Semester 1 Hs Algebra 2">
+        Grade 10 Semester 1 Hs Algebra 2 <i class="fa fa-chevron-right"></i>
+        </a>
+    
+    </div>
+</div>
+      
+     
+     
+     
+
+
+
+
+
+
+    </footer>
+  </article>
+</section>
+
+          </div>
+        </div>
+        <div class="sidebar-toggle">
+  <div class="sidebar-toggle-line-wrap">
+    <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+    <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+    <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+  </div>
+</div>
+<aside id="sidebar" class="sidebar">
+  <div class="sidebar-inner">
+
+  <ul class="sidebar-nav motion-element">
+    <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+      Table of Content
+    </li>
+    <li class="sidebar-nav-overview" data-target="site-overview">
+      Site Information
+    </li>
+  </ul>
+
+    <section class="site-overview sidebar-panel ">
+      <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image"
+        src="/img/author.jpg"
+        alt="" />
+    <p class="site-author-name" itemprop="name"></p>
+    <p class="site-description motion-element" itemprop="description"> 
+        Programmer &amp; Architect</p>
+</div>
+      <nav class="site-state motion-element">
+    <div class="site-state-item site-state-posts">
+      <a href="/post/">
+        <span class="site-state-item-count">1</span>
+        <span class="site-state-item-name">Blogs</span>
+      </a>
+    </div>
+    <div class="site-state-item site-state-categories">    
+        <a href="/categories/">      
+         
+        <span class="site-state-item-count">0</span>
+        
+        <span class="site-state-item-name">Categories</span>
+        
+        </a>
+    </div>
+
+    <div class="site-state-item site-state-tags">
+        <a href="/tags/">
+         
+        <span class="site-state-item-count">2</span>
+        
+        <span class="site-state-item-name">Tags</span>
+        </a>
+    </div>
+</nav>
+      
+      
+<div class="links-of-author motion-element">
+    
+        <span class="links-of-author-item">
+        <a href="https://github.com/SingularisArt/" target="_blank" title="GitHub">
+            <i class="fa fa-fw fa-github"></i>
+            GitHub
+        </a>
+        </span>
+    
+        <span class="links-of-author-item">
+        <a href="https://www.reddit.com/user/Desperate_Party_9259" target="_blank" title="Reddit">
+            <i class="fa fa-fw fa-reddit"></i>
+            Reddit
+        </a>
+        </span>
+    
+        <span class="links-of-author-item">
+        <a href="https://stackoverflow.com/users/16841521/singularisart" target="_blank" title="Stack Overflow">
+            <i class="fa fa-fw fa-stack-overflow"></i>
+            Stack Overflow
+        </a>
+        </span>
+    
+        <span class="links-of-author-item">
+        <a href="https://www.quora.com/profile/SingularisArt" target="_blank" title="Quora">
+            <i class="fa fa-fw fa-quora"></i>
+            Quora
+        </a>
+        </span>
+    
+</div>
+
+
+      
+
+      <div class="links-of-blogroll motion-element inline">
+<script type="text/javascript" src="//rf.revolvermaps.com/0/0/8.js?i=5b4f2ucxar6&amp;m=0&amp;s=220&amp;c=ff0000&amp;cr1=ffffff&amp;f=arial&amp;l=33&amp;bv=35" async="async"></script>
+</div>
+
+    </section>
+    
+<section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+    <div class="post-toc">
+        <div class="post-toc-content"><nav id="TableOfContents">
+  <ul>
+    <li><a href="#neovim-and-latex">NeoVim and LaTeX</a></li>
+    <li><a href="#ultisnippets">UltiSnippets</a>
+      <ul>
+        <li><a href="#installing-snippets">Installing Snippets</a></li>
+        <li><a href="#adding-snippets">Adding snippets</a></li>
+        <li><a href="#sign">Sign</a></li>
+        <li><a href="#today-and-date">Today and Date</a></li>
+        <li><a href="#environments">Environments</a></li>
+        <li><a href="#inline-and-display-math">Inline and Display Math</a></li>
+        <li><a href="#sub-and-super-scripts">Sub and Super scripts</a></li>
+        <li><a href="#fractions">Fractions</a></li>
+        <li><a href="#template">Template</a></li>
+        <li><a href="#school-lessons">School lessons</a></li>
+        <li><a href="#correct-spelling-mistakes">Correct spelling mistakes</a></li>
+      </ul>
+    </li>
+    <li><a href="#credit">Credit</a></li>
+    <li><a href="#conclusion">Conclusion</a></li>
+  </ul>
+</nav></div>
+    </div>
+</section>
+
+  </div>
+</aside>
+
+      </div>
+    </main>
+   
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  <span itemprop="copyrightYear">  &copy; 
+  2009 - 2021</span>
+  <span class="with-love"><i class="fa fa-heart"></i></span>
+  <span class="author" itemprop="copyrightHolder">Hashem A. Damrah</span>
+</div>
+<div class="powered-by">
+  Powered by - <a class="theme-link" href="http://gohugo.io" target="_blank" title="hugo" >Hugo v0.88.1</a>
+</div>
+<div class="theme-info">
+  Theme by - <a class="theme-link" href="https://github.com/xtfly/hugo-theme-next" target="_blank"> NexT
+  </a>
+</div>
+
+
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+      <span id="scrollpercent"><span>0</span>%</span>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+<script type="text/javascript" src="/js/vendor/jquery/index.js?v=2.1.3"></script>
+<script type="text/javascript" src="/js/vendor/fastclick/lib/fastclick.min.js?v=1.0.6"></script> 
+<script type="text/javascript" src="/js/vendor/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+<script type="text/javascript" src="/js/vendor/velocity/velocity.min.js?v=1.2.1"></script>
+<script type="text/javascript" src="/js/vendor/velocity/velocity.ui.min.js?v=1.2.1"></script>
+<script src="/js/vendor/ua-parser-js/dist/ua-parser.min.js?v=0.7.9"></script>
+
+<script src="/js/vendor/fancybox/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+<script type="text/javascript" src="/js/utils.js"></script>
+<script type="text/javascript" src="/js/motion.js"></script>
+<script type="text/javascript" src="/js/affix.js"></script>
+<script type="text/javascript" src="/js/schemes/pisces.js"></script>
+
+<script type="text/javascript" src="/js/scrollspy.js"></script>
+<script type="text/javascript" src="/js/post-details.js"></script>
+<script type="text/javascript" src="/js/toc.js"></script>
+
+<script type="text/javascript" src="/js/bootstrap.js"></script>
+
+<script type="text/javascript" src="/js/search.js"></script>
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    extensions: ["tex2jax.js"],
+    jax: ["input/TeX", "output/HTML-CSS"],
+    tex2jax: {
+      inlineMath: [ ['$','$'] ],
+      displayMath: [ ['$$','$$'] ],
+      processEscapes: true
+    },
+    "HTML-CSS": { fonts: ["TeX"] }
+  });
+</script>
+<script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-AMS-MML_HTMLorMML' async></script>
+</body>
+</html>
