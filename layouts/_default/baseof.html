@@ -1,27 +1,35 @@
-<!DOCTYPE html>
-<html lang="{{ $.Site.Language }}">
-<head>
-  {{ block "title" . }}
-    <title>{{ if .IsHome }}{{ $.Site.Title }}{{ else }}{{ .Title }} :: {{ $.Site.Title }}{{ end }}</title>
-  {{ end }}
-  {{ partial "head.html" . }}
-</head>
-<body class="{{- ( or .Params.color $.Site.Params.ThemeColor ) -}}">
-{{ $container := cond $.Site.Params.FullWidthTheme "container full" (cond $.Site.Params.CenterTheme "container center" "container") }}
+{{ partial "head.html" . }}
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+<div class="container one-collumn sidebar-position-left {{ block "main_class" .}}{{end}}  ">
+    <div class="headband"></div>
 
-<div class="{{- $container -}}{{- cond ($.Site.Params.oneHeadingSize | default true) " headings--one-size" "" }}">
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"> {{ partial "header.html" . }} </div>
+    </header>
 
-  {{ partial "header.html" . }}
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            {{ block "main_content" . }}{{end}}
+          </div>
+        </div>
+        {{ partial "sidebar.html" . }}
+      </div>
+    </main>
+   
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        {{ partial "footer.html" . }}
+      </div>
+    </footer>
 
-  <div class="content">
-    {{ block "main" . }}
-    {{ end }}
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+      <span id="scrollpercent"><span>0</span>%</span>
+    </div>
   </div>
 
-  {{ block "footer" . }}
-    {{ partial "footer.html" . }}
-  {{ end }}
-</div>
-
+  {{ partial "script.html" .}}
 </body>
 </html>

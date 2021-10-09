@@ -1,44 +1,23 @@
 baseURL = "https://damrah.netlify.app"
 languageCode = "en-us"
 googleAnalytics = "G-8MLV0NCNPP"
-theme = "terminal"
+theme = "next"
 paginate = 5
+PreserveTaxonomyNames = false
+PygmentsStyle = "nord"
+pygmentsCodefences = true
+pygmentsCodefencesGuessSyntax = true
 
 [params]
-  # dir name of your main content (default is `content/posts`).
-  # the list of set content will show up on your index page (baseurl).
-  contentTypeName = "post"
-
-  # ["orange", "blue", "red", "green", "pink"]
-  themeColor = "orange"
-
-  # if you set this to 0, only submenu trigger will be visible
-  showMenuItems = 2
-
-  # show selector to switch language
-  showLanguageSelector = true
-
-  # set theme to full screen width
-  fullWidthTheme = false
-
-  # center theme with default width
-  centerTheme = true
-
-  # set a custom favicon (default is a `themeColor` square)
-  favicon = "favicon.ico"
-
-  # set post to show the last updated
-  # If you use git, you can set `enableGitInfo` to `true` and then post will automatically get the last updated
-  showLastUpdated = true
-
-  # Provide a string as a prefix for the last update date. By default, it looks like this: 2020-xx-xx [Updated: 2020-xx-xx] :: Author
-  updatedDatePrefix = "Updated"
-
-  # set all headings to their default size (depending on browser settings)
-  # it's set to `true` by default
-  oneHeadingSize = false
-
   disqusShortname = "damrah-netlify-app"
+  Introduce = "Programmer & Architect"
+  Description = "My diverse website"
+  Imglogo = "/img/logo.png"
+  AuthorImg = "/img/logo.png"
+  DateFormat = "2006-01-02"
+  YearFormat = "2006"
+  MonthFormat = "01-02"
+  Fancybox = true
 
 [params.twitter]
   # set Twitter handles for Twitter cards
@@ -51,11 +30,9 @@ paginate = 5
   [languages.en]
     languageName = "English"
     title = "Hashem A. Damrah"
-    subtitle = "Hashem A. Damrah"
-    owner = ""
-    keywords = ""
+    subtitle = ""
+    owner = "Hashem A. Damrah"
     copyright = "Made with Hugo. Deployed by Netlify. Comments made with Disqus."
-    menuMore = "Categories"
     readMore = "Read more"
     readOtherPosts = "Read other posts"
     newerPosts = "Newer posts"
@@ -67,27 +44,61 @@ paginate = 5
       logoText = "Hashem A. Damrah"
       logoHomeLink = "/post"
 
-    [languages.en.menu]
-      [[languages.en.menu.main]]
-        identifier = "about"
-        name = "About"
-        url = "/about"
-      [[languages.en.menu.main]]
-        identifier = "contact"
-        name = "Contact"
-        url = "/contact"
-      [[languages.en.menu.main]]
-        identifier = "math"
-        name = "Math"
-        url = "/tags/math"
-      [[languages.en.menu.main]]
-        identifier = "programming"
-        name = "Programming"
-        url = "/tags/programming"
-      [[languages.en.menu.main]]
-        identifier = "school"
-        name = "School"
-        url = "/tags/school"
+[[Menu.Main]]
+  Name = "Front Page"
+  Pre = "home"
+  URL = "/"
+  Weight = 1
+[[Menu.Main]]
+  Name = "Technology"
+  Pre = "code"
+  URL = "/tags/technology/"
+  Weight = 2
+[[Menu.Main]]
+  Name = "Thoughts"
+  Pre = "tint"
+  URL = "/tags/thoughts/"
+  Weight = 3
+[[Menu.Main]]
+  Name = "Notes"
+  Pre = "book"
+  URL = "/tags/school-notes/"
+  Weight = 4
+[[Menu.Main]]
+  Name = "Miscellaneous"
+  Pre = "leaf"
+  URL = "/tags/other/"
+  Weight = 5
+[[Menu.Main]]
+  Name = "Archive"
+  Pre = "archive"
+  URL = "/post/"
+  Weight = 6
+[[Menu.Main]]
+  Name = "About"
+  Pre = "user"
+  URL = "/about/"
+  Weight = 7
 
 [markup.goldmark.renderer]
   unsafe = true
+
+[[Params.Socials]]
+  Name = "GitHub"
+  Icon = "github"
+  URL = "https://github.com/SingularisArt/"
+
+[[Params.Socials]]
+  Name = "Reddit"
+  Icon = "reddit"
+  URL = "https://www.reddit.com/user/Desperate_Party_9259"  
+
+[[Params.Socials]]
+  Name = "Stack Overflow"
+  Icon = "stack-overflow"
+  URL = "https://stackoverflow.com/users/16841521/singularisart"
+
+[[Params.Socials]]
+  Name = "Quora"
+  Icon = "quora"
+  URL = "https://www.quora.com/profile/SingularisArt"  

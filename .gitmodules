@@ -1,24 +1,3 @@
-[submodule "themes/hugo-coder"]
-	path = themes/hugo-coder
-	url = https://github.com/luizdepra/hugo-coder.git
-[submodule "themes/terminal"]
-	path = themes/terminal
-	url = https://github.com/panr/hugo-theme-terminal.git
-[submodule "themes/hugo-notepadium"]
-	path = themes/hugo-notepadium
-	url = https://github.com/cntrump/hugo-notepadium.git
-[submodule "themes/m10c"]
-	path = themes/m10c
-	url = https://github.com/vaga/hugo-theme-m10c
-[submodule "themes/npq-hugo"]
-	path = themes/npq-hugo
-	url = https://github.com/saadnpq/npq-hugo.git
-[submodule "themes/cupper-hugo"]
-	path = themes/cupper-hugo
-	url = https://github.com/luisdza/cupper-hugo-theme.git
-[submodule "third-party-tools/hugo-embed-pdf-shortcode"]
-	path = third-party-tools/hugo-embed-pdf-shortcode
-	url = https://github.com/anvithks/hugo-embed-pdf-shortcode
-[submodule "themes/new-terminal"]
-	path = themes/new-terminal
-	url = https://github.com/GideonWolfe/hugo-theme-terminal/
+[submodule "themes/next"]
+	path = themes/next
+	url = https://github.com/xtfly/hugo-theme-next
