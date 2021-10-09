@@ -4,6 +4,7 @@ author:       	"Hashem A. Damrah"
 date:         	2021-09-07T02:45:27-07:00
 description:  	"I go over using NeoVim and LaTeX to take notes with, but I specifically talk about talking notes with Mathematics"
 draft: 		  	false
+comments:		true
 tags:         	["note taking"]
 cover:        	"posts/images/code-with-latex.png"
 toc: 		  	true
