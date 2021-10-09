@@ -52,7 +52,7 @@
   {{ partial "posts_pagination.html" . }}
   {{ end }}
 
-  {{ if not .Params.disqus }}
+  {{ if not .Params.noDisqus }}
     {{ partial "comments.html" . }}
   {{ end }}
 </div>
