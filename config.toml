@@ -10,7 +10,7 @@ pygmentsCodefencesGuessSyntax = true
 
 [params]
   disqusShortname = "damrah-netlify-app"
-  Introduce = "Programmer & Architect"
+  Introduce = "hello"
   Description = "My diverse website"
   Imglogo = "/img/logo.png"
   AuthorImg = "/img/logo.png"
@@ -33,12 +33,6 @@ pygmentsCodefencesGuessSyntax = true
     subtitle = ""
     owner = "Hashem A. Damrah"
     copyright = "Made with Hugo. Deployed by Netlify. Comments made with Disqus."
-    readMore = "Read more"
-    readOtherPosts = "Read other posts"
-    newerPosts = "Newer posts"
-    olderPosts = "Older posts"
-    missingContentMessage = "Page not found..."
-    missingBackButtonLabel = "Back to home page"
 
     [languages.en.params.logo]
       logoText = "Hashem A. Damrah"
@@ -49,26 +43,26 @@ pygmentsCodefencesGuessSyntax = true
   Pre = "home"
   URL = "/"
   Weight = 1
-[[Menu.Main]]
-  Name = "Technology"
-  Pre = "code"
-  URL = "/tags/technology/"
-  Weight = 2
-[[Menu.Main]]
-  Name = "Thoughts"
-  Pre = "tint"
-  URL = "/tags/thoughts/"
-  Weight = 3
+#[[Menu.Main]]
+#  Name = "Technology"
+#  Pre = "code"
+#  URL = "/tags/technology/"
+#  Weight = 2
+#[[Menu.Main]]
+#  Name = "Thoughts"
+#  Pre = "tint"
+#  URL = "/tags/thoughts/"
+#  Weight = 3
 [[Menu.Main]]
   Name = "Notes"
   Pre = "book"
   URL = "/tags/school-notes/"
   Weight = 4
-[[Menu.Main]]
-  Name = "Miscellaneous"
-  Pre = "leaf"
-  URL = "/tags/other/"
-  Weight = 5
+#[[Menu.Main]]
+#  Name = "Miscellaneous"
+#  Pre = "leaf"
+#  URL = "/tags/other/"
+#  Weight = 5
 [[Menu.Main]]
   Name = "Archive"
   Pre = "archive"

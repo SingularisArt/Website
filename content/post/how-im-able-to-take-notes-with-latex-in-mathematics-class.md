@@ -1,6 +1,8 @@
 ---
 title:        	"How I'm able to take notes with LaTeX in math class"
 author:       	"Hashem A. Damrah"
+introduction: 	"Hello all"
+logo:			"/img/avatar.png"
 date:         	2021-09-07T02:45:27-07:00
 description:  	"I go over using NeoVim and LaTeX to take notes with, but I specifically talk about talking notes with Mathematics"
 draft: 		  	false
@@ -12,7 +14,7 @@ toc: 		  	true
 
 For a **very long time**, I have been trying to create the perfect setup for
 note taking in general (but more specifically, for **math**). Before, I used to
-use [notion](https://notion.so) to take my notes, which was okay, but I wanted
+use <a class="center after" href="https://www.notion.com">notion</a> to take my notes, which was okay, but I wanted
 something much more productive. And thus, my system was **BORN**!
 
 Here is how some of my notes look like (I am still working on getting the pictures for this. Until then, you can wait 😢):
@@ -28,8 +30,8 @@ Here is how some of my notes look like (I am still working on getting the pictur
 ![notes-image-9](/posts/images/notes-image-9.png)
 ![notes-image-10](/posts/images/notes-image-10.png)
 
-If you want to see how my completed notes look like, visit [here](https://damrah.netlify.app/notes).
-I also store all of my notes [here](https://github.com/SingularisArt/notes).
+If you want to see how my completed notes look like, visit <a class="center after" href="https://www.damrah.netlify.app/notes">here</a>.
+I also store all of my notes <a class="center after" href="https://www.github.com/SingularisArt/notes">here</a>.
 
 I created this method during the summer of my **10th year** in school. I am preparing my self
 for when I go to university. So I set myself **4** goals and these goals must be met for me to use the system.
@@ -52,7 +54,7 @@ Quickly, what is NeoVim.
 NeoVim is a **fork** of Vim.
 For writing my **notes**, I use NeoVim
 (You can find my custom NeoVim config
-[here](https://github.com/SingularisArt/Death.NeoVim)).
+<a class="center after" href="https://www.github.com/SingularisArt/Death.NeoVim">here</a>).
 Later on, I will create a blog post talking about how I setup my NeoVim setup.
 
 I literally use NeoVim for everything. I use it to write **LaTeX**, **markdown**, **actual code**. A
@@ -69,14 +71,14 @@ On the left side, I have my editor (**NeoVim**) and on the right side, I have
 my pdf viewer **Zathura**.
 
 Here is a quick list of all of my utilities:
-* OS: Arch
-* WM: DWM
-* EDITOR: NeoVim
-* PDF VIEWER: Zathura
+* OS (Operating System): <a class="center after" href="https://www.archlinux.org/">**Arch Linux**</a>
+* WM (Window Manager): <a class="center after" href="https://www.dwm.suckless.org/">**DWM**</a>
+* Text Editor: <a class="center after" href="https://www.github.com/neovim/neovim">**NeoVim**</a>
+* Pdf Viewer: <a class="center after" href="https://www.github.com/pwmt/zathura">**Zathura**</a>
 
 I have a huge list of plugins that you can view
-[here](https://github.com/SingularisArt/Death.NeoVim#all-of-my-plugins), but
-the plugin that I use for **LaTeX** is [vimtex](https://github.com/lervag/vimtex). It provides:
+<a class="center after" href="https://www.github.com/SingularisArt/Death.NeoVim#all-of-my-plugins">here</a>), but
+the plugin that I use for **LaTeX** is <a class="center after" href="https://www.github.com/lervag/vimtex">vimtex</a>. It provides:
 
 * Syntax highlighting
 * Auto compiling
@@ -85,9 +87,10 @@ the plugin that I use for **LaTeX** is [vimtex](https://github.com/lervag/vimtex
 
 But, before I talk about how I configure NeoVim for **LaTeX**, let me explain to you how I setup my NeoVim. This won't be an in depth tutorial (that will be in a different post.)
 
-For installing NeoVim Plugins, I use [Packer](https://github.com/wbthomason/packer.nvim), which is a plugin-manager written in **lua**. It only works in NeoVim because vim doesn't support **lua** (because **VIM SUCKS** only **NEOVIM RULES**.) So, if you are unsure, go here (I will update this when I post a blog post about my NeoVim setup, until then, **WAIT 😭**.)
+For installing NeoVim Plugins, I use <a class="center after" href="https://www.github.com/wbthomason/packer">Packer</a>, which is a plugin-manager written in **lua**. It only works in NeoVim because vim doesn't support **lua** (because **VIM SUCKS** only **NEOVIM RULES**.) So, if you are unsure, go here (I will update this when I post a blog post about my NeoVim setup, until then, **WAIT 😭**.)
 
-Now, back to **LaTeX**, I use a gazillion plugins, but the most powerful one for **LaTeX** users is [VIMTEX](https://github.com/lervag/vimtex). Here is how I installed it:
+Now, back to **LaTeX**, I use a gazillion plugins, but the most powerful one for **LaTeX** users is 
+<a class="center after" href="https://www.github.com/lervag/vimtex">VimTex</a>. Here is how I installed it:
 
 ```lua
 use { 'lervag/vimtex' } " If you use packer
@@ -119,11 +122,11 @@ is because of **snippets**.
 A snippet is a short reusable piece of text that can be triggered by some other text.
 
 Then, you have **snippet managers**, which manages the **snippets** that you make.
-There are many snippet managers out there, but I use [UltiSnippets](https://github.com/SirVer/ultisnips) as my **snippet manager**.
+There are many snippet managers out there, but I use <a class="center after" href="https://www.github.com/SirVer/ultisnips">UltiSnippets</a> as my **snippet manager**.
 
 Now, you can have certain kind of **snippets** for certain kinds of languages. For example, you might have **snippets** for python, while having different **snippets** for **LaTeX**.
 
-You can take a look over [here](https://github.com/SingularisArt/Death.NeoVim/blob/UltiSnippets/tex.snippets) to see all of my **LaTeX snippets**, but I will be going over the most important ones in this article.
+You can take a look over <a class="center after" href="https://www.github.com/SingularisArt/Death.NeoVim/blob/UltiSnippets/tex.snippets">VimTehere</a> to see all of my **LaTeX snippets**, but I will be going over the most important ones in this article.
 
 ### Installing Snippets
 
@@ -177,7 +180,7 @@ Or, instead of manually creating that file, open a file with that extension. For
 
 Here is a basic skeleton for a snippet:
 
-```snippets
+```viml
 snippet SNIPPET NAME "SNIPPET DESCRIPTION"
 ...
 endsnippet
@@ -185,7 +188,7 @@ endsnippet
 
 To add placeholders, do this:
 
-```snippets
+```viml
 snippet document "Creates a document"
 Document Name: $1
 $0
@@ -194,7 +197,7 @@ endsnippet
 
 The `$1` and `$0` are where your placeholders will be. The `$0` is always the final placeholder. Now, you can create information within the placeholders like this:
 
-```snippets
+```viml
 snippet document "Creates a document"
 Document Name: ${1:DOCUMENT NAME}
 $0
@@ -213,7 +216,7 @@ The code for this is probably the simplest.
 
 Here is the snippet code for it:
 
-```snippets
+```viml
 snippet sign "Signature"
 Yours sincerely,
 
@@ -229,7 +232,7 @@ You can also run shell commands inside snippets, but you have to use back ticks 
 
 Here is the snippet code for it:
 
-```snippets
+```viml
 snippet date-time "Today's date and Current Time"
 `date "+%b %d %Y %a %R`
 endsnippet
@@ -242,7 +245,7 @@ To insert an environment, all I have to do is type **beg**. I created this snipp
 You start typing out what kind of environment you want. Then, once you're done,
 hit tab. That will move you into the environment.
 
-```snippets
+```viml
 snippet beg "begin{} / end{}" bA
 \begin{$1}
 	${1:${VISUAL}}
@@ -260,7 +263,7 @@ Now, sometimes you may want to surround specific text with the environment. So, 
 
 It's called visual select tab. You highlight whatever you want, hit tab, then go ahead and activate the snippet. There you go, the code you highlighted is know surrounded with the envrionment you want! 😮‍💨
 
-```snippets
+```viml
 snippet doc "Document" bA
 \begin{document}
 	${1:${VISUAL}}
@@ -418,7 +421,7 @@ These are my two most frequency used snippets. They are responsible for bringing
 
 ![inline-display](/posts/gifs/inline-math.gif)
 
-```snippets
+```viml
 snippet im "Inline Math" wA
 $${1}$`!p
 if t[2] and t[2][0] not in [',', '.', '?', '-', ' ']:
@@ -457,7 +460,7 @@ The code for these snippets use regular expressions for there trigger. The
 first expands if there is a variable, followed by a number. Example **b3** ->
 **b_3**. Here is the snippet code:
 
-```snippets
+```viml
 snippet '([A-Za-z])(\d)' "Auto subscript" wrA
 `!p snip.rv = match.group(1)`_`!p snip.rv = match.group(2)`
 endsnippet
@@ -467,7 +470,7 @@ The second snippet checks if there is a variable, followed by an
 underscore, followed by two numbers. Example b_34 -> b_{34}.
 Here is the snippet code:
 
-```snippets
+```viml
 snippet '([A-Za-z])_(\d\d)' "Auto subscript 2" wrA
 `!p snip.rv = match.group(1)`_{`!p snip.rv = match.group(2)`}
 endsnippet
@@ -479,7 +482,7 @@ number in front of the closing bracket. Example b_{34}5 -> b_{345}
 
 Here is the snippet code:
 
-```snippets
+```viml
 snippet '([A-Za-z])_\{(\d+)\}(\d)' "Auto subscript 3+" wrA
 `!p snip.rv = match.group(1)`_{`!p snip.rv = match.group(2) + match.group(3)`}
 endsnippet
@@ -487,7 +490,7 @@ endsnippet
 
 I also created a quick snippet that puts you in **subscript** mode:
 
-```snippets
+```viml
 snippet __ "Super Script" Aw
 _{$1}$0
 endsnippet
@@ -509,7 +512,7 @@ Here is a quick view of the snippets:
 
 Here are the snippets:
 
-```snippets
+```viml
 snippet sq "Square" Aw
 ^2
 endsnippet
@@ -552,7 +555,7 @@ Here is my goal. To be able to perform snippets on these:
 
 Now, let's start off with something very easy. Creating a simple fraction:
 
-```snippets
+```viml
 snippet // "Fraction" iA
 \frac{$1}{$2}$0
 endsnippet
@@ -564,7 +567,7 @@ The core of the second snippet is regular expressions. It's used to match expres
 * cf_2
 * etc
 
-```snippets
+```viml
 snippet '((\d+)|(\d*)(\\)?([A-Za-z]+)((\^|_)(\{\d+\}|\d))*)/' "Fraction" wrA
 \\frac{`!p snip.rv = match.group(1)`}{$1}$0
 endsnippet
@@ -572,7 +575,7 @@ endsnippet
 
 In the fourth case, I tried to find matching parenthesis. But, all of the work went in vain because you cannot with UltiSnips. So, I used Python :).
 
-```snippets
+```viml
 priority 1000
 snippet '^.*\)/' "() Fraction" wrA
 `!p
@@ -593,7 +596,7 @@ The last section that I want to show you is your selection to make your own frac
 
 ![tab-fraction](/posts/gifs/tab-fraction.gif)
 
-```snippets
+```viml
 snippet / "Fraction" iA
 \\frac{${VISUAL}}{$1}$0
 endsnippet
@@ -603,7 +606,7 @@ endsnippet
 
 ![template](/posts/gifs/template.gif)
 
-```snippets
+```viml
 snippet template "Template"
 \documentclass{article}
 
@@ -642,11 +645,12 @@ Between:
 * Lessons
 * Lectures
 
-You can find these scripts [here](https://github.com/SingularisArt/Singularis/tree/master/local/scripts/school), but eventually, I will create a blog post about how I made those scripts, how I use them, etc.
+You can find these scripts 
+<a class="center after" href="https://www.github.com/SingularisArt/Singularis/tree/master/local/scripts/school">here</a>, but eventually, I will create a blog post about how I made those scripts, how I use them, etc.
 
 ![school-lessons](/posts/gifs/school-lessons.gif)
 
-```snippets
+```viml.snippets
 snippet les "Lesson"
 \lesson{${1:LESSON NUMBER}}{`date "+%b %d %Y %a (%H:%M:%S)"`}{${3:LESSON NAME}}
 $0
@@ -672,7 +676,7 @@ inoremap <C-l> <C-g>u<Esc>[s1z=`]a<C-g>u
 
 ## Credit
 
-I would like to give a thanks 👏 to [Gilles Castel](https://castel.dev) for teaching me all of this stuff. I would recommend to go and checkout his website!
+I would like to give a thanks 👏 to <a class="center after" href="https://www.castel.dev">Gilles Castel</a> for teaching me all of this stuff. I would recommend to go and checkout his website!
 
 ## Conclusion
 
