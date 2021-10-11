@@ -503,10 +503,10 @@ Here is a quick view of the snippets:
 
 * **sq** -> **^2**
 * **cb** -> **^3**
-* **ss** -> **^{$1}$0**
-* **rd** -> **^{($1)}$0**
-* **compl** -> **^{c}**
-* **invs** -> **^{-1}**
+* **ss** -> **^\{\}**
+* **rd** -> **^\{()\}**
+* **compl** -> **^\{c\}**
+* **invs** -> **^\{-1\}**
 
 ![super-scripts](/posts/gifs/super-scripts.gif)
 
