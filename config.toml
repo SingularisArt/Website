@@ -73,6 +73,11 @@ pygmentsCodefencesGuessSyntax = true
   Pre = "user"
   URL = "/about/"
   Weight = 7
+ [[Menu.Main]]
+  Name = "Contact"
+  Pre = "user"
+  URL = "/contact"
+  Weight = 8
 
 [markup.goldmark.renderer]
   unsafe = true
