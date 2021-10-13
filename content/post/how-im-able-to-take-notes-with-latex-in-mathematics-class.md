@@ -2,14 +2,14 @@
 title:        	"How I'm able to take notes with LaTeX in math class"
 author:       	"Hashem A. Damrah"
 introduction: 	"Hello all"
-logo:			"/img/avatar.png"
 date:         	2021-09-07T02:45:27-07:00
 description:  	"I go over using NeoVim and LaTeX to take notes with, but I specifically talk about talking notes with Mathematics"
-draft: 		  	false
+draft: 		 	false
 comments:		true
+cover:			"/posts/images/code-with-latex.png"
+toc:			true
 tags:         	["note taking"]
-cover:        	"posts/images/code-with-latex.png"
-toc: 		  	true
+categories:   	["blog", "study"]
 ---
 
 For a **very long time**, I have been trying to create the perfect setup for

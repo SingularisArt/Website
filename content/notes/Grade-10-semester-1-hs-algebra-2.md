@@ -3,7 +3,7 @@ title:      "Grade 10 Semester 1 Hs Algebra 2"
 author:     "Hashem A. Damrah"
 date:       2021-09-07T00:06:24-07:00
 tags:       ["school notes"]
-cover:        	"posts/images/algebra.png"
+cover:      "posts/images/algebra.png"
 draft:      false
 toc:        false
 comments:   false

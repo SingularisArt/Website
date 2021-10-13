@@ -2,8 +2,15 @@ baseURL = "https://damrah.netlify.app"
 languageCode = "en-us"
 googleAnalytics = "G-8MLV0NCNPP"
 theme = "next"
-paginate = 5
+
+CanonifyUrls =  true
+BuildDrafts =  false
+PaginatePath =  "p"
+Paginate = 8
+DisablePathToLower =  false
+HasCJKLanguage = true
 PreserveTaxonomyNames = false
+UglyUrls = false
 PygmentsStyle = "nord"
 pygmentsCodefences = true
 pygmentsCodefencesGuessSyntax = true
@@ -13,16 +20,13 @@ pygmentsCodefencesGuessSyntax = true
   Introduce = "hello"
   Description = "My diverse website"
   Imglogo = "/img/logo.png"
-  AuthorImg = "/img/logo.png"
+  AuthorImg = "/img/avatar.png"
   DateFormat = "2006-01-02"
   YearFormat = "2006"
   MonthFormat = "01-02"
   Fancybox = true
 
 [params.twitter]
-  # set Twitter handles for Twitter cards
-  # see https://developer.twitter.com/en/docs/tweets/optimize-with-cards/guides/getting-started#card-and-content-attribution
-  # do not include @
   creator = "Hashem A. Damrah"
   site = "damrah.netlify.app"
 
@@ -44,27 +48,27 @@ pygmentsCodefencesGuessSyntax = true
   URL = "/"
   Weight = 1
 #[[Menu.Main]]
-#  Name = "Technology"
-#  Pre = "code"
-#  URL = "/tags/technology/"
-#  Weight = 2
+  #Name = "Technology"
+  #Pre = "code"
+  #URL = "/tags/technology/"
+  #Weight = 2
 #[[Menu.Main]]
-#  Name = "Thoughts"
-#  Pre = "tint"
-#  URL = "/tags/thoughts/"
-#  Weight = 3
+  #Name = "Thoughts"
+  #Pre = "tint"
+  #URL = "/tags/thoughts/"
+  #Weight = 3
 [[Menu.Main]]
   Name = "Notes"
   Pre = "book"
   URL = "/tags/school-notes/"
   Weight = 4
 #[[Menu.Main]]
-#  Name = "Miscellaneous"
-#  Pre = "leaf"
-#  URL = "/tags/other/"
-#  Weight = 5
+  #Name = "Miscellaneous"
+  #Pre = "leaf"
+  #URL = "/tags/other/"
+  #Weight = 5
 [[Menu.Main]]
-  Name = "Archive"
+  Name = "All Posts"
   Pre = "archive"
   URL = "/post/"
   Weight = 6
@@ -75,9 +79,14 @@ pygmentsCodefencesGuessSyntax = true
   Weight = 7
  [[Menu.Main]]
   Name = "Contact"
-  Pre = "user"
+  Pre = "phone"
   URL = "/contact"
   Weight = 8
+ [[Menu.Main]]
+  Name = "Tags"
+  Pre = "tags"
+  URL = "/tags"
+  Weight = 9
 
 [markup.goldmark.renderer]
   unsafe = true
@@ -99,5 +108,5 @@ pygmentsCodefencesGuessSyntax = true
 
 [[Params.Socials]]
   Name = "Quora"
-  Icon = "quora"
+  Icon = "quora-digest"
   URL = "https://www.quora.com/profile/SingularisArt"  
