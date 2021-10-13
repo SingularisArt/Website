@@ -11,7 +11,7 @@ DisablePathToLower =  false
 HasCJKLanguage = true
 PreserveTaxonomyNames = false
 UglyUrls = false
-PygmentsStyle = "nord"
+PygmentsStyle = "solarized-dark256"
 pygmentsCodefences = true
 pygmentsCodefencesGuessSyntax = true
 
