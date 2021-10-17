@@ -12,6 +12,7 @@ tags:         	["note taking"]
 categories:   	["blog", "study"]
 ---
 
+
 For a **very long time**, I have been trying to create the perfect setup for
 note taking in general (but more specifically, for **math**). Before, I used to
 use <a class="center after" href="https://www.notion.com">notion</a> to take my notes, which was okay, but I wanted
