@@ -11,7 +11,7 @@ DisablePathToLower =  false
 HasCJKLanguage = true
 PreserveTaxonomyNames = false
 UglyUrls = false
-PygmentsStyle = "monokai"
+PygmentsStyle = "solarized-dark"
 pygmentsCodefences = true
 pygmentsCodefencesGuessSyntax = true
 
@@ -108,5 +108,5 @@ pygmentsCodefencesGuessSyntax = true
 
 [[Params.Socials]]
   Name = "Quora"
-  Icon = "quora-digest"
+  Icon = "quora"
   URL = "https://www.quora.com/profile/SingularisArt"  
