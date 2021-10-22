@@ -1,7 +1,7 @@
 ---
 title:        	"Note Taking with LaTeX: Part 1"
 author:       	"Hashem A. Damrah"
-introduction: 	"Hello all"
+introduction: 	"This post talks about how I take notes with LaTeX: Part 1"
 date:         	2021-09-07T02:45:27-07:00
 description:  	"I go over using NeoVim and LaTeX to take notes with, but I specifically talk about talking notes with Mathematics"
 draft: 		 	false
