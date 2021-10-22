@@ -1,5 +1,5 @@
 ---
-title:        	"How I'm able to take notes with LaTeX in math class"
+title:        	"Note Taking with LaTeX: Part 1"
 author:       	"Hashem A. Damrah"
 introduction: 	"Hello all"
 date:         	2021-09-07T02:45:27-07:00
@@ -8,8 +8,7 @@ draft: 		 	false
 comments:		true
 cover:			"/posts/images/code-with-latex.png"
 toc:			true
-tags:         	["note taking"]
-categories:   	["blog", "study"]
+tags:         	["note taking", "series"]
 ---
 
 
@@ -18,7 +17,7 @@ note taking in general (but more specifically, for **math**). Before, I used to
 use <a class="center after" href="https://www.notion.com">notion</a> to take my notes, which was okay, but I wanted
 something much more productive. And thus, my system was **BORN**!
 
-Here is how some of my notes look like (I am still working on getting the pictures for this. Until then, you can wait 😢):
+Here are how some of my notes look like:
 
 ![notes-image-1](/posts/images/note-1.png)
 ![notes-image-2](/posts/images/note-2.png)
@@ -536,15 +535,6 @@ endsnippet
 
 These snippets, are the funniest and they give you a big satisfaction whenever you pull them off.
 
-Here is my goal. To be able to perform snippets on these:
-
-                                //  ->  \frac{}{}
-                                3/  ->  \frac{3}{}
-                            4\i^2/  ->  \frac{4\pi^2}{}
-                       (1 + 2 + 3)  ->  \frac{(1 + 2 + 3)}{}
-                    (1 + (2 + 3)/)  ->  (1 + \frac{(1 + 2))}{}
-                    (1 + (2 + 3))/  ->  \frac{1 + (2 + 3)}{}
-
 ![fractions](/posts/gifs/fractions.gif)
 
 Now, let's start off with something very easy. Creating a simple fraction:
@@ -644,7 +634,7 @@ You can find these scripts
 
 ![school-lessons](/posts/gifs/school-lessons.gif)
 
-```viml.snippets
+```viml
 snippet les "Lesson"
 \lesson{${1:LESSON NUMBER}}{`date "+%b %d %Y %a (%H:%M:%S)"`}{${3:LESSON NAME}}
 $0
