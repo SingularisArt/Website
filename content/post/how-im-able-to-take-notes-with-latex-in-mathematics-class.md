@@ -20,16 +20,9 @@ something much more productive. And thus, my system was **BORN**!
 
 Here is how some of my notes look like (I am still working on getting the pictures for this. Until then, you can wait 😢):
 
-![notes-image-1](/posts/images/notes-image-1.png)
-![notes-image-2](/posts/images/notes-image-2.png)
-![notes-image-3](/posts/images/notes-image-3.png)
-![notes-image-4](/posts/images/notes-image-4.png)
-![notes-image-5](/posts/images/notes-image-5.png)
-![notes-image-6](/posts/images/notes-image-6.png)
-![notes-image-7](/posts/images/notes-image-7.png)
-![notes-image-8](/posts/images/notes-image-8.png)
-![notes-image-9](/posts/images/notes-image-9.png)
-![notes-image-10](/posts/images/notes-image-10.png)
+![notes-image-1](/posts/images/note-1.png)
+![notes-image-2](/posts/images/note-2.png)
+![notes-image-3](/posts/images/note-3.png)
 
 If you want to see how my completed notes look like, visit <a class="center after" href="https://www.damrah.netlify.app/notes">here</a>.
 I also store all of my notes <a class="center after" href="https://www.github.com/SingularisArt/notes">here</a>.
