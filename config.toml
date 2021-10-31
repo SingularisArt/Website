@@ -1,7 +1,7 @@
 baseURL = "https://damrah.netlify.app"
 languageCode = "en-us"
 googleAnalytics = "G-8MLV0NCNPP"
-theme = "next"
+theme = "dark-blueberry"
 
 CanonifyUrls =  true
 BuildDrafts =  false
