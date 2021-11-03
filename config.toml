@@ -1,6 +1,6 @@
 baseURL = "https://damrah.netlify.app"
 languageCode = "en-us"
-googleAnalytics = "G-9G7LLF1FQB"
+googleAnalyticsID = "G-9G7LLF1FQB"
 theme = "dark-blueberry"
 
 CanonifyUrls =  true
