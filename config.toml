@@ -1,6 +1,6 @@
 baseURL = "https://damrah.netlify.app"
 languageCode = "en-us"
-googleAnalytics = "G-8MLV0NCNPP"
+googleAnalytics = "G-9G7LLF1FQB"
 theme = "dark-blueberry"
 
 CanonifyUrls =  true
@@ -15,78 +15,68 @@ PygmentsStyle = "solarized-dark256"
 pygmentsCodefences = true
 pygmentsCodefencesGuessSyntax = true
 
-[params]
-  disqusShortname = "damrah-netlify-app"
-  Introduce = "hello"
-  Description = "My diverse website"
-  Imglogo = "/img/logo.png"
-  AuthorImg = "/img/avatar.png"
+[Params]
   DateFormat = "2006-01-02"
   YearFormat = "2006"
   MonthFormat = "01-02"
   Fancybox = true
 
-[params.twitter]
-  creator = "Hashem A. Damrah"
-  site = "damrah.netlify.app"
+  AuthorImg = "/img/avatar.png"
+  ImgLogo = "/img/logo.png"
 
-[languages]
-  [languages.en]
-    languageName = "English"
-    title = "Hashem A. Damrah"
-    subtitle = ""
-    owner = "Hashem A. Damrah"
-    copyright = "Made with Hugo. Deployed by Netlify. Comments made with Disqus."
+  author = "Hashem A. Damrah"
+  introduce = "hello"
+  description = "My diverse website"
 
-    [languages.en.params.logo]
-      logoText = "Hashem A. Damrah"
-      logoHomeLink = "/post"
+  disqusShortname = "damrah-netlify-app"
+
+  title = "Hashem A. Damrah"
+  subtitle = ""
+  copyright = "Made with Hugo. Deployed by Netlify. Comments made with Disqus."
+
+  logoText = "Hashem A. Damrah"
+  logoHomeLink = "/post"
 
 [[Menu.Main]]
   Name = "Front Page"
   Pre = "home"
   URL = "/"
   Weight = 1
-#[[Menu.Main]]
-  #Name = "Technology"
-  #Pre = "code"
-  #URL = "/tags/technology/"
-  #Weight = 2
-#[[Menu.Main]]
-  #Name = "Thoughts"
-  #Pre = "tint"
-  #URL = "/tags/thoughts/"
-  #Weight = 3
+[[Menu.Main]]
+  Name = "Thoughts"
+  Pre = "tint"
+  URL = "/tags/thoughts/"
+  Weight = 2
 [[Menu.Main]]
   Name = "Notes"
   Pre = "book"
   URL = "/tags/school-notes/"
+  Weight = 3
+[[Menu.Main]]
+  Name = "Miscellaneous"
+  Pre = "leaf"
+  URL = "/tags/other/"
   Weight = 4
-#[[Menu.Main]]
-  #Name = "Miscellaneous"
-  #Pre = "leaf"
-  #URL = "/tags/other/"
-  #Weight = 5
 [[Menu.Main]]
   Name = "All Posts"
   Pre = "archive"
   URL = "/post/"
-  Weight = 6
+  Weight = 5
 [[Menu.Main]]
   Name = "About"
   Pre = "user"
   URL = "/about/"
-  Weight = 7
+  Weight = 6
  [[Menu.Main]]
   Name = "Contact"
   Pre = "phone"
   URL = "/contact"
-  Weight = 8
+  Weight = 7
  [[Menu.Main]]
   Name = "Tags"
   Pre = "tags"
   URL = "/tags"
-  Weight = 9
+  Weight = 8
 
 [markup.goldmark.renderer]
   unsafe = true
