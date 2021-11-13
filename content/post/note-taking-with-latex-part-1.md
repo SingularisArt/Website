@@ -743,12 +743,12 @@ Again, you can get this information from <a class="center after" href="https://g
 
 ## Gifs of me using LSP
 
-![notes-image-1](/posts/images/vim-lsp.png)
-![notes-image-1](/posts/images/lua-lsp.png)
-![notes-image-1](/posts/images/rust-lsp.png)
-![notes-image-1](/posts/images/c--lsp.png)
-![notes-image-1](/posts/images/cpp-lsp.png)
-![notes-image-1](/posts/images/python-lsp.png)
+![vim-lsp](/posts/images/vim-lsp.png)
+![lua-lsp](/posts/images/lua-lsp.png)
+![rust-lsp](/posts/images/rust-lsp.png)
+![c-lsp](/posts/images/c--lsp.png)
+![cpp-lsp](/posts/images/cpp-lsp.png)
+![python-lsp](/posts/images/python-lsp.png)
 
 ## Credit
 
