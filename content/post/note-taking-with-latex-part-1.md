@@ -658,6 +658,98 @@ set spelllang=en
 inoremap <C-l> <C-g>u<Esc>[s1z=`]a<C-g>u
 ```
 
+# Autocompletion
+
+Now, besides `snippets` helping me out a ton when taking notes, I also have `autocompletion`.
+
+![school-lessons](/posts/gifs/autocompletion.gif)
+
+This is possible by using <a class="center after" href="https://en.wikipedia.org/wiki/Language_Server_Protocol">LSP</a>. `LSP` is a `language server protocol`, which allows me to get autocompletion, suggestions, etc based on the language that I'm using.
+
+## Setting LSP in NeoVim
+
+First of all, paste this code in your `plugins.lua` (Notice, you may use a different plugin manager):
+
+```lua
+use { 'neovim/nvim-lspconfig' }
+use { 'tamago324/nlsp-settings.nvim' }
+use { 'jose-elias-alvarez/null-ls.nvim' }
+use { 'kabouzeid/nvim-lspinstall' }
+use { 'onsails/lspkind-nvim' }
+```
+
+Now, restart NeoVim (by leaving and coming back) and run `:PackerSync`. That will install those plugins for you.
+
+## Install your language server
+
+Installing your language server is super easy. For a complete list of all of the language servers NeoVim offers, head over <a class="center after" href="https://github.com/neovim/nvim-lspconfig/blob/master/doc/server_configurations.md">here</a>. To install your language server, just run `:LspInstall [lang name]`. Now, you have your language server installed in NeoVim.
+
+But, you need to server installed on your computer. To do that, head over <a class="center after" href="https://github.com/neovim/nvim-lspconfig/blob/master/doc/server_configurations.md">here</a> and find your language. Follow the link that they provide and install it from there.
+
+For example, I want to have the `python` language server. So, I just run `:LspInstall python` in NeoVim. Then, I run `pip3 install 'python-lsp-server[all]'`. Now, I have my server.
+
+To activate it `python`, put this in your `init.lua`:
+
+```lua
+require('lspconfig').pylsp.setup{}
+```
+
+But, for me, I have a ton of servers, and my goal is to only keep them growing. So, here is a better way of doing it:
+
+```lua
+local capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities())
+
+-- Language Servers
+local langservers = {
+  'html',
+  'cssls',
+  'tsserver',
+  'pylsp',
+  'ls_emmet',
+  'sumneko_lua'
+}
+
+for _, server in ipairs(langservers) do
+	require'lspconfig'[server].setup {
+		capabilities = capabilities
+	}
+end
+```
+
+Inside of the `local langservers`, just add your server name and you're good to go. For example, if I want to have the rust language server, it becomes this:
+
+```lua
+local capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities())
+
+-- Language Servers
+local langservers = {
+  'html',
+  'cssls',
+  'tsserver',
+  'pylsp',
+  'ls_emmet',
+  'sumneko_lua',
+  'rust_analyzer'
+}
+
+for _, server in ipairs(langservers) do
+	require'lspconfig'[server].setup {
+		capabilities = capabilities
+	}
+end
+```
+
+Again, you can get this information from <a class="center after" href="https://github.com/neovim/nvim-lspconfig/blob/master/doc/server_configurations.md">here</a>.
+
+## Gifs of me using LSP
+
+![notes-image-1](/posts/images/vim-lsp.png)
+![notes-image-1](/posts/images/lua-lsp.png)
+![notes-image-1](/posts/images/rust-lsp.png)
+![notes-image-1](/posts/images/c--lsp.png)
+![notes-image-1](/posts/images/cpp-lsp.png)
+![notes-image-1](/posts/images/python-lsp.png)
+
 ## Credit
 
 I would like to give a thanks 👏 to <a class="center after" href="https://www.castel.dev">Gilles Castel</a> for teaching me all of this stuff. I would recommend to go and checkout his website!
