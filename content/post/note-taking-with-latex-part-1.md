@@ -40,7 +40,7 @@ They are:
 I will eventually have a ton of posts talking about this specific subject, but
 for now, I will go over **step 1 (Writing mathematical equations as fast (or faster) than my professor was an A MUST.)**
 
-## NeoVim and LaTeX
+# NeoVim and LaTeX
 
 Quickly, what is NeoVim.
 
@@ -107,7 +107,7 @@ invisible, they aren't so distracting.
 
 ![conceallevel](/posts/gifs/conceallevel.gif)
 
-## UltiSnippets
+# Snippets
 
 One of the major reasons why I'm so fast at typing when it comes to **LaTeX**,
 is because of **snippets**.
@@ -121,7 +121,7 @@ Now, you can have certain kind of **snippets** for certain kinds of languages. F
 
 You can take a look over <a class="center after" href="https://www.github.com/SingularisArt/Death.NeoVim/blob/UltiSnippets/tex.snippets">VimTehere</a> to see all of my **LaTeX snippets**, but I will be going over the most important ones in this article.
 
-### Installing Snippets
+## Installing Snippets
 
 Like before, put this in plugins.lua, or wherever you keep your plugins at:
 
@@ -143,7 +143,7 @@ use { 'https://github.com/honza/vim-snippets' }         " If you use packer
 
 Next section, I will go over how to add/modify snippets yourself.
 
-### Adding snippets
+## Adding snippets
 
 To add snippets, you first must configure UltiSnips itself. Now, add this to you're init.vim or .vimrc:
 
@@ -165,7 +165,7 @@ The 4th line is telling UltiSnips to open the file vertically when you run `:Ult
 
 he last and final line tells UltiSnips where to find your snippets.
 
-#### Creating your own snippets
+### Creating your own snippets
 
 Place your snippets in `~/.config/nvim/UltiSnips/` or wherever you told UltiSnips to find theme. Each language has it's own specific snippet file. For example, python snippets will be located at `~/.config/nvim/UltiSnips/python.snippets`.
 
@@ -201,7 +201,7 @@ Now, the placeholder says **DOCUMENT NAME**, and when you reach that placeholder
 
 Now you know the basics, let's get into some examples.
 
-### Sign
+## Sign
 
 The code for this is probably the simplest.
 
@@ -217,7 +217,7 @@ Hashem A. Damrah
 endsnippet
 ```
 
-### Today and Date
+## Today and Date
 
 You can also run shell commands inside snippets, but you have to use back ticks (\`\`) for that.
 
@@ -231,7 +231,7 @@ snippet date-time "Today's date and Current Time"
 endsnippet
 ```
 
-### Environments
+## Environments
 
 To insert an environment, all I have to do is type **beg**. I created this snippet in a special manner. It only triggers whenever it's the first word typed on the line. Also, you don't need to hit **TAB** because it will automatically expand for you.
 
@@ -408,7 +408,7 @@ endsnippet
 The **b** means **If the trigger word is the first word on the line, and no writing comes afterword, then expand**.
 The **A** means **Expand without the trigger key, just expand right after the person types the trigger word**.
 
-### Inline and Display Math
+## Inline and Display Math
 
 These are my two most frequency used snippets. They are responsible for bringing me into math mode. They are `im` (Inline Math) and `dm` (Display Math).
 
@@ -438,7 +438,7 @@ boundaries. So, `helloim` won't expand, but `hello im` will.
 The **b** means it won't expand unless it's at the beginning and the first word on the line.
 So, `hello dm` won't expand, but `dm hello` will.
 
-### Sub and Super scripts
+## Sub and Super scripts
 
 #### Sub Scripts
 
@@ -531,7 +531,7 @@ snippet invs "inverse" Aw
 endsnippet
 ```
 
-### Fractions
+## Fractions
 
 These snippets, are the funniest and they give you a big satisfaction whenever you pull them off.
 
@@ -586,7 +586,7 @@ snippet / "Fraction" iA
 endsnippet
 ```
 
-### Template
+## Template
 
 ![template](/posts/gifs/template.gif)
 
@@ -613,7 +613,7 @@ $2
 endsnippet
 ```
 
-### School lessons
+## School lessons
 
 I don't really use these that often because I created scripts that do a lot of work when:
 
@@ -646,7 +646,7 @@ $0
 endsnippet
 ```
 
-### Correct spelling mistakes
+## Correct spelling mistakes
 
 I use this a **TON**. It's so handy because I don't have to leave insert mode, hover over the word, press **z=**, select the correct word, then go all the way back. UHHH, that was a lot of work! Also, if the word isn't corrected correctly, I can exit insert mode, press **u**, and select the correct word, and from now on, it will always be corrected to the correct one, which is the one that I chose. AMAZING!
 
@@ -741,14 +741,58 @@ end
 
 Again, you can get this information from <a class="center after" href="https://github.com/neovim/nvim-lspconfig/blob/master/doc/server_configurations.md">here</a>.
 
+### Installing the Server for LaTeX
+
+Since we're using NeoVim to take notes using `LaTeX`, then let's install the `LaTeX` language server, which is `texlab`. You can view the source code <a class="center after" href="https://github.com/latex-lsp/texlab">here</a>. To install it, run the following command:
+
+```bash
+cargo install --git https://github.com/latex-lsp/texlab.git --locked
+```
+
+Now, add this line to your init.lua:
+
+```lua
+require('lspconfig').texlab.setup{}
+```
+
+Now, when you type `\`, you will be able to see autocompletion.
+
 ## Gifs of me using LSP
 
-![vim-lsp](/posts/images/vim-lsp.png)
-![lua-lsp](/posts/images/lua-lsp.png)
-![rust-lsp](/posts/images/rust-lsp.png)
-![c-lsp](/posts/images/c--lsp.png)
-![cpp-lsp](/posts/images/cpp-lsp.png)
-![python-lsp](/posts/images/python-lsp.png)
+<figure>
+<img src="/posts/gifs/latex-lsp.gif">
+<figcaption align="center"><b>LaTeX LSP</b></figcaption>
+</figure>
+
+<figure>
+<img src="/posts/gifs/vim-lsp.gif">
+<figcaption align="center"><b>Vimscript LSP</b></figcaption>
+</figure>
+
+<figure>
+<img src="/posts/gifs/lua-lsp.gif">
+<figcaption align="center"><b>Lua LSP</b></figcaption>
+</figure>
+
+<figure>
+<img src="/posts/gifs/rust-lsp.gif">
+<figcaption align="center"><b>Rust LSP</b></figcaption>
+</figure>
+
+<figure>
+<img src="/posts/gifs/c-lsp.gif">
+<figcaption align="center"><b>C LSP</b></figcaption>
+</figure>
+
+<figure>
+<img src="/posts/gifs/cpp-lsp.gif">
+<figcaption align="center"><b>C++ LSP</b></figcaption>
+</figure>
+
+<figure>
+<img src="/posts/gifs/python-lsp.gif">
+<figcaption align="center"><b>Python LSP</b></figcaption>
+</figure>
 
 ## Credit
 
