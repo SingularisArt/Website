@@ -43,36 +43,36 @@ pygmentsCodefencesGuessSyntax = true
   URL = "/"
   Weight = 1
 [[Menu.Main]]
-  Name = "Thoughts"
-  Pre = "tint"
-  URL = "/tags/thoughts/"
-  Weight = 2
-[[Menu.Main]]
-  Name = "Notes"
-  Pre = "book"
-  URL = "/tags/school-notes/"
-  Weight = 3
-[[Menu.Main]]
-  Name = "Miscellaneous"
-  Pre = "leaf"
-  URL = "/tags/other/"
-  Weight = 4
-[[Menu.Main]]
   Name = "All Posts"
   Pre = "archive"
   URL = "/post/"
-  Weight = 5
+  Weight = 2
 [[Menu.Main]]
   Name = "About"
   Pre = "user"
   URL = "/about/"
-  Weight = 6
- [[Menu.Main]]
+  Weight = 3
+[[Menu.Main]]
+  Name = "Notes"
+  Pre = "book"
+  URL = "/tags/school-notes/"
+  Weight = 4
+#[[Menu.Main]]
+#  Name = "Thoughts"
+#  Pre = "tint"
+#  URL = "/tags/thoughts/"
+#  Weight = 5
+#[[Menu.Main]]
+#  Name = "Miscellaneous"
+#  Pre = "leaf"
+#  URL = "/tags/other/"
+#  Weight = 6
+[[Menu.Main]]
   Name = "Contact"
   Pre = "phone"
   URL = "/contact"
   Weight = 7
- [[Menu.Main]]
+[[Menu.Main]]
   Name = "Tags"
   Pre = "tags"
   URL = "/tags"
