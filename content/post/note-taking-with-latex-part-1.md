@@ -836,13 +836,13 @@ Now, when you type `\`, you will be able to see autocompletion.
 <figcaption align="center"><b>Python LSP</b></figcaption>
 </figure>
 
-### Credit
+## Credit
 
 I would like to give a thanks 👏 to
 <a class="center after" href="https://www.castel.dev">Gilles Castel</a>
 for teaching me all of this stuff. I would recommend to go and checkout his website!
 
-### Conclusion
+## Conclusion
 
 So, I have just proven to you that you can write **LaTeX**
 * **fast**
