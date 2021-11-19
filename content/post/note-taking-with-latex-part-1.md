@@ -475,7 +475,9 @@ else:
 endsnippet
 
 snippet dm "Display Math" wAb
-\[ ${1:${VISUAL}} .\] $0
+\[
+	${1:${VISUAL}}
+.\] $0
 endsnippet
 ```
 
