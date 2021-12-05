@@ -804,17 +804,17 @@ Now, when you type `\`, you will be able to see autocompletion.
 ### Gifs of me using LSP
 
 <figure>
-<img src="/posts/images/latex-lsp.jpg">
+<img src="/posts/images/latex-lsp.png">
 <figcaption align="center"><b>LaTeX LSP</b></figcaption>
 </figure>
 
 <figure>
-<img src="/posts/images/cpp-lsp.jpg">
+<img src="/posts/images/cpp-lsp.png">
 <figcaption align="center"><b>C++ LSP</b></figcaption>
 </figure>
 
 <figure>
-<img src="/posts/images/python-lsp.jpg">
+<img src="/posts/images/python-lsp.png">
 <figcaption align="center"><b>Python LSP</b></figcaption>
 </figure>
 
