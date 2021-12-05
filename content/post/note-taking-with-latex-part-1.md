@@ -801,7 +801,7 @@ require('lspconfig').texlab.setup{}
 
 Now, when you type `\`, you will be able to see autocompletion.
 
-### Gifs of me using LSP
+### Images of using LSP
 
 <figure>
 <img src="/posts/images/latex-lsp.png">
