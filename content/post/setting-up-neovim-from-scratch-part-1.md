@@ -8,7 +8,6 @@ draft: 		 	    true
 comments:		    true
 cover:			    "/posts/images/neovim-from-scratch-series-logo.png"
 toc:			      true
-tags:         	["neovim"]
-categories:   	[]
+tags:         	["how to guides", "neovim"]
 ---
 

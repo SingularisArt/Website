@@ -6,9 +6,8 @@ date:           ""
 description:  	""
 draft: 		 	    true
 comments:		    true
-cover:			    "/posts/images/note-taking-with-latex-part-2.png"
+cover:			    "/posts/images/neovim-from-scratch-series-logo.png"
 toc:			      true
-tags:         	["neovim"]
-categories:   	[]
+tags:         	["how to guides", "neovim"]
 ---
 

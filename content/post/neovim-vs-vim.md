@@ -1,13 +1,14 @@
 ---
-title:          "LaTeX Crash Course: Part II (Intermediate)"
+title:          "NeoVim vs Vim"
 author:       	"Hashem A. Damrah"
 introduction: 	""
 date:           ""
 description:  	""
 draft: 		 	    true
 comments:		    true
-cover:			    "/posts/images/latex-crash-course-logo.png"
+cover:			    "/posts/images/neovim-vs-vim.png"
 toc:			      true
-tags:         	["latex", "tutorial"]
+tags:         	["information", "comparing and contrasting", "neovim"]
 ---
+
 

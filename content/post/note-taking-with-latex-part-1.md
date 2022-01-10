@@ -1,17 +1,15 @@
 ---
-title:        	"Note Taking with LaTeX: Part I (Basics)"
+title:        	"Note Taking with LaTeX: Part I (NeoVim)"
 author:       	"Hashem A. Damrah"
-introduction: 	"This post talks about how I take notes with LaTeX: Part 1"
-date:         	2021-09-07T02:45:27-07:00
+introduction: 	"This post talks about how I take notes with LaTeX: Part I"
+date:         	2022-01-08
 description:    "I go over using NeoVim and LaTeX to take notes with, but I specifically talk about talking notes with Mathematics."
 draft: 		 	    false
 comments:		    true
 cover:			    "/posts/images/note-taking-with-latex-part-1.png"
 toc:			      true
-tags:         	["note taking", "series"]
-categories:   	["neovim"]
+tags:         	["latex", "tutorial", "school", "notes"]
 ---
-
 
 For a **very long time**, I have been trying to create the perfect setup for
 note taking in general (but more specifically, for **math**). Before, I used to
@@ -44,18 +42,19 @@ They are:
   **manageable** and easy to **access**.
 
 I will eventually have a ton of posts talking about this specific subject, but
-for now, I will go over
-**step 1 (Writing mathematical equations as fast (or faster) than my professor was an A MUST.)**
+for now, I will go over **Step 1**.
 
 ## NeoVim and LaTeX
 
-Quickly, what is NeoVim.
+If you know what **NeoVim** and/or **LaTeX** is, then you can skip this section.
 
-NeoVim is a **fork** of Vim.
-For writing my **notes**, I use NeoVim
-(You can find my custom NeoVim config
+NeoVim is a **fork** of Vim. You can view my blog post talking about the
+differences and similarities between
+<a class="center after" href="https://damrah.netlify.app/post/neovim-vs-vim">NeoVim and Vim</a>.
+
+For writing my **notes**, I use NeoVim (You can find my custom NeoVim config
 <a class="center after" href="https://www.github.com/SingularisArt/Death.NeoVim">here</a>).
-Later on, I will create a blog post talking about how I setup my NeoVim setup.
+Later on, I will create a blog post talking about my **NeoVim** setup.
 
 I literally use NeoVim for everything. I use it to write **LaTeX**,
 **markdown**, **actual code**. A
@@ -68,12 +67,13 @@ will be rewarded.
 Now, with that out of the way, here is what my screen looks like when I am
 working with LaTeX:
 
-![code-with-latex](/posts/images/code-with-latex.png)
+![code-with-latex](/posts/images/note-taking-with-latex-part-1.png)
 
 On the left side, I have my editor (**NeoVim**) and on the right side, I have
 my pdf viewer **Zathura**.
 
 Here is a quick list of all of my utilities:
+
 * OS (Operating System):
   <a class="center after" href="https://www.archlinux.org/">**Arch Linux**</a>
 * WM (Window Manager):
@@ -96,18 +96,34 @@ But, before I talk about how I configure NeoVim for **LaTeX**, let me explain to
 you how I setup my NeoVim. This won't be an in depth tutorial (that will be in a
 different post.)
 
-For installing NeoVim Plugins, I use
-<a class="center after" href="https://www.github.com/wbthomason/packer">Packer</a>,
-which is a plugin-manager written in **lua**. It only works in NeoVim because vim doesn't support **lua** (because **VIM SUCKS** only **NEOVIM RULES**.) So, if you are unsure, go here (I will update this when I post a blog post about my NeoVim setup, until then, **WAIT 😭**.)
+For installing and managing plugins, I use the plugin manager
+<a class="center after" href="https://www.github.com/wbthomason/packer">Packer</a>.
+The reason I use it is because it's written in **Lua**, and **Lua** is much
+faster than **Vimscript**. Now, if you want an in-depth tutorial on setting up
+**Packer**, go <a class="center after" href="https://damrah.netlify.app/post/note-taking-with-latex-part-2">here</a>
 
-Now, back to **LaTeX**, I use a gazillion plugins, which you can view
-<a class="center after" href="https://github.com/SingularisArt/Death.NeoVim/blob/master/lua/core/plugins.lua">here</a>,
+Now, back to **LaTeX**, I use a gazillion plugins (You can view them all
+<a class="center after" href="https://github.com/SingularisArt/Death.NeoVim/blob/master/lua/core/plugins.lua">here</a>),
 but the most powerful one for **LaTeX** users is 
 <a class="center after" href="https://www.github.com/lervag/vimtex">VimTex</a>. Here is how I installed it:
 
+Add this line to your `plugins.lua` or wherever you put your plugins. But make
+sure you source it in your `init.vim` or `init.lua`.
+
 ```lua
-use { 'lervag/vimtex' } " If you use packer
+use { 'lervag/vimtex' } -- If you use packer
 ```
+
+If you don't use **Packer**, then replace the **use** with whatever your plugin
+manager requires. Here's a quick example:
+
+```viml
+Plug 'lervag/vimtex'    " For vim-plug users
+Plugin 'lervag/vimtex'  " For vundle users
+```
+
+If you use any of these lines, put it in your `plugins.vim`. But make sure you
+source it in your `init.vim` or `init.lua`.
 
 Add that to your `plugins.lua`, or wherever you place your plugins.
 
@@ -120,8 +136,7 @@ set conceallevel=1
 ```
 
 The first line tells **VIMTEX** what pdf viewer you want to use to open your
-pdf. Simple. The next line tells what kind of **LaTeX** you want to use to
-compile your document. The last line tell NeoVim to configure the concealment.
+pdf. Simple. The next line tells what kind of **LaTeX** you want to use to compile your document. The last line tell NeoVim to configure the concealment.
 This is a feature that NeoVim uses to hide certain parts of the code if your
 cursor isn't on it. It hides **\\[**, **\\]**, **$**. By making **\\[**,
 **\\]**, **$** invisible, they aren't so distracting.
@@ -841,30 +856,6 @@ Now, when you type `\`, you will be able to see autocompletion.
 
 <img src="/posts/gifs/latex-lsp.gif">
 
-#### Lua
-
-<img src="/posts/gifs/lua-lsp.gif">
-
-#### C++
-
-<img src="/posts/gifs/cpp-lsp.gif">
-
-#### Python
-
-<img src="/posts/gifs/python-lsp.gif">
-
-#### HTML
-
-<img src="/posts/gifs/html-lsp.gif">
-
-#### CSS
-
-<img src="/posts/gifs/css-lsp.gif">
-
-#### JavaScript
-
-<img src="/posts/gifs/javascript-lsp.gif">
-
 ## Credit
 
 I would like to give a thanks 👏 to
@@ -875,11 +866,13 @@ website!
 ## Conclusion
 
 So, I have just proven to you that you can write **LaTeX**
+
 * **fast**
 * **easily**
 * **efficiently**
 
 Stay tuned to learn about how I:
+
 * **draw figures**
 * **manage my notes**
 * **take notes**

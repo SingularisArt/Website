@@ -8,7 +8,6 @@ draft: 		 	    true
 comments:		    true
 cover:			    "/posts/images/latex-crash-course-logo.png"
 toc:			      true
-tags:         	["note taking", "series"]
-categories:   	["neovim"]
+tags:         	["latex", "tutorial"]
 ---
 
