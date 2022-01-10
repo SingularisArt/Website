@@ -32,7 +32,7 @@ pygmentsCodefencesGuessSyntax = true
 
   title = "Hashem A. Damrah"
   subtitle = ""
-  copyright = "Made with Hugo. Deployed by Netlify. Comments made with Disqus."
+  #copyright = "Made with Hugo. Deployed by Netlify. Comments made with Disqus."
 
   logoText = "Hashem A. Damrah"
   logoHomeLink = "/post"
@@ -57,16 +57,6 @@ pygmentsCodefencesGuessSyntax = true
   Pre = "book"
   URL = "/tags/school-notes/"
   Weight = 4
-#[[Menu.Main]]
-#  Name = "Thoughts"
-#  Pre = "tint"
-#  URL = "/tags/thoughts/"
-#  Weight = 5
-#[[Menu.Main]]
-#  Name = "Miscellaneous"
-#  Pre = "leaf"
-#  URL = "/tags/other/"
-#  Weight = 6
 [[Menu.Main]]
   Name = "Contact"
   Pre = "phone"

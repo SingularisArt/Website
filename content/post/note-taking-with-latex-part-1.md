@@ -1,14 +1,15 @@
 ---
-title:        	"Note Taking with LaTeX: Part 1"
+title:        	"Note Taking with LaTeX: Part I (Basics)"
 author:       	"Hashem A. Damrah"
 introduction: 	"This post talks about how I take notes with LaTeX: Part 1"
 date:         	2021-09-07T02:45:27-07:00
-description:  	"I go over using NeoVim and LaTeX to take notes with, but I specifically talk about talking notes with Mathematics"
-draft: 		 	false
-comments:		true
-cover:			"/posts/images/code-with-latex.png"
-toc:			true
+description:    "I go over using NeoVim and LaTeX to take notes with, but I specifically talk about talking notes with Mathematics."
+draft: 		 	    false
+comments:		    true
+cover:			    "/posts/images/note-taking-with-latex-part-1.png"
+toc:			      true
 tags:         	["note taking", "series"]
+categories:   	["neovim"]
 ---
 
 
@@ -91,11 +92,17 @@ the plugin that I use for **LaTeX** is <a class="center after" href="https://www
 * Renaming entire environments
 * Shows you the toc (Table of Contents)
 
-But, before I talk about how I configure NeoVim for **LaTeX**, let me explain to you how I setup my NeoVim. This won't be an in depth tutorial (that will be in a different post.)
+But, before I talk about how I configure NeoVim for **LaTeX**, let me explain to
+you how I setup my NeoVim. This won't be an in depth tutorial (that will be in a
+different post.)
 
-For installing NeoVim Plugins, I use <a class="center after" href="https://www.github.com/wbthomason/packer">Packer</a>, which is a plugin-manager written in **lua**. It only works in NeoVim because vim doesn't support **lua** (because **VIM SUCKS** only **NEOVIM RULES**.) So, if you are unsure, go here (I will update this when I post a blog post about my NeoVim setup, until then, **WAIT 😭**.)
+For installing NeoVim Plugins, I use
+<a class="center after" href="https://www.github.com/wbthomason/packer">Packer</a>,
+which is a plugin-manager written in **lua**. It only works in NeoVim because vim doesn't support **lua** (because **VIM SUCKS** only **NEOVIM RULES**.) So, if you are unsure, go here (I will update this when I post a blog post about my NeoVim setup, until then, **WAIT 😭**.)
 
-Now, back to **LaTeX**, I use a gazillion plugins, but the most powerful one for **LaTeX** users is 
+Now, back to **LaTeX**, I use a gazillion plugins, which you can view
+<a class="center after" href="https://github.com/SingularisArt/Death.NeoVim/blob/master/lua/core/plugins.lua">here</a>,
+but the most powerful one for **LaTeX** users is 
 <a class="center after" href="https://www.github.com/lervag/vimtex">VimTex</a>. Here is how I installed it:
 
 ```lua
@@ -112,20 +119,20 @@ let g:tex_flavor='latex'
 set conceallevel=1
 ```
 
-The first line tells **VIMTEX** what pdf viewer you want to use to open your pdf. Simple.
-The next line tells what kind of **LaTeX** you want to use to compile your document.
-The last line tell NeoVim to configure the concealment. This is a feature that NeoVim uses to hide certain
-parts of the code if your cursor isn't on it. It hides **\\[**, **\\]**, **$**. By making **\\[**, **\\]**, **$**
-invisible, they aren't so distracting.
-
-![conceallevel](/posts/gifs/conceallevel.gif)
+The first line tells **VIMTEX** what pdf viewer you want to use to open your
+pdf. Simple. The next line tells what kind of **LaTeX** you want to use to
+compile your document. The last line tell NeoVim to configure the concealment.
+This is a feature that NeoVim uses to hide certain parts of the code if your
+cursor isn't on it. It hides **\\[**, **\\]**, **$**. By making **\\[**,
+**\\]**, **$** invisible, they aren't so distracting.
 
 ## Snippets
 
 One of the major reasons why I'm so fast at typing when it comes to **LaTeX**,
 is because of **snippets**.
 
-A snippet is a short reusable piece of text that can be triggered by some other text.
+A snippet is a short reusable piece of text that can be triggered by some other
+text.
 
 Then, you have **snippet managers**, which manages the **snippets** that you make.
 There are many snippet managers out there, but I use
@@ -137,15 +144,15 @@ For example, you might have **snippets** for python, while having different
 **snippets** for **LaTeX**.
 
 You can take a look over
-<a class="center after" href="https://www.github.com/SingularisArt/Death.NeoVim/blob/UltiSnippets/tex.snippets">VimTehere</a>
-to see all of my **LaTeX snippets**, but I will be going over the most important ones in this article.
+<a class="center after" href="https://www.github.com/SingularisArt/Death.NeoVim/blob/UltiSnippets/tex.snippets">VimTehere</a> to see all of my **LaTeX snippets**, but I will be going over the most important
+ones in this article.
 
 ### Installing Snippets
 
 Like before, put this in `plugins.lua`, or wherever you keep your plugins at:
 
 ```lua
-use { 'https://github.com/SirVer/ultisnips' } " If you use packer
+use { 'SirVer/ultisnips' } " If you use packer
 ```
 
 After you install that, now run:
@@ -154,17 +161,20 @@ After you install that, now run:
 :PackerInstall  " If you use packer
 ```
 
-Congrats, you have installed UltiSnippets. Now, to start us off, let's install some snippets, that we can later on configure. To do that we need to install another plugin:
+Congrats, you have installed UltiSnippets. Now, to start us off, let's install
+some snippets, that we can later on configure. To do that we need to install
+another plugin:
 
 ```lua
-use { 'https://github.com/honza/vim-snippets' }         " If you use packer
+use { 'honza/vim-snippets' }         " If you use packer
 ```
 
 Next section, I will go over how to add/modify snippets yourself.
 
 ### Adding snippets
 
-To add snippets, you first must configure `UltiSnips` itself. Now, add this to you're `init.vim` or `.vimrc`:
+To add snippets, you first must configure `UltiSnips` itself. Now, add this to
+you're `init.vim` or `.vimrc`:
 
 ```viml
 let g:UltiSnipsExpandTrigger='<tab>'
@@ -190,9 +200,14 @@ The last and final line tells `UltiSnips` where to find your snippets.
 
 #### Creating your own snippets
 
-Place your snippets in `~/.config/nvim/UltiSnips/` or wherever you told `UltiSnips` to find theme. Each language has it's own specific snippet file. For example, python snippets will be located at `~/.config/nvim/UltiSnips/python.snippets`.
+Place your snippets in `~/.config/nvim/UltiSnips/` or wherever you told
+`UltiSnips` to find theme. Each language has it's own specific snippet file. For
+example, python snippets will be located at
+`~/.config/nvim/UltiSnips/python.snippets`.
 
-Or, instead of manually creating that file, open a file with that extension. For example: `test.py`. Then, inside that file, type `:UltiSnipsEdit`. That will create the file `~/.config/nvim/UltiSnips/python.snippets` for you.
+Or, instead of manually creating that file, open a file with that extension. For
+example: `test.py`. Then, inside that file, type `:UltiSnipsEdit`. That will
+create the file `~/.config/nvim/UltiSnips/python.snippets` for you.
 
 Here is a basic skeleton for a snippet:
 
@@ -211,7 +226,9 @@ $0
 endsnippet
 ```
 
-The `$1` and `$0` are where your placeholders will be. The `$0` is always the final placeholder. Now, you can create information within the placeholders like this:
+The `$1` and `$0` are where your placeholders will be. The `$0` is always the
+final placeholder. Now, you can create information within the placeholders like
+this:
 
 ```viml
 snippet document "Creates a document"
@@ -220,7 +237,8 @@ $0
 endsnippet
 ```
 
-Now, the placeholder says **DOCUMENT NAME**, and when you reach that placeholder, it will be highlighted in visual mode, and you can overwrite it.
+Now, the placeholder says **DOCUMENT NAME**, and when you reach that
+placeholder, it will be highlighted in visual mode, and you can overwrite it.
 
 Now you know the basics, let's get into some examples.
 
@@ -460,7 +478,8 @@ person types the trigger word**.
 
 ### Inline and Display Math
 
-These are my two most frequency used snippets. They are responsible for bringing me into math mode. They are `im` (Inline Math) and `dm` (Display Math).
+These are my two most frequency used snippets. They are responsible for bringing
+me into math mode. They are `im` (Inline Math) and `dm` (Display Math).
 
 ![inline-display](/posts/gifs/math.gif)
 
@@ -520,9 +539,9 @@ snippet '([A-Za-z])_(\d\d)' "Auto subscript 2" wrA
 endsnippet
 ```
 
-The last and final snippet checks if there is a variable, followed by an underscore,
-followed by a group of {} with numbers inside. It also checks if there is a
-number in front of the closing bracket. Example b_{34}5 -> b_{345}
+The last and final snippet checks if there is a variable, followed by an
+underscore, followed by a group of {} with numbers inside. It also checks if
+there is a number in front of the closing bracket. Example b_{34}5 -> b_{345}
 
 Here is the snippet code:
 
@@ -585,7 +604,8 @@ endsnippet
 
 ### Fractions
 
-These snippets, are the funniest and they give you a big satisfaction whenever you pull them off.
+These snippets, are the funniest and they give you a big satisfaction whenever
+you pull them off.
 
 ![fractions](/posts/gifs/fractions.gif)
 
@@ -597,7 +617,8 @@ snippet // "Fraction" iA
 endsnippet
 ```
 
-The core of the second snippet is regular expressions. It's used to match expressions like:
+The core of the second snippet is regular expressions. It's used to match
+expressions like:
 * \pi^{2}/
 * 39_{9\Theta}/
 * cf_2
@@ -609,7 +630,8 @@ snippet '((\d+)|(\d*)(\\)?([A-Za-z]+)((\^|_)(\{\d+\}|\d))*)/' "Fraction" wrA
 endsnippet
 ```
 
-In the fourth case, I tried to find matching parenthesis. But, all of the work went in vain because you cannot with `UltiSnips`. So, I used Python :).
+In the fourth case, I tried to find matching parenthesis. But, all of the work
+went in vain because you cannot with `UltiSnips`. So, I used Python :).
 
 ```viml
 priority 1000
@@ -628,7 +650,8 @@ snip.rv = stripped[0:i] + "\\frac{" + stripped[i+1:-1] + "}"
 endsnippet
 ```
 
-The last section that I want to show you is your selection to make your own fraction using **visual mode**.
+The last section that I want to show you is your selection to make your own
+fraction using **visual mode**.
 
 ![tab-fraction](/posts/gifs/tab-fractions.gif)
 
@@ -640,7 +663,8 @@ endsnippet
 
 ### School lessons
 
-I don't really use these that often because I created scripts that do a lot of work when:
+I don't really use these that often because I created scripts that do a lot of
+work when:
 
 * Organizing
 * Changing
@@ -694,29 +718,36 @@ inoremap <C-l> <C-g>u<Esc>[s1z=`]a<C-g>u
 
 ## Autocompletion
 
-Now, besides `snippets` helping me out a ton when taking notes, I also have `autocompletion`.
+Now, besides `snippets` helping me out a ton when taking notes, I also have
+`autocompletion`.
 
-This is possible by using <a class="center after" href="https://en.wikipedia.org/wiki/Language_Server_Protocol">LSP</a>. `LSP` is a `language server protocol`, which allows me to get autocompletion, suggestions, etc based on the language that I'm using.
+This is possible by using
+<a class="center after" href="https://en.wikipedia.org/wiki/Language_Server_Protocol">LSP</a>.
+`LSP` is a `language server protocol`, which allows me to get autocompletion,
+suggestions, etc based on the language that I'm using.
 
 ### Setting LSP in NeoVim
 
-First of all, paste this code in your `plugins.lua` (Notice, you may use a different plugin manager):
+First of all, paste this code in your `plugins.lua` (Notice, you may use a
+different plugin manager):
 
 ```lua
-use { 'neovim/nvim-lspconfig' }
-use { 'tamago324/nlsp-settings.nvim' }
-use { 'jose-elias-alvarez/null-ls.nvim' }
-use { 'kabouzeid/nvim-lspinstall' }
-use { 'onsails/lspkind-nvim' }
+use { 'neovim/nvim-lspconfig' } -- Main lsp plugin
+use { 'onsails/lspkind-nvim' } -- Gives us icons
+use { 'tami5/lspsaga.nvim', branch="nvim51" }
+use { 'williamboman/nvim-lsp-installer' } -- Installs lsp servers
 ```
 
-Now, restart NeoVim (by leaving and coming back) and run `:PackerSync`. That will install those plugins for you.
+Now, restart NeoVim (by leaving and coming back) and run `:PackerSync`. That
+will install those plugins for you.
 
 ### Install your language server
 
 Installing your language server is super easy. For a complete list of all of
 the language servers NeoVim offers, head over
-<a class="center after" href="https://github.com/neovim/nvim-lspconfig/blob/master/doc/server_configurations.md">here</a>. To install your language server, just run `:LspInstall [lang name]`. Now, you
+<a class="center after"
+href="https://github.com/neovim/nvim-lspconfig/blob/master/doc/server_configurations.md">here</a>.
+To install your language server, just run `:LspInstall [lang name]`. Now, you
 have your language server installed in NeoVim.
 
 But, you need to server installed on your computer. To do that, head over
@@ -724,7 +755,9 @@ But, you need to server installed on your computer. To do that, head over
 and find your language. Follow the link that they provide and install it from
 there.
 
-For example, I want to have the `python` language server. So, I just run `:LspInstall python` in NeoVim. Then, I run `pip3 install 'python-lsp-server[all]'`. Now, I have my server.
+For example, I want to have the `python` language server. So, I just run
+`:LspInstall python` in NeoVim. Then, I run `pip3 install
+'python-lsp-server[all]'`. Now, I have my server.
 
 To activate it `python`, put this in your `init.lua`:
 
@@ -736,48 +769,49 @@ But, for me, I have a ton of servers, and my goal is to only keep them growing.
 So, here is a better way of doing it:
 
 ```lua
-local capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities())
+-- LSP Servers to install
 
--- Language Servers
 local langservers = {
-  'html',
-  'cssls',
-  'tsserver',
-  'pylsp',
-  'ls_emmet',
-  'sumneko_lua'
+  'sumneko_lua',      -- Lua
+  'vimls',            -- Vim
+  'texlab',           -- LaTeX
+  'pylsp',            -- Python
+  'bashls',           -- Bash
+  'clangd',           -- C++,C
+  'cmake',            -- CMake
+  'html',             -- HTML
+  'cssls',            -- CSS
+  'rust_analyzer',    -- Rust
+  'tsserver',         -- Typescript/Javascript
+  'yamlls',           -- Yaml
+  'solidity_ls',      -- Solidity
 }
 
+local capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities())
+
 for _, server in ipairs(langservers) do
-	require'lspconfig'[server].setup {
-		capabilities = capabilities
-	}
+  if server == 'sumneko_lua' then
+    require('lspconfig')[server].setup {
+      capabilities = capabilities,
+      settings = {
+        Lua = {
+          diagnostics = {
+            globals = { 'vim', 'use' }
+          }
+        }
+      }
+    }
+  else
+    require('lspconfig')[server].setup {
+      capabilities = capabilities
+    }
+  end
 end
 ```
 
 Inside of the `local langservers`, just add your server name and you're good to
-go. For example, if I want to have the rust language server, it becomes this:
-
-```lua
-local capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities())
-
--- Language Servers
-local langservers = {
-  'html',
-  'cssls',
-  'tsserver',
-  'pylsp',
-  'ls_emmet',
-  'sumneko_lua',
-  'rust_analyzer'
-}
-
-for _, server in ipairs(langservers) do
-	require'lspconfig'[server].setup {
-		capabilities = capabilities
-	}
-end
-```
+go. For example, if I want to have the rust language server, just add
+`rust_analyzer` to the langservers.
 
 Again, you can get this information from
 <a class="center after" href="https://github.com/neovim/nvim-lspconfig/blob/master/doc/server_configurations.md">here</a>.
@@ -801,28 +835,42 @@ require('lspconfig').texlab.setup{}
 
 Now, when you type `\`, you will be able to see autocompletion.
 
-### Images of using LSP
+### Demo of LSP
 
-<figure>
-<img src="/posts/images/latex-lsp.png">
-<figcaption align="center"><b>LaTeX LSP</b></figcaption>
-</figure>
+#### LaTeX
 
-<figure>
-<img src="/posts/images/cpp-lsp.png">
-<figcaption align="center"><b>C++ LSP</b></figcaption>
-</figure>
+<img src="/posts/gifs/latex-lsp.gif">
 
-<figure>
-<img src="/posts/images/python-lsp.png">
-<figcaption align="center"><b>Python LSP</b></figcaption>
-</figure>
+#### Lua
+
+<img src="/posts/gifs/lua-lsp.gif">
+
+#### C++
+
+<img src="/posts/gifs/cpp-lsp.gif">
+
+#### Python
+
+<img src="/posts/gifs/python-lsp.gif">
+
+#### HTML
+
+<img src="/posts/gifs/html-lsp.gif">
+
+#### CSS
+
+<img src="/posts/gifs/css-lsp.gif">
+
+#### JavaScript
+
+<img src="/posts/gifs/javascript-lsp.gif">
 
 ## Credit
 
 I would like to give a thanks 👏 to
 <a class="center after" href="https://www.castel.dev">Gilles Castel</a>
-for teaching me all of this stuff. I would recommend to go and checkout his website!
+for teaching me all of this stuff. I would recommend to go and checkout his
+website!
 
 ## Conclusion
 
