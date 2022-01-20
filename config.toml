@@ -1,7 +1,7 @@
 baseURL = "https://damrah.netlify.app"
 languageCode = "en-us"
 googleAnalyticsID = "G-9G7LLF1FQB"
-theme = "dark-blueberry"
+theme = ["hugo-video", "dark-blueberry"]
 
 CanonifyUrls =  true
 BuildDrafts =  false

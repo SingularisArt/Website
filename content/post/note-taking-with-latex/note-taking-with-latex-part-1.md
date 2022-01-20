@@ -46,23 +46,16 @@ for now, I will go over **Step 1**.
 
 ## NeoVim and LaTeX
 
-If you know what **NeoVim** and/or **LaTeX** is, then you can skip this section.
+**NeoVim** is a terminal-based text editor. It's just a better version of Vim,
+which was made back in the 60s (I think).
 
-NeoVim is a **fork** of Vim. You can view my blog post talking about the
-differences and similarities between
-<a class="center after" href="https://damrah.netlify.app/post/neovim-vs-vim">NeoVim and Vim</a>.
-
-For writing my **notes**, I use NeoVim (You can find my custom NeoVim config
+I literally use NeoVim for everything. (You can find my custom NeoVim config
 <a class="center after" href="https://www.github.com/SingularisArt/Death.NeoVim">here</a>).
-Later on, I will create a blog post talking about my **NeoVim** setup.
 
-I literally use NeoVim for everything. I use it to write **LaTeX**,
-**markdown**, **actual code**. A
-lot of people complain saying **"Vim is to hard to learn and it's weird"**, but
-trust me, once you learn it, you can ***NEVER UN-LEARN IT***, it saves you
-***HOURS OF TYPING***, and feels ***AMAZING WHEN YOU'RE IN IT***.
-But, yes, it does have a steep learning curve, but after you learn it, you
-will be rewarded.
+**LaTeX** is a markup language used by mostly professors who want to publish
+their papers. Also, nerds like me, spend countless weeks trying to figure out
+the perfect setup for note-taking. Luckily, for you, you won't have to figure
+anything out because I've done all of that for you.
 
 Now, with that out of the way, here is what my screen looks like when I am
 working with LaTeX:
@@ -111,7 +104,7 @@ Add this line to your `plugins.lua` or wherever you put your plugins. But make
 sure you source it in your `init.vim` or `init.lua`.
 
 ```lua
-use { 'lervag/vimtex' } -- If you use packer
+use { 'lervag/vimtex' }
 ```
 
 If you don't use **Packer**, then replace the **use** with whatever your plugin
@@ -139,9 +132,13 @@ The first line tells **VIMTEX** what pdf viewer you want to use to open your
 pdf. Simple. The next line tells what kind of **LaTeX** you want to use to compile your document. The last line tell NeoVim to configure the concealment.
 This is a feature that NeoVim uses to hide certain parts of the code if your
 cursor isn't on it. It hides **\\[**, **\\]**, **$**. By making **\\[**,
-**\\]**, **$** invisible, they aren't so distracting.
+**\\]**, **$** invisible, they aren't so distracting. Here's a quick demo:
+
+![conceallevel](/posts/gifs/conceallevel.gif)
 
 ## Snippets
+
+### What are Snippets
 
 One of the major reasons why I'm so fast at typing when it comes to **LaTeX**,
 is because of **snippets**.
@@ -167,26 +164,79 @@ ones in this article.
 Like before, put this in `plugins.lua`, or wherever you keep your plugins at:
 
 ```lua
-use { 'SirVer/ultisnips' } " If you use packer
+use { 'SirVer/ultisnips' }
+use { 'honza/vim-snippets' }
+use { 'hrsh7th/nvim-cmp' }
+
+local cmp = require'cmp'
+
+cmp.setup({
+  snippet = {
+    -- REQUIRED - you must specify a snippet engine
+    expand = function(args)
+      vim.fn["vsnip#anonymous"](args.body) -- For `vsnip` users.
+      -- require('luasnip').lsp_expand(args.body) -- For `luasnip` users.
+      -- require('snippy').expand_snippet(args.body) -- For `snippy` users.
+      -- vim.fn["UltiSnips#Anon"](args.body) -- For `ultisnips` users.
+    end,
+  },
+  mapping = {
+    ['<C-b>'] = cmp.mapping(cmp.mapping.scroll_docs(-4), { 'i', 'c' }),
+    ['<C-f>'] = cmp.mapping(cmp.mapping.scroll_docs(4), { 'i', 'c' }),
+    ['<C-Space>'] = cmp.mapping(cmp.mapping.complete(), { 'i', 'c' }),
+    ['<C-y>'] = cmp.config.disable, -- Specify `cmp.config.disable` if you want to remove the default `<C-y>` mapping.
+    ['<C-e>'] = cmp.mapping({
+      i = cmp.mapping.abort(),
+      c = cmp.mapping.close(),
+    }),
+    ['<CR>'] = cmp.mapping.confirm({ select = true }), -- Accept currently selected item. Set `select` to `false` to only confirm explicitly selected items.
+  },
+  sources = cmp.config.sources({
+    { name = 'nvim_lsp' },
+    -- { name = 'vsnip' }, -- For vsnip users.
+    -- { name = 'luasnip' }, -- For luasnip users.
+    { name = 'ultisnips' }, -- For ultisnips users.
+    -- { name = 'snippy' }, -- For snippy users.
+  }, {
+    { name = 'buffer' },
+  })
+})
+
+-- Use buffer source for `/` (if you enabled `native_menu`, this won't work anymore).
+cmp.setup.cmdline('/', {
+  sources = {
+    { name = 'buffer' }
+  }
+})
+
+-- Use cmdline & path source for ':' (if you enabled `native_menu`, this won't work anymore).
+cmp.setup.cmdline(':', {
+  sources = cmp.config.sources({
+    { name = 'path' }
+  }, {
+    { name = 'cmdline' }
+  })
+})
 ```
 
-After you install that, now run:
+The first and second plugin are for snippets. The third one is to have the
+snippets actually show. If you don't have the third plugin, then you won't be
+able to see any auto-completion, snippets, lsp, etc. 
+
+The lines after the plugins are just configuring the cmp plugin. You can view
+the README [here](https://github.com/hrsh7th/nvim-cmp)
+
+Now, just run:
 
 ```viml
-:PackerInstall  " If you use packer
+:PackerInstall
 ```
 
-Congrats, you have installed UltiSnippets. Now, to start us off, let's install
-some snippets, that we can later on configure. To do that we need to install
-another plugin:
-
-```lua
-use { 'honza/vim-snippets' }         " If you use packer
-```
+Congrats, you have installed UltiSnippets.
 
 Next section, I will go over how to add/modify snippets yourself.
 
-### Adding snippets
+### Adding Snippets
 
 To add snippets, you first must configure `UltiSnips` itself. Now, add this to
 you're `init.vim` or `.vimrc`:
@@ -213,7 +263,7 @@ The 4th line is telling `UltiSnips` to open the file vertically when you run
 
 The last and final line tells `UltiSnips` where to find your snippets.
 
-#### Creating your own snippets
+#### Creating your own Snippets
 
 Place your snippets in `~/.config/nvim/UltiSnips/` or wherever you told
 `UltiSnips` to find theme. Each language has it's own specific snippet file. For
@@ -257,8 +307,6 @@ placeholder, it will be highlighted in visual mode, and you can overwrite it.
 
 Now you know the basics, let's get into some examples.
 
-### Sign
-
 The code for this is probably the simplest.
 
 ![sign](/posts/gifs/sign.gif)
@@ -273,7 +321,24 @@ Hashem A. Damrah
 endsnippet
 ```
 
-### Today and Date
+Here's a bit more advanced snippet.
+
+![box](/posts/gifs/box.gif)
+
+```snippets
+snippet box "Box"
+`!p snip.rv = '┌' + '─' * (len(t[1]) + 2) + '┐'`
+│ $1 │
+`!p snip.rv = '└' + '─' * (len(t[1]) + 2) + '┘'`
+$0
+endsnippet
+```
+
+This time, instead of using bash to run, it's running `python` inside of the
+`!p` tags.
+
+Essentially, what it's doing is that it's trying to figure out how long the line
+is, and adding the correct number of boxes around it.
 
 You can also run shell commands inside snippets, but you have to use back ticks
 (\`\`) for that.
@@ -287,6 +352,12 @@ snippet date-time "Today's date and Current Time"
 `date "+%b %d %Y %a %R`
 endsnippet
 ```
+
+You can even combine snippets:
+
+![combine](/posts/gifs/combine.gif)
+
+## LaTeX Snippets
 
 ### Environments
 
@@ -323,7 +394,7 @@ learn about this (which took about 1.5 hours.)
 
 It's called visual select tab. You highlight whatever you want, hit tab, then
 go ahead and activate the snippet. There you go, the code you highlighted is
-know surrounded with the environment you want! 😮‍💨
+know surrounded with the environment you want!
 
 ```viml
 snippet beg "begin{} / end{}" bAi
@@ -410,6 +481,18 @@ snippet example "Example" bAi
 \end{example}
 endsnippet
 
+snippet que "Question" bAi
+\begin{question}[$1]
+	$0${VISUAL}
+\end{question}
+endsnippet
+
+snippet ans "Answer" bAi
+\begin{answer}[$1]
+	$0${VISUAL}
+\end{answer}
+endsnippet
+
 snippet notion "Notation" bAi
 \begin{notation}[$1]
 	$0${VISUAL}
@@ -473,16 +556,47 @@ snippet case "cases" bAi
 \end{cases}
 endsnippet
 
+snippet ali "Align" bAi
+\begin{align}
+	${1:${VISUAL}}
+.\end{align}
+endsnippet
+
 snippet ali "Align*" bAi
 \begin{align*}
 	${1:${VISUAL}}
 .\end{align*}
 endsnippet
 
-snippet ali "Align" bAi
-\begin{align}
-	${1:${VISUAL}}
-.\end{align}
+snippet abs "abstract environment" b
+\begin{abstract}
+	$0${VISUAL}
+.\end{abstract}
+endsnippet
+
+snippet box "Box"
+`!p snip.rv = '┌' + '─' * (len(t[1]) + 2) + '┐'`
+│ $1 │
+`!p snip.rv = '└' + '─' * (len(t[1]) + 2) + '┘'`
+$0
+endsnippet
+
+snippet tab "tabular / array environment" b
+	\begin{${1:t}${1/(t)$|(a)$|(.*)/(?1:abular)(?2:rray)/}}{${2:c}}
+	$0${2/(?<=.)(c|l|r)|./(?1: & )/g}
+	\end{$1${1/(t)$|(a)$|(.*)/(?1:abular)(?2:rray)/}}
+endsnippet
+
+snippet table "Table environment" b
+\begin{table}[${1:htpb}]
+	\centering
+	\caption{${2:caption}}
+	\label{tab:${3:label}}
+
+	\begin{${4:t}${4/(t)$|(a)$|(.*)/(?1:abular)(?2:rray)/}}{${5:c}}
+		$0${5/(?<=.)(c|l|r)|./(?1: & )/g}
+	\end{$4${4/(t)$|(a)$|(.*)/(?1:abular)(?2:rray)/}}
+\end{table}
 endsnippet
 ```
 
@@ -731,7 +845,7 @@ set spelllang=en
 inoremap <C-l> <C-g>u<Esc>[s1z=`]a<C-g>u
 ```
 
-## Autocompletion
+## Auto completion
 
 Now, besides `snippets` helping me out a ton when taking notes, I also have
 `autocompletion`.
@@ -852,9 +966,109 @@ Now, when you type `\`, you will be able to see autocompletion.
 
 ### Demo of LSP
 
-#### LaTeX
-
 <img src="/posts/gifs/latex-lsp.gif">
+
+## Citation
+
+### Download Zotero
+
+For citation, you're going to need an extra tool. You're going to need the
+program [Zotero](https://www.zotero.org/). Download this program. Then, create
+an account with them. Don't worry, it's completely free, otherwise I wouldn't
+have used it from the beginning.
+
+This will help you create any citation for any:
+
+* Website
+* Book
+* Movie
+
+And you can choose any style you want. If you want **MLA** format, **Harvard**
+format, etc. Let's go over a tutorial real quickly.
+
+Here's how it looks like:
+
+![zotero](/posts/images/zotero.png)
+
+### Using Zotero
+
+Now, to cite websites, you're going to need to download their google extension.
+Download it from [here](https://chrome.google.com/webstore/detail/zotero-connector/ekhagklcjbdpajgpjgmbionohlpdbjgc?hl=en).
+
+Open up the **Zotero** program. Go to **Edit > Preferences > Sync **. From
+there, put in you're username and password from when you signed up with **Zotero**.
+
+While still in the preferences, you can change the style of citation by clicking
+the **Cite** section.
+
+You can create citation by clicking the **+** icon and select the type.
+You can also create different folders by left clicking the **My Library**
+button. You can:
+
+* Create Sub-Folder
+* Delete Sub-Folder
+* Sync
+
+You can also cite from websites using the extension you downloaded earlier and
+you can save the citation to a specific folder if you wish, but remember, all of
+your citations will end up in the **My Library**, but copied to other
+sub-folders.
+
+Here's a quick demo of me using **Zotero**:
+
+![demo-zotero](/posts/gifs/demo-zotero.gif)
+
+### Auto-Complete Citations
+
+> Be aware, if you want citation autocompletion, you must first install **LSP**.
+> <a class="center after" href="https://damrah.netlify.app/post/note-taking-with-latex-part-1/#auto-completion">here</a>
+> for a guide on how to do that.
+
+To download your citations, just left-click the folder, and select
+**Export Collection**. But, make sure to save it as a **.bib** file.
+
+![export](/posts/images/export.png)
+
+Make sure to save it as `bibliography.bib` and place it in the folder with your
+`master.tex` file. Here's an example of a `bibliography.bib` file using the
+**MLA** format:
+
+```bib
+@misc{noauthor_mathematics_2022,
+	title = {Mathematics},
+	copyright = {Creative Commons Attribution-ShareAlike License},
+	url = {https://en.wikipedia.org/w/index.php?title=Mathematics&oldid=1066575364},
+	abstract = {Mathematics (from Greek: μάθημα, máthēma, 'knowledge, study, learning') includes the study of such topics as numbers (arithmetic and number theory), formulas and related structures (algebra), shapes and spaces in which they are contained (geometry), and quantities and their changes (calculus and analysis). There is no general consensus about its exact scope or epistemological status.Most of mathematical activity consists of discovering and proving (by pure reasoning) properties of abstract objects. These objects are either abstractions from nature (such as natural numbers or "a line"), or (in modern mathematics) abstract entities that are defined by their basic properties, called axioms. A proof consists of a succession of applications of some deductive rules to already known results, including previously proved theorems, axioms and (in case of abstraction from nature) some basic properties that are considered as true starting points of the theory under consideration. The result of a proof is called a theorem. Contrary to scientific laws, the validity of a theorem (its truth) does not rely on any experimentation but on the correctness of its reasoning (though experimentation is often useful for discovering new theorems of interest).
+Mathematics is widely used in science for modeling phenomena. This enables the extraction of quantitative predictions from experimental laws. For example, the movement of planets can be predicted with high accuracy using Newton's law of gravitation combined with mathematical computation. The independence of mathematical truth from any experimentation implies that the accuracy of such predictions depends only on the adequacy of the model for describing the reality. So when some inaccurate predictions arise, it means that the model must be improved or changed, not that the mathematics is wrong. For example, the perihelion precession of Mercury cannot be explained by Newton's law of gravitation, but is accurately explained by Einstein's general relativity. This experimental validation of Einstein's theory shows that Newton's law of gravitation is only an approximation (which still is very accurate in everyday life). 
+Mathematics is essential in many fields, including natural sciences, engineering, medicine, finance, computer science and social sciences.
+Some areas of mathematics, such as statistics and game theory, are developed in direct correlation with their applications, and are often grouped under the name of applied mathematics. Other mathematical areas are developed independently from any application (and are therefore called pure mathematics), but practical applications are often discovered later. A fitting example is the problem of integer factorization which goes back to Euclid but had no practical application before its use in the RSA cryptosystem (for the security of computer networks).
+Mathematics has been a human activity from as far back as written records exist. However, the concept of a "proof" and its associated "mathematical rigour" first appeared in Greek mathematics, most notably in Euclid's Elements. Mathematics developed at a relatively slow pace until the Renaissance, when algebra and infinitesimal calculus were added to arithmetic and geometry as main areas of mathematics. Since then the interaction between mathematical innovations and scientific discoveries have led to a rapid increase in the rate of mathematical discoveries. At the end of the 19th century, the foundational crisis of mathematics led to the systematization of the axiomatic method. This, in turn, gave rise to a dramatic increase in the number of mathematics areas and their fields of applications; a witness of this is the Mathematics Subject Classification, which lists more than sixty first-level areas of mathematics.},
+	language = {en},
+	urldate = {2022-01-19},
+	journal = {Wikipedia},
+	month = jan,
+	year = {2022},
+	note = {Page Version ID: 1066575364},
+	file = {Snapshot:/home/hashem/Zotero/storage/NYDPEYFR/Mathematics.html:text/html},
+}
+```
+
+If you want NeoVim to autocomplete your citations for you, make sure to add this
+to your **master.tex**:
+
+```tex
+\bibliography{bibliography}
+```
+
+Once you've added that, once you type:
+
+```tex
+\cite{
+```
+
+You will start to get autocompletions. Here's a demo:
+
+![citation-completion](/posts/gifs/citation-completion.gif)
 
 ## Credit
 
@@ -876,3 +1090,5 @@ Stay tuned to learn about how I:
 * **draw figures**
 * **manage my notes**
 * **take notes**
+
+{{< video src="math" >}}
