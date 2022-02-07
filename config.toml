@@ -13,6 +13,7 @@ PreserveTaxonomyNames = false
 UglyUrls = false
 PygmentsStyle = "solarized-dark256"
 pygmentsCodefences = true
+
 pygmentsCodefencesGuessSyntax = true
 
 [Params]
