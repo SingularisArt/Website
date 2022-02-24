@@ -4,42 +4,38 @@ author:       	"Hashem A. Damrah"
 introduction: 	"This post talks about how I take notes with LaTeX: Part II"
 date:           "2022-01-09"
 description:    "I go over how to create figures in inkscape and quickly insert it into your notes using NeoVim."
-draft: 		 	    false
+draft: 		 	    true
 comments:		    true
 cover:			    "/covers/note-taking-with-latex-part-2.png"
 toc:			      true
 tags:         	["latex", "tutorial", "school", "notes"]
 ---
 
-In my [previous blog](https://damrah.netlify.app/post/note-taking-with-latex-part-1/)
+In my
+<a class="https://damrah.netlify.app/post/note-taking-with-latex-part-1/" href="https://inkscape.org/">previous blog</a>
 post, I explained how I take notes using NeoVim and LaTeX. In this post,
-I’ll talk about how I draw figures for my notes using Inkscape.
+I’ll talk about how I draw figures for my notes using **Inkscape**.
 
 ## What is Inkscape?
 
-<a class="center after" href="https://inkscape.org/">Inkscape</a> is an
-open-source vector graphics editor. It's available for all major platforms, let
-it be:
+<a class="center after" href="https://inkscape.org/">Inkscape</a> is a free,
+https://www.bu.edu/math/files/2013/08/tikzpgfmanual.pdf
+open-source vector graphics editor. When you start to use it, you will notice
+that it is lacking a ton of features when compared to **Adobe Photoshop**, but
+it works fine for drawing mathematical figures.
+
+It's available for:
 
 * **Windows**
 * **Mac**
 * **Linux**
 
-It's a free program, but when you compare it to the likes of **Adobe
-Illustrator**, you will see that it's lacking some things. But, it's perfect for
-drawing mathematical figures.
-
 ## Why Inkscape?
 
-The most common solutions for adding figures in LaTeX are using the packages:
+The most common way people add figures to their pdf is using a LaTeX package called **TikZ**.
+It's simple, lightweight, and fairly easy to get accustomed to.
 
-* **TikZ**
-* **PSTricks**
-* **Asymptote**
-
-All of these options have one thing in common, which is they are all command
-based, meaning you must write some code that specifies how the figure should be
-drawn. Here's an example:
+Here's an example of me using tikz:
 
 ```latex
 \begin{tikzpicture}
@@ -49,27 +45,31 @@ drawn. Here's an example:
 \end{tikzpicture}
 ```
 
-Which gives you this graph:
+This produces this result:
 
 ![tikzpicture](images/tikzpicture.png)
 
-The benefits of using these packages is that drawing a figure is a lot like
-programming. You can:
+There are benefits to using this package.
 
-* Use Variables
-* Use for loops
-* Do Calculations
-* Etc ...
+1. It's a lot like programming. You can use for loops, variables, calculations, etc
+2. Figures blend in nicely into your document because all of the text is
+   typeset for LaTeX.
+3. You can modify things on the fly.
 
-Also, figures blend in nicely in your document because all text is typeset for
-**LaTeX** itself. This means that you can typeset math effortlessly. Also, you
-can change the figure on the fly. If you want to change the font, font size, you
-can do it without opening a program like **Inkscape**.
+But, as there are benefits, there are draw backs:
 
-However, using these packages costs you visual feedback and speed. Drawing
-complex figures is a cumbersome task, especially when hard coding the figure.
-It's much easier to draw the needed figures using a program dedicated to drawing
-figures, such as **Inkscape**.
+1. Using packages like tikz costs you visual feedback and sometimes, even speed.
+2. Drawing complex figures, especially when you get into topology get's really
+   tiresome and repetitive. It's also prone to human error.
+
+I think that it's much easier to draw the needed figures using a program
+dedicated to drawing figures, such as **Inkscape**, **Adobe Photoshop**, etc.
+
+But, for simple things like drawing a circle, line, equation, etc, I recommend
+you to use a package like tikz. It's because inkscape can be quite slow at times,
+and it's just much easier draw using tikz, especially when you already know how
+the image will look like. If you want to learn tikz, take a look
+<a class="https://www.bu.edu/math/files/2013/08/tikzpgfmanual.pdf" href="https://inkscape.org/">here</a>.
 
 With this out of the way, let’s get started.
 

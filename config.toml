@@ -22,6 +22,8 @@ pygmentsCodefencesGuessSyntax = true
   MonthFormat = "01-02"
   Fancybox = true
 
+  codePenUser = "singularisart"
+
   AuthorImg = "/img/avatar.png"
   ImgLogo = "/img/logo.png"
 
