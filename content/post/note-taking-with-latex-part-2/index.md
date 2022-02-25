@@ -2,7 +2,7 @@
 title:          "Note Taking With LaTeX: Part II (Graphs)"
 author:       	"Hashem A. Damrah"
 introduction: 	"This post talks about how I take notes with LaTeX: Part II"
-date:           "2022-01-09"
+date:           "2022-01-02"
 description:    "I go over how to create figures in inkscape and quickly insert it into your notes using NeoVim."
 draft: 		 	    true
 comments:		    true

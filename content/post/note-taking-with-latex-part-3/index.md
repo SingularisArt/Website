@@ -2,11 +2,11 @@
 title:          "Note Taking With LaTeX: Part III (Scripts)"
 author:       	"Hashem A. Damrah"
 introduction: 	""
-date:           "2022-01-10"
+date:           "2022-01-03"
 description:  	""
 draft: 		 	    true
 comments:		    true
-cover:			    "/posts/images/note-taking-with-latex-part-3.png"
+cover:			    "/covers/note-taking-with-latex-part-3.png"
 toc:			      true
 tags:         	["latex", "tutorial", "school", "notes"]
 ---

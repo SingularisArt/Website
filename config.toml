@@ -24,8 +24,8 @@ pygmentsCodefencesGuessSyntax = true
 
   codePenUser = "singularisart"
 
-  AuthorImg = "/img/avatar.png"
-  ImgLogo = "/img/logo.png"
+  AuthorImg = "/images/avatar.png"
+  ImgLogo = "/images/logo.png"
 
   author = "Hashem A. Damrah"
   introduce = "hello"

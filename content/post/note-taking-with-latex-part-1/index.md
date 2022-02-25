@@ -2,7 +2,7 @@
 title:        	"Note Taking with LaTeX: Part I (NeoVim)"
 author:       	"Hashem A. Damrah"
 introduction: 	"This post talks about how I take notes with LaTeX: Part I"
-date:         	2022-01-08
+date:         	2022-01-01
 description:    "I go over using NeoVim and LaTeX to take notes with, but I specifically talk about talking notes with Mathematics."
 draft: 		 	    false
 comments:		    true
@@ -77,8 +77,10 @@ Here is a quick list of all of my utilities:
   <a class="center after" href="https://www.github.com/pwmt/zathura">**Zathura**</a>
 
 I have a huge list of plugins that you can view
-<a class="center after" href="https://www.github.com/SingularisArt/Death.NeoVim#all-of-my-plugins">here</a>), but
-the plugin that I use for **LaTeX** is <a class="center after" href="https://www.github.com/lervag/vimtex">vimtex</a>. It provides:
+<a class="center after" href="https://github.com/SingularisArt/Death.NeoVim/tree/master/pack/bundle/opt">here</a>),
+but the plugin that I use for **LaTeX** is
+<a class="center after" href="https://www.github.com/lervag/vimtex">vimtex</a>.
+It provides:
 
 * Syntax highlighting
 * Auto compiling
@@ -89,36 +91,77 @@ But, before I talk about how I configure NeoVim for **LaTeX**, let me explain to
 you how I setup my NeoVim. This won't be an in depth tutorial (that will be in a
 different post.)
 
-For installing and managing plugins, I use the plugin manager
-<a class="center after" href="https://www.github.com/wbthomason/packer">Packer</a>.
-The reason I use it is because it's written in **Lua**, and **Lua** is much
-faster than **Vimscript**. Now, if you want an in-depth tutorial on setting up
-**Packer**, go <a class="center after" href="https://damrah.netlify.app/post/note-taking-with-latex-part-2">here</a>
+For installing my plugins, I don't use a package manager.
+I use **Git Submodules**. Here's an example:
+
+```bash
+git submodule add --name "vimtex" https://github.com/lervag/vimtex pack/bundle/opt/vimtex/
+```
+
+If you look at my
+<a class="center after" href="https://github.com/SingularisArt/Death.NeoVim/blob/master/.gitmodules">.gitmodules</a>.
+you can see all of my plugins.
+
+If you install plugin this way, they won't load. You have to load it yourself.
+Here's how I do it:
+
+```lua
+local autoload = function(base)
+  local storage = {}
+  local mt = {
+    __index = function(_, key)
+      if storage[key] == nil then
+        storage[key] = require(base .. '.' .. key)
+      end
+      return storage[key]
+    end
+  }
+
+  return setmetatable({}, mt)
+end
+
+return autoload
+```
+
+Put this in: `lua/github-username/autoload.lua`. Then, add this in your `lua/github-username/init.lua`:
+
+```lua
+local autoload = require('github-username.autoload')
+
+local github-username = autoload('github-username')
+
+-- Using a real global here to make sure anything stashed in here (and
+-- in `SingularisArt.g`) survives even after the last reference to it goes away.
+_G.github-username = github-username
+
+return github-username
+```
+
+Replace `github-username` with your GitHub username. What it's doing is it's
+calling all of my configuration files within my `lua/SingularisArt` directory,
+then returning them for me to access them in my main `init.lua`.
+
+Now, here's how I call each plugin:
+
+```lua
+if vim.o.loadplugins then
+  ...
+  SingularisArt.plugin.load("vimtex")
+  ...
+end
+```
+
+This is just calling the plugin, which is stored in `pack/bundle/opt`. If you
+don't want to have a plugin load, then just comment out the line that calls it,
+and it won't be called.
 
 Now, back to **LaTeX**, I use a gazillion plugins (You can view them all
 <a class="center after" href="https://github.com/SingularisArt/Death.NeoVim/blob/master/lua/core/plugins.lua">here</a>),
 but the most powerful one for **LaTeX** users is 
-<a class="center after" href="https://www.github.com/lervag/vimtex">VimTex</a>. Here is how I installed it:
+<a class="center after" href="https://www.github.com/lervag/vimtex">VimTex</a>.
 
-Add this line to your `plugins.lua` or wherever you put your plugins. But make
-sure you source it in your `init.vim` or `init.lua`.
-
-```lua
-use { 'lervag/vimtex' }
-```
-
-If you don't use **Packer**, then replace the **use** with whatever your plugin
-manager requires. Here's a quick example:
-
-```viml
-Plug 'lervag/vimtex'    " For vim-plug users
-Plugin 'lervag/vimtex'  " For vundle users
-```
-
-If you use any of these lines, put it in your `plugins.vim`. But make sure you
-source it in your `init.vim` or `init.lua`.
-
-Add that to your `plugins.lua`, or wherever you place your plugins.
+I'm going to assume that you already know how to install plugins and you already have a plugin manager.
+If you haven't already, go ahead and install the **VimTex** plugin.
 
 Now, time to configure it. Add this to your `init.vim` or `.vimrc`:
 
@@ -129,7 +172,10 @@ set conceallevel=1
 ```
 
 The first line tells **VIMTEX** what pdf viewer you want to use to open your
-pdf. Simple. The next line tells what kind of **LaTeX** you want to use to compile your document. The last line tell NeoVim to configure the concealment.
+pdf. Simple. The next line tells what kind of **LaTeX** you want to use to
+compile your document. The last line tell NeoVim to configure the concealment
+level.
+
 This is a feature that NeoVim uses to hide certain parts of the code if your
 cursor isn't on it. It hides **\\[**, **\\]**, **$**. By making **\\[**,
 **\\]**, **$** invisible, they aren't so distracting. Here's a quick demo:
@@ -156,83 +202,241 @@ For example, you might have **snippets** for python, while having different
 **snippets** for **LaTeX**.
 
 You can take a look over
-<a class="center after" href="https://www.github.com/SingularisArt/Death.NeoVim/blob/UltiSnippets/tex.snippets">VimTehere</a> to see all of my **LaTeX snippets**, but I will be going over the most important
-ones in this article.
+<a class="center after" href="https://www.github.com/SingularisArt/Death.NeoVim/blob/UltiSnippets/tex.snippets">VimTehere</a>
+to see all of my **LaTeX snippets**, but I will be going over the most
+important ones in this article.
 
 ### Installing Snippets
 
-Like before, put this in `plugins.lua`, or wherever you keep your plugins at:
+Like before, go ahead and install these plugins:
+
+```
+https://github.com/SirVer/ultisnips
+https://github.com/honza/vim-snippets
+https://github.com/hrsh7th/nvim-cmp
+```
+
+The first plugin (`ultisnips`) is the snippet manager.
+The second plugin (`vim-snippets`) has all of the UltiSnips snippets.
+The third plugin (`nvim-cmp`) is a completion engine.
+
+Here's a quick demo using all of these three plugins:
+
+You're gonna have to create a directory called: `after/plugin/`.
+This is where you're going to put your configuration in. The reason you put all
+of your plugin configuration here is because NeoVim will run all of the .lua
+files within this directory. This means you don't have to manually require each
+file.
+
+Create a file called `after/plugin/cmp.lua` and place this configuration in it.
 
 ```lua
-use { 'SirVer/ultisnips' }
-use { 'honza/vim-snippets' }
-use { 'hrsh7th/nvim-cmp' }
+vim.cmd([[set completeopt=menuone,noinsert,noselect]])
 
-local cmp = require'cmp'
+local cmp_status, cmp = pcall(require, "cmp")
+
+if not cmp_status then
+	vim.notify("Please Install 'cmp'")
+	return
+end
+
+local kind_icons = {
+  Class = " ",
+  Color = " ",
+  Constant = "ﲀ ",
+  Constructor = " ",
+  Enum = "練",
+  EnumMember = " ",
+  Event = " ",
+  Field = " ",
+  File = "",
+  Folder = " ",
+  Function = " ",
+  Interface = "ﰮ ",
+  Keyword = " ",
+  Method = " ",
+  Module = " ",
+  Operator = "",
+  Property = " ",
+  Reference = " ",
+  Snippet = " ",
+  Struct = " ",
+  Text = " ",
+  TypeParameter = " ",
+  Unit = "塞",
+  Value = " ",
+  Variable = " ",
+}
+
+Vscode = vim.lsp.protocol.make_client_capabilities()
+
+local source_mapping = {
+  nvim_lsp = "(LSP)",
+  nvim_lua = "(Lua)",
+  latex_symbols = "(LaTeX)",
+  ultisnips = "(Snippet)",
+  cmp_tabnine = "(TabNine)",
+  calc = "(Calculator)",
+  gh_issues = "(Issues)",
+  path = "(Path)",
+  buffer = "(Buffer)",
+  emoji = "(Emoji)",
+  spell = "(Spell)",
+}
+
+Capabilities = require("cmp_nvim_lsp").update_capabilities(vim.lsp.protocol.make_client_capabilities())
+Vscode.textDocument.completion.completionItem.snippetSupport = true
 
 cmp.setup({
   snippet = {
     -- REQUIRED - you must specify a snippet engine
     expand = function(args)
-      vim.fn["vsnip#anonymous"](args.body) -- For `vsnip` users.
-      -- require('luasnip').lsp_expand(args.body) -- For `luasnip` users.
+      vim.fn["UltiSnips#Anon"](args.body) -- For `ultisnips` users.
+      --require('luasnip').lsp_expand(args.body) -- For `luasnip` users.
       -- require('snippy').expand_snippet(args.body) -- For `snippy` users.
-      -- vim.fn["UltiSnips#Anon"](args.body) -- For `ultisnips` users.
     end,
+
+  enabled = function()
+    local lnum, col = vim.fn.line('.'), math.min(vim.fn.col('.'), #vim.fn.getline('.'))
+    for _, syn_id in ipairs(vim.fn.synstack(lnum, col)) do
+      syn_id = vim.fn.synIDtrans(syn_id) -- Resolve :highlight links
+      if vim.fn.synIDattr(syn_id, 'name') == 'Comment' then
+        return false
+      end
+    end
+    return true
+  end,
   },
+
   mapping = {
-    ['<C-b>'] = cmp.mapping(cmp.mapping.scroll_docs(-4), { 'i', 'c' }),
-    ['<C-f>'] = cmp.mapping(cmp.mapping.scroll_docs(4), { 'i', 'c' }),
-    ['<C-Space>'] = cmp.mapping(cmp.mapping.complete(), { 'i', 'c' }),
-    ['<C-y>'] = cmp.config.disable, -- Specify `cmp.config.disable` if you want to remove the default `<C-y>` mapping.
-    ['<C-e>'] = cmp.mapping({
+    ["<C-y>"] = cmp.config.disable, -- Specify `cmp.config.disable` if you want to remove the default `<C-y>` mapping.
+    ["<C-k>"] = cmp.mapping.select_prev_item(),
+    ["<C-j>"] = cmp.mapping.select_next_item(),
+    ["<A-p>"] = cmp.mapping.scroll_docs(-4),
+    ["<A-n>"] = cmp.mapping.scroll_docs(4),
+    ["<C-b>"] = cmp.mapping(cmp.mapping.complete(), { "i", "c" }),
+    ["<CR>"] = cmp.mapping.confirm({ select = true }),
+    ["<C-e>"] = cmp.mapping({
       i = cmp.mapping.abort(),
       c = cmp.mapping.close(),
     }),
-    ['<CR>'] = cmp.mapping.confirm({ select = true }), -- Accept currently selected item. Set `select` to `false` to only confirm explicitly selected items.
   },
+
+  documentation = {
+    border = { "╭", "─", "╮", "│", "╯", "─", "╰", "│" },
+  },
+
   sources = cmp.config.sources({
-    { name = 'nvim_lsp' },
-    -- { name = 'vsnip' }, -- For vsnip users.
-    -- { name = 'luasnip' }, -- For luasnip users.
-    { name = 'ultisnips' }, -- For ultisnips users.
-    -- { name = 'snippy' }, -- For snippy users.
-  }, {
-    { name = 'buffer' },
-  })
+    { name = "nvim_lsp" },
+    { name = "nvim_lua" },
+    { name = "latex_symbols" },
+    { name = "ultisnips" },
+    { name = "cmp_tabnine" },
+    { name = "calc" },
+    { name = "gh_issues" },
+    { name = "path" },
+    { name = "buffer" },
+    { name = "emoji" },
+    { name = "spell" },
+  }),
+
+  experimental = {
+    native_menu = false,
+    ghost_text = true,
+  },
+
+  formatting = {
+    format = function(entry, vim_item)
+      vim_item.kind = kind_icons[vim_item.kind]
+      local menu = source_mapping[entry.source.name]
+      if entry.source.name == "cmp_tabnine" then
+        if entry.completion_item.data ~= nil and entry.completion_item.data.detail ~= nil then
+          menu = entry.completion_item.data.detail .. " " .. menu
+        end
+        vim_item.kind = ""
+      end
+      vim_item.menu = menu
+      return vim_item
+    end,
+  },
 })
 
--- Use buffer source for `/` (if you enabled `native_menu`, this won't work anymore).
-cmp.setup.cmdline('/', {
+cmp.setup.cmdline(":", {
   sources = {
-    { name = 'buffer' }
-  }
+    { name = "cmdline" },
+  },
 })
 
--- Use cmdline & path source for ':' (if you enabled `native_menu`, this won't work anymore).
-cmp.setup.cmdline(':', {
-  sources = cmp.config.sources({
-    { name = 'path' }
-  }, {
-    { name = 'cmdline' }
-  })
-})
+local Job = require("plenary.job")
+
+local source = {}
+
+source.new = function()
+  local self = setmetatable({ cache = {} }, { __index = source })
+
+  return self
+end
+
+source.complete = function(self, _, callback)
+  local bufnr = vim.api.nvim_get_current_buf()
+
+  -- This just makes sure that we only hit the GH API once per session.
+  --
+  -- You could remove this if you wanted, but this just makes it so we're
+  -- good programming citizens.
+  if not self.cache[bufnr] then
+    Job
+      :new({
+        -- Uses `gh` executable to request the issues from the remote repository.
+        "gh",
+        "issue",
+        "list",
+        "--limit",
+        "1000",
+        "--json",
+        "title,number,body",
+
+        on_exit = function(job)
+          local result = job:result()
+          local ok, parsed = pcall(vim.json.decode, table.concat(result, ""))
+          if not ok then
+            vim.notify "Failed to parse gh result"
+            return
+          end
+
+          local items = {}
+          for _, gh_item in ipairs(parsed) do
+            gh_item.body = string.gsub(gh_item.body or "", "\r", "")
+
+            table.insert(items, {
+              label = string.format("#%s", gh_item.number),
+              documentation = {
+                kind = "markdown",
+                value = string.format("# %s\n\n%s", gh_item.title, gh_item.body),
+              },
+            })
+          end
+
+          callback { items = items, isIncomplete = false }
+          self.cache[bufnr] = items
+        end,
+      })
+      :start()
+  else
+    callback { items = self.cache[bufnr], isIncomplete = false }
+  end
+end
+
+source.get_trigger_characters = function()
+  return { "#" }
+end
+
+source.is_available = function()
+  return vim.bo.filetype == "gitcommit"
+end
 ```
 
-The first and second plugin are for snippets. The third one is to have the
-snippets actually show. If you don't have the third plugin, then you won't be
-able to see any auto-completion, snippets, lsp, etc. 
-
-The lines after the plugins are just configuring the cmp plugin. You can view
-the README [here](https://github.com/hrsh7th/nvim-cmp)
-
-Now, just run:
-
-```viml
-:PackerInstall
-```
-
-Congrats, you have installed UltiSnippets.
+{{< video src="videos/three-plugin-demo.mp4" autoplay="true" loop="true" muted="true">}}
 
 Next section, I will go over how to add/modify snippets yourself.
 
@@ -321,29 +525,10 @@ Hashem A. Damrah
 endsnippet
 ```
 
-Here's a bit more advanced snippet.
-
-TODO: Add box
-
-```snippets
-snippet box "Box"
-`!p snip.rv = '┌' + '─' * (len(t[1]) + 2) + '┐'`
-│ $1 │
-`!p snip.rv = '└' + '─' * (len(t[1]) + 2) + '┘'`
-$0
-endsnippet
-```
-
-This time, instead of using bash to run, it's running `python` inside of the
-`!p` tags.
-
-Essentially, what it's doing is that it's trying to figure out how long the line
-is, and adding the correct number of boxes around it.
-
 You can also run shell commands inside snippets, but you have to use back ticks
 (\`\`) for that.
 
-{{< video src="videos/today-date.mp4" autoplay="true" loop="true" muted="true">}}
+{{< video src="videos/date.mp4" autoplay="true" loop="true" muted="true">}}
 
 Here is the snippet code for it:
 
@@ -370,10 +555,10 @@ You start typing out what kind of environment you want. Then, once you're done,
 hit tab. That will move you into the environment.
 
 ```viml
-snippet beg "begin{} / end{}" bA
+snippet beg "begin{} / end{}" bAi
 \begin{$1}
-	${1:${VISUAL}}
-\end{$1}
+	${VISUAL}$2
+\end{$1}$0
 endsnippet
 ```
 
@@ -397,206 +582,194 @@ go ahead and activate the snippet. There you go, the code you highlighted is
 know surrounded with the environment you want!
 
 ```viml
-snippet beg "begin{} / end{}" bAi
-\begin{$1}
-	$0${VISUAL}
-\end{$1}
-endsnippet
-
 snippet doc "Document" bAi
 \begin{document}
-	$0${VISUAL}
-\end{document}
+	${VISUAL}$1
+\end{document}$0
 endsnippet
 
 snippet cnt "Center" bAi
 \begin{center}
-	$0${VISUAL}
-\end{center}
+	${VISUAL}$1
+\end{center}$0
 endsnippet
 
 snippet desc "Description" bAi
 \begin{description}
-	$0${VISUAL}
-\end{description}
+	${VISUAL}$1
+\end{description}$0
 endsnippet
 
 snippet lemma "Lemma" bAi
 \begin{lemma}
-	$0${VISUAL}
-\end{lemma}
+	${VISUAL}$1
+\end{lemma}$0
 endsnippet
 
 snippet prop "Proposition" bAi
 \begin{prop}[$1]
-	$0${VISUAL}
-\end{prop}
+	${VISUAL}$2
+\end{prop}$0
 endsnippet
 
 snippet thrm "Theorem" bAi
 \begin{theorem}[$1]
-	$0${VISUAL}
-\end{theorem}
+	${VISUAL}$2
+\end{theorem}$0
 endsnippet
 
 snippet post "postulate" bAi
 \begin{postulate}[$1]
-	$0${VISUAL}
-\end{postulate}
+	${VISUAL}$2
+\end{postulate}$0
 endsnippet
 
 snippet prf "Proof" bAi
-\begin{myproof}[$1]
-	$0${VISUAL}
-\end{myproof}
+\begin{proof}[$1]
+	${VISUAL}$2
+\end{proof}$0
 endsnippet
 
 snippet def "Definition" bAi
 \begin{definition}[$1]
-	$0${VISUAL}
-\end{definition}
+	${VISUAL}$2
+\end{definition}$0
 endsnippet
 
 snippet nte "Note" bAi
 \begin{note}[$1]
-	$0${VISUAL}
-\end{note}
+	${VISUAL}$2
+\end{note}$0
 endsnippet
 
 snippet prob "Problem" bAi
 \begin{problem}[$1]
-	$0${VISUAL}
-\end{problem}
+	${VISUAL}$2
+\end{problem}$0
 endsnippet
 
 snippet corl "Corollary" bAi
 \begin{corollary}[$1]
-	$0${VISUAL}
-\end{corollary}
+	${VISUAL}$2
+\end{corollary}$0
 endsnippet
 
-snippet example "Example" bAi
+snippet exm "Example" bAi
 \begin{example}[$1]
-	$0${VISUAL}
-\end{example}
+	${VISUAL}$2
+\end{example}$0
 endsnippet
 
-snippet que "Question" bAi
-\begin{question}[$1]
-	$0${VISUAL}
-\end{question}
-endsnippet
-
-snippet ans "Answer" bAi
-\begin{answer}[$1]
-	$0${VISUAL}
-\end{answer}
-endsnippet
-
-snippet notion "Notation" bAi
+snippet ntn "Notation" bAi
 \begin{notation}[$1]
-	$0${VISUAL}
-\end{notation}
+	${VISUAL}$2
+\end{notation}$0
 endsnippet
 
 snippet rep "Repetition" bAi
 \begin{repetition}[$1]
-	$0${VISUAL}
-\end{repetition}
+	${VISUAL}$2
+\end{repetition}$0
 endsnippet
 
 snippet prop "Property" bAi
 \begin{property}[$1]
-	$0${VISUAL}
-\end{property}
+	${VISUAL}$2
+\end{property}$0
 endsnippet
 
 snippet int "Intuition" bAi
 \begin{intuition}[$1]
-	$0${VISUAL}
-\end{intuition}
+	${VISUAL}$2
+\end{intuition}$0
 endsnippet
 
 snippet obs "Observation" bAi
 \begin{observation}[$1]
-	$0${VISUAL}
-\end{observation}
+	${VISUAL}$2
+\end{observation}$0
 endsnippet
 
 snippet conc "Conclusion" bAi
 \begin{conclusion}[$1]
-	$0${VISUAL}
-\end{conclusion}
-endsnippet
-
-snippet fig "Figure environment" bAi
-\begin{figure}[${1:htpb}]
-	\centering:${VISUAL}
-	${2:\includegraphics[width=0.8\textwidth]{$3}}
-	\caption{${4:$3}}
-	\label{fig:${5:${3/\W+/-/g}}}
-\end{figure}
+	${VISUAL}$2
+\end{conclusion}$0
 endsnippet
 
 snippet enum "Enumerate" bAi
 \begin{enumerate}
-	\item $0${VISUAL}
-\end{enumerate}
+	\item ${VISUAL}$1
+\end{enumerate}$0
 endsnippet
 
 snippet item "Itemize" bAi
 \begin{itemize}
-	\item $0${VISUAL}
-\end{itemize}
+	\item ${VISUAL}$1
+\end{itemize}$0
 endsnippet
 
 snippet case "cases" bAi
 \begin{cases}
-	$0${VISUAL}
-\end{cases}
-endsnippet
-
-snippet ali "Align" bAi
-\begin{align}
-	${1:${VISUAL}}
-.\end{align}
+	${VISUAL}$1
+\end{cases}$0
 endsnippet
 
 snippet ali "Align*" bAi
 \begin{align*}
-	${1:${VISUAL}}
-.\end{align*}
+	${VISUAL}$1
+.\end{align*}$0
 endsnippet
 
-snippet abs "abstract environment" b
-\begin{abstract}
-	$0${VISUAL}
-.\end{abstract}
+snippet ali "Align" bAi
+\begin{align}
+	${VISUAL}$1
+.\end{align}$0
 endsnippet
 
-snippet box "Box"
-`!p snip.rv = '┌' + '─' * (len(t[1]) + 2) + '┐'`
-│ $1 │
-`!p snip.rv = '└' + '─' * (len(t[1]) + 2) + '┘'`
-$0
+snippet eqt "Equation" bAi
+\begin{equation}
+	\begin{split}
+		${VISUAL}$1
+	\end{split}
+.\end{equation}$0
 endsnippet
 
-snippet tab "tabular / array environment" b
+snippet fig "Figure environment" bAi
+\begin{figure}[${1:htpb}]
+	\centering
+	${2:\includegraphics[width=0.8\textwidth]{$3}}
+	\caption{${4:$3}}
+	\label{fig:${5:${3/\W+/-/g}}}
+\end{figure}$0
+endsnippet
+
+snippet tkz "Tikz pgfplot" bAi
+endsnippet
+
+snippet tab "tabular / array environment" bAi
 	\begin{${1:t}${1/(t)$|(a)$|(.*)/(?1:abular)(?2:rray)/}}{${2:c}}
-	$0${2/(?<=.)(c|l|r)|./(?1: & )/g}
-	\end{$1${1/(t)$|(a)$|(.*)/(?1:abular)(?2:rray)/}}
+		$0${2/(?<=.)(c|l|r)|./(?1: & )/g}
+	\end{$1${1/(t)$|(a)$|(.*)/(?1:abular)(?2:rray)/}}$0
 endsnippet
 
-snippet table "Table environment" b
+snippet tbl "Table environment" bAi
 \begin{table}[${1:htpb}]
 	\centering
 	\caption{${2:caption}}
-	\label{tab:${3:label}}
+	\label{tab:${3:${2/\\\w+\{(.*?)\}|\\(.)|(\w+)|([^\w\\]+)/(?4:_:\L$1$2$3\E)/ga}}}
 
 	\begin{${4:t}${4/(t)$|(a)$|(.*)/(?1:abular)(?2:rray)/}}{${5:c}}
 		$0${5/(?<=.)(c|l|r)|./(?1: & )/g}
 	\end{$4${4/(t)$|(a)$|(.*)/(?1:abular)(?2:rray)/}}
-\end{table}
+\end{table}$0
+endsnippet
+
+pre_expand "create_table(snip)"
+snippet "gentbl(\d+)x(\d+)" "Generate table of *width* by *height*" wrAbi
+endsnippet
+
+pre_expand "add_row(snip)"
+snippet "tr(\d+)" "Add table row of dimension ..." wrAbi
 endsnippet
 ```
 
@@ -608,24 +781,24 @@ person types the trigger word**.
 ### Inline and Display Math
 
 These are my two most frequency used snippets. They are responsible for bringing
-me into math mode. They are `im` (Inline Math) and `dm` (Display Math).
+me into math mode. They are `ilm` (Inline Math) and `dm` (Display Math).
 
 {{< video src="videos/math.mp4" autoplay="true" loop="true" muted="true">}}
 
 ```viml
-snippet im "Inline Math" wA
-$${1}$`!p
+snippet ilm "Inline Math" wA
+$${VISUAL}$1$`!p
 if t[2] and t[2][0] not in [',', '.', '?', '-', ' ']:
-	snip.rv = ' '
+    snip.rv = ' '
 else:
-	snip.rv = ''
+    snip.rv = ''
 `$2
 endsnippet
 
-snippet dm "Display Math" wAb
+snippet dm "Display Math" wA
 \[
-	${1:${VISUAL}}
-.\] $0
+	${VISUAL}$1
+\].$0
 endsnippet
 ```
 
@@ -790,6 +963,48 @@ snippet / "Fraction" iA
 endsnippet
 ```
 
+### Context
+
+
+The number one problem that I had when I first started using UltiSnips was:
+**My snippets kept colliding with me writing text.**
+
+For example, let's say you're typing `newsroom`. Since it has `sr`, this will
+expand to `\sqrt{}`, which will result in `new\\sqrt{}oom`.
+
+The solution to keep this from happening is to use something called `context`.
+This will help us determine if we are in the correct environment to expand the
+snippet. Here's the code for it:
+
+```snippets
+global !p
+def math():
+	return vim.eval('vimtex#syntax#in_mathzone()') == '1'
+
+def not_math():
+	return vim.eval('vimtex#syntax#in_mathzone()') == '0'
+
+def comment(): 
+	return vim.eval('vimtex#syntax#in_comment()') == '1'
+
+def env(name):
+	[x,y] = vim.eval("vimtex#env#is_inside('" + name + "')") 
+	return x != '0' and y != '0'
+endglobal
+```
+
+Now we can add `context math()` to the snippets you would like to expand only
+in math mode.
+
+```snippets
+context "math()"
+snippet sr "Square root" iA
+\sqrt{$1}$0
+endsnippet
+```
+
+{{< video src="videos/context.mp4" autoplay="true" loop="true" muted="true">}}
+
 ### School lessons
 
 I don't really use these that often because I created scripts that do a lot of
@@ -816,12 +1031,12 @@ use them, etc.
 
 ```viml
 snippet les "Lesson"
-\lesson{${1:LESSON NUMBER}}{`date "+%b %d %Y %a (%H:%M:%S)"`}{${3:LESSON NAME}}
+\lesson{${1:LESSON NUMBER}}{\`date "+%b %d %Y %a (%H:%M:%S)"\`}{${3:LESSON NAME}}
 $0
 endsnippet
 
 snippet lec "Lecture"
-\lecture{${1:LECTURE NUMBER}}{`date "+%b %d %Y %a (%H:%M:%S)"`}{${3:LECTURE NAME}}
+\lecture{${1:LECTURE NUMBER}}{\`date "+%b %d %Y %a (%H:%M:%S)"\`}{${3:LECTURE NAME}}
 $0
 endsnippet
 ```
@@ -857,18 +1072,14 @@ suggestions, etc based on the language that I'm using.
 
 ### Setting LSP in NeoVim
 
-First of all, paste this code in your `plugins.lua` (Notice, you may use a
-different plugin manager):
+We first need to install these plugins:
 
 ```lua
-use { 'neovim/nvim-lspconfig' } -- Main lsp plugin
-use { 'onsails/lspkind-nvim' } -- Gives us icons
-use { 'tami5/lspsaga.nvim', branch="nvim51" }
-use { 'williamboman/nvim-lsp-installer' } -- Installs lsp servers
+https://github.com/neovim/nvim-lspconfig
+https://github.com/onsails/lspkind-nvim
+https://github.com/tami5/lspsaga.nvim (Branch name: nvim51)
+https://github.com/williamboman/nvim-lsp-installer
 ```
-
-Now, restart NeoVim (by leaving and coming back) and run `:PackerSync`. That
-will install those plugins for you.
 
 ### Install your language server
 
@@ -880,7 +1091,8 @@ To install your language server, just run `:LspInstall [lang name]`. Now, you
 have your language server installed in NeoVim.
 
 But, you need to server installed on your computer. To do that, head over
-<a class="center after" href="https://github.com/neovim/nvim-lspconfig/blob/master/doc/server_configurations.md">here</a>
+<a class="center after"
+href="https://github.com/neovim/nvim-lspconfig/blob/master/doc/server_configurations.md">here</a>
 and find your language. Follow the link that they provide and install it from
 there.
 
@@ -900,6 +1112,8 @@ So, here is a better way of doing it:
 ```lua
 -- LSP Servers to install
 
+local capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities())
+
 local langservers = {
   'sumneko_lua',      -- Lua
   'vimls',            -- Vim
@@ -907,16 +1121,19 @@ local langservers = {
   'pylsp',            -- Python
   'bashls',           -- Bash
   'clangd',           -- C++,C
+  'omnisharp',        -- C#
   'cmake',            -- CMake
   'html',             -- HTML
   'cssls',            -- CSS
+  'jsonls',           -- JSON
   'rust_analyzer',    -- Rust
   'tsserver',         -- Typescript/Javascript
   'yamlls',           -- Yaml
+  'solc',             -- Solidity
+  'solang',           -- Solidity
   'solidity_ls',      -- Solidity
+  'dockerls',         -- Docker
 }
-
-local capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities())
 
 for _, server in ipairs(langservers) do
   if server == 'sumneko_lua' then
@@ -926,14 +1143,12 @@ for _, server in ipairs(langservers) do
         Lua = {
           diagnostics = {
             globals = { 'vim', 'use' }
-          }
+          },
         }
       }
     }
   else
-    require('lspconfig')[server].setup {
-      capabilities = capabilities
-    }
+    require('lspconfig')[server].setup { capabilities = capabilities }
   end
 end
 ```
@@ -966,109 +1181,7 @@ Now, when you type `\`, you will be able to see autocompletion.
 
 ### Demo of LSP
 
-{{< video src="videos/latex-lsp.mp4" autoplay="true" loop="true" muted="true">}}
-
-## Citation
-
-### Download Zotero
-
-For citation, you're going to need an extra tool. You're going to need the
-program [Zotero](https://www.zotero.org/). Download this program. Then, create
-an account with them. Don't worry, it's completely free, otherwise I wouldn't
-have used it from the beginning.
-
-This will help you create any citation for any:
-
-* Website
-* Book
-* Movie
-
-And you can choose any style you want. If you want **MLA** format, **Harvard**
-format, etc. Let's go over a tutorial real quickly.
-
-Here's how it looks like:
-
-![zotero](images/zotero.png)
-
-### Using Zotero
-
-Now, to cite websites, you're going to need to download their google extension.
-Download it from [here](https://chrome.google.com/webstore/detail/zotero-connector/ekhagklcjbdpajgpjgmbionohlpdbjgc?hl=en).
-
-Open up the **Zotero** program. Go to **Edit > Preferences > Sync **. From
-there, put in you're username and password from when you signed up with **Zotero**.
-
-While still in the preferences, you can change the style of citation by clicking
-the **Cite** section.
-
-You can create citation by clicking the **+** icon and select the type.
-You can also create different folders by left clicking the **My Library**
-button. You can:
-
-* Create Sub-Folder
-* Delete Sub-Folder
-* Sync
-
-You can also cite from websites using the extension you downloaded earlier and
-you can save the citation to a specific folder if you wish, but remember, all of
-your citations will end up in the **My Library**, but copied to other
-sub-folders.
-
-Here's a quick demo of me using **Zotero**:
-
-![demo-zotero](gifs/demo-zotero.gif)
-
-### Auto-Complete Citations
-
-> Be aware, if you want citation autocompletion, you must first install **LSP**.
-> <a class="center after" href="https://damrah.netlify.app/post/note-taking-with-latex-part-1/#auto-completion">here</a>
-> for a guide on how to do that.
-
-To download your citations, just left-click the folder, and select
-**Export Collection**. But, make sure to save it as a **.bib** file.
-
-![export](images/export.png)
-
-Make sure to save it as `bibliography.bib` and place it in the folder with your
-`master.tex` file. Here's an example of a `bibliography.bib` file using the
-**MLA** format:
-
-```bib
-@misc{noauthor_mathematics_2022,
-	title = {Mathematics},
-	copyright = {Creative Commons Attribution-ShareAlike License},
-	url = {https://en.wikipedia.org/w/index.php?title=Mathematics&oldid=1066575364},
-	abstract = {Mathematics (from Greek: μάθημα, máthēma, 'knowledge, study, learning') includes the study of such topics as numbers (arithmetic and number theory), formulas and related structures (algebra), shapes and spaces in which they are contained (geometry), and quantities and their changes (calculus and analysis). There is no general consensus about its exact scope or epistemological status.Most of mathematical activity consists of discovering and proving (by pure reasoning) properties of abstract objects. These objects are either abstractions from nature (such as natural numbers or "a line"), or (in modern mathematics) abstract entities that are defined by their basic properties, called axioms. A proof consists of a succession of applications of some deductive rules to already known results, including previously proved theorems, axioms and (in case of abstraction from nature) some basic properties that are considered as true starting points of the theory under consideration. The result of a proof is called a theorem. Contrary to scientific laws, the validity of a theorem (its truth) does not rely on any experimentation but on the correctness of its reasoning (though experimentation is often useful for discovering new theorems of interest).
-Mathematics is widely used in science for modeling phenomena. This enables the extraction of quantitative predictions from experimental laws. For example, the movement of planets can be predicted with high accuracy using Newton's law of gravitation combined with mathematical computation. The independence of mathematical truth from any experimentation implies that the accuracy of such predictions depends only on the adequacy of the model for describing the reality. So when some inaccurate predictions arise, it means that the model must be improved or changed, not that the mathematics is wrong. For example, the perihelion precession of Mercury cannot be explained by Newton's law of gravitation, but is accurately explained by Einstein's general relativity. This experimental validation of Einstein's theory shows that Newton's law of gravitation is only an approximation (which still is very accurate in everyday life). 
-Mathematics is essential in many fields, including natural sciences, engineering, medicine, finance, computer science and social sciences.
-Some areas of mathematics, such as statistics and game theory, are developed in direct correlation with their applications, and are often grouped under the name of applied mathematics. Other mathematical areas are developed independently from any application (and are therefore called pure mathematics), but practical applications are often discovered later. A fitting example is the problem of integer factorization which goes back to Euclid but had no practical application before its use in the RSA cryptosystem (for the security of computer networks).
-Mathematics has been a human activity from as far back as written records exist. However, the concept of a "proof" and its associated "mathematical rigour" first appeared in Greek mathematics, most notably in Euclid's Elements. Mathematics developed at a relatively slow pace until the Renaissance, when algebra and infinitesimal calculus were added to arithmetic and geometry as main areas of mathematics. Since then the interaction between mathematical innovations and scientific discoveries have led to a rapid increase in the rate of mathematical discoveries. At the end of the 19th century, the foundational crisis of mathematics led to the systematization of the axiomatic method. This, in turn, gave rise to a dramatic increase in the number of mathematics areas and their fields of applications; a witness of this is the Mathematics Subject Classification, which lists more than sixty first-level areas of mathematics.},
-	language = {en},
-	urldate = {2022-01-19},
-	journal = {Wikipedia},
-	month = jan,
-	year = {2022},
-	note = {Page Version ID: 1066575364},
-	file = {Snapshot:/home/hashem/Zotero/storage/NYDPEYFR/Mathematics.html:text/html},
-}
-```
-
-If you want NeoVim to autocomplete your citations for you, make sure to add this
-to your **master.tex**:
-
-```tex
-\bibliography{bibliography}
-```
-
-Once you've added that, once you type:
-
-```tex
-\cite{
-```
-
-You will start to get autocompletions. Here's a demo:
-
-![citation-completion](gifs/citation-completion.gif)
+{{< video src="videos/lsp.mp4" autoplay="true" loop="true" muted="true">}}
 
 ## Credit
 
