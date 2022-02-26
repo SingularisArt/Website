@@ -6,7 +6,7 @@ date:           ""
 description:  	""
 draft: 		 	    true
 comments:		    true
-cover:			    "/posts/images/neovim-vs-vim.png"
+cover:			    "/covers/neovim-vs-vim.png"
 toc:			      true
 tags:         	["information", "comparing and contrasting", "neovim"]
 ---

@@ -6,7 +6,7 @@ date:         	""
 description:  	""
 draft: 		 	    true
 comments:		    true
-cover:			    "/posts/images/neovim-from-scratch-series-logo.png"
+cover:			    "/covers/neovim-from-scratch-series-logo.png"
 toc:			      true
 tags:         	["how to guides", "neovim"]
 ---

@@ -6,7 +6,7 @@ date:           ""
 description:  	""
 draft: 		 	    true
 comments:		    true
-cover:			    "/posts/images/latex-crash-course-logo.png"
+cover:			    "/covers/latex-crash-course-logo.png"
 toc:			      true
 tags:         	["latex", "tutorial"]
 ---

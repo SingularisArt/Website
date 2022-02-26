@@ -1,8 +1,8 @@
 ---
-title:          "Setting Up NeoVim From Scratch: Part II (Plugins)"
+title:          "Setting Up NeoVim From Scratch: Part IIII (Debugging)"
 author:       	"Hashem A. Damrah"
 introduction: 	""
-date:           ""
+date:         	""
 description:  	""
 draft: 		 	    true
 comments:		    true
