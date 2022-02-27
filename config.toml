@@ -58,7 +58,7 @@ pygmentsCodefencesGuessSyntax = true
 [[Menu.Main]]
   Name = "Notes"
   Pre = "book"
-  URL = "/tags/school-notes/"
+  URL = "/notes"
   Weight = 4
 [[Menu.Main]]
   Name = "Contact"
