@@ -33,13 +33,21 @@ date: 2022-02-26T23:57:43-08:00
 
       <hr>
 
-      <a href="/pdf/Grade-10/semester-1/hs-algebra-2.pdf" download>
+      <a href="/pdf/Grade-10/semester-1/hs-algebra-2/master.pdf" download>
         <div class="notes_body">
           <h4>School Notes</h4>
 
           These notes for Algebra 2 contains information for graphing, toying,
           factoring, etc polynomials. It also has information on the quadratic
           equation, inequalities, and radical expressions.
+        </div>
+      </a>
+
+      <a href="/pdf/Grade-10/semester-1/hs-algebra-2/assignments.zip">
+        <div class="notes_body">
+          <h4>School Assignments</h4>
+
+          All of my assignments that I did throught this course.
         </div>
       </a>
     </div>
@@ -63,13 +71,21 @@ date: 2022-02-26T23:57:43-08:00
 
       <hr>
 
-      <a href="/pdf/Grade-10/semester-1/hs-chemistry-1.pdf" download>
+      <a href="/pdf/Grade-10/semester-1/hs-chemistry-1/master.pdf" download>
         <div class="notes_body">
           <h4>School Notes</h4>
 
           This is an introduction to the world of chemistry. I go over what
           elements, compounds, etc are. I also go in detail when describing the
           periodic table and the patterns that may appear.
+        </div>
+      </a>
+
+      <a href="/pdf/Grade-10/semester-1/hs-algebra-2/assignments.zip">
+        <div class="notes_body">
+          <h4>School Assignments</h4>
+
+          All of my assignments that I did throught this course.
         </div>
       </a>
     </div>
@@ -93,11 +109,19 @@ date: 2022-02-26T23:57:43-08:00
 
       <hr>
 
-      <a href="/pdf/Grade-10/semester-1/hs-english-1.pdf" download>
+      <a href="/pdf/Grade-10/semester-1/hs-english-1/master.pdf" download>
         <div class="notes_body">
           <h4>School Notes</h4>
 
           This is just some basic high school english class.
+        </div>
+      </a>
+
+      <a href="/pdf/Grade-10/semester-1/hs-english-1/assignments.zip">
+        <div class="notes_body">
+          <h4>School Assignments</h4>
+
+          All of my assignments that I did throught this course.
         </div>
       </a>
     </div>
@@ -121,7 +145,7 @@ date: 2022-02-26T23:57:43-08:00
 
       <hr>
 
-      <a href="/pdf/Grade-10/semester-1/hs-government.pdf" download>
+      <a href="/pdf/Grade-10/semester-1/hs-government/master.pdf" download>
         <div class="notes_body">
           <h4>School Notes</h4>
 
@@ -130,11 +154,22 @@ date: 2022-02-26T23:57:43-08:00
           the law making process all in details.
         </div>
       </a>
+
+      <a href="/pdf/Grade-10/semester-1/hs-government/assignments.zip">
+        <div class="notes_body">
+          <h4>School Assignments</h4>
+
+          All of my assignments that I did throught this course.
+        </div>
+      </a>
     </div>
     <!-- End Card -->
   </main>
 
   <br>
+
+
+
 
   <div style="font-size: 30px"><b>Grade 10: Semester 2</b></div>
 
@@ -159,9 +194,18 @@ date: 2022-02-26T23:57:43-08:00
 
       <hr>
 
-      <a href="/pdf/Grade-10/semester-2/hs-algebra-2.pdf" download>
+      <a href="/pdf/Grade-10/semester-2/hs-algebra-2/master.pdf" download>
         <div class="notes_body">
           <h4>School Notes</h4>
+
+          This goes over the rest of the Algebra 2 class like, logarithms,
+          series, statistics and probibilities, and trigonometry.
+        </div>
+      </a>
+
+      <a href="/pdf/Grade-10/semester-2/hs-algebra-2/assignments.zip">
+        <div class="notes_body">
+          <h4>School Assignments</h4>
 
           This goes over the rest of the Algebra 2 class like, logarithms,
           series, statistics and probibilities, and trigonometry.
@@ -188,11 +232,19 @@ date: 2022-02-26T23:57:43-08:00
 
       <hr>
 
-      <a href="/pdf/Grade-10/semester-2/hs-english-2.pdf" download>
+      <a href="/pdf/Grade-10/semester-2/hs-english-2/master.pdf" download>
         <div class="notes_body">
           <h4>School Notes</h4>
 
           This is just some basic high school english class.
+        </div>
+      </a>
+
+      <a href="/pdf/Grade-10/semester-2/hs-english-2/assignments.zip">
+        <div class="notes_body">
+          <h4>School Assignments</h4>
+
+          All of my assignments that I did throught this course.
         </div>
       </a>
     </div>
