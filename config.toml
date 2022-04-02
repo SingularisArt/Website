@@ -61,15 +61,20 @@ pygmentsCodefencesGuessSyntax = true
   URL = "/notes"
   Weight = 4
 [[Menu.Main]]
+  Name = "Book Notes"
+  Pre = "book"
+  URL = "/book-notes"
+  Weight = 5
+[[Menu.Main]]
   Name = "Contact"
   Pre = "phone"
   URL = "/contact"
-  Weight = 7
+  Weight = 6
 [[Menu.Main]]
   Name = "Tags"
   Pre = "tags"
   URL = "/tags"
-  Weight = 8
+  Weight = 7
 
 [markup.goldmark.renderer]
   unsafe = true

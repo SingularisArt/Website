@@ -1,11 +1,11 @@
 ---
-title: "My School Notes"
-author: "Hashem A. Damrah"
+title: 'My School Notes'
+author: 'Hashem A. Damrah'
 date: 2022-02-26T23:57:43-08:00
 ---
 
-
 {{< unsafe >}}
+
 <link rel="stylesheet" href="/css/main.css" type="text/css">
 <link rel="stylesheet" href="/css/card.css" type="text/css">
 
@@ -27,7 +27,7 @@ date: 2022-02-26T23:57:43-08:00
         </div>
 
         <div class="title">
-          <h3>Honors Algebra 1A</h3>
+          <h3>Honors Algebra 2A</h3>
         </div>
       </div>
 
@@ -99,7 +99,7 @@ date: 2022-02-26T23:57:43-08:00
 
       <div class="notes_header">
         <div class="tags">
-          Science • Chemistry
+          Languages • English
         </div>
 
         <div class="title">
@@ -135,7 +135,7 @@ date: 2022-02-26T23:57:43-08:00
 
       <div class="notes_header">
         <div class="tags">
-          Science • Chemistry
+          Politics • Government
         </div>
 
         <div class="title">
@@ -164,12 +164,10 @@ date: 2022-02-26T23:57:43-08:00
       </a>
     </div>
     <!-- End Card -->
+
   </main>
 
   <br>
-
-
-
 
   <div style="font-size: 30px"><b>Grade 10: Semester 2</b></div>
 
@@ -188,7 +186,7 @@ date: 2022-02-26T23:57:43-08:00
         </div>
 
         <div class="title">
-          <h3>Honors Algebra 1B</h3>
+          <h3>Honors Algebra 2B</h3>
         </div>
       </div>
 
@@ -222,7 +220,7 @@ date: 2022-02-26T23:57:43-08:00
 
       <div class="notes_header">
         <div class="tags">
-          Science • Chemistry
+          Languages • English
         </div>
 
         <div class="title">
@@ -249,10 +247,51 @@ date: 2022-02-26T23:57:43-08:00
       </a>
     </div>
     <!-- End Card -->
+
+  </main>
+
+  <br>
+
+  <div style="font-size: 30px"><b>University (MIT)</b></div>
+
+  <br>
+
+  <main id="grid">
+
+    <!-- Start Card -->
+    <div id="container">
+      <div class="image_banner">
+        <img src="">
+      </div>
+
+      <div class="notes_header">
+        <div class="tags">
+          Real Analysis 1
+        </div>
+
+        <div class="title">
+          <h3>Real Analysis 1</h3>
+        </div>
+
+      </div>
+
+      <hr>
+
+      <a href="/pdf/University/Math/RealAnalysis-1/master.pdf" download>
+        <div class="notes_body">
+          <h4>Lecture Notes</h4>
+
+          Convergence of sequences and series, continuity, differentiability,
+          Reimann integral, sequences, series of functions, uniformity,
+          interchange of limit operations
+        </div>
+
+      </a>
+    </div>
+    <!-- End Card -->
+
   </main>
 </body>
-<!-- partial -->
-  
-</body>
 </html>
+<!-- partial -->
 {{< /unsafe >}}
