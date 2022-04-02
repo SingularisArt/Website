@@ -56,7 +56,7 @@ pygmentsCodefencesGuessSyntax = true
   URL = "/about/"
   Weight = 3
 [[Menu.Main]]
-  Name = "Notes"
+  Name = "School Notes"
   Pre = "book"
   URL = "/notes"
   Weight = 4
