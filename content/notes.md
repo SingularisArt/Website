@@ -27,8 +27,6 @@ date: 2022-02-26T23:57:43-08:00
         </div>
       </div>
 
-      <br>
-
       <hr>
 
       <a href="/pdf/College/Year-1/semester-2/hs-pre-calculus-2/master.pdf" download>
@@ -64,9 +62,6 @@ date: 2022-02-26T23:57:43-08:00
           <h3>Real Analysis 1</h3>
         </div>
       </div>
-
-      <br>
-      <br>
 
       <hr>
 
