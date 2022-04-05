@@ -7,17 +7,6 @@ hr {
   padding: 0;
 }
 
-.image_banner img {
-  width: 250px;
-  height: 85px;
-  pointer-events: none;
-
-  -webkit-user-select: none; /* Safari */
-  -moz-user-select: none; /* Firefox */
-  -ms-user-select: none; /* IE10+/Edge */
-  user-select: none; /* Standard */
-}
-
 #grid {
   display: grid;
   gap: 1.5rem;
@@ -47,13 +36,18 @@ h4 {
 .notes_header {
   padding-left: 15px;
   padding-right: 15px;
+  padding-bottom: 15px;
 }
 
-.tags, .title {
-  position: absolute;
-  top: 8px;
-  color: #000;
+.tags {
+  font-size: 0.8rem;
 }
+
+/* .tags, .title { */
+/*   position: absolute; */
+/*   top: 8px; */
+/*   color: #000; */
+/* } */
 
 .notes_body {
   padding-left: 15px;
@@ -68,4 +62,3 @@ h4 {
 .notes_body:hover {
   background-color: #262626;
 }
-
