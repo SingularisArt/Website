@@ -1,7 +1,8 @@
 ---
-title: 'My School Notes'
 author: 'Hashem A. Damrah'
 date: 2022-02-26T23:57:43-08:00
+tags: website
+title: notes
 ---
 
 {{< unsafe >}}
@@ -19,7 +20,7 @@ date: 2022-02-26T23:57:43-08:00
     <div id="container">
       <div class="notes_header">
         <div class="tags">
-          Math 112 • Pre-Calculus II
+          MTH 111 • MTH 112
         </div>
 
         <div class="title">
