@@ -1,7 +1,6 @@
 ---
-author: 'Hashem A. Damrah'
+author: Hashem A. Damrah
 date: 2022-02-26T23:57:43-08:00
-tags: website
 title: notes
 ---
 
