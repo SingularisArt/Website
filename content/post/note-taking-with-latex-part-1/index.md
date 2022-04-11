@@ -21,7 +21,6 @@ Here are how some of my notes look like:
 
 ![notes-image-1](images/note-1.png)
 ![notes-image-2](images/note-2.png)
-![notes-image-3](images/note-3.png)
 
 You can look at my notes source code
 <a class="center after" href="https://damrah.netlify.app/notes/">here</a>.
