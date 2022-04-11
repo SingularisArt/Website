@@ -55,7 +55,7 @@ title: notes
     <div id="container">
       <div class="notes_header">
         <div class="tags">
-          Real Analysis 1
+          MTH 18 • 12-13
         </div>
 
         <div class="title">
@@ -69,9 +69,10 @@ title: notes
         <div class="notes_body">
           <h4>Lecture Notes</h4>
 
-          Convergence of sequences and series, continuity, differentiability,
-          Reimann integral, sequences, series of functions, uniformity,
-          interchange of limit operations
+          Fundamentals of mathematical analysis, convergence of sequences and
+          series, continuity, differentiability, riemann integral, sequences
+          and series of functions, uniformity, and the interchange of limit
+          operations.
         </div>
 
       </a>

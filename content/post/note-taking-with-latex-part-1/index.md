@@ -23,12 +23,12 @@ Here are how some of my notes look like:
 ![notes-image-2](images/note-2.png)
 ![notes-image-3](images/note-3.png)
 
-If you want to see how my completed notes look like, visit
-<a class="center after" href="https://www.damrah.netlify.app/notes">here</a>.
-I also store all of my notes
+You can look at my notes source code
+<a class="center after" href="https://damrah.netlify.app/notes/">here</a>.
+I also store all of my final notes
 <a class="center after" href="https://www.github.com/SingularisArt/notes">here</a>.
 
-I created this method during the summer of my **10th year** in school. I am
+I created this method during the summer of my **10th year** in high school. I am
 preparing my self for when I go to university. So I set myself **4** goals and
 these goals must be met for me to use the system.
 
@@ -47,15 +47,16 @@ for now, I will go over **Step 1**.
 ## NeoVim and LaTeX
 
 **NeoVim** is a terminal-based text editor. It's just a better version of Vim,
-which was made back in the 60s (I think).
+which was made back in the 91.
 
 I literally use NeoVim for everything. (You can find my custom NeoVim config
 <a class="center after" href="https://www.github.com/SingularisArt/Death.NeoVim">here</a>).
 
 **LaTeX** is a markup language used by mostly professors who want to publish
-their papers. Also, nerds like me, spend countless weeks trying to figure out
-the perfect setup for note-taking. Luckily, for you, you won't have to figure
-anything out because I've done all of that for you.
+their papers, which is unfortunate because it's a great tool to take notes on,
+not just for school. This setup took me about 1 year to make and it's still a
+work in the progress. Luckily, for you, you won't have to figure anything out
+because I've done all of that for you.
 
 Now, with that out of the way, here is what my screen looks like when I am
 working with LaTeX:
@@ -75,6 +76,8 @@ Here is a quick list of all of my utilities:
   <a class="center after" href="https://www.github.com/neovim/neovim">**NeoVim**</a>
 * Pdf Viewer:
   <a class="center after" href="https://www.github.com/pwmt/zathura">**Zathura**</a>
+* Terminal Emulator:
+  <a class="center after" href="https://docs.xfce.org/apps/terminal/start">**Xfce4-Terminal**</a>
 
 I have a huge list of plugins that you can view
 <a class="center after" href="https://github.com/SingularisArt/Death.NeoVim/tree/master/pack/bundle/opt">here</a>),
@@ -87,98 +90,21 @@ It provides:
 * Renaming entire environments
 * Shows you the toc (Table of Contents)
 
-But, before I talk about how I configure NeoVim for **LaTeX**, let me explain to
-you how I setup my NeoVim. This won't be an in depth tutorial (that will be in a
-different post.)
-
-For installing my plugins, I don't use a package manager.
-I use **Git Submodules**. Here's an example:
-
-```bash
-git submodule add --name "vimtex" https://github.com/lervag/vimtex pack/bundle/opt/vimtex/
-```
-
-If you look at my
-<a class="center after" href="https://github.com/SingularisArt/Death.NeoVim/blob/master/.gitmodules">.gitmodules</a>.
-you can see all of my plugins.
-
-If you install plugin this way, they won't load. You have to load it yourself.
-Here's how I do it:
-
-```lua
-local autoload = function(base)
-  local storage = {}
-  local mt = {
-    __index = function(_, key)
-      if storage[key] == nil then
-        storage[key] = require(base .. '.' .. key)
-      end
-      return storage[key]
-    end
-  }
-
-  return setmetatable({}, mt)
-end
-
-return autoload
-```
-
-Put this in: `lua/github-username/autoload.lua`. Then, add this in your `lua/github-username/init.lua`:
-
-```lua
-local autoload = require('github-username.autoload')
-
-local github-username = autoload('github-username')
-
--- Using a real global here to make sure anything stashed in here (and
--- in `SingularisArt.g`) survives even after the last reference to it goes away.
-_G.github-username = github-username
-
-return github-username
-```
-
-Replace `github-username` with your GitHub username. What it's doing is it's
-calling all of my configuration files within my `lua/SingularisArt` directory,
-then returning them for me to access them in my main `init.lua`.
-
-Now, here's how I call each plugin:
-
-```lua
-if vim.o.loadplugins then
-  ...
-  SingularisArt.plugin.load("vimtex")
-  ...
-end
-```
-
-This is just calling the plugin, which is stored in `pack/bundle/opt`. If you
-don't want to have a plugin load, then just comment out the line that calls it,
-and it won't be called.
-
-Now, back to **LaTeX**, I use a gazillion plugins (You can view them all
-<a class="center after" href="https://github.com/SingularisArt/Death.NeoVim/blob/master/lua/core/plugins.lua">here</a>),
-but the most powerful one for **LaTeX** users is 
-<a class="center after" href="https://www.github.com/lervag/vimtex">VimTex</a>.
-
-I'm going to assume that you already know how to install plugins and you already have a plugin manager.
-If you haven't already, go ahead and install the **VimTex** plugin.
-
-Now, time to configure it. Add this to your `init.vim` or `.vimrc`:
+Using 
+<a class="center after" href="https://github.com/junegunn/vim-plug">vim-plug</a>, I configured it as follows:
 
 ```viml
+Plug 'lervag/vimtex'
 let g:vimtex_view_method='zathura'
 let g:tex_flavor='latex'
-set conceallevel=1
+set conceallevel=2
 ```
 
-The first line tells **VIMTEX** what pdf viewer you want to use to open your
-pdf. Simple. The next line tells what kind of **LaTeX** you want to use to
-compile your document. The last line tell NeoVim to configure the concealment
-level.
-
-This is a feature that NeoVim uses to hide certain parts of the code if your
-cursor isn't on it. It hides **\\[**, **\\]**, **$**. By making **\\[**,
-**\\]**, **$** invisible, they aren't so distracting. Here's a quick demo:
+The first line tells vimtex which pdf viewer to use.
+The last line configure the concealment. This is a feature where LaTeX code is
+replaced or made invisible when your cursor isn't on that line. By making
+`\\[`, `\\]`, `$` invisible, they're less obtrusive which gives you a better
+overview of the document. This feature also replaces `\\in` by `∈`.
 
 {{< video src="videos/conceallevel.mp4" autoplay="true" loop="true" muted="true">}}
 
@@ -202,27 +128,39 @@ For example, you might have **snippets** for python, while having different
 **snippets** for **LaTeX**.
 
 You can take a look over
-<a class="center after" href="https://www.github.com/SingularisArt/Death.NeoVim/blob/UltiSnippets/tex.snippets">VimTehere</a>
+<a class="center after" href="https://github.com/SingularisArt/snippets/blob/master/plaintex.snippets">here</a>
 to see all of my **LaTeX snippets**, but I will be going over the most
 important ones in this article.
 
 ### Installing Snippets
 
-Like before, go ahead and install these plugins:
+Like before, go ahead and install these plugins via:
 
-```
-https://github.com/SirVer/ultisnips
-https://github.com/honza/vim-snippets
-https://github.com/hrsh7th/nvim-cmp
+```viml
+Plug 'SirVer/ultisnips'
+Plug 'honza/vim-snippets'
+Plug 'hrsh7th/nvim-cmp'
+
+" Optional
+
+Plug 'hrsh7th/cmp-buffer'
+Plug 'hrsh7th/cmp-calc'
+Plug 'hrsh7th/cmp-cmdline'
+Plug 'hrsh7th/cmp-emoji'
+Plug 'kdheepak/cmp-latex-symbols'
+Plug 'hrsh7th/cmp-nvim-lsp'
+Plug 'hrsh7th/cmp-nvim-lua'
+Plug 'quangnguyen30192/cmp-nvim-ultisnips'
+Plug 'hrsh7th/cmp-path'
+Plug 'f3fora/cmp-spell'
+Plug 'tzachar/cmp-tabnine'
 ```
 
 The first plugin (`ultisnips`) is the snippet manager.
 The second plugin (`vim-snippets`) has all of the UltiSnips snippets.
 The third plugin (`nvim-cmp`) is a completion engine.
 
-Here's a quick demo using all of these three plugins:
-
-You're gonna have to create a directory called: `after/plugin/`.
+You're gonna have to create a directory called: `after/plugin/` in your NeoVim config directory.
 This is where you're going to put your configuration in. The reason you put all
 of your plugin configuration here is because NeoVim will run all of the .lua
 files within this directory. This means you don't have to manually require each
@@ -234,137 +172,147 @@ Create a file called `after/plugin/cmp.lua` and place this configuration in it.
 vim.cmd([[set completeopt=menuone,noinsert,noselect]])
 
 local cmp_status, cmp = pcall(require, "cmp")
+-- local cmp_ultisnips_status, cmp_ultisnips_mappings = pcall(require, "cmp_ultisnips_mapping")
+local cmp_ultisnips_mappings = require("cmp_nvim_ultisnips.mappings")
 
 if not cmp_status then
 	vim.notify("Please Install 'cmp'")
 	return
 end
 
+-- if not cmp_ultisnips_status then
+-- 	vim.notify("Please Install 'cmp-ultisnips'")
+-- 	return
+-- end
+
 local kind_icons = {
-  Class = " ",
-  Color = " ",
-  Constant = "ﲀ ",
-  Constructor = " ",
-  Enum = "練",
-  EnumMember = " ",
-  Event = " ",
-  Field = " ",
-  File = "",
-  Folder = " ",
-  Function = " ",
-  Interface = "ﰮ ",
-  Keyword = " ",
-  Method = " ",
-  Module = " ",
-  Operator = "",
-  Property = " ",
-  Reference = " ",
-  Snippet = " ",
-  Struct = " ",
-  Text = " ",
-  TypeParameter = " ",
-  Unit = "塞",
-  Value = " ",
-  Variable = " ",
+	Class = " Class",
+	Color = " Color",
+	Constant = "ﲀ Constant",
+	Constructor = " Constructor",
+	Enum = "練Enum",
+	EnumMember = " Enum Member",
+	Event = " Event",
+	Field = " Field",
+	File = " File",
+	Folder = " Folder",
+	Function = " Function",
+	Interface = "ﰮ Interface",
+	Keyword = " Keyword",
+	Method = " Method",
+	Module = " Module",
+	Operator = " Operator",
+	Property = " Property",
+	Reference = " Reference",
+	Snippet = " Snippet",
+	Struct = " Struct",
+	Text = " Text",
+	TypeParameter = " Type Parameter",
+	Unit = "塞 Unit",
+	Value = " Value",
+	Variable = " Variable",
 }
 
 Vscode = vim.lsp.protocol.make_client_capabilities()
 
 local source_mapping = {
-  nvim_lsp = "(LSP)",
-  nvim_lua = "(Lua)",
-  latex_symbols = "(LaTeX)",
-  ultisnips = "(Snippet)",
-  cmp_tabnine = "(TabNine)",
-  calc = "(Calculator)",
-  gh_issues = "(Issues)",
-  path = "(Path)",
-  buffer = "(Buffer)",
-  emoji = "(Emoji)",
-  spell = "(Spell)",
+	nvim_lsp = "(LSP)",
+	nvim_lua = "(Lua)",
+	latex_symbols = "(LaTeX)",
+	ultisnips = "(Snippet)",
+	cmp_tabnine = "(TabNine)",
+	calc = "(Calculator)",
+	gh_issues = "(Issues)",
+	path = "(Path)",
+	buffer = "(Buffer)",
+	emoji = "(Emoji)",
+	spell = "(Spell)",
 }
 
 Capabilities = require("cmp_nvim_lsp").update_capabilities(vim.lsp.protocol.make_client_capabilities())
 Vscode.textDocument.completion.completionItem.snippetSupport = true
 
 cmp.setup({
-  snippet = {
-    -- REQUIRED - you must specify a snippet engine
-    expand = function(args)
-      vim.fn["UltiSnips#Anon"](args.body) -- For `ultisnips` users.
-      --require('luasnip').lsp_expand(args.body) -- For `luasnip` users.
-      -- require('snippy').expand_snippet(args.body) -- For `snippy` users.
-    end,
+	snippet = {
+		expand = function(args)
+			vim.fn["UltiSnips#Anon"](args.body) -- For `ultisnips` users.
+			--require('luasnip').lsp_expand(args.body) -- For `luasnip` users.
+			-- require('snippy').expand_snippet(args.body) -- For `snippy` users.
+		end,
 
-  enabled = function()
-    local lnum, col = vim.fn.line('.'), math.min(vim.fn.col('.'), #vim.fn.getline('.'))
-    for _, syn_id in ipairs(vim.fn.synstack(lnum, col)) do
-      syn_id = vim.fn.synIDtrans(syn_id) -- Resolve :highlight links
-      if vim.fn.synIDattr(syn_id, 'name') == 'Comment' then
-        return false
-      end
-    end
-    return true
-  end,
-  },
+		enabled = function()
+			local lnum, col = vim.fn.line("."), math.min(vim.fn.col("."), #vim.fn.getline("."))
+			for _, syn_id in ipairs(vim.fn.synstack(lnum, col)) do
+				syn_id = vim.fn.synIDtrans(syn_id) -- Resolve :highlight links
+				if vim.fn.synIDattr(syn_id, "name") == "Comment" then
+					return false
+				end
+			end
+			return true
+		end,
+	},
 
-  mapping = {
-    ["<C-y>"] = cmp.config.disable, -- Specify `cmp.config.disable` if you want to remove the default `<C-y>` mapping.
-    ["<C-k>"] = cmp.mapping.select_prev_item(),
-    ["<C-j>"] = cmp.mapping.select_next_item(),
-    ["<A-p>"] = cmp.mapping.scroll_docs(-4),
-    ["<A-n>"] = cmp.mapping.scroll_docs(4),
-    ["<C-b>"] = cmp.mapping(cmp.mapping.complete(), { "i", "c" }),
-    ["<CR>"] = cmp.mapping.confirm({ select = true }),
-    ["<C-e>"] = cmp.mapping({
+	mapping = {
+		["<C-y>"] = cmp.mapping({
+			i = cmp.mapping.abort(),
+			c = cmp.mapping.close(),
+		}),
+
+    ['<C-e>'] = cmp.mapping({
       i = cmp.mapping.abort(),
       c = cmp.mapping.close(),
     }),
-  },
 
-  documentation = {
-    border = { "╭", "─", "╮", "│", "╯", "─", "╰", "│" },
-  },
+    ['<A-j>'] = cmp.mapping(cmp.mapping.scroll_docs(-4), { 'i', 'c' }),
+    ['<A-k>'] = cmp.mapping(cmp.mapping.scroll_docs(4), { 'i', 'c' }),
 
-  sources = cmp.config.sources({
-    { name = "nvim_lsp" },
-    { name = "nvim_lua" },
-    { name = "latex_symbols" },
-    { name = "ultisnips" },
-    { name = "cmp_tabnine" },
-    { name = "calc" },
-    { name = "gh_issues" },
-    { name = "path" },
-    { name = "buffer" },
-    { name = "emoji" },
-    { name = "spell" },
-  }),
+    ['<C-Space>'] = cmp.mapping(cmp.mapping.complete(), { 'i', 'c' }),
+		["<CR>"] = cmp.mapping.confirm({ select = true }),
+	},
 
-  experimental = {
-    native_menu = false,
-    ghost_text = true,
-  },
+	documentation = {
+		border = { "╭", "─", "╮", "│", "╯", "─", "╰", "│" },
+	},
 
-  formatting = {
-    format = function(entry, vim_item)
-      vim_item.kind = kind_icons[vim_item.kind]
-      local menu = source_mapping[entry.source.name]
-      if entry.source.name == "cmp_tabnine" then
-        if entry.completion_item.data ~= nil and entry.completion_item.data.detail ~= nil then
-          menu = entry.completion_item.data.detail .. " " .. menu
-        end
-        vim_item.kind = ""
-      end
-      vim_item.menu = menu
-      return vim_item
-    end,
-  },
+	sources = cmp.config.sources({
+		{ name = "nvim_lsp" },
+		{ name = "nvim_lua" },
+		{ name = "latex_symbols" },
+		{ name = "ultisnips" },
+		{ name = "cmp_tabnine" },
+		{ name = "calc" },
+		{ name = "gh_issues" },
+		{ name = "path" },
+		{ name = "buffer" },
+		{ name = "emoji" },
+		{ name = "spell" },
+	}),
+
+	experimental = {
+		native_menu = false,
+		ghost_text = true,
+	},
+
+	formatting = {
+		format = function(entry, vim_item)
+			vim_item.kind = kind_icons[vim_item.kind]
+			local menu = source_mapping[entry.source.name]
+			if entry.source.name == "cmp_tabnine" then
+				if entry.completion_item.data ~= nil and entry.completion_item.data.detail ~= nil then
+					menu = entry.completion_item.data.detail .. " " .. menu
+				end
+				vim_item.kind = " TabNine"
+			end
+			vim_item.menu = menu
+			return vim_item
+		end,
+	},
 })
 
 cmp.setup.cmdline(":", {
-  sources = {
-    { name = "cmdline" },
-  },
+	sources = {
+		{ name = "cmdline" },
+	},
 })
 
 local Job = require("plenary.job")
@@ -372,69 +320,138 @@ local Job = require("plenary.job")
 local source = {}
 
 source.new = function()
-  local self = setmetatable({ cache = {} }, { __index = source })
+	local self = setmetatable({ cache = {} }, { __index = source })
 
-  return self
+	return self
 end
 
 source.complete = function(self, _, callback)
-  local bufnr = vim.api.nvim_get_current_buf()
+	local bufnr = vim.api.nvim_get_current_buf()
 
-  -- This just makes sure that we only hit the GH API once per session.
-  --
-  -- You could remove this if you wanted, but this just makes it so we're
-  -- good programming citizens.
-  if not self.cache[bufnr] then
-    Job
-      :new({
-        -- Uses `gh` executable to request the issues from the remote repository.
-        "gh",
-        "issue",
-        "list",
-        "--limit",
-        "1000",
-        "--json",
-        "title,number,body",
+	-- This just makes sure that we only hit the GH API once per session.
+	--
+	-- You could remove this if you wanted, but this just makes it so we're
+	-- good programming citizens.
+	if not self.cache[bufnr] then
+		Job
+			:new({
+				-- Uses `gh` executable to request the issues from the remote repository.
+				"gh",
+				"issue",
+				"list",
+				"--limit",
+				"1000",
+				"--json",
+				"title,number,body",
 
-        on_exit = function(job)
-          local result = job:result()
-          local ok, parsed = pcall(vim.json.decode, table.concat(result, ""))
-          if not ok then
-            vim.notify "Failed to parse gh result"
-            return
-          end
+				on_exit = function(job)
+					local result = job:result()
+					local ok, parsed = pcall(vim.json.decode, table.concat(result, ""))
+					if not ok then
+						vim.notify("Failed to parse gh result")
+						return
+					end
 
-          local items = {}
-          for _, gh_item in ipairs(parsed) do
-            gh_item.body = string.gsub(gh_item.body or "", "\r", "")
+					local items = {}
+					for _, gh_item in ipairs(parsed) do
+						gh_item.body = string.gsub(gh_item.body or "", "\r", "")
 
-            table.insert(items, {
-              label = string.format("#%s", gh_item.number),
-              documentation = {
-                kind = "markdown",
-                value = string.format("# %s\n\n%s", gh_item.title, gh_item.body),
-              },
-            })
-          end
+						table.insert(items, {
+							label = string.format("#%s", gh_item.number),
+							documentation = {
+								kind = "markdown",
+								value = string.format("# %s\n\n%s", gh_item.title, gh_item.body),
+							},
+						})
+					end
 
-          callback { items = items, isIncomplete = false }
-          self.cache[bufnr] = items
-        end,
-      })
-      :start()
-  else
-    callback { items = self.cache[bufnr], isIncomplete = false }
-  end
+					callback({ items = items, isIncomplete = false })
+					self.cache[bufnr] = items
+				end,
+			})
+			:start()
+	else
+		callback({ items = self.cache[bufnr], isIncomplete = false })
+	end
 end
 
 source.get_trigger_characters = function()
-  return { "#" }
+	return { "#" }
 end
 
 source.is_available = function()
-  return vim.bo.filetype == "gitcommit"
+	return vim.bo.filetype == "gitcommit"
 end
+
+vim.cmd[[
+highlight! CmpItemAbbrMatch guibg=NONE guifg=#fff700
+highlight! CmpItemAbbrMatchFuzzy guibg=NONE guifg=#fff700
+highlight! CmpItemKindFunction guibg=NONE guifg=#C586C0
+highlight! CmpItemKindMethod guibg=NONE guifg=#C586C0
+highlight! CmpItemKindVariable guibg=NONE guifg=#9CDCFE
+highlight! CmpItemKindKeyword guibg=NONE guifg=#D4D4D4
+
+highlight! CmpItemKindEnum          guibg=NONE guifg=#7D8471
+highlight! CmpItemKindInterface     guibg=NONE guifg=#252850
+highlight! CmpItemKindFile          guibg=NONE guifg=#015D52
+highlight! CmpItemKindText          guibg=NONE guifg=#781F19
+highlight! CmpItemKindUnit          guibg=NONE guifg=#6C6874
+highlight! CmpItemKindClass         guibg=NONE guifg=#282828
+highlight! CmpItemKindColor         guibg=NONE guifg=#587246
+highlight! CmpItemKindEvent         guibg=NONE guifg=#6C7059
+highlight! CmpItemKindField         guibg=NONE guifg=#6F4F28
+highlight! CmpItemKindValue         guibg=NONE guifg=#E7EBDA
+highlight! CmpItemKindFolder        guibg=NONE guifg=#F3DA0B
+highlight! CmpItemKindMethod        guibg=NONE guifg=#1E1E1E
+highlight! CmpItemKindModule        guibg=NONE guifg=#CFD3CD
+highlight! CmpItemKindStruct        guibg=NONE guifg=#A18594
+highlight! CmpItemKindDefault       guibg=NONE guifg=#4C9141
+highlight! CmpItemKindKeyword       guibg=NONE guifg=#CB3234
+highlight! CmpItemKindSnippet       guibg=NONE guifg=#4E5754
+highlight! CmpItemKindConstant      guibg=NONE guifg=#FF7514
+highlight! CmpItemKindFunction      guibg=NONE guifg=#025669
+highlight! CmpItemKindOperator      guibg=NONE guifg=#686C5E
+highlight! CmpItemKindProperty      guibg=NONE guifg=#F4F4F4
+highlight! CmpItemKindVariable      guibg=NONE guifg=#6D3F5B
+highlight! CmpItemKindReference     guibg=NONE guifg=#474B4E
+highlight! CmpItemKindEnumMember    guibg=NONE guifg=#193737
+
+highlight! CmpItemKindEnumDefault          guibg=NONE guifg=#7D8471
+highlight! CmpItemKindInterfaceDefault     guibg=NONE guifg=#252850
+highlight! CmpItemKindFileDefault          guibg=NONE guifg=#015D52
+highlight! CmpItemKindTextDefault          guibg=NONE guifg=#781F19
+highlight! CmpItemKindUnitDefault          guibg=NONE guifg=#6C6874
+highlight! CmpItemKindClassDefault         guibg=NONE guifg=#282828
+highlight! CmpItemKindColorDefault         guibg=NONE guifg=#587246
+highlight! CmpItemKindEventDefault         guibg=NONE guifg=#6C7059
+highlight! CmpItemKindFieldDefault         guibg=NONE guifg=#6F4F28
+highlight! CmpItemKindValueDefault         guibg=NONE guifg=#E7EBDA
+highlight! CmpItemKindFolderDefault        guibg=NONE guifg=#F3DA0B
+highlight! CmpItemKindMethodDefault        guibg=NONE guifg=#1E1E1E
+highlight! CmpItemKindModuleDefault        guibg=NONE guifg=#CFD3CD
+highlight! CmpItemKindStructDefault        guibg=NONE guifg=#A18594
+highlight! CmpItemKindDefaultDefault       guibg=NONE guifg=#4C9141
+highlight! CmpItemKindKeywordDefault       guibg=NONE guifg=#CB3234
+highlight! CmpItemKindSnippetDefault       guibg=NONE guifg=#4E5754
+highlight! CmpItemKindConstantDefault      guibg=NONE guifg=#FF7514
+highlight! CmpItemKindFunctionDefault      guibg=NONE guifg=#025669
+highlight! CmpItemKindOperatorDefault      guibg=NONE guifg=#686C5E
+highlight! CmpItemKindPropertyDefault      guibg=NONE guifg=#F4F4F4
+highlight! CmpItemKindVariableDefault      guibg=NONE guifg=#6D3F5B
+highlight! CmpItemKindReferenceDefault     guibg=NONE guifg=#474B4E
+highlight! CmpItemKindEnumMemberDefault    guibg=NONE guifg=#193737
+]]
 ```
+
+The top 12 lines just initialize everything. The next big chunk below those
+lines are what cmp will show for each item. For example, it will show a
+specific symbol for snippets, a specific symbol for functions (if you're using
+lsp), etc. The rest is just configuration for the cmp itself. If you want more
+information on the configuration, you can view my blog post about my NeoVim
+setup. Or, you can go to this <a class="center after"
+href="https://www.github.com/SingularisArt/Singularis/tree/master/local/scripts/school">link</a>,
+The last bottom two chunks are just changing the color of each row. For
+example, the snippet color is: #4E5754.
 
 {{< video src="videos/three-plugin-demo.mp4" autoplay="true" loop="true" muted="true">}}
 
@@ -446,31 +463,41 @@ To add snippets, you first must configure `UltiSnips` itself. Now, add this to
 you're `init.vim` or `.vimrc`:
 
 ```viml
-let g:UltiSnipsExpandTrigger='<tab>'
-let g:UltiSnipsJumpForwardTrigger='<tab>'
-let g:UltiSnipsJumpBackwardTrigger='<s-tab>'
+" make YCM compatible with UltiSnips (using supertab)
+let g:ycm_key_list_select_completion = ['<C-j>', '<Down>']
+let g:ycm_key_list_previous_completion = ['<C-k>', '<Up>']
+let g:SuperTabDefaultCompletionType = '<C-n>'
 
+" better key bindings for UltiSnipsExpandTrigger
+let g:UltiSnipsExpandTrigger = "<Enter>"
+let g:UltiSnipsJumpForwardTrigger = "<Tab>"
+let g:UltiSnipsJumpBackwardTrigger = "<S-Tab>"
+
+" open the file in a vertical split
 let g:UltiSnipsEditSplit='vertical'
 
-let g:UltiSnipsSnippetDirectories=['~/.config/nvim/UltiSnips/']
+" the location of the snippets
+let g:UltiSnipsSnippetDirectories=[$HOME."/.config/nvim/UltiSnips/"]
+
+iunmap <Tab>
 ```
 
-Let's go over these quickly. The first line is telling `UltiSnips` what button
-you want to use to expand the actual snippet. After you have expanded the
-snippet, you have placeholders.
+Let's go over these quickly. The 3 three lines are telling make `UltiSnips`
+compatible with YCM, which is a completion engine for Vim because they don't
+usually work together with ease.
 
-On line 2-3, you are telling `UltiSnips` what key presses you want to use to jump
+The next 3 lines are telling `UltiSnips` what key presses you want to use to jump
 back and forth between those placeholders.
 
-The 4th line is telling `UltiSnips` to open the file vertically when you run
-`:UltiSnipsEdit`.
+The next line is telling `UltiSnips` to open the snippets configuration
+vertically when you run: `:UltiSnipsEdit`
 
-The last and final line tells `UltiSnips` where to find your snippets.
+The last line tells `UltiSnips` where to look for your snippets.
 
 #### Creating your own Snippets
 
 Place your snippets in `~/.config/nvim/UltiSnips/` or wherever you told
-`UltiSnips` to find theme. Each language has it's own specific snippet file. For
+`UltiSnips` to find them. Each language has it's own specific snippet file. For
 example, python snippets will be located at
 `~/.config/nvim/UltiSnips/python.snippets`.
 
@@ -562,6 +589,11 @@ snippet beg "begin{} / end{}" bAi
 endsnippet
 ```
 
+* The **b** means **If the trigger word is the first word on the line, and no
+writing comes afterword, then expand**.
+* The **A** means **Expand without the trigger key, just expand right after the
+person types the trigger word**.
+
 {{< video src="videos/beg-environment.mp4" autoplay="true" loop="true" muted="true">}}
 
 Now, I have a ton of different environments that I commonly use. So, like the
@@ -575,184 +607,183 @@ what do you do? You can remove the text, create the environment, then paste.
 That feels **WRONG**. As you all know, us programmers are the laziest people.
 We spend hours trying to configure something to save us a couple of minutes.
 And, guess what? That's exactly what I did. I read through the documentation to
-learn about this (which took about 1.5 hours.)
+learn about this.
 
 It's called visual select tab. You highlight whatever you want, hit tab, then
 go ahead and activate the snippet. There you go, the code you highlighted is
 know surrounded with the environment you want!
 
+But, before I show you the actual code, let me explain what this means
+
 ```viml
-snippet doc "Document" bAi
+snippet def "Definition Environment" bAi
+\begin{definition}[$1]
+	\label{def:${2:${1/\\\w+\{(.*?)\}|\\(.)|(\w+)|([^\w\\]+)/(?4:_:\L$1$2$3\E)/ga}}}
+
+	${VISUAL}$3
+\end{definition}
+endsnippet
+```
+
+It looks like a basic snippet, but there's something weird about it. The 3rd
+line. That's what called a regex expression. What it's doing is it's taking
+whatever I type in the first placeholder (the text in the boxes []), then
+making the entire text lowercase and replacing spaces with underscores \_.
+
+Also, there's a new command: `${VISUAL}`.
+This takes whatever you've visually selected and hit TAB on and pastes it.
+
+Now, here are my final environment snippets.
+
+```viml
+snippet beg "begin{} / end{}" bAi
+\begin{$1}[$2]
+	\label{$3}
+
+	${VISUAL}$4
+\end{$1}$0
+endsnippet
+
+snippet doc "Document Environment" bAi
 \begin{document}
 	${VISUAL}$1
 \end{document}$0
 endsnippet
 
-snippet cnt "Center" bAi
+snippet cnt "Center Environment" bAi
 \begin{center}
 	${VISUAL}$1
 \end{center}$0
 endsnippet
 
-snippet desc "Description" bAi
-\begin{description}
-	${VISUAL}$1
-\end{description}$0
-endsnippet
-
-snippet lemma "Lemma" bAi
-\begin{lemma}
-	${VISUAL}$1
-\end{lemma}$0
-endsnippet
-
-snippet prop "Proposition" bAi
-\begin{prop}[$1]
-	${VISUAL}$2
-\end{prop}$0
-endsnippet
-
-snippet thrm "Theorem" bAi
-\begin{theorem}[$1]
-	${VISUAL}$2
-\end{theorem}$0
-endsnippet
-
-snippet post "postulate" bAi
-\begin{postulate}[$1]
-	${VISUAL}$2
-\end{postulate}$0
-endsnippet
-
-snippet prf "Proof" bAi
-\begin{proof}[$1]
-	${VISUAL}$2
-\end{proof}$0
-endsnippet
-
-snippet def "Definition" bAi
-\begin{definition}[$1]
-	${VISUAL}$2
-\end{definition}$0
-endsnippet
-
-snippet nte "Note" bAi
-\begin{note}[$1]
-	${VISUAL}$2
-\end{note}$0
-endsnippet
-
-snippet prob "Problem" bAi
-\begin{problem}[$1]
-	${VISUAL}$2
-\end{problem}$0
-endsnippet
-
-snippet corl "Corollary" bAi
-\begin{corollary}[$1]
-	${VISUAL}$2
-\end{corollary}$0
-endsnippet
-
-snippet exm "Example" bAi
-\begin{example}[$1]
-	${VISUAL}$2
-\end{example}$0
-endsnippet
-
-snippet ntn "Notation" bAi
-\begin{notation}[$1]
-	${VISUAL}$2
-\end{notation}$0
-endsnippet
-
-snippet rep "Repetition" bAi
-\begin{repetition}[$1]
-	${VISUAL}$2
-\end{repetition}$0
-endsnippet
-
-snippet prop "Property" bAi
-\begin{property}[$1]
-	${VISUAL}$2
-\end{property}$0
-endsnippet
-
-snippet int "Intuition" bAi
-\begin{intuition}[$1]
-	${VISUAL}$2
-\end{intuition}$0
-endsnippet
-
-snippet obs "Observation" bAi
-\begin{observation}[$1]
-	${VISUAL}$2
-\end{observation}$0
-endsnippet
-
-snippet conc "Conclusion" bAi
-\begin{conclusion}[$1]
-	${VISUAL}$2
-\end{conclusion}$0
-endsnippet
-
-snippet enum "Enumerate" bAi
+snippet enum "Enumerate Environment" bAi
 \begin{enumerate}
-	\item ${VISUAL}$1
+	\label{enum:$1}
+
+	\item ${VISUAL}$2
 \end{enumerate}$0
 endsnippet
 
-snippet item "Itemize" bAi
+snippet item "Itemize Environment" bAi
 \begin{itemize}
-	\item ${VISUAL}$1
+	\label{item:$1}
+
+	\item ${VISUAL}$2
 \end{itemize}$0
 endsnippet
 
-snippet case "cases" bAi
+snippet case "Cases Environment" bAi
 \begin{cases}
-	${VISUAL}$1
+	\label{case:$1}
+
+	${VISUAL}$2
 \end{cases}$0
 endsnippet
 
-snippet ali "Align*" bAi
+snippet prf "Proof Environment" bAi
+\begin{proof}
+	\label{prf:$1}
+
+	${VISUAL}$2
+\end{proof}
+endsnippet
+
+snippet ali "Align* Environment" bAi
 \begin{align*}
 	${VISUAL}$1
 .\end{align*}$0
 endsnippet
 
-snippet ali "Align" bAi
+snippet ali "Align Environment" bAi
 \begin{align}
 	${VISUAL}$1
 .\end{align}$0
 endsnippet
 
-snippet eqt "Equation" bAi
+snippet eqt "Equation Environment" bAi
 \begin{equation}
+	\label{eqt:$1}
+
+	${VISUAL}$2
+.\end{equation}$0
+endsnippet
+
+snippet spt "Equation Split Environment" bAi
+\begin{equation}
+	\label{spt:$1}
+
 	\begin{split}
-		${VISUAL}$1
+		${VISUAL}$2
 	\end{split}
 .\end{equation}$0
 endsnippet
 
-snippet fig "Figure environment" bAi
+context "env('equation')"
+snippet spt "Equation Split Environment" bAi
+\begin{split}
+	${VISUAL}$1
+\end{split}$0
+endsnippet
+
+snippet edt "Equation Dat Environment" bAi
+\begin{equation}
+	\label{edt:$1}
+
+	\begin{alignedat}{$2}
+		${VISUAL}$3
+	\end{alignedat}
+.\end{equation}$0
+endsnippet
+
+context "env('equation')"
+snippet edt "Equation Dat Environment" bAi
+\begin{alignedat}{$1}
+	${VISUAL}$2
+\end{alignedat}$0
+endsnippet
+
+snippet cse "Equation Case Environment" bAi
+\begin{equation}
+	\label{cse:$1}
+
+	\begin{cases}
+		${VISUAL}$2
+	\end{cases}
+.\end{equation}$0
+endsnippet
+
+context "env('equation')"
+snippet cse "Equation Case Environment" bAi
+\begin{cases}
+	${VISUAL}$1
+\end{cases}$0
+endsnippet
+
+snippet fig "Figure Environment (Image)" bAi
 \begin{figure}[${1:htpb}]
 	\centering
-	${2:\includegraphics[width=0.8\textwidth]{$3}}
-	\caption{${4:$3}}
-	\label{fig:${5:${3/\W+/-/g}}}
+	\includegraphics[width=0.8\textwidth]{$2}
+	\caption{${3}}
+	\label{fig:${4:${3/\\\w+\{(.*?)\}|\\(.)|(\w+)|([^\w\\]+)/(?4:_:\L$1$2$3\E)/ga}}}
 \end{figure}$0
 endsnippet
 
-snippet tkz "Tikz pgfplot" bAi
+snippet fig "Figure Environment (PDF)" bAi
+\begin{figure}[${1:htpb}]
+	\centering
+	\incfig{$2}
+	\caption{${3}}
+	\label{fig:${4:${2/\\\w+\{(.*?)\}|\\(.)|(\w+)|([^\w\\]+)/(?4:_:\L$1$2$3\E)/ga}}}
+\end{figure}$0
 endsnippet
 
-snippet tab "tabular / array environment" bAi
+snippet tab "Tabular / Array Environment" bAi
 	\begin{${1:t}${1/(t)$|(a)$|(.*)/(?1:abular)(?2:rray)/}}{${2:c}}
 		$0${2/(?<=.)(c|l|r)|./(?1: & )/g}
 	\end{$1${1/(t)$|(a)$|(.*)/(?1:abular)(?2:rray)/}}$0
 endsnippet
 
-snippet tbl "Table environment" bAi
+snippet tbl "Table Environment" bAi
 \begin{table}[${1:htpb}]
 	\centering
 	\caption{${2:caption}}
@@ -771,12 +802,124 @@ endsnippet
 pre_expand "add_row(snip)"
 snippet "tr(\d+)" "Add table row of dimension ..." wrAbi
 endsnippet
-```
 
-* The **b** means **If the trigger word is the first word on the line, and no
-writing comes afterword, then expand**.
-* The **A** means **Expand without the trigger key, just expand right after the
-person types the trigger word**.
+# Custom made environments
+
+snippet thrm "Theorem Envrionment" bAi
+\begin{theorem}[$1]
+	\label{thrm:${2:${1/\\\w+\{(.*?)\}|\\(.)|(\w+)|([^\w\\]+)/(?4:_:\L$1$2$3\E)/ga}}}
+
+	${VISUAL}$3
+\end{theorem}
+endsnippet
+
+snippet post "Postulate Envrionment" bAi
+\begin{postulate}[$1]
+	\label{post:${2:${1/\\\w+\{(.*?)\}|\\(.)|(\w+)|([^\w\\]+)/(?4:_:\L$1$2$3\E)/ga}}}
+
+	${VISUAL}$3
+\end{postulate}
+endsnippet
+
+snippet conj "Conjecture Envrionment" bAi
+\begin{conjecture}[$1]
+	\label{conj:${2:${1/\\\w+\{(.*?)\}|\\(.)|(\w+)|([^\w\\]+)/(?4:_:\L$1$2$3\E)/ga}}}
+
+	${VISUAL}$3
+\end{conjecture}
+endsnippet
+
+snippet corl "Corollary Envrionment" bAi
+\begin{corollary}[$1]
+	\label{corl:${2:${1/\\\w+\{(.*?)\}|\\(.)|(\w+)|([^\w\\]+)/(?4:_:\L$1$2$3\E)/ga}}}
+
+	${VISUAL}$3
+\end{corollary}
+endsnippet
+
+snippet lem "Lemma Envrionment" bAi
+\begin{lemma}[$1]
+	\label{lem:${2:${1/\\\w+\{(.*?)\}|\\(.)|(\w+)|([^\w\\]+)/(?4:_:\L$1$2$3\E)/ga}}}
+
+	${VISUAL}$3
+\end{lemma}
+endsnippet
+
+snippet conc "Conclusion Envrionment" bAi
+\begin{conclusion}[$1]
+	\label{conc:${2:${1/\\\w+\{(.*?)\}|\\(.)|(\w+)|([^\w\\]+)/(?4:_:\L$1$2$3\E)/ga}}}
+
+	${VISUAL}$3
+\end{conclusion}
+endsnippet
+
+
+snippet def "Definition Environment" bAi
+\begin{definition}[$1]
+	\label{def:${2:${1/\\\w+\{(.*?)\}|\\(.)|(\w+)|([^\w\\]+)/(?4:_:\L$1$2$3\E)/ga}}}
+
+	${VISUAL}$3
+\end{definition}
+endsnippet
+
+snippet rev "Review Environment" bAi
+\begin{review}[$1]
+	\label{rev:${2:${1/\\\w+\{(.*?)\}|\\(.)|(\w+)|([^\w\\]+)/(?4:_:\L$1$2$3\E)/ga}}}
+
+	${VISUAL}${3}
+\end{review}
+endsnippet
+
+
+snippet exm "Example Environment" bAi
+\begin{example}
+	\label{exm:$1}
+
+	${VISUAL}$2
+\end{example}
+endsnippet
+
+snippet rmk "Remark Environment" bAi
+\begin{remark}
+	\label{rmk:$1}
+
+	${VISUAL}$2
+\end{remark}
+endsnippet
+
+snippet nte "Note Environment" bAi
+\begin{note}
+	\label{nte:$1}
+
+	${VISUAL}$2
+\end{note}
+endsnippet
+
+snippet nat "Notation Environment" bAi
+\begin{notation}
+	\label{nat:$1}
+
+	${VISUAL}$2
+\end{notation}
+endsnippet
+
+
+snippet prop "Property Environment" bAi
+\begin{property}
+	\label{prop:$1}
+
+	${VISUAL}$2
+\end{property}
+endsnippet
+
+snippet prop "Proposition Environment" bAi
+\begin{proposition}
+	\label{prop:$1}
+
+	${VISUAL}$2
+\end{proposition}
+endsnippet
+```
 
 ### Inline and Display Math
 
@@ -802,14 +945,8 @@ snippet dm "Display Math" wA
 endsnippet
 ```
 
-The **A** at the end of the snippet declaration means it will expand as soon as
-you type the key (`im`, `dm`). It doesn't wait for you to hit **tab**.
-
-The **w** at the end of the first line means that this snippet will expand at
-word boundaries. So, `helloim` won't expand, but `hello im` will.
-
-The **b** means it won't expand unless it's at the beginning and the first word
-on the line. So, `hello dm` won't expand, but `dm hello` will.
+* The **w** at the end of the first line means that this snippet will expand at
+  word boundaries. So, `helloim` won't expand, but `hello im` will.
 
 ### Sub and Super scripts
 
@@ -900,7 +1037,7 @@ snippet compl "Complement" Aw
 endsnippet
 
 snippet invs "Inverse" Aw
-^{-1}
+^{-$1}$0
 endsnippet
 ```
 
@@ -933,7 +1070,7 @@ endsnippet
 ```
 
 In the fourth case, I tried to find matching parenthesis. But, all of the work
-went in vain because you cannot with `UltiSnips`. So, I used Python :).
+went in vain because you cannot with `UltiSnips`. So, I used Python.
 
 ```viml
 priority 1000
