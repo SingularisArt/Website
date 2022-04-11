@@ -583,16 +583,23 @@ hit tab. That will move you into the environment.
 
 ```viml
 snippet beg "begin{} / end{}" bAi
-\begin{$1}
-	${VISUAL}$2
+\begin{$1}[$2]
+	\label{$3:${4:${2/\\\w+\{(.*?)\}|\\(.)|(\w+)|([^\w\\]+)/(?4:_:\L$1$2$3\E)/ga}}}
+
+	${VISUAL}$4
 \end{$1}$0
 endsnippet
 ```
 
+* Line $$3$$ is preforming a regex expression. It's taking whatever you type
+  in placeholder number $$2$$, making it all lowercase, and replacing the
+  spaces with underscores.
 * The **b** means **If the trigger word is the first word on the line, and no
-writing comes afterword, then expand**.
+  writing comes afterword, then expand**.
 * The **A** means **Expand without the trigger key, just expand right after the
 person types the trigger word**.
+* The **${VISUAL}** means whatever you've deleted will be pasted there.
+  But, you have to visually select the text, then hit **TAB**.
 
 {{< video src="videos/beg-environment.mp4" autoplay="true" loop="true" muted="true">}}
 
@@ -602,43 +609,14 @@ snippets for each environment:
 
 {{< video src="videos/all-environments.mp4" autoplay="true" loop="true" muted="true">}}
 
-Now, sometimes you may want to surround specific text with the environment. So,
-what do you do? You can remove the text, create the environment, then paste.
-That feels **WRONG**. As you all know, us programmers are the laziest people.
-We spend hours trying to configure something to save us a couple of minutes.
-And, guess what? That's exactly what I did. I read through the documentation to
-learn about this.
-
-It's called visual select tab. You highlight whatever you want, hit tab, then
-go ahead and activate the snippet. There you go, the code you highlighted is
-know surrounded with the environment you want!
-
-But, before I show you the actual code, let me explain what this means
-
-```viml
-snippet def "Definition Environment" bAi
-\begin{definition}[$1]
-	\label{def:${2:${1/\\\w+\{(.*?)\}|\\(.)|(\w+)|([^\w\\]+)/(?4:_:\L$1$2$3\E)/ga}}}
-
-	${VISUAL}$3
-\end{definition}
-endsnippet
-```
-
-It looks like a basic snippet, but there's something weird about it. The 3rd
-line. That's what called a regex expression. What it's doing is it's taking
-whatever I type in the first placeholder (the text in the boxes []), then
-making the entire text lowercase and replacing spaces with underscores \_.
-
-Also, there's a new command: `${VISUAL}`.
-This takes whatever you've visually selected and hit TAB on and pastes it.
+Sometimes you may want a specific environment with a specific label format, etc. So, I spent a little more time to create dozens of environment snippets.
 
 Now, here are my final environment snippets.
 
 ```viml
 snippet beg "begin{} / end{}" bAi
 \begin{$1}[$2]
-	\label{$3}
+	\label{$3:${4:${2/\\\w+\{(.*?)\}|\\(.)|(\w+)|([^\w\\]+)/(?4:_:\L$1$2$3\E)/ga}}}
 
 	${VISUAL}$4
 \end{$1}$0
@@ -1113,7 +1091,7 @@ The solution to keep this from happening is to use something called `context`.
 This will help us determine if we are in the correct environment to expand the
 snippet. Here's the code for it:
 
-```snippets
+```viml
 global !p
 def math():
 	return vim.eval('vimtex#syntax#in_mathzone()') == '1'
@@ -1133,10 +1111,10 @@ endglobal
 Now we can add `context math()` to the snippets you would like to expand only
 in math mode.
 
-```snippets
+```viml
 context "math()"
-snippet sr "Square root" iA
-\sqrt{$1}$0
+snippet ss "Superscript" iA
+^{$1}$0
 endsnippet
 ```
 
@@ -1168,12 +1146,8 @@ use them, etc.
 
 ```viml
 snippet les "Lesson"
-\lesson{${1:LESSON NUMBER}}{\`date "+%b %d %Y %a (%H:%M:%S)"\`}{${3:LESSON NAME}}
-$0
-endsnippet
-
-snippet lec "Lecture"
-\lecture{${1:LECTURE NUMBER}}{\`date "+%b %d %Y %a (%H:%M:%S)"\`}{${3:LECTURE NAME}}
+\lesson{${1:LESSON NUMBER}}{`date "+%b %d %Y %a (%H:%M:%S)"`}{${3:LESSON NAME}}
+\label{les_$1:${4:${3/\\\w+\{(.*?)\}|\\(.)|(\w+)|([^\w\\]+)/(?4:_:\L$1$2$3\E)/ga}}}
 $0
 endsnippet
 ```
@@ -1211,11 +1185,11 @@ suggestions, etc based on the language that I'm using.
 
 We first need to install these plugins:
 
-```lua
-https://github.com/neovim/nvim-lspconfig
-https://github.com/onsails/lspkind-nvim
-https://github.com/tami5/lspsaga.nvim (Branch name: nvim51)
-https://github.com/williamboman/nvim-lsp-installer
+```viml
+Plug 'neovim/nvim-lspconfig'
+Plug 'onsails/lspkind-nvim'
+Plug 'tami5/lspsaga.nvim'
+Plug 'williamboman/nvim-lsp-installer'
 ```
 
 ### Install your language server

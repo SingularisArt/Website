@@ -35,7 +35,15 @@ title: notes
 
           Sets and Numbers, Angles and Arc-Length, Periodic Functions,
           Trigonometry, Sinusoidal Functions, Polar Coordinates, Intro to
-          Vectors
+          Vectors.
+        </div>
+      </a>
+
+      <a href="/pdf/College/Year-1/semester-2/hs-pre-calculus-2/assignments.zip" download>
+        <div class="notes_body">
+          <h4>School Assignments</h4>
+
+          My school assignments.
         </div>
       </a>
     </div>
