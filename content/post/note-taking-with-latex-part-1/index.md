@@ -565,10 +565,6 @@ snippet date-time "Today's date and Current Time"
 endsnippet
 ```
 
-You can even combine snippets:
-
-TODO: Add combine
-
 ## LaTeX Snippets
 
 ### Environments
