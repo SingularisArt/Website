@@ -1115,6 +1115,131 @@ endsnippet
 
 {{< video src="videos/context.mp4" autoplay="true" loop="true" muted="true">}}
 
+### Postfix
+
+Some other snippets I find worthy of being shared are my postfix snippets.
+
+```
+                               -- -> \overline{}
+                                  .. -> \dot{}
+                                  ,, -> \vec{}
+                                  ,. -> \hat{}
+                              z-- -> \overline{z}
+                                 z.. -> \dot{z}
+                                 z,, -> \vec{z}
+                                 z,. -> \hat{z}
+```
+
+These snippets are a real-time saver because you can type in the same order the
+lecturer writes on the blackboard.
+
+Here's the snippet code:
+
+```viml
+context "math()"
+snippet -- "Bar" i
+\overline{$1}$0
+endsnippet
+
+context "math()"
+snippet '(\S|\(.*?\))--' "Bar" riA
+\overline{`!p snip.rv=match.group(1).replace('(', '').replace(')', '')`}
+endsnippet
+```
+
+```viml
+context "math()"
+snippet .. "Dot" i
+\dot{$1}$0
+endsnippet
+
+context "math()"
+snippet '(\S)\.\.' "Dot" riA
+\dot{`!p snip.rv=match.group(1)`}
+endsnippet
+```
+
+```viml
+context "math()"
+snippet ,, "Vec" i
+\vec{$1}$0
+endsnippet
+
+context "math()"
+snippet '(\S),,' "Vec" riA
+\vec{`!p snip.rv=match.group(1)`}
+endsnippet
+```
+
+```viml
+context "math()"
+snippet ,. "Hat" i
+\hat{$1}$0
+endsnippet
+
+context "math()"
+snippet '(\S)\,\.' "Hat" riA
+\hat{`!p snip.rv=match.group(1)`}
+endsnippet
+```
+
+{{< video src="videos/postfix.mp4" autoplay="true" loop="true" muted="true">}}
+
+### Bra, Ket, and Bracket
+
+I don't use these snippets often, but I think they're cool. So, here they are:
+
+```
+                                 <f| -> \bra{f}
+                                 |f> -> \ket{f}
+                            \bra{f}f> -> \bracket{f}
+                            \ket{f}f> -> \bracket{f}
+```
+
+{{< video src="videos/bra-ket-bracket.mp4" autoplay="true" loop="true" muted="true">}}
+
+Here's the snippet code:
+
+```viml
+context "math()"
+snippet '\<\|' "Bra" riA
+\bra{$1}$0
+endsnippet
+
+context "math()"
+snippet "\<(.*?)\|" "Bra" riA
+\bra{`!p snip.rv = match.group(1)`}$0
+endsnippet
+
+context "math()"
+snippet "(.*)\\bra{(.*?)}([^\|]*?)\>" "Braket" riA
+`!p snip.rv = match.group(1)`\braket{`!p snip.rv = match.group(2)`}{`!p snip.rv = match.group(3)`}
+endsnippet
+
+context "math()"
+snippet '\|\>' "Ket" riA
+\ket{$1}$0
+endsnippet
+
+context "math()"
+snippet "\|(.*?)\>" "Ket" riA
+\ket{`!p snip.rv = match.group(1)`}$0
+endsnippet
+
+context "math()"
+snippet "(.*)\\ket{(.*?)}([^\|]*?)\>" "Braket" riA
+`!p snip.rv = match.group(1)`\braket{`!p snip.rv = match.group(2)`}{`!p snip.rv = match.group(3)`}
+endsnippet
+```
+
+### Me using these snippets
+
+{{< video src="videos/quadratic-formula.mp4" autoplay="true" loop="true" muted="true">}}
+{{< video src="videos/sum.mp4" autoplay="true" loop="true" muted="true">}}
+{{< video src="videos/limit.mp4" autoplay="true" loop="true" muted="true">}}
+{{< video src="videos/greek.mp4" autoplay="true" loop="true" muted="true">}}
+{{< video src="videos/quantum-mechanics.mp4" autoplay="true" loop="true" muted="true">}}
+
 ### School lessons
 
 I don't really use these that often because I created scripts that do a lot of
