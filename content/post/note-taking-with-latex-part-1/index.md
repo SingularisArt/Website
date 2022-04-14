@@ -7,6 +7,7 @@ description:    "I go over using NeoVim and LaTeX to take notes with, but I spec
 draft: 		 	    false
 comments:		    true
 cover:			    "/covers/note-taking-with-latex-part-1.png"
+mathjax:        true
 toc:			      true
 tags:         	["latex", "tutorial", "school", "notes"]
 ---
@@ -586,8 +587,8 @@ snippet beg "begin{} / end{}" bAi
 endsnippet
 ```
 
-* Line $$3$$ is preforming a regex expression. It's taking whatever you type
-  in placeholder number $$2$$, making it all lowercase, and replacing the
+* Line $3$ is preforming a regex expression. It's taking whatever you type
+  in placeholder number $2$, making it all lowercase, and replacing the
   spaces with underscores.
 * The **b** means **If the trigger word is the first word on the line, and no
   writing comes afterword, then expand**.
@@ -925,15 +926,20 @@ endsnippet
 
 #### Sub Scripts
 
-Another handy snippet are these ones, which is used for sub scripts. It changes
-a1 to a_1 and a_12 to a_{12} and a_{12}3 to a_{123}. It can also change
-a_{123456789}0 to a_{1234567890}. Here, size doesn't matter!
+Another handy snippet are these ones, which is used for sub scripts.
+
+{{% center %}}
+`a1` → `a_1`<br>
+`a_12` → `a_{12}`<br>
+`a_{12}3` → `a_{123}`<br>
+`a_{123}4` → `a_{1234}`<br>
+{{% /center %}}
 
 {{< video src="videos/sub-scripts.mp4" controls="false" autoplay="true" loop="true" muted="true">}}
 
 The code for these snippets use regular expressions for there trigger. The
-first expands if there is a variable, followed by a number. Example **b3** ->
-**b_3**. Here is the snippet code:
+first expands if there is a variable, followed by a number.
+Here is the snippet code:
 
 ```viml
 snippet '([A-Za-z])(\d)' "Auto subscript" wrA
@@ -942,7 +948,7 @@ endsnippet
 ```
 
 The second snippet checks if there is a variable, followed by an
-underscore, followed by two numbers. Example b_34 -> b_{34}.
+underscore, followed by two numbers.
 Here is the snippet code:
 
 ```viml
@@ -953,8 +959,7 @@ endsnippet
 
 The last and final snippet checks if there is a variable, followed by an
 underscore, followed by a group of {} with numbers inside. It also checks if
-there is a number in front of the closing bracket. Example b_{34}5 -> b_{345}
-
+there is a number in front of the closing bracket.
 Here is the snippet code:
 
 ```viml
@@ -966,23 +971,24 @@ endsnippet
 I also created a quick snippet that puts you in **subscript** mode:
 
 ```viml
-snippet __ "Super Script" Aw
+snippet __ "Super Script" A
 _{$1}$0
 endsnippet
 ```
 
 #### Super Scripts
 
-As for the superscripts, I use **td** -> **^{}**. However, I use some quick
-snippets for basic things like squaring, cubing, raising to a variable.
-Here is a quick view of the snippets:
+As for the superscripts, I use some quick snippets for basic things like
+squaring, cubing, raising to a variable. Here is a quick view of the snippets:
 
-* **sq** -> **^2**
-* **cb** -> **^3**
-* **ss** -> **^\{\}**
-* **rd** -> **^\{()\}**
-* **compl** -> **^\{c\}**
-* **invs** -> **^\{-1\}**
+{{% center %}}
+`sq` → `^{2}`<br>
+`cb` → `^{3}`<br>
+`ss` → `^{}`<br>
+`rd` → `^{()}`<br>
+`compl` → `^{c}`<br>
+`invs` → `^{-1}`<br>
+{{% /center %}}
 
 {{< video src="videos/super-scripts.mp4" controls="false" autoplay="true" loop="true" muted="true">}}
 
@@ -990,11 +996,11 @@ Here are the snippets:
 
 ```viml
 snippet sq "Square" Aw
-^2
+^{2}
 endsnippet
 
 snippet cb "Cube" Aw
-^3
+^{3}
 endsnippet
 
 snippet ss "Super Script" Aw
@@ -1030,11 +1036,7 @@ endsnippet
 ```
 
 The core of the second snippet is regular expressions. It's used to match
-expressions like:
-* \pi^{2}/
-* 39_{9\Theta}/
-* cf_2
-* etc
+expressions like `3/`, `4\pi/`, `39_{\theta}/`.
 
 ```viml
 snippet '((\d+)|(\d*)(\\)?([A-Za-z]+)((\^|_)(\{\d+\}|\d))*)/' "Fraction" wrA
@@ -1119,19 +1121,22 @@ endsnippet
 
 Some other snippets I find worthy of being shared are my postfix snippets.
 
-```
-                               -- -> \overline{}
-                                  .. -> \dot{}
-                                  ,, -> \vec{}
-                                  ,. -> \hat{}
-                              z-- -> \overline{z}
-                                 z.. -> \dot{z}
-                                 z,, -> \vec{z}
-                                 z,. -> \hat{z}
-```
+{{% center %}}
+`--` → `\overline{}`<br>
+`..` → `\dot{}`<br>
+`,,` → `\vec{}`<br>
+`,.` → `\hat{}`<br>
+`z--` → `\overline{z}`<br>
+`z..` → `\dot{z}`<br>
+`z,,` → `\vec{z}`<br>
+`z,.` → `\hat{z}`<br>
+`(zz)--` → `\overline{zz}`
+{{% /center %}}
 
 These snippets are a real-time saver because you can type in the same order the
 lecturer writes on the blackboard.
+
+{{< video src="videos/postfix.mp4" controls="false" autoplay="true" loop="true" muted="true">}}
 
 Here's the snippet code:
 
@@ -1183,62 +1188,35 @@ snippet '(\S)\,\.' "Hat" riA
 endsnippet
 ```
 
-{{< video src="videos/postfix.mp4" controls="false" autoplay="true" loop="true" muted="true">}}
-
 ### Bra, Ket, and Bracket
 
 I don't use these snippets often, but I think they're cool. So, here they are:
 
-```
-                                 <f| -> \bra{f}
-                                 |f> -> \ket{f}
-                            \bra{f}f> -> \bracket{f}
-                            \ket{f}f> -> \bracket{f}
-```
+{{% center %}}
+`<a|` → `\bra{a}`<br>
+`<q|`	→ `\bra{\psi}`<br>
+`|a>` → `\ket{a}`<br>
+`|q>`	→ `\ket{\psi}`<br>
+`<a|b>` → `\braket{a|b}`
+{{% /center %}}
 
 {{< video src="videos/bra-ket-bracket.mp4" controls="false" autoplay="true" loop="true" muted="true">}}
 
 Here's the snippet code:
 
 ```viml
-context "math()"
-snippet '\<\|' "Bra" riA
-\bra{$1}$0
+snippet '\<(.*?)\|' "Bra" riA
+\bra{`!p snip.rv = match.group(1).replace('q', f'\psi').replace('f', f'\phi')`}
 endsnippet
 
-context "math()"
-snippet "\<(.*?)\|" "Bra" riA
-\bra{`!p snip.rv = match.group(1)`}$0
+snippet '\|(.*?)\>' "Ket" riA
+\ket{`!p snip.rv = match.group(1).replace('q', f'\psi').replace('f', f'\phi')`}
 endsnippet
 
-context "math()"
-snippet "(.*)\\bra{(.*?)}([^\|]*?)\>" "Braket" riA
-`!p snip.rv = match.group(1)`\braket{`!p snip.rv = match.group(2)`}{`!p snip.rv = match.group(3)`}
-endsnippet
-
-context "math()"
-snippet '\|\>' "Ket" riA
-\ket{$1}$0
-endsnippet
-
-context "math()"
-snippet "\|(.*?)\>" "Ket" riA
-\ket{`!p snip.rv = match.group(1)`}$0
-endsnippet
-
-context "math()"
-snippet "(.*)\\ket{(.*?)}([^\|]*?)\>" "Braket" riA
-`!p snip.rv = match.group(1)`\braket{`!p snip.rv = match.group(2)`}{`!p snip.rv = match.group(3)`}
+snippet '\\(bra|ket){(.*?)}([^\|]*?)\>' "Braket" riA
+\braket{`!p snip.rv = match.group(2)`|`!p snip.rv = match.group(3).replace('q', f'\psi').replace('f', f'\phi')`}
 endsnippet
 ```
-
-### Me using these snippets
-
-{{< video src="videos/quadratic-formula.mp4" controls="false" autoplay="true" loop="true" muted="true">}}
-{{< video src="videos/sum.mp4" controls="false" autoplay="true" loop="true" muted="true">}}
-{{< video src="videos/limit.mp4" controls="false" autoplay="true" loop="true" muted="true">}}
-{{< video src="videos/greek.mp4" controls="false" autoplay="true" loop="true" muted="true">}}
-{{< video src="videos/quantum-mechanics.mp4" controls="false" autoplay="true" loop="true" muted="true">}}
 
 ### School lessons
 
@@ -1290,6 +1268,14 @@ setlocal spell
 set spelllang=en
 inoremap <C-l> <C-g>u<Esc>[s1z=`]a<C-g>u
 ```
+
+### Putting it all Together
+
+{{< video src="videos/quadratic-formula.mp4" controls="false" autoplay="true" loop="true" muted="true">}}
+{{< video src="videos/sum.mp4" controls="false" autoplay="true" loop="true" muted="true">}}
+{{< video src="videos/limit.mp4" controls="false" autoplay="true" loop="true" muted="true">}}
+{{< video src="videos/greek.mp4" controls="false" autoplay="true" loop="true" muted="true">}}
+{{< video src="videos/quantum-mechanics.mp4" controls="false" autoplay="true" loop="true" muted="true">}}
 
 ## Auto completion
 
