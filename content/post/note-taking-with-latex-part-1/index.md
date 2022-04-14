@@ -105,7 +105,7 @@ replaced or made invisible when your cursor isn't on that line. By making
 `\\[`, `\\]`, `$` invisible, they're less obtrusive which gives you a better
 overview of the document. This feature also replaces `\\in` by `∈`.
 
-{{< video src="videos/conceallevel.mp4" autoplay="true" loop="true" muted="true">}}
+{{< video src="videos/conceallevel.mp4" controls="false" autoplay="true" loop="true" muted="true">}}
 
 ## Snippets
 
@@ -452,7 +452,7 @@ href="https://www.github.com/SingularisArt/Singularis/tree/master/local/scripts/
 The last bottom two chunks are just changing the color of each row. For
 example, the snippet color is: #4E5754.
 
-{{< video src="videos/three-plugin-demo.mp4" autoplay="true" loop="true" muted="true">}}
+{{< video src="videos/three-plugin-demo.mp4" controls="false" autoplay="true" loop="true" muted="true">}}
 
 Next section, I will go over how to add/modify snippets yourself.
 
@@ -539,7 +539,7 @@ Now you know the basics, let's get into some examples.
 
 The code for this is probably the simplest.
 
-{{< video src="videos/sign.mp4" autoplay="true" loop="true" muted="true">}}
+{{< video src="videos/sign.mp4" controls="false" autoplay="true" loop="true" muted="true">}}
 
 Here is the snippet code for it:
 
@@ -554,7 +554,7 @@ endsnippet
 You can also run shell commands inside snippets, but you have to use back ticks
 (\`\`) for that.
 
-{{< video src="videos/date.mp4" autoplay="true" loop="true" muted="true">}}
+{{< video src="videos/date.mp4" controls="false" autoplay="true" loop="true" muted="true">}}
 
 Here is the snippet code for it:
 
@@ -596,13 +596,13 @@ person types the trigger word**.
 * The **${VISUAL}** means whatever you've deleted will be pasted there.
   But, you have to visually select the text, then hit **TAB**.
 
-{{< video src="videos/beg-environment.mp4" autoplay="true" loop="true" muted="true">}}
+{{< video src="videos/beg-environment.mp4" controls="false" autoplay="true" loop="true" muted="true">}}
 
 Now, I have a ton of different environments that I commonly use. So, like the
 good programmer I am, I decided to waste even more time creating specific
 snippets for each environment:
 
-{{< video src="videos/all-environments.mp4" autoplay="true" loop="true" muted="true">}}
+{{< video src="videos/all-environments.mp4" controls="false" autoplay="true" loop="true" muted="true">}}
 
 Sometimes you may want a specific environment with a specific label format, etc. So, I spent a little more time to create dozens of environment snippets.
 
@@ -899,7 +899,7 @@ endsnippet
 These are my two most frequency used snippets. They are responsible for bringing
 me into math mode. They are `ilm` (Inline Math) and `dm` (Display Math).
 
-{{< video src="videos/math.mp4" autoplay="true" loop="true" muted="true">}}
+{{< video src="videos/math.mp4" controls="false" autoplay="true" loop="true" muted="true">}}
 
 ```viml
 snippet ilm "Inline Math" wA
@@ -929,7 +929,7 @@ Another handy snippet are these ones, which is used for sub scripts. It changes
 a1 to a_1 and a_12 to a_{12} and a_{12}3 to a_{123}. It can also change
 a_{123456789}0 to a_{1234567890}. Here, size doesn't matter!
 
-{{< video src="videos/sub-scripts.mp4" autoplay="true" loop="true" muted="true">}}
+{{< video src="videos/sub-scripts.mp4" controls="false" autoplay="true" loop="true" muted="true">}}
 
 The code for these snippets use regular expressions for there trigger. The
 first expands if there is a variable, followed by a number. Example **b3** ->
@@ -984,7 +984,7 @@ Here is a quick view of the snippets:
 * **compl** -> **^\{c\}**
 * **invs** -> **^\{-1\}**
 
-{{< video src="videos/super-scripts.mp4" autoplay="true" loop="true" muted="true">}}
+{{< video src="videos/super-scripts.mp4" controls="false" autoplay="true" loop="true" muted="true">}}
 
 Here are the snippets:
 
@@ -1019,7 +1019,7 @@ endsnippet
 These snippets, are the funniest and they give you a big satisfaction whenever
 you pull them off.
 
-{{< video src="videos/fractions.mp4" autoplay="true" loop="true" muted="true">}}
+{{< video src="videos/fractions.mp4" controls="false" autoplay="true" loop="true" muted="true">}}
 
 Now, let's start off with something very easy. Creating a simple fraction:
 
@@ -1065,7 +1065,7 @@ endsnippet
 The last section that I want to show you is your selection to make your own
 fraction using **visual mode**.
 
-{{< video src="videos/tab-fractions.mp4" autoplay="true" loop="true" muted="true">}}
+{{< video src="videos/tab-fractions.mp4" controls="false" autoplay="true" loop="true" muted="true">}}
 
 ```viml
 snippet / "Fraction" iA
@@ -1113,7 +1113,7 @@ snippet ss "Superscript" iA
 endsnippet
 ```
 
-{{< video src="videos/context.mp4" autoplay="true" loop="true" muted="true">}}
+{{< video src="videos/context.mp4" controls="false" autoplay="true" loop="true" muted="true">}}
 
 ### Postfix
 
@@ -1183,7 +1183,7 @@ snippet '(\S)\,\.' "Hat" riA
 endsnippet
 ```
 
-{{< video src="videos/postfix.mp4" autoplay="true" loop="true" muted="true">}}
+{{< video src="videos/postfix.mp4" controls="false" autoplay="true" loop="true" muted="true">}}
 
 ### Bra, Ket, and Bracket
 
@@ -1196,7 +1196,7 @@ I don't use these snippets often, but I think they're cool. So, here they are:
                             \ket{f}f> -> \bracket{f}
 ```
 
-{{< video src="videos/bra-ket-bracket.mp4" autoplay="true" loop="true" muted="true">}}
+{{< video src="videos/bra-ket-bracket.mp4" controls="false" autoplay="true" loop="true" muted="true">}}
 
 Here's the snippet code:
 
@@ -1234,11 +1234,11 @@ endsnippet
 
 ### Me using these snippets
 
-{{< video src="videos/quadratic-formula.mp4" autoplay="true" loop="true" muted="true">}}
-{{< video src="videos/sum.mp4" autoplay="true" loop="true" muted="true">}}
-{{< video src="videos/limit.mp4" autoplay="true" loop="true" muted="true">}}
-{{< video src="videos/greek.mp4" autoplay="true" loop="true" muted="true">}}
-{{< video src="videos/quantum-mechanics.mp4" autoplay="true" loop="true" muted="true">}}
+{{< video src="videos/quadratic-formula.mp4" controls="false" autoplay="true" loop="true" muted="true">}}
+{{< video src="videos/sum.mp4" controls="false" autoplay="true" loop="true" muted="true">}}
+{{< video src="videos/limit.mp4" controls="false" autoplay="true" loop="true" muted="true">}}
+{{< video src="videos/greek.mp4" controls="false" autoplay="true" loop="true" muted="true">}}
+{{< video src="videos/quantum-mechanics.mp4" controls="false" autoplay="true" loop="true" muted="true">}}
 
 ### School lessons
 
@@ -1262,7 +1262,7 @@ You can find these scripts
 but eventually, I will create a blog post about how I made those scripts, how I
 use them, etc.
 
-{{< video src="videos/school-lessons.mp4" autoplay="true" loop="true" muted="true">}}
+{{< video src="videos/school-lessons.mp4" controls="false" autoplay="true" loop="true" muted="true">}}
 
 ```viml
 snippet les "Lesson"
@@ -1281,7 +1281,7 @@ correctly, I can exit insert mode, press **u**, and select the correct word,
 and from now on, it will always be corrected to the correct one, which is the
 one that I chose. AMAZING!
 
-{{< video src="videos/correct-words.mp4" autoplay="true" loop="true" muted="true">}}
+{{< video src="videos/correct-words.mp4" controls="false" autoplay="true" loop="true" muted="true">}}
 
 Now, put this in your `init.vim` or `.vimrc`:
 
@@ -1412,7 +1412,7 @@ Now, when you type `\`, you will be able to see autocompletion.
 
 ### Demo of LSP
 
-{{< video src="videos/lsp.mp4" autoplay="true" loop="true" muted="true">}}
+{{< video src="videos/lsp.mp4" controls="false" autoplay="true" loop="true" muted="true">}}
 
 ## Credit
 
