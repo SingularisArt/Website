@@ -172,18 +172,11 @@ Create a file called `after/plugin/cmp.lua` and place this configuration in it.
 vim.cmd([[set completeopt=menuone,noinsert,noselect]])
 
 local cmp_status, cmp = pcall(require, "cmp")
--- local cmp_ultisnips_status, cmp_ultisnips_mappings = pcall(require, "cmp_ultisnips_mapping")
-local cmp_ultisnips_mappings = require("cmp_nvim_ultisnips.mappings")
 
 if not cmp_status then
 	vim.notify("Please Install 'cmp'")
 	return
 end
-
--- if not cmp_ultisnips_status then
--- 	vim.notify("Please Install 'cmp-ultisnips'")
--- 	return
--- end
 
 local kind_icons = {
 	Class = " Class",
@@ -252,7 +245,7 @@ cmp.setup({
 		end,
 	},
 
-	mapping = {
+	mapping = cmp.mapping.preset.insert({
 		["<C-y>"] = cmp.mapping({
 			i = cmp.mapping.abort(),
 			c = cmp.mapping.close(),
@@ -268,11 +261,15 @@ cmp.setup({
 
     ['<C-Space>'] = cmp.mapping(cmp.mapping.complete(), { 'i', 'c' }),
 		["<CR>"] = cmp.mapping.confirm({ select = true }),
-	},
+	}),
 
-	documentation = {
-		border = { "╭", "─", "╮", "│", "╯", "─", "╰", "│" },
-	},
+	-- documentation = {
+	-- },
+  window = {
+    documentation = {
+      border = { "╭", "─", "╮", "│", "╯", "─", "╰", "│" },
+    }
+  },
 
 	sources = cmp.config.sources({
 		{ name = "nvim_lsp" },
@@ -383,6 +380,8 @@ source.is_available = function()
 	return vim.bo.filetype == "gitcommit"
 end
 
+require("cmp").register_source("gh_issues", source.new())
+
 vim.cmd[[
 highlight! CmpItemAbbrMatch guibg=NONE guifg=#fff700
 highlight! CmpItemAbbrMatchFuzzy guibg=NONE guifg=#fff700
@@ -441,6 +440,7 @@ highlight! CmpItemKindVariableDefault      guibg=NONE guifg=#6D3F5B
 highlight! CmpItemKindReferenceDefault     guibg=NONE guifg=#474B4E
 highlight! CmpItemKindEnumMemberDefault    guibg=NONE guifg=#193737
 ]]
+
 ```
 
 The top 12 lines just initialize everything. The next big chunk below those
@@ -477,7 +477,7 @@ let g:UltiSnipsJumpBackwardTrigger = "<S-Tab>"
 let g:UltiSnipsEditSplit='vertical'
 
 " the location of the snippets
-let g:UltiSnipsSnippetDirectories=[$HOME."/.config/nvim/UltiSnips/"]
+let g:UltiSnipsSnippetDirectories=[$HOME."/.config/nvim/UltiSnips/", "UltiSnips"]
 
 iunmap <Tab>
 ```
@@ -492,7 +492,9 @@ back and forth between those placeholders.
 The next line is telling `UltiSnips` to open the snippets configuration
 vertically when you run: `:UltiSnipsEdit`
 
-The last line tells `UltiSnips` where to look for your snippets.
+The last line tells `UltiSnips` where to look for your snippets. You need to
+put the **"UltiSnips"** in the second item. (I explain it more
+[here](https://damrah.netlify.app/post/note-taking-with-latex-part-1/#course-specific-snippets))
 
 #### Creating your own Snippets
 
@@ -776,123 +778,6 @@ endsnippet
 pre_expand "add_row(snip)"
 snippet "tr(\d+)" "Add table row of dimension ..." wrAbi
 endsnippet
-
-# Custom made environments
-
-snippet thrm "Theorem Envrionment" bAi
-\begin{theorem}[$1]
-	\label{thrm:${2:${1/\\\w+\{(.*?)\}|\\(.)|(\w+)|([^\w\\]+)/(?4:_:\L$1$2$3\E)/ga}}}
-
-	${VISUAL}$3
-\end{theorem}
-endsnippet
-
-snippet post "Postulate Envrionment" bAi
-\begin{postulate}[$1]
-	\label{post:${2:${1/\\\w+\{(.*?)\}|\\(.)|(\w+)|([^\w\\]+)/(?4:_:\L$1$2$3\E)/ga}}}
-
-	${VISUAL}$3
-\end{postulate}
-endsnippet
-
-snippet conj "Conjecture Envrionment" bAi
-\begin{conjecture}[$1]
-	\label{conj:${2:${1/\\\w+\{(.*?)\}|\\(.)|(\w+)|([^\w\\]+)/(?4:_:\L$1$2$3\E)/ga}}}
-
-	${VISUAL}$3
-\end{conjecture}
-endsnippet
-
-snippet corl "Corollary Envrionment" bAi
-\begin{corollary}[$1]
-	\label{corl:${2:${1/\\\w+\{(.*?)\}|\\(.)|(\w+)|([^\w\\]+)/(?4:_:\L$1$2$3\E)/ga}}}
-
-	${VISUAL}$3
-\end{corollary}
-endsnippet
-
-snippet lem "Lemma Envrionment" bAi
-\begin{lemma}[$1]
-	\label{lem:${2:${1/\\\w+\{(.*?)\}|\\(.)|(\w+)|([^\w\\]+)/(?4:_:\L$1$2$3\E)/ga}}}
-
-	${VISUAL}$3
-\end{lemma}
-endsnippet
-
-snippet conc "Conclusion Envrionment" bAi
-\begin{conclusion}[$1]
-	\label{conc:${2:${1/\\\w+\{(.*?)\}|\\(.)|(\w+)|([^\w\\]+)/(?4:_:\L$1$2$3\E)/ga}}}
-
-	${VISUAL}$3
-\end{conclusion}
-endsnippet
-
-
-snippet def "Definition Environment" bAi
-\begin{definition}[$1]
-	\label{def:${2:${1/\\\w+\{(.*?)\}|\\(.)|(\w+)|([^\w\\]+)/(?4:_:\L$1$2$3\E)/ga}}}
-
-	${VISUAL}$3
-\end{definition}
-endsnippet
-
-snippet rev "Review Environment" bAi
-\begin{review}[$1]
-	\label{rev:${2:${1/\\\w+\{(.*?)\}|\\(.)|(\w+)|([^\w\\]+)/(?4:_:\L$1$2$3\E)/ga}}}
-
-	${VISUAL}${3}
-\end{review}
-endsnippet
-
-
-snippet exm "Example Environment" bAi
-\begin{example}
-	\label{exm:$1}
-
-	${VISUAL}$2
-\end{example}
-endsnippet
-
-snippet rmk "Remark Environment" bAi
-\begin{remark}
-	\label{rmk:$1}
-
-	${VISUAL}$2
-\end{remark}
-endsnippet
-
-snippet nte "Note Environment" bAi
-\begin{note}
-	\label{nte:$1}
-
-	${VISUAL}$2
-\end{note}
-endsnippet
-
-snippet nat "Notation Environment" bAi
-\begin{notation}
-	\label{nat:$1}
-
-	${VISUAL}$2
-\end{notation}
-endsnippet
-
-
-snippet prop "Property Environment" bAi
-\begin{property}
-	\label{prop:$1}
-
-	${VISUAL}$2
-\end{property}
-endsnippet
-
-snippet prop "Proposition Environment" bAi
-\begin{proposition}
-	\label{prop:$1}
-
-	${VISUAL}$2
-\end{proposition}
-endsnippet
 ```
 
 ### Inline and Display Math
@@ -985,7 +870,6 @@ squaring, cubing, raising to a variable. Here is a quick view of the snippets:
 `sq` → `^{2}`<br>
 `cb` → `^{3}`<br>
 `ss` → `^{}`<br>
-`rd` → `^{()}`<br>
 `compl` → `^{c}`<br>
 `invs` → `^{-1}`<br>
 {{% /center %}}
@@ -1005,10 +889,6 @@ endsnippet
 
 snippet ss "Super Script" Aw
 ^{$1}$0
-endsnippet
-
-snippet rd "To The ... Power" Aw
-^{($1)}$0
 endsnippet
 
 snippet compl "Complement" Aw
@@ -1074,6 +954,120 @@ snippet / "Fraction" iA
 \\frac{${VISUAL}}{$1}$0
 endsnippet
 ```
+
+### Greek Letters
+
+I use the Greek letters all the time and I wanted a quick way to type them. So,
+I created this snippet:
+
+{{< video src="videos/greek-letters-lowercase.mp4" controls="false" autoplay="true" loop="true" muted="true">}}
+{{< video src="videos/greek-letters-uppercase.mp4" controls="false" autoplay="true" loop="true" muted="true">}}
+
+```viml
+snippet '(alp|Alp|bet|Bet|gam|Gam|del|Del|eps|Eps|zet|Zet|eta|Zet|the|The|iot|Iot|kap|Kap|lam|Lam|mu|Mu|nu|Nu|xi|Xi|omi|Omi|pi|Pi|rho|Rho|sig|Sig|tau|Tau|ups|Ups|phi|Phi|chi|Chi|psi|Psi|ome|Ome)' "All Greek Letters" riA
+`!p
+if match.group(1) == 'alp':
+	snip.rv = '\\alpha'
+elif match.group(1) == 'Alp':
+	snip.rv = '\\Alpha'
+elif match.group(1) == 'bet':
+	snip.rv = '\\beta'
+elif match.group(1) == 'Bet':
+	snip.rv = '\\Beta'
+elif match.group(1) == 'gam':
+	snip.rv = '\\gamma'
+elif match.group(1) == 'Gam':
+	snip.rv = '\\Gamma'
+elif match.group(1) == 'del':
+	snip.rv = '\\delta'
+elif match.group(1) == 'Del':
+	snip.rv = '\\Delta'
+elif match.group(1) == 'eps':
+	snip.rv = '\\epsilon'
+elif match.group(1) == 'Eps':
+	snip.rv = '\\Epsilon'
+elif match.group(1) == 'zet':
+	snip.rv = '\\zeta'
+elif match.group(1) == 'Zet':
+	snip.rv = '\\Zeta'
+elif match.group(1) == 'eta':
+	snip.rv = '\\eta'
+elif match.group(1) == 'Zet':
+	snip.rv = '\\Eta'
+elif match.group(1) == 'the':
+	snip.rv = '\\theta'
+elif match.group(1) == 'The':
+	snip.rv = '\\Theta'
+elif match.group(1) == 'iot':
+	snip.rv = '\\iota'
+elif match.group(1) == 'Iot':
+	snip.rv = '\\Iota'
+elif match.group(1) == 'kap':
+	snip.rv = '\\kappa'
+elif match.group(1) == 'Kap':
+	snip.rv = '\\Kappa'
+elif match.group(1) == 'lam':
+	snip.rv = '\\lambda'
+elif match.group(1) == 'Lam':
+	snip.rv = '\\Lambda'
+elif match.group(1) == 'mu':
+	snip.rv = '\\mu'
+elif match.group(1) == 'Mu':
+	snip.rv = '\\Mu'
+elif match.group(1) == 'nu':
+	snip.rv = '\\nu'
+elif match.group(1) == 'Nu':
+	snip.rv = '\\Nu'
+elif match.group(1) == 'xi':
+	snip.rv = '\\xi'
+elif match.group(1) == 'Xi':
+	snip.rv = '\\Xi'
+elif match.group(1) == 'omi':
+	snip.rv = '\\omicron'
+elif match.group(1) == 'Omi':
+	snip.rv = '\\Omicron'
+elif match.group(1) == 'pi':
+	snip.rv = '\\pi'
+elif match.group(1) == 'Pi':
+	snip.rv = '\\Pi'
+elif match.group(1) == 'rho':
+	snip.rv = '\\rho'
+elif match.group(1) == 'Rho':
+	snip.rv = '\\Rho'
+elif match.group(1) == 'sig':
+	snip.rv = '\\sigma'
+elif match.group(1) == 'Sig':
+	snip.rv = '\\Sigma'
+elif match.group(1) == 'tau':
+	snip.rv = '\\tau'
+elif match.group(1) == 'Tau':
+	snip.rv = '\\Tau'
+elif match.group(1) == 'ups':
+	snip.rv = '\\upsilon'
+elif match.group(1) == 'Ups':
+	snip.rv = '\\Upsilon'
+elif match.group(1) == 'phi':
+	snip.rv = '\\phi'
+elif match.group(1) == 'Phi':
+	snip.rv = '\\Phi'
+elif match.group(1) == 'chi':
+	snip.rv = '\\chi'
+elif match.group(1) == 'Chi':
+	snip.rv = '\\Chi'
+elif match.group(1) == 'psi':
+	snip.rv = '\\psi'
+elif match.group(1) == 'Psi':
+	snip.rv = '\\Psi'
+elif match.group(1) == 'ome':
+	snip.rv = '\\omega'
+elif match.group(1) == 'Ome':
+	snip.rv = '\\Omega'
+`$2
+endsnippet
+```
+
+I know this looks crazy, but it's really not. What it's doing is finding out
+what you typed and replace it based on that.
 
 ### Context
 
@@ -1250,7 +1244,62 @@ $0
 endsnippet
 ```
 
-### Correct spelling mistakes
+### Course Specific Snippets
+
+Beside my commonly used snippets, I have some snippets that are only required
+in some of my classes. You can easily load this snippets by putting this in
+your `.vimrc`:
+
+```viml
+set rtp+=~/Documents/school-notes/current-course
+```
+
+The `current-course` folder I'm pointing to is a
+[symlink](https://en.wikipedia.org/wiki/Symbolic_link) to my current class.
+I'll talk more about that on my next post.
+
+In that folder, I have a ton of things like my lecture notes, assignments, and
+my snippets. I store my snippets in the folder: `current-course/UltiSnips`.
+
+You may recall when I had you put the **"UltiSnips"** in the list when
+configuring UltiSnips. The reason is because UltiSnips looks at every single
+folder in the rtp (run time path) and search for this folder. If it finds it,
+it'll source all of the snippet files it finds.
+
+Here are some of my snippets for my Calculus 1 class.
+
+{{< video src="videos/course-specific-snippets.mp4" controls="false" autoplay="true" loop="true" muted="true">}}
+
+I use a ton of trigonometry in my Calculus class:
+
+```viml
+snippet dtan "Definition of Tangent" Ai
+\tan = \left(${1:\theta}\right) = \frac{\sin \left($1\right)}{\cos \left($1\right)}
+endsnippet
+
+snippet dcot "Definition of Cotangent" Ai
+\cot \left(${1:\theta}\right) = \frac{1}{tan \left($1\left)}
+endsnippet
+
+snippet dsec "Definition of Secant" Ai
+\sec \left(${1:\theta}\right) = \frac{1}{cos \left($1\left)}
+endsnippet
+
+snippet dcsc "Definition of Cosecant" Ai
+\csc \left(${1:\theta}\right) = \frac{1}{sin \left($1\left)}
+endsnippet
+```
+
+### Putting it all Together
+
+{{< video src="videos/quadratic-formula.mp4" controls="false" autoplay="true" loop="true" muted="true">}}
+{{< video src="videos/sum.mp4" controls="false" autoplay="true" loop="true" muted="true">}}
+{{< video src="videos/limit.mp4" controls="false" autoplay="true" loop="true" muted="true">}}
+{{< video src="videos/greek.mp4" controls="false" autoplay="true" loop="true" muted="true">}}
+{{< video src="videos/quantum-mechanics-1.mp4" controls="false" autoplay="true" loop="true" muted="true">}}
+{{< video src="videos/quantum-mechanics-2.mp4" controls="false" autoplay="true" loop="true" muted="true">}}
+
+## Correct spelling mistakes
 
 I use this a **TON**. It's so handy because I don't have to leave insert mode,
 hover over the word, press **z=**, select the correct word, then go all the way
@@ -1268,14 +1317,6 @@ setlocal spell
 set spelllang=en
 inoremap <C-l> <C-g>u<Esc>[s1z=`]a<C-g>u
 ```
-
-### Putting it all Together
-
-{{< video src="videos/quadratic-formula.mp4" controls="false" autoplay="true" loop="true" muted="true">}}
-{{< video src="videos/sum.mp4" controls="false" autoplay="true" loop="true" muted="true">}}
-{{< video src="videos/limit.mp4" controls="false" autoplay="true" loop="true" muted="true">}}
-{{< video src="videos/greek.mp4" controls="false" autoplay="true" loop="true" muted="true">}}
-{{< video src="videos/quantum-mechanics.mp4" controls="false" autoplay="true" loop="true" muted="true">}}
 
 ## Auto completion
 
