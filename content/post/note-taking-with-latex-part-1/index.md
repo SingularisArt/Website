@@ -1292,12 +1292,29 @@ endsnippet
 
 ### Putting it all Together
 
+I have hundreds of other snippets that I use on a daily basis.
+
+For example, I have:
+
+{{% center %}}
+`+-` → `\pm`<br>
+`sr` → `\sqrt{}`<br>
+`sn` → `\sqrt[]{}`<br>
+`sum` → `sum_{n = 1}^{\infty}`<br>
+`lim` → `lim_{n \to \infty}`<br>
+`prt` → `\partial`<br>
+`int` → `\int`<br>
+{{% /center %}}
+
 {{< video src="videos/quadratic-formula.mp4" controls="false" autoplay="true" loop="true" muted="true">}}
 {{< video src="videos/sum.mp4" controls="false" autoplay="true" loop="true" muted="true">}}
 {{< video src="videos/limit.mp4" controls="false" autoplay="true" loop="true" muted="true">}}
 {{< video src="videos/greek.mp4" controls="false" autoplay="true" loop="true" muted="true">}}
 {{< video src="videos/quantum-mechanics-1.mp4" controls="false" autoplay="true" loop="true" muted="true">}}
 {{< video src="videos/quantum-mechanics-2.mp4" controls="false" autoplay="true" loop="true" muted="true">}}
+
+You can view all my latex snippets
+[here](https://github.com/SingularisArt/snippets/blob/master/plaintex.snippets).
 
 ## Correct spelling mistakes
 
