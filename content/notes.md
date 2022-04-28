@@ -10,7 +10,7 @@ title: notes
 <link rel="stylesheet" href="/css/card.css" type="text/css">
 
 <body>
-  <div style="font-size: 30px"><b>College: Year 1: Semester 2</b></div>
+  <div style="font-size: 30px"><b>College</b></div>
 
   <br>
 
@@ -34,8 +34,7 @@ title: notes
           <h4>Lecture Notes</h4>
 
           Sets and Numbers, Angles and Arc-Length, Periodic Functions,
-          Trigonometry, Sinusoidal Functions, Polar Coordinates, Intro to
-          Vectors.
+          Trigonometry, Sinusoidal Functions, Polar Coordinates, Vectors.
         </div>
       </a>
 
