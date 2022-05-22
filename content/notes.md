@@ -62,9 +62,8 @@ title: notes
     <div id="container">
       <div class="notes_header">
         <div class="tags">
-          MTH 18 • 12-13
+        MTH 18 • 12-13
         </div>
-
         <div class="title">
           <h3>Real Analysis 1</h3>
         </div>

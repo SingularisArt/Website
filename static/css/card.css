@@ -1,8 +1,17 @@
+* { margin: 0; padding: 0; }
+
+body {
+  font-family: Inter, sans-serif;
+  color: rgb(58, 52, 58);
+  font-size: 18px;
+  text-rendering: optimizelegibility;
+}
+
 hr {
   display: block;
   height: 0px;
   border: 0;
-  border-top: 1px solid #fff;
+  border-top: 1px solid #8a8a8a;
   margin: 0px;
   padding: 0;
 }
@@ -21,7 +30,7 @@ hr {
   max-width: 250px;
 
   border-radius: 0px;
-  border: 1px solid #fff;
+  border: 1px solid #8a8a8a;
 
   padding: 0px;
   margin: 0px;
@@ -33,32 +42,29 @@ h4 {
   margin: 0;
 }
 
+.tags {
+  padding-top: 10px;
+  font-size: 70%;
+  text-transform: uppercase;
+  font-weight: 600;
+}
+
 .notes_header {
   padding-left: 15px;
   padding-right: 15px;
   padding-bottom: 15px;
 }
 
-.tags {
-  font-size: 0.8rem;
-}
-
-/* .tags, .title { */
-/*   position: absolute; */
-/*   top: 8px; */
-/*   color: #000; */
-/* } */
-
 .notes_body {
   padding-left: 15px;
   padding-right: 15px;
   padding-bottom: 25px;
-
-  color: #fff;
+  padding-top: -100;
+  color: rgb(58, 52, 58);
   font-style: normal;
   font-size: 14px;
 }
 
 .notes_body:hover {
-  background-color: #262626;
+  background-color: #fef;
 }
