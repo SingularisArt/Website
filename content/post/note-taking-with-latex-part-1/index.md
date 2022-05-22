@@ -9,7 +9,7 @@ comments:		    true
 cover:			    "/covers/note-taking-with-latex-part-1.png"
 mathjax:        true
 toc:			      true
-tags:         	["latex", "tutorial", "school", "notes"]
+tags:         	["latex", "tutorial", "school", "notes", "series"]
 ---
 
 For a **very long time**, I have been trying to create the perfect setup for
@@ -90,21 +90,26 @@ It provides:
 * Renaming entire environments
 * Shows you the toc (Table of Contents)
 
-Using 
-<a class="center after" href="https://github.com/junegunn/vim-plug">vim-plug</a>, I configured it as follows:
+Using <a class="center after"
+href="https://github.com/wbthomason/packer.nvim">Packer</a>, I configured it as
+follows:
 
-```viml
-Plug 'lervag/vimtex'
-let g:vimtex_view_method='zathura'
-let g:tex_flavor='latex'
-set conceallevel=2
+```lua
+use { 'lervag/vimtex' }
+
+vim.cmd(let g:vimtex_view_method='zathura')
+vim.cmd(let g:tex_flavor='latex')
+vim.cmd(set conceallevel=2)
+vim.cmd(let g:vimtex_quickfix_enabled=0)
 ```
 
-The first line tells vimtex which pdf viewer to use.
-The last line configure the concealment. This is a feature where LaTeX code is
-replaced or made invisible when your cursor isn't on that line. By making
-`\\[`, `\\]`, `$` invisible, they're less obtrusive which gives you a better
-overview of the document. This feature also replaces `\\in` by `∈`.
+The first line tells vimtex which pdf viewer to use. The second line tells
+vimtex which type of tex to use. The third line configure the concealment. This
+is a feature where LaTeX code is replaced or made invisible when your cursor
+isn't on that line. By making `\\[`, `\\]`, `$` invisible, they're less
+obtrusive which gives you a better overview of the document. This feature also
+replaces `\\in` by `∈`. The final line tells vimtex to not open the QuickFix
+list every time it compiles a file for you.
 
 {{< video src="videos/conceallevel.mp4" controls="false" autoplay="true" loop="true" muted="true">}}
 
@@ -137,28 +142,20 @@ important ones in this article.
 Like before, go ahead and install these plugins via:
 
 ```viml
-Plug 'SirVer/ultisnips'
-Plug 'honza/vim-snippets'
-Plug 'hrsh7th/nvim-cmp'
+use { 'SirVer/ultisnips' }
+use { 'honza/vim-snippets' }
+use { 'hrsh7th/nvim-cmp' }
 
 " Optional
 
-Plug 'hrsh7th/cmp-buffer'
-Plug 'hrsh7th/cmp-calc'
-Plug 'hrsh7th/cmp-cmdline'
-Plug 'hrsh7th/cmp-emoji'
-Plug 'kdheepak/cmp-latex-symbols'
-Plug 'hrsh7th/cmp-nvim-lsp'
-Plug 'hrsh7th/cmp-nvim-lua'
-Plug 'quangnguyen30192/cmp-nvim-ultisnips'
-Plug 'hrsh7th/cmp-path'
-Plug 'f3fora/cmp-spell'
-Plug 'tzachar/cmp-tabnine'
+use { 'hrsh7th/cmp-buffer' }
+use { 'hrsh7th/cmp-path' }
+use { 'hrsh7th/cmp-nvim-lsp' }
+use { 'hrsh7th/cmp-nvim-lua' }
+use { 'hrsh7th/cmp-calc' }
+use { 'quangnguyen30192/cmp-nvim-ultisnips' }
+use { 'kdheepak/cmp-latex-symbols' }
 ```
-
-The first plugin (`ultisnips`) is the snippet manager.
-The second plugin (`vim-snippets`) has all of the UltiSnips snippets.
-The third plugin (`nvim-cmp`) is a completion engine.
 
 You're gonna have to create a directory called: `after/plugin/` in your NeoVim config directory.
 This is where you're going to put your configuration in. The reason you put all
@@ -169,63 +166,58 @@ file.
 Create a file called `after/plugin/cmp.lua` and place this configuration in it.
 
 ```lua
-vim.cmd([[set completeopt=menuone,noinsert,noselect]])
-
-local cmp_status, cmp = pcall(require, "cmp")
-
-if not cmp_status then
-	vim.notify("Please Install 'cmp'")
-	return
+local cmp_status_ok, cmp = pcall(require, "cmp")
+if not cmp_status_ok then
+  return
 end
 
-local kind_icons = {
-	Class = " Class",
-	Color = " Color",
-	Constant = "ﲀ Constant",
-	Constructor = " Constructor",
-	Enum = "練Enum",
-	EnumMember = " Enum Member",
-	Event = " Event",
-	Field = " Field",
-	File = " File",
-	Folder = " Folder",
-	Function = " Function",
-	Interface = "ﰮ Interface",
-	Keyword = " Keyword",
-	Method = " Method",
-	Module = " Module",
-	Operator = " Operator",
-	Property = " Property",
-	Reference = " Reference",
-	Snippet = " Snippet",
-	Struct = " Struct",
-	Text = " Text",
-	TypeParameter = " Type Parameter",
-	Unit = "塞 Unit",
-	Value = " Value",
-	Variable = " Variable",
-}
+local check_backspace = function()
+  local col = vim.fn.col "." - 1
+  return col == 0 or vim.fn.getline("."):sub(col, col):match "%s"
+end
 
-Vscode = vim.lsp.protocol.make_client_capabilities()
+--   פּ ﯟ   some other good icons
+local kind_icons = {
+  Text = "",
+  Method = "m",
+  Function = "",
+  Constructor = "",
+  Field = "",
+  Variable = "",
+  Class = "",
+  Interface = "",
+  Module = "",
+  Property = "",
+  Unit = "",
+  Value = "",
+  Enum = "",
+  Keyword = "",
+  Snippet = "",
+  Color = "",
+  File = "",
+  Reference = "",
+  Folder = "",
+  EnumMember = "",
+  Constant = "",
+  Struct = "",
+  Event = "",
+  Operator = "",
+  TypeParameter = "",
+}
+-- find more here: https://www.nerdfonts.com/cheat-sheet
 
 local source_mapping = {
-	nvim_lsp = "(LSP)",
-	nvim_lua = "(Lua)",
-	latex_symbols = "(LaTeX)",
-	ultisnips = "(Snippet)",
-	cmp_tabnine = "(TabNine)",
-	calc = "(Calculator)",
-	gh_issues = "(Issues)",
-	path = "(Path)",
-	buffer = "(Buffer)",
-	emoji = "(Emoji)",
-	spell = "(Spell)",
+	nvim_lsp = "[LSP]",
+	nvim_lua = "[Lua]",
+	latex_symbols = "[LaTeX]",
+	ultisnips = "[Snippet]",
+	calc = "[Calculator]",
+	gh_issues = "[Issues]",
+	path = "[Path]",
+	buffer = "[Buffer]",
 }
 
-Capabilities = require("cmp_nvim_lsp").update_capabilities(vim.lsp.protocol.make_client_capabilities())
-Vscode.textDocument.completion.completionItem.snippetSupport = true
-
-cmp.setup({
+cmp.setup {
 	snippet = {
 		expand = function(args)
 			vim.fn["UltiSnips#Anon"](args.body) -- For `ultisnips` users.
@@ -263,12 +255,29 @@ cmp.setup({
 		["<CR>"] = cmp.mapping.confirm({ select = true }),
 	}),
 
-	-- documentation = {
-	-- },
   window = {
     documentation = {
       border = { "╭", "─", "╮", "│", "╯", "─", "╰", "│" },
     }
+  },
+
+  formatting = {
+    fields = { "kind", "abbr", "menu" },
+    format = function(entry, vim_item)
+      -- Kind icons
+      vim_item.kind = string.format("%s", kind_icons[vim_item.kind])
+      vim_item.menu = ({
+        nvim_lsp = "[LSP]",
+        nvim_lua = "[Lua]",
+        latex_symbols = "[LaTeX]",
+        ultisnips = "[Snippet]",
+        calc = "[Calculator]",
+        gh_issues = "[Issues]",
+        path = "[Path]",
+        buffer = "[Buffer]",
+      })[entry.source.name]
+      return vim_item
+    end,
   },
 
 	sources = cmp.config.sources({
@@ -276,182 +285,20 @@ cmp.setup({
 		{ name = "nvim_lua" },
 		{ name = "latex_symbols" },
 		{ name = "ultisnips" },
-		{ name = "cmp_tabnine" },
 		{ name = "calc" },
 		{ name = "gh_issues" },
 		{ name = "path" },
 		{ name = "buffer" },
-		{ name = "emoji" },
-		{ name = "spell" },
 	}),
 
 	experimental = {
 		native_menu = false,
 		ghost_text = true,
 	},
-
-	formatting = {
-		format = function(entry, vim_item)
-			vim_item.kind = kind_icons[vim_item.kind]
-			local menu = source_mapping[entry.source.name]
-			if entry.source.name == "cmp_tabnine" then
-				if entry.completion_item.data ~= nil and entry.completion_item.data.detail ~= nil then
-					menu = entry.completion_item.data.detail .. " " .. menu
-				end
-				vim_item.kind = " TabNine"
-			end
-			vim_item.menu = menu
-			return vim_item
-		end,
-	},
-})
-
-cmp.setup.cmdline(":", {
-	sources = {
-		{ name = "cmdline" },
-	},
-})
-
-local Job = require("plenary.job")
-
-local source = {}
-
-source.new = function()
-	local self = setmetatable({ cache = {} }, { __index = source })
-
-	return self
-end
-
-source.complete = function(self, _, callback)
-	local bufnr = vim.api.nvim_get_current_buf()
-
-	-- This just makes sure that we only hit the GH API once per session.
-	--
-	-- You could remove this if you wanted, but this just makes it so we're
-	-- good programming citizens.
-	if not self.cache[bufnr] then
-		Job
-			:new({
-				-- Uses `gh` executable to request the issues from the remote repository.
-				"gh",
-				"issue",
-				"list",
-				"--limit",
-				"1000",
-				"--json",
-				"title,number,body",
-
-				on_exit = function(job)
-					local result = job:result()
-					local ok, parsed = pcall(vim.json.decode, table.concat(result, ""))
-					if not ok then
-						vim.notify("Failed to parse gh result")
-						return
-					end
-
-					local items = {}
-					for _, gh_item in ipairs(parsed) do
-						gh_item.body = string.gsub(gh_item.body or "", "\r", "")
-
-						table.insert(items, {
-							label = string.format("#%s", gh_item.number),
-							documentation = {
-								kind = "markdown",
-								value = string.format("# %s\n\n%s", gh_item.title, gh_item.body),
-							},
-						})
-					end
-
-					callback({ items = items, isIncomplete = false })
-					self.cache[bufnr] = items
-				end,
-			})
-			:start()
-	else
-		callback({ items = self.cache[bufnr], isIncomplete = false })
-	end
-end
-
-source.get_trigger_characters = function()
-	return { "#" }
-end
-
-source.is_available = function()
-	return vim.bo.filetype == "gitcommit"
-end
-
-require("cmp").register_source("gh_issues", source.new())
-
-vim.cmd[[
-highlight! CmpItemAbbrMatch guibg=NONE guifg=#fff700
-highlight! CmpItemAbbrMatchFuzzy guibg=NONE guifg=#fff700
-highlight! CmpItemKindFunction guibg=NONE guifg=#C586C0
-highlight! CmpItemKindMethod guibg=NONE guifg=#C586C0
-highlight! CmpItemKindVariable guibg=NONE guifg=#9CDCFE
-highlight! CmpItemKindKeyword guibg=NONE guifg=#D4D4D4
-
-highlight! CmpItemKindEnum          guibg=NONE guifg=#7D8471
-highlight! CmpItemKindInterface     guibg=NONE guifg=#252850
-highlight! CmpItemKindFile          guibg=NONE guifg=#015D52
-highlight! CmpItemKindText          guibg=NONE guifg=#781F19
-highlight! CmpItemKindUnit          guibg=NONE guifg=#6C6874
-highlight! CmpItemKindClass         guibg=NONE guifg=#282828
-highlight! CmpItemKindColor         guibg=NONE guifg=#587246
-highlight! CmpItemKindEvent         guibg=NONE guifg=#6C7059
-highlight! CmpItemKindField         guibg=NONE guifg=#6F4F28
-highlight! CmpItemKindValue         guibg=NONE guifg=#E7EBDA
-highlight! CmpItemKindFolder        guibg=NONE guifg=#F3DA0B
-highlight! CmpItemKindMethod        guibg=NONE guifg=#1E1E1E
-highlight! CmpItemKindModule        guibg=NONE guifg=#CFD3CD
-highlight! CmpItemKindStruct        guibg=NONE guifg=#A18594
-highlight! CmpItemKindDefault       guibg=NONE guifg=#4C9141
-highlight! CmpItemKindKeyword       guibg=NONE guifg=#CB3234
-highlight! CmpItemKindSnippet       guibg=NONE guifg=#4E5754
-highlight! CmpItemKindConstant      guibg=NONE guifg=#FF7514
-highlight! CmpItemKindFunction      guibg=NONE guifg=#025669
-highlight! CmpItemKindOperator      guibg=NONE guifg=#686C5E
-highlight! CmpItemKindProperty      guibg=NONE guifg=#F4F4F4
-highlight! CmpItemKindVariable      guibg=NONE guifg=#6D3F5B
-highlight! CmpItemKindReference     guibg=NONE guifg=#474B4E
-highlight! CmpItemKindEnumMember    guibg=NONE guifg=#193737
-
-highlight! CmpItemKindEnumDefault          guibg=NONE guifg=#7D8471
-highlight! CmpItemKindInterfaceDefault     guibg=NONE guifg=#252850
-highlight! CmpItemKindFileDefault          guibg=NONE guifg=#015D52
-highlight! CmpItemKindTextDefault          guibg=NONE guifg=#781F19
-highlight! CmpItemKindUnitDefault          guibg=NONE guifg=#6C6874
-highlight! CmpItemKindClassDefault         guibg=NONE guifg=#282828
-highlight! CmpItemKindColorDefault         guibg=NONE guifg=#587246
-highlight! CmpItemKindEventDefault         guibg=NONE guifg=#6C7059
-highlight! CmpItemKindFieldDefault         guibg=NONE guifg=#6F4F28
-highlight! CmpItemKindValueDefault         guibg=NONE guifg=#E7EBDA
-highlight! CmpItemKindFolderDefault        guibg=NONE guifg=#F3DA0B
-highlight! CmpItemKindMethodDefault        guibg=NONE guifg=#1E1E1E
-highlight! CmpItemKindModuleDefault        guibg=NONE guifg=#CFD3CD
-highlight! CmpItemKindStructDefault        guibg=NONE guifg=#A18594
-highlight! CmpItemKindDefaultDefault       guibg=NONE guifg=#4C9141
-highlight! CmpItemKindKeywordDefault       guibg=NONE guifg=#CB3234
-highlight! CmpItemKindSnippetDefault       guibg=NONE guifg=#4E5754
-highlight! CmpItemKindConstantDefault      guibg=NONE guifg=#FF7514
-highlight! CmpItemKindFunctionDefault      guibg=NONE guifg=#025669
-highlight! CmpItemKindOperatorDefault      guibg=NONE guifg=#686C5E
-highlight! CmpItemKindPropertyDefault      guibg=NONE guifg=#F4F4F4
-highlight! CmpItemKindVariableDefault      guibg=NONE guifg=#6D3F5B
-highlight! CmpItemKindReferenceDefault     guibg=NONE guifg=#474B4E
-highlight! CmpItemKindEnumMemberDefault    guibg=NONE guifg=#193737
-]]
-
+}
 ```
 
-The top 12 lines just initialize everything. The next big chunk below those
-lines are what cmp will show for each item. For example, it will show a
-specific symbol for snippets, a specific symbol for functions (if you're using
-lsp), etc. The rest is just configuration for the cmp itself. If you want more
-information on the configuration, you can view my blog post about my NeoVim
-setup. Or, you can go to this <a class="center after"
-href="https://www.github.com/SingularisArt/Singularis/tree/master/local/scripts/school">link</a>,
-The last bottom two chunks are just changing the color of each row. For
-example, the snippet color is: #4E5754.
+You don't need to worry too much about what is going on here, because it's not worth it.
 
 {{< video src="videos/three-plugin-demo.mp4" controls="false" autoplay="true" loop="true" muted="true">}}
 
@@ -1350,10 +1197,10 @@ suggestions, etc based on the language that I'm using.
 We first need to install these plugins:
 
 ```viml
-Plug 'neovim/nvim-lspconfig'
-Plug 'onsails/lspkind-nvim'
-Plug 'tami5/lspsaga.nvim'
-Plug 'williamboman/nvim-lsp-installer'
+use { 'neovim/nvim-lspconfig' }
+use { 'onsails/lspkind-nvim' }
+use { 'tami5/lspsaga.nvim' }
+use { 'williamboman/nvim-lsp-installer' }
 ```
 
 ### Install your language server
