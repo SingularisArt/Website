@@ -141,12 +141,12 @@ important ones in this article.
 
 Like before, go ahead and install these plugins via:
 
-```viml
+```lua {class="line-numbers"}
 use { 'SirVer/ultisnips' }
 use { 'honza/vim-snippets' }
 use { 'hrsh7th/nvim-cmp' }
 
-" Optional
+-- Optional
 
 use { 'hrsh7th/cmp-buffer' }
 use { 'hrsh7th/cmp-path' }
@@ -309,7 +309,7 @@ Next section, I will go over how to add/modify snippets yourself.
 To add snippets, you first must configure `UltiSnips` itself. Now, add this to
 you're `init.vim` or `.vimrc`:
 
-```viml
+```vim
 " make YCM compatible with UltiSnips (using supertab)
 let g:ycm_key_list_select_completion = ['<C-j>', '<Down>']
 let g:ycm_key_list_previous_completion = ['<C-k>', '<Up>']
@@ -356,7 +356,7 @@ create the file `~/.config/nvim/UltiSnips/python.snippets` for you.
 
 Here is a basic skeleton for a snippet:
 
-```viml
+```vim
 snippet SNIPPET NAME "SNIPPET DESCRIPTION"
 ...
 endsnippet
@@ -364,7 +364,7 @@ endsnippet
 
 To add placeholders, do this:
 
-```viml
+```vim
 snippet document "Creates a document"
 Document Name: $1
 $0
@@ -375,7 +375,7 @@ The `$1` and `$0` are where your placeholders will be. The `$0` is always the
 final placeholder. Now, you can create information within the placeholders like
 this:
 
-```viml
+```vim
 snippet document "Creates a document"
 Document Name: ${1:DOCUMENT NAME}
 $0
@@ -393,7 +393,7 @@ The code for this is probably the simplest.
 
 Here is the snippet code for it:
 
-```viml
+```vim
 snippet sign "Signature"
 Yours sincerely,
 
@@ -408,7 +408,7 @@ You can also run shell commands inside snippets, but you have to use back ticks
 
 Here is the snippet code for it:
 
-```viml
+```vim
 snippet date-time "Today's date and Current Time"
 `date "+%b %d %Y %a %R`
 endsnippet
@@ -426,7 +426,7 @@ automatically expand for you.
 You start typing out what kind of environment you want. Then, once you're done,
 hit tab. That will move you into the environment.
 
-```viml
+```vim
 snippet beg "begin{} / end{}" bAi
 \begin{$1}[$2]
 	\label{$3:${4:${2/\\\w+\{(.*?)\}|\\(.)|(\w+)|([^\w\\]+)/(?4:_:\L$1$2$3\E)/ga}}}
@@ -458,7 +458,7 @@ Sometimes you may want a specific environment with a specific label format, etc.
 
 Now, here are my final environment snippets.
 
-```viml
+```vim
 snippet beg "begin{} / end{}" bAi
 \begin{$1}[$2]
 	\label{$3:${4:${2/\\\w+\{(.*?)\}|\\(.)|(\w+)|([^\w\\]+)/(?4:_:\L$1$2$3\E)/ga}}}
@@ -634,7 +634,7 @@ me into math mode. They are `ilm` (Inline Math) and `dm` (Display Math).
 
 {{< video src="videos/math.mp4" controls="false" autoplay="true" loop="true" muted="true">}}
 
-```viml
+```vim
 snippet ilm "Inline Math" wA
 $${VISUAL}$1$`!p
 if t[2] and t[2][0] not in [',', '.', '?', '-', ' ']:
@@ -673,7 +673,7 @@ The code for these snippets use regular expressions for there trigger. The
 first expands if there is a variable, followed by a number.
 Here is the snippet code:
 
-```viml
+```vim
 snippet '([A-Za-z])(\d)' "Auto subscript" wrA
 `!p snip.rv = match.group(1)`_`!p snip.rv = match.group(2)`
 endsnippet
@@ -683,7 +683,7 @@ The second snippet checks if there is a variable, followed by an
 underscore, followed by two numbers.
 Here is the snippet code:
 
-```viml
+```vim
 snippet '([A-Za-z])_(\d\d)' "Auto subscript 2" wrA
 `!p snip.rv = match.group(1)`_{`!p snip.rv = match.group(2)`}
 endsnippet
@@ -694,7 +694,7 @@ underscore, followed by a group of {} with numbers inside. It also checks if
 there is a number in front of the closing bracket.
 Here is the snippet code:
 
-```viml
+```vim
 snippet '([A-Za-z])_\{(\d+)\}(\d)' "Auto subscript 3+" wrA
 `!p snip.rv = match.group(1)`_{`!p snip.rv = match.group(2) + match.group(3)`}
 endsnippet
@@ -702,7 +702,7 @@ endsnippet
 
 I also created a quick snippet that puts you in **subscript** mode:
 
-```viml
+```vim
 snippet __ "Super Script" A
 _{$1}$0
 endsnippet
@@ -725,7 +725,7 @@ squaring, cubing, raising to a variable. Here is a quick view of the snippets:
 
 Here are the snippets:
 
-```viml
+```vim
 snippet sq "Square" Aw
 ^{2}
 endsnippet
@@ -756,7 +756,7 @@ you pull them off.
 
 Now, let's start off with something very easy. Creating a simple fraction:
 
-```viml
+```vim
 snippet // "Fraction" iA
 \frac{$1}{$2}$0
 endsnippet
@@ -765,7 +765,7 @@ endsnippet
 The core of the second snippet is regular expressions. It's used to match
 expressions like `3/`, `4\pi/`, `39_{\theta}/`.
 
-```viml
+```vim
 snippet '((\d+)|(\d*)(\\)?([A-Za-z]+)((\^|_)(\{\d+\}|\d))*)/' "Fraction" wrA
 \\frac{`!p snip.rv = match.group(1)`}{$1}$0
 endsnippet
@@ -774,7 +774,7 @@ endsnippet
 In the fourth case, I tried to find matching parenthesis. But, all of the work
 went in vain because you cannot with `UltiSnips`. So, I used Python.
 
-```viml
+```vim
 priority 1000
 snippet '^.*\)/' "() Fraction" wrA
 `!p
@@ -796,7 +796,7 @@ fraction using **visual mode**.
 
 {{< video src="videos/tab-fractions.mp4" controls="false" autoplay="true" loop="true" muted="true">}}
 
-```viml
+```vim
 snippet / "Fraction" iA
 \\frac{${VISUAL}}{$1}$0
 endsnippet
@@ -810,7 +810,7 @@ I created this snippet:
 {{< video src="videos/greek-letters-lowercase.mp4" controls="false" autoplay="true" loop="true" muted="true">}}
 {{< video src="videos/greek-letters-uppercase.mp4" controls="false" autoplay="true" loop="true" muted="true">}}
 
-```viml
+```vim
 snippet '(alp|Alp|bet|Bet|gam|Gam|del|Del|eps|Eps|zet|Zet|eta|Zet|the|The|iot|Iot|kap|Kap|lam|Lam|mu|Mu|nu|Nu|xi|Xi|omi|Omi|pi|Pi|rho|Rho|sig|Sig|tau|Tau|ups|Ups|phi|Phi|chi|Chi|psi|Psi|ome|Ome)' "All Greek Letters" riA
 `!p
 if match.group(1) == 'alp':
@@ -929,7 +929,7 @@ The solution to keep this from happening is to use something called `context`.
 This will help us determine if we are in the correct environment to expand the
 snippet. Here's the code for it:
 
-```viml
+```vim
 global !p
 def math():
 	return vim.eval('vimtex#syntax#in_mathzone()') == '1'
@@ -949,7 +949,7 @@ endglobal
 Now we can add `context math()` to the snippets you would like to expand only
 in math mode.
 
-```viml
+```vim
 context "math()"
 snippet ss "Superscript" iA
 ^{$1}$0
@@ -981,7 +981,7 @@ lecturer writes on the blackboard.
 
 Here's the snippet code:
 
-```viml
+```vim
 context "math()"
 snippet -- "Bar" i
 \overline{$1}$0
@@ -993,7 +993,7 @@ snippet '(\S|\(.*?\))--' "Bar" riA
 endsnippet
 ```
 
-```viml
+```vim
 context "math()"
 snippet .. "Dot" i
 \dot{$1}$0
@@ -1005,7 +1005,7 @@ snippet '(\S)\.\.' "Dot" riA
 endsnippet
 ```
 
-```viml
+```vim
 context "math()"
 snippet ,, "Vec" i
 \vec{$1}$0
@@ -1017,7 +1017,7 @@ snippet '(\S),,' "Vec" riA
 endsnippet
 ```
 
-```viml
+```vim
 context "math()"
 snippet ,. "Hat" i
 \hat{$1}$0
@@ -1045,7 +1045,7 @@ I don't use these snippets often, but I think they're cool. So, here they are:
 
 Here's the snippet code:
 
-```viml
+```vim
 snippet '\<(.*?)\|' "Bra" riA
 \bra{`!p snip.rv = match.group(1).replace('q', f'\psi').replace('f', f'\phi')`}
 endsnippet
@@ -1083,7 +1083,7 @@ use them, etc.
 
 {{< video src="videos/school-lessons.mp4" controls="false" autoplay="true" loop="true" muted="true">}}
 
-```viml
+```vim
 snippet les "Lesson"
 \lesson{${1:LESSON NUMBER}}{`date "+%b %d %Y %a (%H:%M:%S)"`}{${3:LESSON NAME}}
 \label{les_$1:${4:${3/\\\w+\{(.*?)\}|\\(.)|(\w+)|([^\w\\]+)/(?4:_:\L$1$2$3\E)/ga}}}
@@ -1097,7 +1097,7 @@ Beside my commonly used snippets, I have some snippets that are only required
 in some of my classes. You can easily load this snippets by putting this in
 your `.vimrc`:
 
-```viml
+```vim
 set rtp+=~/Documents/school-notes/current-course
 ```
 
@@ -1119,7 +1119,7 @@ Here are some of my snippets for my Calculus 1 class.
 
 I use a ton of trigonometry in my Calculus class:
 
-```viml
+```vim
 snippet dtan "Definition of Tangent" Ai
 \tan = \left(${1:\theta}\right) = \frac{\sin \left($1\right)}{\cos \left($1\right)}
 endsnippet
@@ -1176,7 +1176,7 @@ one that I chose. AMAZING!
 
 Now, put this in your `init.vim` or `.vimrc`:
 
-```viml
+```vim
 setlocal spell
 set spelllang=en
 inoremap <C-l> <C-g>u<Esc>[s1z=`]a<C-g>u
@@ -1196,7 +1196,7 @@ suggestions, etc based on the language that I'm using.
 
 We first need to install these plugins:
 
-```viml
+```vim
 use { 'neovim/nvim-lspconfig' }
 use { 'onsails/lspkind-nvim' }
 use { 'tami5/lspsaga.nvim' }
