@@ -1,15 +1,15 @@
 ---
-title:        	"Note Taking with LaTeX: Part I (NeoVim)"
-author:       	"Hashem A. Damrah"
-introduction: 	"This post talks about how I take notes with LaTeX: Part I"
-date:         	2022-01-01
-description:    "I go over using NeoVim and LaTeX to take notes with, but I specifically talk about talking notes with Mathematics."
-draft: 		 	    false
-comments:		    true
-cover:			    "/covers/note-taking-with-latex-part-1.png"
-mathjax:        true
-toc:			      true
-tags:         	["latex", "tutorial", "school", "notes", "series"]
+title: 'Note Taking with LaTeX: Part I (NeoVim)'
+author: 'Hashem A. Damrah'
+introduction: 'This post talks about how I take notes with LaTeX: Part I'
+date: 2022-01-01
+description: 'I go over using NeoVim and LaTeX to take notes with, but I specifically talk about talking notes with Mathematics.'
+draft: false
+comments: true
+cover: '/covers/note-taking-with-latex-part-1.png'
+mathjax: true
+toc: true
+tags: ['latex', 'tutorial', 'school', 'notes', 'series', 'note taking']
 ---
 
 For a **very long time**, I have been trying to create the perfect setup for
@@ -34,11 +34,11 @@ these goals must be met for me to use the system.
 
 They are:
 
-* Writing mathematical equations as fast (or faster) than my professor was an
+- Writing mathematical equations as fast (or faster) than my professor was an
   **A MUST**.
-* Drawing the figures must be as **easy**, **fast**, and **simple**.
-* It must feel like I am writing them on paper.
-* My notes are very easily
+- Drawing the figures must be as **easy**, **fast**, and **simple**.
+- It must feel like I am writing them on paper.
+- My notes are very easily
   **manageable** and easy to **access**.
 
 I will eventually have a ton of posts talking about this specific subject, but
@@ -68,15 +68,15 @@ my pdf viewer **Zathura**.
 
 Here is a quick list of all of my utilities:
 
-* OS (Operating System):
+- OS (Operating System):
   <a class="center after" href="https://www.archlinux.org/">**Arch Linux**</a>
-* WM (Window Manager):
+- WM (Window Manager):
   <a class="center after" href="https://www.dwm.suckless.org/">**DWM**</a>
-* Text Editor:
+- Text Editor:
   <a class="center after" href="https://www.github.com/neovim/neovim">**NeoVim**</a>
-* Pdf Viewer:
+- Pdf Viewer:
   <a class="center after" href="https://www.github.com/pwmt/zathura">**Zathura**</a>
-* Terminal Emulator:
+- Terminal Emulator:
   <a class="center after" href="https://docs.xfce.org/apps/terminal/start">**Xfce4-Terminal**</a>
 
 I have a huge list of plugins that you can view
@@ -85,10 +85,10 @@ but the plugin that I use for **LaTeX** is
 <a class="center after" href="https://www.github.com/lervag/vimtex">vimtex</a>.
 It provides:
 
-* Syntax highlighting
-* Auto compiling
-* Renaming entire environments
-* Shows you the toc (Table of Contents)
+- Syntax highlighting
+- Auto compiling
+- Renaming entire environments
+- Shows you the toc (Table of Contents)
 
 Using <a class="center after"
 href="https://github.com/wbthomason/packer.nvim">Packer</a>, I configured it as
@@ -436,14 +436,14 @@ snippet beg "begin{} / end{}" bAi
 endsnippet
 ```
 
-* Line $3$ is preforming a regex expression. It's taking whatever you type
+- Line $3$ is preforming a regex expression. It's taking whatever you type
   in placeholder number $2$, making it all lowercase, and replacing the
   spaces with underscores.
-* The **b** means **If the trigger word is the first word on the line, and no
+- The **b** means **If the trigger word is the first word on the line, and no
   writing comes afterword, then expand**.
-* The **A** means **Expand without the trigger key, just expand right after the
-person types the trigger word**.
-* The **${VISUAL}** means whatever you've deleted will be pasted there.
+- The **A** means **Expand without the trigger key, just expand right after the
+  person types the trigger word**.
+- The **${VISUAL}** means whatever you've deleted will be pasted there.
   But, you have to visually select the text, then hit **TAB**.
 
 {{< video src="videos/beg-environment.mp4" controls="false" autoplay="true" loop="true" muted="true">}}
@@ -651,7 +651,7 @@ snippet dm "Display Math" wA
 endsnippet
 ```
 
-* The **w** at the end of the first line means that this snippet will expand at
+- The **w** at the end of the first line means that this snippet will expand at
   word boundaries. So, `helloim` won't expand, but `hello im` will.
 
 ### Sub and Super scripts
@@ -918,7 +918,6 @@ what you typed and replace it based on that.
 
 ### Context
 
-
 The number one problem that I had when I first started using UltiSnips was:
 **My snippets kept colliding with me writing text.**
 
@@ -937,11 +936,11 @@ def math():
 def not_math():
 	return vim.eval('vimtex#syntax#in_mathzone()') == '0'
 
-def comment(): 
+def comment():
 	return vim.eval('vimtex#syntax#in_comment()') == '1'
 
 def env(name):
-	[x,y] = vim.eval("vimtex#env#is_inside('" + name + "')") 
+	[x,y] = vim.eval("vimtex#env#is_inside('" + name + "')")
 	return x != '0' and y != '0'
 endglobal
 ```
@@ -1035,9 +1034,9 @@ I don't use these snippets often, but I think they're cool. So, here they are:
 
 {{% center %}}
 `<a|` → `\bra{a}`<br>
-`<q|`	→ `\bra{\psi}`<br>
+`<q|` → `\bra{\psi}`<br>
 `|a>` → `\ket{a}`<br>
-`|q>`	→ `\ket{\psi}`<br>
+`|q>` → `\ket{\psi}`<br>
 `<a|b>` → `\braket{a|b}`
 {{% /center %}}
 
@@ -1064,19 +1063,19 @@ endsnippet
 I don't really use these that often because I created scripts that do a lot of
 work when:
 
-* Organizing
-* Changing
-* Switching
-* Loading
-* Reloading
+- Organizing
+- Changing
+- Switching
+- Loading
+- Reloading
 
 Between:
 
-* Classes
-* Lessons
-* Lectures
+- Classes
+- Lessons
+- Lectures
 
-You can find these scripts 
+You can find these scripts
 <a class="center after" href="https://www.github.com/SingularisArt/Singularis/tree/master/local/scripts/school">here</a>,
 but eventually, I will create a blog post about how I made those scripts, how I
 use them, etc.
@@ -1219,8 +1218,7 @@ and find your language. Follow the link that they provide and install it from
 there.
 
 For example, I want to have the `python` language server. So, I just run
-`:LspInstall python` in NeoVim. Then, I run `pip3 install
-'python-lsp-server[all]'`. Now, I have my server.
+`:LspInstall python` in NeoVim. Then, I run `pip3 install 'python-lsp-server[all]'`. Now, I have my server.
 
 To activate it `python`, put this in your `init.lua`:
 
@@ -1316,13 +1314,12 @@ website!
 
 So, I have just proven to you that you can write **LaTeX**
 
-* **fast**
-* **easily**
-* **efficiently**
+- **fast**
+- **easily**
+- **efficiently**
 
 Stay tuned to learn about how I:
 
-* **draw figures**
-* **manage my notes**
-* **take notes**
-
+- **draw figures**
+- **manage my notes**
+- **take notes**
