@@ -20,43 +20,50 @@ my system was **BORN**!
 
 Here are how some of my notes look like:
 
-![notes-image-1](images/note-1.png)
-![notes-image-2](images/note-2.png)
+![notes-image-01](images/note-01.png)
+![notes-image-02](images/note-02.png)
+![notes-image-03](images/note-03.png)
+![notes-image-04](images/note-04.png)
+![notes-image-05](images/note-05.png)
+![notes-image-06](images/note-06.png)
+![notes-image-07](images/note-07.png)
+![notes-image-08](images/note-08.png)
+![notes-image-09](images/note-09.png)
+![notes-image-10](images/note-10.png)
 
 You can look at my notes source code
 <a class="center after" href="https://damrah.netlify.app/notes/">here</a>.
-I also store all of my final notes
+I also store all my final notes
 <a class="center after" href="https://www.github.com/SingularisArt/notes">here</a>.
 
 I created this method during the summer of my **10th year** in high school. I am
-preparing my self for when I go to university. So I set myself **4** goals and
-these goals must be met for me to use the system.
+preparing my self for when I go to university. So I set myself **4** goals.
 
-They are:
+- Writing mathematical equations must be **easier than writing them by hand**
+  and **faster than my professor**.
+- Creating and using citations must be **straightforward** and **easy**.
+- Drawing figures must be as **easy**, **fast**, and **simple**.
+- My notes are
+  - **manageable**
+  - **searchable**
+  - **easy to access**
+  - **no lag to switch between classes**
 
-- Writing mathematical equations as fast (or faster) than my professor was an
-  **A MUST**.
-- Drawing the figures must be as **easy**, **fast**, and **simple**.
-- It must feel like I am writing them on paper.
-- My notes are very easily
-  **manageable** and easy to **access**.
-
-I will eventually have a ton of posts talking about this specific subject, but
+I will have a ton of posts talking about this specific subject, but
 for now, I will go over **Step 1**.
 
 ## NeoVim and LaTeX
 
-**NeoVim** is a terminal-based text editor. It's just a better version of Vim,
-which was made back in the 91.
+**NeoVim** is a terminal-based text editor. It's a better version of Vim.
 
-I literally use NeoVim for everything. (You can find my custom NeoVim config
-<a class="center after" href="https://www.github.com/SingularisArt/Death.NeoVim">here</a>).
+I use NeoVim for everything. (You can find my custom NeoVim config
+<a class="center after" href="https://www.github.com/SingularisArt/DeathVim">here</a>).
 
-**LaTeX** is a markup language used by mostly professors who want to publish
+**LaTeX** is a markup language used by professors who want to publish
 their papers, which is unfortunate because it's a great tool to take notes on,
-not just for school. This setup took me about 1 year to make and it's still a
+besides school. This setup took me about 1 year to make and it's still a
 work in the progress. Luckily, for you, you won't have to figure anything out
-because I've done all of that for you.
+because I've done everything for you.
 
 Now, with that out of the way, here is what my screen looks like when I am
 working with LaTeX:
@@ -66,12 +73,12 @@ working with LaTeX:
 On the left side, I have my editor (**NeoVim**) and on the right side, I have
 my pdf viewer **Zathura**.
 
-Here is a quick list of all of my utilities:
+Here is a quick list of my utilities:
 
 - OS (Operating System):
   <a class="center after" href="https://www.archlinux.org/">**Arch Linux**</a>
 - WM (Window Manager):
-  <a class="center after" href="https://www.dwm.suckless.org/">**DWM**</a>
+  <a class="center after" href="https://github.com/baskerville/bspwm">**BSPWM**</a>
 - Text Editor:
   <a class="center after" href="https://www.github.com/neovim/neovim">**NeoVim**</a>
 - Pdf Viewer:
@@ -79,9 +86,11 @@ Here is a quick list of all of my utilities:
 - Terminal Emulator:
   <a class="center after" href="https://docs.xfce.org/apps/terminal/start">**Xfce4-Terminal**</a>
 
-I have a huge list of plugins that you can view
-<a class="center after" href="https://github.com/SingularisArt/Death.NeoVim/tree/master/pack/bundle/opt">here</a>),
-but the plugin that I use for **LaTeX** is
+You can view all my plugins
+<a class="center after" href="https://github.com/SingularisArt/DeathVim/blob/master/lua/dvim/plugins.lua">here</a>.
+You can view all my LaTeX specific plugins
+<a class="center after" href="https://github.com/SingularisArt/DeathVim/blob/master/lua/dvim/plugins.lua#L413-L424">here</a>.
+The main LaTeX plugin I use is
 <a class="center after" href="https://www.github.com/lervag/vimtex">vimtex</a>.
 It provides:
 
@@ -89,6 +98,8 @@ It provides:
 - Auto compiling
 - Renaming entire environments
 - Shows you the toc (Table of Contents)
+
+And much more.
 
 Using <a class="center after"
 href="https://github.com/wbthomason/packer.nvim">Packer</a>, I configured it as
@@ -105,10 +116,10 @@ vim.cmd(let g:vimtex_quickfix_enabled=0)
 
 The first line tells vimtex which pdf viewer to use. The second line tells
 vimtex which type of tex to use. The third line configure the concealment. This
-is a feature where LaTeX code is replaced or made invisible when your cursor
+is a feature where LaTeX code's replaced or made invisible when your cursor
 isn't on that line. By making `\\[`, `\\]`, `$` invisible, they're less
 obtrusive which gives you a better overview of the document. This feature also
-replaces `\\in` by `∈`. The final line tells vimtex to not open the QuickFix
+replaces `\\"i"n` by `∈`. The final line tells vimtex to not open the QuickFix
 list every time it compiles a file for you.
 
 {{< video src="videos/conceallevel.mp4" controls="false" autoplay="true" loop="true" muted="true">}}
@@ -120,70 +131,62 @@ list every time it compiles a file for you.
 One of the major reasons why I'm so fast at typing when it comes to **LaTeX**,
 is because of **snippets**.
 
-A snippet is a short reusable piece of text that can be triggered by some other
+A snippet is a short reusable piece of text that's triggered by some other
 text.
 
-Then, you have **snippet managers**, which manages the **snippets** that you make.
-There are many snippet managers out there, but I use
-<a class="center after" href="https://www.github.com/SirVer/ultisnips">UltiSnippets</a>
-as my **snippet manager**.
+There're also **snippet managers**, which manages the **snippets** that you
+make. There're tons of snippet managers out there, but I use <a class="center
+after" href="https://www.github.com/SirVer/ultisnips">UltiSnippets</a>.
 
-Now, you can have certain kind of **snippets** for certain kinds of languages.
-For example, you might have **snippets** for python, while having different
-**snippets** for **LaTeX**.
+You have **snippets** for each filetype and a set of snippets for all
+filetypes. For example, you might have **snippets** for python, while having
+different **snippets** for **LaTeX**.
 
 You can take a look over
-<a class="center after" href="https://github.com/SingularisArt/snippets/blob/master/plaintex.snippets">here</a>
-to see all of my **LaTeX snippets**, but I will be going over the most
-important ones in this article.
+<a class="center after" href="https://github.com/SingularisArt/snippets/tree/master/tex">here</a>
+to see all my **LaTeX snippets**. It's important to note that I split all my
+snippets into seperate files which makes it easier to manage.
 
 ### Installing Snippets
 
 Like before, go ahead and install these plugins via:
 
-```lua {class="line-numbers"}
-use { 'SirVer/ultisnips' }
-use { 'honza/vim-snippets' }
-use { 'hrsh7th/nvim-cmp' }
+```lua
+use { "SirVer/ultisnips" }
+use { "honza/vim-snippets" }
+use { "hrsh7th/nvim-cmp" }
 
 -- Optional
 
-use { 'hrsh7th/cmp-buffer' }
-use { 'hrsh7th/cmp-path' }
-use { 'hrsh7th/cmp-nvim-lsp' }
-use { 'hrsh7th/cmp-nvim-lua' }
-use { 'hrsh7th/cmp-calc' }
-use { 'quangnguyen30192/cmp-nvim-ultisnips' }
-use { 'kdheepak/cmp-latex-symbols' }
+use { "hrsh7th/cmp-buffer" }
+use { "hrsh7th/cmp-path" }
+use { "hrsh7th/cmp-nvim-lsp" }
+use { "hrsh7th/cmp-nvim-lua" }
+use { "hrsh7th/cmp-calc" }
+use { "rcarriga/cmp-dap" }
+use { "tzachar/cmp-tabnine" }
+use { "quangnguyen30192/cmp-nvim-ultisnips" }
+use { "kdheepak/cmp-latex-symbols" }
+use { "hrsh7th/cmp-emoji" }
 ```
 
-You're gonna have to create a directory called: `after/plugin/` in your NeoVim config directory.
-This is where you're going to put your configuration in. The reason you put all
-of your plugin configuration here is because NeoVim will run all of the .lua
-files within this directory. This means you don't have to manually require each
-file.
+You're gonna have to create a directory called: `after/plugin/` in your NeoVim
+config directory. This is where you're going to put your configuration in. The
+reason you put all your plugin configuration here is because NeoVim will run
+all the `.lua` files within this directory. This means you don't have to
+manually require each file.
 
 Create a file called `after/plugin/cmp.lua` and place this configuration in it.
 
 ```lua
-local cmp_status_ok, cmp = pcall(require, "cmp")
-if not cmp_status_ok then
-  return
-end
-
-local check_backspace = function()
-  local col = vim.fn.col "." - 1
-  return col == 0 or vim.fn.getline("."):sub(col, col):match "%s"
-end
-
---   פּ ﯟ   some other good icons
+local cmp = require('cmp')
 local kind_icons = {
   Text = "",
-  Method = "m",
   Function = "",
   Constructor = "",
+  Method = "",
   Field = "",
-  Variable = "",
+  Variable = "",
   Class = "",
   Interface = "",
   Module = "",
@@ -203,145 +206,144 @@ local kind_icons = {
   Event = "",
   Operator = "",
   TypeParameter = "",
-}
--- find more here: https://www.nerdfonts.com/cheat-sheet
+},
 
-local source_mapping = {
-	nvim_lsp = "[LSP]",
-	nvim_lua = "[Lua]",
-	latex_symbols = "[LaTeX]",
-	ultisnips = "[Snippet]",
-	calc = "[Calculator]",
-	gh_issues = "[Issues]",
-	path = "[Path]",
-	buffer = "[Buffer]",
-}
+vim.api.nvim_set_hl(0, "CmpItemKindCopilot", { fg = "#6CC644" })
+vim.api.nvim_set_hl(0, "CmpItemKindTabnine", { fg = "#CA42F0" })
+vim.api.nvim_set_hl(0, "CmpItemKindEmoji", { fg = "#FDE030" })
 
-cmp.setup {
-	snippet = {
-		expand = function(args)
-			vim.fn["UltiSnips#Anon"](args.body) -- For `ultisnips` users.
-			--require('luasnip').lsp_expand(args.body) -- For `luasnip` users.
-			-- require('snippy').expand_snippet(args.body) -- For `snippy` users.
-		end,
+require("cmp").setup({
+  active = true,
+  setup = {
+    snippet = {
+      expand = function(args)
+        vim.fn["UltiSnips#Anon"](args.body)
+      end,
+    },
 
-		enabled = function()
-			local lnum, col = vim.fn.line("."), math.min(vim.fn.col("."), #vim.fn.getline("."))
-			for _, syn_id in ipairs(vim.fn.synstack(lnum, col)) do
-				syn_id = vim.fn.synIDtrans(syn_id) -- Resolve :highlight links
-				if vim.fn.synIDattr(syn_id, "name") == "Comment" then
-					return false
-				end
-			end
-			return true
-		end,
-	},
+    mapping = cmp.mapping.preset.insert {
+      ["<C-y>"] = cmp.mapping({
+        i = cmp.mapping.abort(),
+        c = cmp.mapping.close(),
+      }),
 
-	mapping = cmp.mapping.preset.insert({
-		["<C-y>"] = cmp.mapping({
-			i = cmp.mapping.abort(),
-			c = cmp.mapping.close(),
-		}),
+      ['<C-e>'] = cmp.mapping({
+        i = cmp.mapping.abort(),
+        c = cmp.mapping.close(),
+      }),
 
-    ['<C-e>'] = cmp.mapping({
-      i = cmp.mapping.abort(),
-      c = cmp.mapping.close(),
-    }),
+      ['<A-j>'] = cmp.mapping(cmp.mapping.scroll_docs(-4), { 'i', 'c' }),
+      ['<A-k>'] = cmp.mapping(cmp.mapping.scroll_docs(4), { 'i', 'c' }),
 
-    ['<A-j>'] = cmp.mapping(cmp.mapping.scroll_docs(-4), { 'i', 'c' }),
-    ['<A-k>'] = cmp.mapping(cmp.mapping.scroll_docs(4), { 'i', 'c' }),
+      ['<C-Space>'] = cmp.mapping(cmp.mapping.complete(), { 'i', 'c' }),
+      ["<CR>"] = cmp.mapping.confirm({ select = true }),
+    },
+    formatting = {
+      fields = { "kind", "abbr", "menu" },
+      format = function(entry, vim_item)
+        -- Kind icons
+        vim_item.kind = string.format("%s", kind_icons[vim_item.kind])
 
-    ['<C-Space>'] = cmp.mapping(cmp.mapping.complete(), { 'i', 'c' }),
-		["<CR>"] = cmp.mapping.confirm({ select = true }),
-	}),
+        if entry.source.name == "cmp_tabnine" then
+          robot = "ﮧ"
+          vim_item.kind = robot
+          vim_item.kind_hl_group = "CmpItemKindTabnine"
+        end
 
-  window = {
-    documentation = {
-      border = { "╭", "─", "╮", "│", "╯", "─", "╰", "│" },
-    }
+        if entry.source.name == "copilot" then
+          octoface = ""
+          vim_item.kind = octoface
+          vim_item.kind_hl_group = "CmpItemKindCopilot"
+        end
+
+        if entry.source.name == "emoji" then
+          smiley = "ﲃ"
+          vim_item.kind = smiley
+          vim_item.kind_hl_group = "CmpItemKindEmoji"
+        end
+
+        -- NOTE: order matters
+        vim_item.menu = ({
+          nvim_lsp = "",
+          nvim_lua = "",
+          copilot = "",
+          cmp_tabnine = "",
+          latex_symbols = "",
+          ultisnips = "",
+          calc = "",
+          path = "",
+          buffer = "",
+          emails = "",
+          emoji = "",
+        })[entry.source.name]
+        return vim_item
+      end,
+    },
+    sources = {
+      { name = "nvim_lsp" },
+      { name = "nvim_lua" },
+      { name = "copilot" },
+      { name = "cmp_tabnine" },
+      { name = "latex_symbols" },
+      { name = "ultisnips" },
+      { name = "calc" },
+      { name = "path" },
+      { name = "buffer" },
+      { name = "gh_issues" },
+      { name = "emails" },
+      { name = "emoji" },
+    },
+    confirm_opts = {
+      behavior = cmp.ConfirmBehavior.Replace,
+      select = false,
+    },
+    window = {
+      completion = cmp.config.window.bordered(),
+      documentation = cmp.config.window.bordered(),
+    },
+    experimental = {
+      ghost_text = true,
+      native_menu = false,
+    },
   },
-
-  formatting = {
-    fields = { "kind", "abbr", "menu" },
-    format = function(entry, vim_item)
-      -- Kind icons
-      vim_item.kind = string.format("%s", kind_icons[vim_item.kind])
-      vim_item.menu = ({
-        nvim_lsp = "[LSP]",
-        nvim_lua = "[Lua]",
-        latex_symbols = "[LaTeX]",
-        ultisnips = "[Snippet]",
-        calc = "[Calculator]",
-        gh_issues = "[Issues]",
-        path = "[Path]",
-        buffer = "[Buffer]",
-      })[entry.source.name]
-      return vim_item
-    end,
-  },
-
-	sources = cmp.config.sources({
-		{ name = "nvim_lsp" },
-		{ name = "nvim_lua" },
-		{ name = "latex_symbols" },
-		{ name = "ultisnips" },
-		{ name = "calc" },
-		{ name = "gh_issues" },
-		{ name = "path" },
-		{ name = "buffer" },
-	}),
-
-	experimental = {
-		native_menu = false,
-		ghost_text = true,
-	},
-}
+})
 ```
 
 You don't need to worry too much about what is going on here, because it's not worth it.
+You can view all my custom icons
+<a class="center after" href="https://github.com/SingularisArt/DeathVim/blob/master/lua/dvim/core/icons.lua">here</a>.
 
 {{< video src="videos/three-plugin-demo.mp4" controls="false" autoplay="true" loop="true" muted="true">}}
 
-Next section, I will go over how to add/modify snippets yourself.
-
 ### Adding Snippets
 
-To add snippets, you first must configure `UltiSnips` itself. Now, add this to
-you're `init.vim` or `.vimrc`:
+To add snippets, you first must configure `UltiSnips` itself. To do this, add
 
-```vim
-" make YCM compatible with UltiSnips (using supertab)
-let g:ycm_key_list_select_completion = ['<C-j>', '<Down>']
-let g:ycm_key_list_previous_completion = ['<C-k>', '<Up>']
-let g:SuperTabDefaultCompletionType = '<C-n>'
+```lua
+vim.cmd([[
+  " make YCM compatible with UltiSnips (using supertab)
+  let g:ycm_key_list_select_completion = ['<C-j>', '<Down>']
+  let g:ycm_key_list_previous_completion = ['<C-k>', '<Up>']
 
-" better key bindings for UltiSnipsExpandTrigger
-let g:UltiSnipsExpandTrigger = "<Enter>"
-let g:UltiSnipsJumpForwardTrigger = "<Tab>"
-let g:UltiSnipsJumpBackwardTrigger = "<S-Tab>"
+  " better key bindings for UltiSnipsExpandTrigger
+  let g:UltiSnipsExpandTrigger = "<Enter>"
+  let g:UltiSnipsJumpForwardTrigger = "<C-j>"
+  let g:UltiSnipsJumpBackwardTrigger = "<C-k>"
 
-" open the file in a vertical split
-let g:UltiSnipsEditSplit='vertical'
+  " open the file in a new tab
+  let g:UltiSnipsEditSplit='tabdo'
 
-" the location of the snippets
-let g:UltiSnipsSnippetDirectories=[$HOME."/.config/nvim/UltiSnips/", "UltiSnips"]
-
-iunmap <Tab>
+  " the location of the snippets
+  let g:UltiSnipsSnippetDirectories=[$HOME."/.config/nvim/UltiSnips", "UltiSnips"]
+]])
 ```
 
-Let's go over these quickly. The 3 three lines are telling make `UltiSnips`
-compatible with YCM, which is a completion engine for Vim because they don't
-usually work together with ease.
+To you're `init.lua`.
 
-The next 3 lines are telling `UltiSnips` what key presses you want to use to jump
-back and forth between those placeholders.
-
-The next line is telling `UltiSnips` to open the snippets configuration
-vertically when you run: `:UltiSnipsEdit`
-
-The last line tells `UltiSnips` where to look for your snippets. You need to
-put the **"UltiSnips"** in the second item. (I explain it more
-[here](https://damrah.netlify.app/post/note-taking-with-latex-part-1/#course-specific-snippets))
+The important line is the last line. It tells `UltiSnips` where to look for
+snippets. View <a class="center after"
+href="https://github.com/SirVer/ultisnips/blob/master/doc/UltiSnips.txt#L513-L657">here</a>
+for more info.
 
 #### Creating your own Snippets
 
@@ -354,7 +356,7 @@ Or, instead of manually creating that file, open a file with that extension. For
 example: `test.py`. Then, inside that file, type `:UltiSnipsEdit`. That will
 create the file `~/.config/nvim/UltiSnips/python.snippets` for you.
 
-Here is a basic skeleton for a snippet:
+Here is a basic skeleton for a snippet.
 
 ```vim
 snippet SNIPPET NAME "SNIPPET DESCRIPTION"
@@ -362,7 +364,7 @@ snippet SNIPPET NAME "SNIPPET DESCRIPTION"
 endsnippet
 ```
 
-To add placeholders, do this:
+Add placeholders.
 
 ```vim
 snippet document "Creates a document"
@@ -373,7 +375,7 @@ endsnippet
 
 The `$1` and `$0` are where your placeholders will be. The `$0` is always the
 final placeholder. Now, you can create information within the placeholders like
-this:
+this.
 
 ```vim
 snippet document "Creates a document"
@@ -383,7 +385,7 @@ endsnippet
 ```
 
 Now, the placeholder says **DOCUMENT NAME**, and when you reach that
-placeholder, it will be highlighted in visual mode, and you can overwrite it.
+placeholder, it'll be highlighted in visual mode, and you can overwrite it.
 
 Now you know the basics, let's get into some examples.
 
@@ -391,7 +393,7 @@ The code for this is probably the simplest.
 
 {{< video src="videos/sign.mp4" controls="false" autoplay="true" loop="true" muted="true">}}
 
-Here is the snippet code for it:
+Here's the snippet code.for it:
 
 ```vim
 snippet sign "Signature"
@@ -406,7 +408,7 @@ You can also run shell commands inside snippets, but you have to use back ticks
 
 {{< video src="videos/date.mp4" controls="false" autoplay="true" loop="true" muted="true">}}
 
-Here is the snippet code for it:
+Here's the snippet code.for it.
 
 ```vim
 snippet date-time "Today's date and Current Time"
@@ -436,37 +438,28 @@ snippet beg "begin{} / end{}" bAi
 endsnippet
 ```
 
-- Line $3$ is preforming a regex expression. It's taking whatever you type
-  in placeholder number $2$, making it all lowercase, and replacing the
-  spaces with underscores.
+- Line 3 is preforming a regex expression. It's taking whatever you type in
+  placeholder number 2, making it all lowercase, and replacing the spaces with
+  underscores.
 - The **b** means **If the trigger word is the first word on the line, and no
   writing comes afterword, then expand**.
-- The **A** means **Expand without the trigger key, just expand right after the
+- The **A** means **Expand without the trigger key, expand right after the
   person types the trigger word**.
 - The **${VISUAL}** means whatever you've deleted will be pasted there.
   But, you have to visually select the text, then hit **TAB**.
 
 {{< video src="videos/beg-environment.mp4" controls="false" autoplay="true" loop="true" muted="true">}}
 
-Now, I have a ton of different environments that I commonly use. So, like the
-good programmer I am, I decided to waste even more time creating specific
-snippets for each environment:
+Now, I have a ton of different environments that I commonly use.
 
 {{< video src="videos/all-environments.mp4" controls="false" autoplay="true" loop="true" muted="true">}}
 
-Sometimes you may want a specific environment with a specific label format, etc. So, I spent a little more time to create dozens of environment snippets.
+Sometimes you may want a specific environment with a specific label format,
+etc. I spent a little more time to create dozens of environment snippets.
 
-Now, here are my final environment snippets.
+Here's my final result.
 
 ```vim
-snippet beg "begin{} / end{}" bAi
-\begin{$1}[$2]
-	\label{$3:${4:${2/\\\w+\{(.*?)\}|\\(.)|(\w+)|([^\w\\]+)/(?4:_:\L$1$2$3\E)/ga}}}
-
-	${VISUAL}$4
-\end{$1}$0
-endsnippet
-
 snippet doc "Document Environment" bAi
 \begin{document}
 	${VISUAL}$1
@@ -514,13 +507,14 @@ endsnippet
 snippet ali "Align* Environment" bAi
 \begin{align*}
 	${VISUAL}$1
-.\end{align*}$0
+${2:.}\end{align*}$0
 endsnippet
 
+context "text()"
 snippet ali "Align Environment" bAi
 \begin{align}
 	${VISUAL}$1
-.\end{align}$0
+${2:.}\end{align}$0
 endsnippet
 
 snippet eqt "Equation Environment" bAi
@@ -528,7 +522,15 @@ snippet eqt "Equation Environment" bAi
 	\label{eqt:$1}
 
 	${VISUAL}$2
-.\end{equation}$0
+${2:.}\end{equation}$0
+endsnippet
+
+snippet eqt "Equation Environment" bAi
+\begin{equation*}
+	\label{eqt:$1}
+
+	${VISUAL}$2
+${2:.}\end{equation*}$0
 endsnippet
 
 snippet spt "Equation Split Environment" bAi
@@ -538,10 +540,9 @@ snippet spt "Equation Split Environment" bAi
 	\begin{split}
 		${VISUAL}$2
 	\end{split}
-.\end{equation}$0
+${2:.}\end{equation}$0
 endsnippet
 
-context "env('equation')"
 snippet spt "Equation Split Environment" bAi
 \begin{split}
 	${VISUAL}$1
@@ -555,10 +556,9 @@ snippet edt "Equation Dat Environment" bAi
 	\begin{alignedat}{$2}
 		${VISUAL}$3
 	\end{alignedat}
-.\end{equation}$0
+${2:.}\end{equation}$0
 endsnippet
 
-context "env('equation')"
 snippet edt "Equation Dat Environment" bAi
 \begin{alignedat}{$1}
 	${VISUAL}$2
@@ -572,14 +572,21 @@ snippet cse "Equation Case Environment" bAi
 	\begin{cases}
 		${VISUAL}$2
 	\end{cases}
-.\end{equation}$0
+${2:.}\end{equation}$0
 endsnippet
 
-context "env('equation')"
 snippet cse "Equation Case Environment" bAi
 \begin{cases}
 	${VISUAL}$1
 \end{cases}$0
+endsnippet
+
+snippet minipage "Minipage equation" bAi
+\begin{minipage}{.${1:5}\linewidth}
+	\begin{${2:align*}}
+		${VISUAL}$3
+	${4:.}\end{$2}
+\end{minipage}
 endsnippet
 
 snippet fig "Figure Environment (Image)" bAi
@@ -613,17 +620,45 @@ snippet tbl "Table Environment" bAi
 	\label{tab:${3:${2/\\\w+\{(.*?)\}|\\(.)|(\w+)|([^\w\\]+)/(?4:_:\L$1$2$3\E)/ga}}}
 
 	\begin{${4:t}${4/(t)$|(a)$|(.*)/(?1:abular)(?2:rray)/}}{${5:c}}
-		$0${5/(?<=.)(c|l|r)|./(?1: & )/g}
+		$6${5/(?<=.)(c|l|r)|./(?1: & )/g}
 	\end{$4${4/(t)$|(a)$|(.*)/(?1:abular)(?2:rray)/}}
 \end{table}$0
 endsnippet
 
-pre_expand "create_table(snip)"
-snippet "gentbl(\d+)x(\d+)" "Generate table of *width* by *height*" wrAbi
+snippet mat "Matrix"
+\begin{bmatrix}
+	$0
+${2:.}\end{bmatrix}
 endsnippet
 
-pre_expand "add_row(snip)"
-snippet "tr(\d+)" "Add table row of dimension ..." wrAbi
+snippet det "Determinant matrix"
+\begin{vmatrix}
+	$0
+${2:.}\end{vmatrix}
+endsnippet
+
+snippet vec "Vector"
+\begin{pmatrix}
+	$0
+${2:.}\end{pmatrix}
+endsnippet
+
+snippet matil "Inline matrix"
+\left[ \begin{smallmatrix}
+	$0
+${2:.}\end{smallmatrix} \right]
+endsnippet
+
+snippet detil "Inline determinant"
+\left| \begin{smallmatrix}
+	$0
+${2:.}\end{smallmatrix} \right|
+endsnippet
+
+snippet vecil "Inline vector"
+\left( \begin{smallmatrix}
+	$0
+${2:.}\end{smallmatrix} \right)
 endsnippet
 ```
 
@@ -636,18 +671,13 @@ me into math mode. They are `ilm` (Inline Math) and `dm` (Display Math).
 
 ```vim
 snippet ilm "Inline Math" wA
-$${VISUAL}$1$`!p
-if t[2] and t[2][0] not in [',', '.', '?', '-', ' ']:
-    snip.rv = ' '
-else:
-    snip.rv = ''
-`$2
+$${VISUAL}$1$
 endsnippet
 
 snippet dm "Display Math" wA
-\[
+\[%
 	${VISUAL}$1
-\].$0
+${2:.}\]%$0
 endsnippet
 ```
 
@@ -665,46 +695,55 @@ Another handy snippet are these ones, which is used for sub scripts.
 `a_12` → `a_{12}`<br>
 `a_{12}3` → `a_{123}`<br>
 `a_{123}4` → `a_{1234}`<br>
+`a,i` → `a_{i}`<br>
+`,` → `_{}`<br>
 {{% /center %}}
 
 {{< video src="videos/sub-scripts.mp4" controls="false" autoplay="true" loop="true" muted="true">}}
 
 The code for these snippets use regular expressions for there trigger. The
 first expands if there is a variable, followed by a number.
-Here is the snippet code:
+Here's the snippet code.
 
 ```vim
-snippet '([A-Za-z])(\d)' "Auto subscript" wrA
+snippet "([a-zA-Z])(\d)" "Auto Number Subscript" Ar
 `!p snip.rv = match.group(1)`_`!p snip.rv = match.group(2)`
 endsnippet
 ```
 
 The second snippet checks if there is a variable, followed by an
 underscore, followed by two numbers.
-Here is the snippet code:
+Here's the snippet code.
 
 ```vim
-snippet '([A-Za-z])_(\d\d)' "Auto subscript 2" wrA
-`!p snip.rv = match.group(1)`_{`!p snip.rv = match.group(2)`}
+snippet "([a-zA-Z])_(\d\d)" "Auto Number Subscript" Ar
+`!p snip.rv = match.group(1)`_`!p snip.rv = "{" + match.group(2) + "}"`
 endsnippet
 ```
 
-The last and final snippet checks if there is a variable, followed by an
-underscore, followed by a group of {} with numbers inside. It also checks if
-there is a number in front of the closing bracket.
-Here is the snippet code:
+The next snippet checks if there is a variable, followed by an underscore,
+followed by a group of {} with numbers inside. It also checks if there's a
+number in front of the closing bracket. Here's the snippet code.
 
 ```vim
-snippet '([A-Za-z])_\{(\d+)\}(\d)' "Auto subscript 3+" wrA
+snippet "([a-zA-Z])_\{(\d+)\}(\d)" "Auto Number Subscript" Ar
 `!p snip.rv = match.group(1)`_{`!p snip.rv = match.group(2) + match.group(3)`}
 endsnippet
 ```
 
-I also created a quick snippet that puts you in **subscript** mode:
+The next snippet puts certian variables in subscripts. Here's the snippet code.
 
 ```vim
-snippet __ "Super Script" A
-_{$1}$0
+snippet "([a-zA-Z]),(i|k|p|q|m|n)" "Auto Variable Subscript" Ar
+`!p snip.rv = match.group(1)`_{`!p snip.rv = match.group(2)`}
+endsnippet
+```
+
+The final snippet puts me in subscript mode.
+
+```vim
+snippet , "Subscript" i
+_{${1:${VISUAL}}}$0
 endsnippet
 ```
 
@@ -717,8 +756,10 @@ squaring, cubing, raising to a variable. Here is a quick view of the snippets:
 `sq` → `^{2}`<br>
 `cb` → `^{3}`<br>
 `ss` → `^{}`<br>
-`compl` → `^{c}`<br>
-`invs` → `^{-1}`<br>
+`comp` → `^{c}`<br>
+`inv` → `^{-1}`<br>
+`a'x` → `^{x}`<br>
+`a'` → `^{}`<br>
 {{% /center %}}
 
 {{< video src="videos/super-scripts.mp4" controls="false" autoplay="true" loop="true" muted="true">}}
@@ -726,35 +767,51 @@ squaring, cubing, raising to a variable. Here is a quick view of the snippets:
 Here are the snippets:
 
 ```vim
-snippet sq "Square" Aw
+snippet ' "Superscript" i
+^{${1:${VISUAL}}}$0
+endsnippet
+
+snippet "([a-zA-Z\d])'([a-zA-Z\d-])" "Superscript" Ar
+`!p snip.rv = match.group(1)`^`!p snip.rv = match.group(2)`
+endsnippet
+
+snippet "([a-zA-Z\d])\^([a-zA-Z\d-]+)" "Superscript" Ar
+`!p snip.rv = match.group(1)`^{`!p snip.rv = match.group(2)`}
+endsnippet
+
+snippet "([a-zA-Z\d])\^{([a-zA-Z\d-]+)}([a-zA-Z\d-]+)" "Superscript" Ar
+`!p snip.rv = match.group(1)`^{`!p snip.rv = match.group(2) + match.group(3)`}
+endsnippet
+
+snippet sq "Square" iA
 ^{2}
 endsnippet
 
-snippet cb "Cube" Aw
+snippet cb "Cube" iA
 ^{3}
 endsnippet
 
-snippet ss "Super Script" Aw
-^{$1}$0
-endsnippet
-
-snippet compl "Complement" Aw
+snippet compl "Complement" iA
 ^{c}
 endsnippet
 
-snippet invs "Inverse" Aw
-^{-$1}$0
+snippet inv "Inverse" iA
+^{-${1:1}}$0
+endsnippet
+
+snippet ss "Superscript" iA
+^{$1}$0
 endsnippet
 ```
 
 ### Fractions
 
-These snippets, are the funniest and they give you a big satisfaction whenever
+These snippets, are the funnest and they give you a big satisfaction whenever
 you pull them off.
 
 {{< video src="videos/fractions.mp4" controls="false" autoplay="true" loop="true" muted="true">}}
 
-Now, let's start off with something very easy. Creating a simple fraction:
+Now, let's start off with something easy. Creating a simple fraction.
 
 ```vim
 snippet // "Fraction" iA
@@ -771,8 +828,8 @@ snippet '((\d+)|(\d*)(\\)?([A-Za-z]+)((\^|_)(\{\d+\}|\d))*)/' "Fraction" wrA
 endsnippet
 ```
 
-In the fourth case, I tried to find matching parenthesis. But, all of the work
-went in vain because you cannot with `UltiSnips`. So, I used Python.
+In the fourth case, I tried to find matching parenthesis. But, all the work
+went in vain because you cannot with `UltiSnips`. I had to use Python.
 
 ```vim
 priority 1000
@@ -791,138 +848,13 @@ snip.rv = stripped[0:i] + "\\frac{" + stripped[i+1:-1] + "}"
 endsnippet
 ```
 
-The last section that I want to show you is your selection to make your own
-fraction using **visual mode**.
-
-{{< video src="videos/tab-fractions.mp4" controls="false" autoplay="true" loop="true" muted="true">}}
-
-```vim
-snippet / "Fraction" iA
-\\frac{${VISUAL}}{$1}$0
-endsnippet
-```
-
-### Greek Letters
-
-I use the Greek letters all the time and I wanted a quick way to type them. So,
-I created this snippet:
-
-{{< video src="videos/greek-letters-lowercase.mp4" controls="false" autoplay="true" loop="true" muted="true">}}
-{{< video src="videos/greek-letters-uppercase.mp4" controls="false" autoplay="true" loop="true" muted="true">}}
-
-```vim
-snippet '(alp|Alp|bet|Bet|gam|Gam|del|Del|eps|Eps|zet|Zet|eta|Zet|the|The|iot|Iot|kap|Kap|lam|Lam|mu|Mu|nu|Nu|xi|Xi|omi|Omi|pi|Pi|rho|Rho|sig|Sig|tau|Tau|ups|Ups|phi|Phi|chi|Chi|psi|Psi|ome|Ome)' "All Greek Letters" riA
-`!p
-if match.group(1) == 'alp':
-	snip.rv = '\\alpha'
-elif match.group(1) == 'Alp':
-	snip.rv = '\\Alpha'
-elif match.group(1) == 'bet':
-	snip.rv = '\\beta'
-elif match.group(1) == 'Bet':
-	snip.rv = '\\Beta'
-elif match.group(1) == 'gam':
-	snip.rv = '\\gamma'
-elif match.group(1) == 'Gam':
-	snip.rv = '\\Gamma'
-elif match.group(1) == 'del':
-	snip.rv = '\\delta'
-elif match.group(1) == 'Del':
-	snip.rv = '\\Delta'
-elif match.group(1) == 'eps':
-	snip.rv = '\\epsilon'
-elif match.group(1) == 'Eps':
-	snip.rv = '\\Epsilon'
-elif match.group(1) == 'zet':
-	snip.rv = '\\zeta'
-elif match.group(1) == 'Zet':
-	snip.rv = '\\Zeta'
-elif match.group(1) == 'eta':
-	snip.rv = '\\eta'
-elif match.group(1) == 'Zet':
-	snip.rv = '\\Eta'
-elif match.group(1) == 'the':
-	snip.rv = '\\theta'
-elif match.group(1) == 'The':
-	snip.rv = '\\Theta'
-elif match.group(1) == 'iot':
-	snip.rv = '\\iota'
-elif match.group(1) == 'Iot':
-	snip.rv = '\\Iota'
-elif match.group(1) == 'kap':
-	snip.rv = '\\kappa'
-elif match.group(1) == 'Kap':
-	snip.rv = '\\Kappa'
-elif match.group(1) == 'lam':
-	snip.rv = '\\lambda'
-elif match.group(1) == 'Lam':
-	snip.rv = '\\Lambda'
-elif match.group(1) == 'mu':
-	snip.rv = '\\mu'
-elif match.group(1) == 'Mu':
-	snip.rv = '\\Mu'
-elif match.group(1) == 'nu':
-	snip.rv = '\\nu'
-elif match.group(1) == 'Nu':
-	snip.rv = '\\Nu'
-elif match.group(1) == 'xi':
-	snip.rv = '\\xi'
-elif match.group(1) == 'Xi':
-	snip.rv = '\\Xi'
-elif match.group(1) == 'omi':
-	snip.rv = '\\omicron'
-elif match.group(1) == 'Omi':
-	snip.rv = '\\Omicron'
-elif match.group(1) == 'pi':
-	snip.rv = '\\pi'
-elif match.group(1) == 'Pi':
-	snip.rv = '\\Pi'
-elif match.group(1) == 'rho':
-	snip.rv = '\\rho'
-elif match.group(1) == 'Rho':
-	snip.rv = '\\Rho'
-elif match.group(1) == 'sig':
-	snip.rv = '\\sigma'
-elif match.group(1) == 'Sig':
-	snip.rv = '\\Sigma'
-elif match.group(1) == 'tau':
-	snip.rv = '\\tau'
-elif match.group(1) == 'Tau':
-	snip.rv = '\\Tau'
-elif match.group(1) == 'ups':
-	snip.rv = '\\upsilon'
-elif match.group(1) == 'Ups':
-	snip.rv = '\\Upsilon'
-elif match.group(1) == 'phi':
-	snip.rv = '\\phi'
-elif match.group(1) == 'Phi':
-	snip.rv = '\\Phi'
-elif match.group(1) == 'chi':
-	snip.rv = '\\chi'
-elif match.group(1) == 'Chi':
-	snip.rv = '\\Chi'
-elif match.group(1) == 'psi':
-	snip.rv = '\\psi'
-elif match.group(1) == 'Psi':
-	snip.rv = '\\Psi'
-elif match.group(1) == 'ome':
-	snip.rv = '\\omega'
-elif match.group(1) == 'Ome':
-	snip.rv = '\\Omega'
-`$2
-endsnippet
-```
-
-I know this looks crazy, but it's really not. What it's doing is finding out
-what you typed and replace it based on that.
-
 ### Context
 
-The number one problem that I had when I first started using UltiSnips was:
+The number one problem that I had when I first started using UltiSnips was
 **My snippets kept colliding with me writing text.**
 
-For example, let's say you're typing `newsroom`. Since it has `sr`, this will
-expand to `\sqrt{}`, which will result in `new\\sqrt{}oom`.
+For example, let's say you're typing `boss`. Since it has `ss`, this will
+expand to `^{}`, which will result in `bo\\{}`.
 
 The solution to keep this from happening is to use something called `context`.
 This will help us determine if we are in the correct environment to expand the
@@ -945,7 +877,7 @@ def env(name):
 endglobal
 ```
 
-Now we can add `context math()` to the snippets you would like to expand only
+Now we can add `context math()` to the snippets you would like to expand when
 in math mode.
 
 ```vim
@@ -959,85 +891,86 @@ endsnippet
 
 ### Postfix
 
-Some other snippets I find worthy of being shared are my postfix snippets.
+Some other snippets I find worthy of me sharing them.
 
 {{% center %}}
-`--` → `\overline{}`<br>
-`..` → `\dot{}`<br>
-`,,` → `\vec{}`<br>
-`,.` → `\hat{}`<br>
-`z--` → `\overline{z}`<br>
-`z..` → `\dot{z}`<br>
-`z,,` → `\vec{z}`<br>
-`z,.` → `\hat{z}`<br>
-`(zz)--` → `\overline{zz}`
+`bar` → `\bar{}`<br>
+`hat` → `\hat{}`<br>
+`vec` → `\vec{}`<br>
+`abar` → `\bar{a}`<br>
+`ahat` → `\hat{a}`<br>
+`avec` → `\vec{a}`<br>
+`aabar` → `\overline{aa}`<br>
+`aahat` → `\widehat{aa}`<br>
+`aavec` → `\overrightarrow{aa}`<br>
 {{% /center %}}
-
-These snippets are a real-time saver because you can type in the same order the
-lecturer writes on the blackboard.
 
 {{< video src="videos/postfix.mp4" controls="false" autoplay="true" loop="true" muted="true">}}
 
-Here's the snippet code:
+These snippets are smart.
 
 ```vim
-context "math()"
-snippet -- "Bar" i
-\overline{$1}$0
+global !p
+
+def choose_next(string, array, length=0):
+    return array[array.index(string) - (length or len(array)) + 1]
+
+def bar_hat_vec(target, word, subscript = ''):
+    return '\\' + target + '{' + ('\\' + word + 'math' if word in special_bar_hat_vec else word) + '}' + (subscript or '')
+def long_bar_hat_vec(target, word, subscript = ''):
+    return map_bar_hat_vec[target] + '{' + word + '}' + (subscript or '')
+
+special_bar_hat_vec = ['i', 'j']
+map_bar_hat_vec = {'bar': '\\overline', 'hat': '\\widehat', 'vec': '\\overrightarrow'}
+bars = ['\\bar', '\\overline']
+hats = ['\\hat', '\\widehat']
+vecs = ['\\vec', '\\overrightarrow']
+
+endglobal
+
+snippet "(\b[a-zA-Z0]|\\[a-zA-Z]+)([_^](?:\{\S+\s?\}|[\da-zA-Z]))?(bar|hat|vec)" "Bar/Hat/Vector" Ar
+`!p snip.rv = bar_hat_vec(match.group(3) or match.group(2), match.group(1), match.group(2) if match.group(3) else '')`
 endsnippet
 
-context "math()"
-snippet '(\S|\(.*?\))--' "Bar" riA
-\overline{`!p snip.rv=match.group(1).replace('(', '').replace(')', '')`}
+snippet "(?<!\\)\b([a-zA-Z]{2,})([_^](?:\{\S+\s?\}|[\da-zA-Z]))?(bar|hat|vec)" "Long Bar/Hat/Vector" Ar
+`!p snip.rv = long_bar_hat_vec(match.group(3) or match.group(2), match.group(1), match.group(2) if match.group(3) else '')`
+endsnippet
+
+snippet "(\\bar|\\overline)(\{[\\a-zA-Z]+\s?\})((?:[_^](?:[\da-zA-Z]|\{[\\\w\d\s]+\}))?)" "Bar" r
+`!p
+snip.rv = choose_next(match.group(1), bars, 2) + match.group(2) + match.group(3)
+`
+endsnippet
+
+snippet "(\\hat|\\widehat)(\{[\\a-zA-Z]+\s?\})((?:[_^](?:[\da-zA-Z]|\{[\\\w\d\s]+\}))?)" "Hat" r
+`!p
+snip.rv = choose_next(match.group(1), hats, 2) + match.group(2) + match.group(3)
+`
+endsnippet
+
+snippet "(\\vec|\\overrightarrow)(\{[\\0a-zA-Z]+\s?\})((?:[_^](?:[\da-zA-Z]|\{[\\\w\d\s]+\}))?)" "Vector" r
+`!p
+snip.rv = choose_next(match.group(1), vecs, 2) + match.group(2) + match.group(3)
+`
 endsnippet
 ```
 
-```vim
-context "math()"
-snippet .. "Dot" i
-\dot{$1}$0
-endsnippet
-
-context "math()"
-snippet '(\S)\.\.' "Dot" riA
-\dot{`!p snip.rv=match.group(1)`}
-endsnippet
-```
-
-```vim
-context "math()"
-snippet ,, "Vec" i
-\vec{$1}$0
-endsnippet
-
-context "math()"
-snippet '(\S),,' "Vec" riA
-\vec{`!p snip.rv=match.group(1)`}
-endsnippet
-```
-
-```vim
-context "math()"
-snippet ,. "Hat" i
-\hat{$1}$0
-endsnippet
-
-context "math()"
-snippet '(\S)\,\.' "Hat" riA
-\hat{`!p snip.rv=match.group(1)`}
-endsnippet
-```
+To understand this, you must have read the entire UltiSnips documentation.
 
 ### Bra, Ket, and Bracket
 
 I don't use these snippets often, but I think they're cool. So, here they are:
 
 {{% center %}}
+`<|` → `\bra{}`<br>
+`|>` → `\ket{}`<br>
 `<a|` → `\bra{a}`<br>
-`<q|` → `\bra{\psi}`<br>
 `|a>` → `\ket{a}`<br>
-`|q>` → `\ket{\psi}`<br>
-`<a|b>` → `\braket{a|b}`
+`|a>` → `\ket{a}`<br>
+`\bra{a}|a>` → `\braket{a|a}`<br>
+`\ket{a}|a>` → `\braket{a|a}`<br>
+`\bra{a},a>` → `\braket{a,a}`<br>
+`\ket{a},a>` → `\braket{a,a}`<br>
 {{% /center %}}
 
 {{< video src="videos/bra-ket-bracket.mp4" controls="false" autoplay="true" loop="true" muted="true">}}
@@ -1053,86 +986,173 @@ snippet '\|(.*?)\>' "Ket" riA
 \ket{`!p snip.rv = match.group(1).replace('q', f'\psi').replace('f', f'\phi')`}
 endsnippet
 
-snippet '\\(bra|ket){(.*?)}([^\|]*?)\>' "Braket" riA
-\braket{`!p snip.rv = match.group(2)`|`!p snip.rv = match.group(3).replace('q', f'\psi').replace('f', f'\phi')`}
-endsnippet
-```
-
-### School lessons
-
-I don't really use these that often because I created scripts that do a lot of
-work when:
-
-- Organizing
-- Changing
-- Switching
-- Loading
-- Reloading
-
-Between:
-
-- Classes
-- Lessons
-- Lectures
-
-You can find these scripts
-<a class="center after" href="https://www.github.com/SingularisArt/Singularis/tree/master/local/scripts/school">here</a>,
-but eventually, I will create a blog post about how I made those scripts, how I
-use them, etc.
-
-{{< video src="videos/school-lessons.mp4" controls="false" autoplay="true" loop="true" muted="true">}}
-
-```vim
-snippet les "Lesson"
-\lesson{${1:LESSON NUMBER}}{`date "+%b %d %Y %a (%H:%M:%S)"`}{${3:LESSON NAME}}
-\label{les_$1:${4:${3/\\\w+\{(.*?)\}|\\(.)|(\w+)|([^\w\\]+)/(?4:_:\L$1$2$3\E)/ga}}}
-$0
+snippet '\\(bra|ket){(.*?)}(,)?([^\|]*?)\>' "Braket" riA
+\braket{`!p
+brake = "|" if match.group(3) is None else match.group(3)
+snip.rv = match.group(2) + brake + match.group(4).replace('q', f'\psi').replace('f', f'\phi')`}
 endsnippet
 ```
 
 ### Course Specific Snippets
 
 Beside my commonly used snippets, I have some snippets that are only required
-in some of my classes. You can easily load this snippets by putting this in
-your `.vimrc`:
+in some of my classes. You can load this snippets by putting this in your
+`init.lua`:
 
 ```vim
-set rtp+=~/Documents/school-notes/current-course
+vim.cmd('set rtp+=~/Documents/school-notes/current-course')
 ```
 
-The `current-course` folder I'm pointing to is a
-[symlink](https://en.wikipedia.org/wiki/Symbolic_link) to my current class.
-I'll talk more about that on my next post.
+The `current-course` folder I'm pointing to is a <a class="center after"
+href="https://en.wikipedia.org/wiki/Symbolic_link">symlink</a>. to my current
+class. I'll talk more about that on my next post.
 
-In that folder, I have a ton of things like my lecture notes, assignments, and
-my snippets. I store my snippets in the folder: `current-course/UltiSnips`.
+In that folder, I have a ton of stuff, such as my lecture notes, assignments,
+and my snippets. I store my snippets in the folder: `current-course/UltiSnips`.
 
 You may recall when I had you put the **"UltiSnips"** in the list when
 configuring UltiSnips. The reason is because UltiSnips looks at every single
 folder in the rtp (run time path) and search for this folder. If it finds it,
-it'll source all of the snippet files it finds.
+it'll source all the snippet files it finds.
 
 Here are some of my snippets for my Calculus 1 class.
 
-{{< video src="videos/course-specific-snippets.mp4" controls="false" autoplay="true" loop="true" muted="true">}}
-
-I use a ton of trigonometry in my Calculus class:
+For each course, I have specific environments that I made. So, I created a
+snippet for each environment.
 
 ```vim
-snippet dtan "Definition of Tangent" Ai
-\tan = \left(${1:\theta}\right) = \frac{\sin \left($1\right)}{\cos \left($1\right)}
+snippet def "Definition Environment" bAi
+\begin{definition}[$1]
+	\label{def:${2:${1/\\\w+\{(.*?)\}|\\(.)|(\w+)|([^\w\\]+)/(?4:_:\L$1$2$3\E)/ga}}}
+
+	$3
+\end{definition}
 endsnippet
 
-snippet dcot "Definition of Cotangent" Ai
-\cot \left(${1:\theta}\right) = \frac{1}{tan \left($1\left)}
+snippet prop "Proposition Environment" bAi
+\begin{prop}[$1]
+	\label{prop:${2:${1/\\\w+\{(.*?)\}|\\(.)|(\w+)|([^\w\\]+)/(?4:_:\L$1$2$3\E)/ga}}}
+
+	$3
+\end{prop}
 endsnippet
 
-snippet dsec "Definition of Secant" Ai
-\sec \left(${1:\theta}\right) = \frac{1}{cos \left($1\left)}
+snippet thrm "Theorem Environment" bAi
+\begin{theorem}[$1]
+	\label{thrm:${2:${1/\\\w+\{(.*?)\}|\\(.)|(\w+)|([^\w\\]+)/(?4:_:\L$1$2$3\E)/ga}}}
+
+	$3
+\end{theorem}
 endsnippet
 
-snippet dcsc "Definition of Cosecant" Ai
-\csc \left(${1:\theta}\right) = \frac{1}{sin \left($1\left)}
+snippet lem "Lemma Environment" bAi
+\begin{lemma}[$1]
+	\label{lem:${2:${1/\\\w+\{(.*?)\}|\\(.)|(\w+)|([^\w\\]+)/(?4:_:\L$1$2$3\E)/ga}}}
+
+	$3
+\end{lemma}
+endsnippet
+
+snippet cor "Corollary Environment" bAi
+\begin{corollary}[$1]
+	\label{cor:${2:${1/\\\w+\{(.*?)\}|\\(.)|(\w+)|([^\w\\]+)/(?4:_:\L$1$2$3\E)/ga}}}
+
+	$3
+\end{corollary}
+endsnippet
+
+snippet idn "Identity Environment" bAi
+\begin{identity}[$1]
+	\label{idn:${2:${1/\\\w+\{(.*?)\}|\\(.)|(\w+)|([^\w\\]+)/(?4:_:\L$1$2$3\E)/ga}}}
+
+	$3
+\end{identity}
+endsnippet
+
+snippet exc "Exercise Environment" bAi
+\begin{exc}
+	\label{exc:$1}
+
+	\exercise{$2}
+
+	$3
+
+	\solution
+
+	$4
+\end{exc}
+endsnippet
+
+snippet rmk "Remark Environment" bAi
+\begin{remark}[$1]
+	\label{rmk:${2:${1/\\\w+\{(.*?)\}|\\(.)|(\w+)|([^\w\\]+)/(?4:_:\L$1$2$3\E)/ga}}}
+
+	$3
+\end{remark}
+endsnippet
+
+snippet exm "Example Environment" bAi
+\begin{example}
+	\label{exm:$1}
+
+	$2
+\end{example}
+endsnippet
+
+snippet nta "Notation Environment" bAi
+\begin{notation}[$1]
+	\label{nta:${2:${1/\\\w+\{(.*?)\}|\\(.)|(\w+)|([^\w\\]+)/(?4:_:\L$1$2$3\E)/ga}}}
+
+	$3
+\end{notation}
+endsnippet
+
+snippet not "Note Environment" bAi
+\begin{note}
+	\label{not:$1}
+
+	$2
+\end{note}
+endsnippet
+
+snippet prev "Previously Seen Environment" bAi
+\begin{previouslyseen}[$1]
+	\label{prev:${2:${1/\\\w+\{(.*?)\}|\\(.)|(\w+)|([^\w\\]+)/(?4:_:\L$1$2$3\E)/ga}}}
+
+	$3
+\end{previouslyseen}
+endsnippet
+
+snippet prob "Problem Environment" bAi
+\begin{problem}[$1]
+	\label{prob:${2:${1/\\\w+\{(.*?)\}|\\(.)|(\w+)|([^\w\\]+)/(?4:_:\L$1$2$3\E)/ga}}}
+
+	$3
+\end{problem}
+endsnippet
+
+snippet obs "Observe Environment" bAi
+\begin{observe}[$1]
+	\label{obs:${2:${1/\\\w+\{(.*?)\}|\\(.)|(\w+)|([^\w\\]+)/(?4:_:\L$1$2$3\E)/ga}}}
+
+	$3
+\end{observe}
+endsnippet
+
+snippet pry "Property Environment" bAi
+\begin{property}[$1]
+	\label{pry:${2:${1/\\\w+\{(.*?)\}|\\(.)|(\w+)|([^\w\\]+)/(?4:_:\L$1$2$3\E)/ga}}}
+
+	$3
+\end{property}
+endsnippet
+
+snippet int "Intuition Environment" bAi
+\begin{intuition}[$1]
+	\label{int:${2:${1/\\\w+\{(.*?)\}|\\(.)|(\w+)|([^\w\\]+)/(?4:_:\L$1$2$3\E)/ga}}}
+
+	$3
+\end{intuition}
 endsnippet
 ```
 
@@ -1152,33 +1172,32 @@ For example, I have:
 `int` → `\int`<br>
 {{% /center %}}
 
-{{< video src="videos/quadratic-formula.mp4" controls="false" autoplay="true" loop="true" muted="true">}}
-{{< video src="videos/sum.mp4" controls="false" autoplay="true" loop="true" muted="true">}}
-{{< video src="videos/limit.mp4" controls="false" autoplay="true" loop="true" muted="true">}}
-{{< video src="videos/greek.mp4" controls="false" autoplay="true" loop="true" muted="true">}}
-{{< video src="videos/quantum-mechanics-1.mp4" controls="false" autoplay="true" loop="true" muted="true">}}
-{{< video src="videos/quantum-mechanics-2.mp4" controls="false" autoplay="true" loop="true" muted="true">}}
+{{< video src="videos/quadratic-formula.mp4" controls="false" autoplay="true" loop="true" muted="true" >}}
+{{< video src="videos/sum.mp4" controls="false" autoplay="true" loop="true" muted="true" >}}
+{{< video src="videos/limit.mp4" controls="false" autoplay="true" loop="true" muted="true" >}}
+{{< video src="videos/greek.mp4" controls="false" autoplay="true" loop="true" muted="true" >}}
+{{< video src="videos/quantum-mechanics-1.mp4" controls="false" autoplay="true" loop="true" muted="true" >}}
+{{< video src="videos/quantum-mechanics-2.mp4" controls="false" autoplay="true" loop="true" muted="true" >}}
 
 You can view all my latex snippets
-[here](https://github.com/SingularisArt/snippets/blob/master/plaintex.snippets).
+<a class="center after" href="https://github.com/SingularisArt/snippets/tree/master/tex">here</a>
 
 ## Correct spelling mistakes
 
 I use this a **TON**. It's so handy because I don't have to leave insert mode,
 hover over the word, press **z=**, select the correct word, then go all the way
 back. UHHH, that was a lot of work! Also, if the word isn't corrected
-correctly, I can exit insert mode, press **u**, and select the correct word,
-and from now on, it will always be corrected to the correct one, which is the
-one that I chose. AMAZING!
+incorrectly, I can exit insert mode, press **u**, and select the correct
+word, and from now on, it will always be corrected to the correct one, which is
+the one that I chose.
 
 {{< video src="videos/correct-words.mp4" controls="false" autoplay="true" loop="true" muted="true">}}
 
-Now, put this in your `init.vim` or `.vimrc`:
+Now, put this in your `init.lua`.
 
-```vim
-setlocal spell
-set spelllang=en
-inoremap <C-l> <C-g>u<Esc>[s1z=`]a<C-g>u
+```lua
+vim.opt.spell=true
+vim.api.nvim_set_keymap("i", "<C-l>", "<C-g>u<Esc>[s1z=`]a<C-g>u")
 ```
 
 ## Auto completion
@@ -1186,9 +1205,9 @@ inoremap <C-l> <C-g>u<Esc>[s1z=`]a<C-g>u
 Now, besides `snippets` helping me out a ton when taking notes, I also have
 `autocompletion`.
 
-This is possible by using
-<a class="center after" href="https://en.wikipedia.org/wiki/Language_Server_Protocol">LSP</a>.
-`LSP` is a `language server protocol`, which allows me to get autocompletion,
+This is possible by using <a class="center after"
+href="https://en.wikipedia.org/wiki/Language_Server_Protocol">LSP</a>. `LSP` is
+a `language server protocol`, which allows me to get autocompletion,
 suggestions, etc based on the language that I'm using.
 
 ### Setting LSP in NeoVim
@@ -1202,102 +1221,32 @@ use { 'tami5/lspsaga.nvim' }
 use { 'williamboman/nvim-lsp-installer' }
 ```
 
-### Install your language server
+### Install LaTeX language server
 
-Installing your language server is super easy. For a complete list of all of
-the language servers NeoVim offers, head over
-<a class="center after"
+Installing your language server is super easy. For a complete list of all
+the language servers NeoVim offers, head over <a class="center after"
 href="https://github.com/neovim/nvim-lspconfig/blob/master/doc/server_configurations.md">here</a>.
 To install your language server, just run `:LspInstall [lang name]`. Now, you
 have your language server installed in NeoVim.
 
-But, you need to server installed on your computer. To do that, head over
-<a class="center after"
+But, you need to server installed on your computer. To do that, head over <a
+class="center after"
 href="https://github.com/neovim/nvim-lspconfig/blob/master/doc/server_configurations.md">here</a>
 and find your language. Follow the link that they provide and install it from
 there.
 
-For example, I want to have the `python` language server. So, I just run
-`:LspInstall python` in NeoVim. Then, I run `pip3 install 'python-lsp-server[all]'`. Now, I have my server.
-
-To activate it `python`, put this in your `init.lua`:
-
-```lua
-require('lspconfig').pylsp.setup{}
-```
-
-But, for me, I have a ton of servers, and my goal is to only keep them growing.
-So, here is a better way of doing it:
-
-```lua
--- LSP Servers to install
-
-local capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities())
-
-local langservers = {
-  'sumneko_lua',      -- Lua
-  'vimls',            -- Vim
-  'texlab',           -- LaTeX
-  'pylsp',            -- Python
-  'bashls',           -- Bash
-  'clangd',           -- C++,C
-  'omnisharp',        -- C#
-  'cmake',            -- CMake
-  'html',             -- HTML
-  'cssls',            -- CSS
-  'jsonls',           -- JSON
-  'rust_analyzer',    -- Rust
-  'tsserver',         -- Typescript/Javascript
-  'yamlls',           -- Yaml
-  'solc',             -- Solidity
-  'solang',           -- Solidity
-  'solidity_ls',      -- Solidity
-  'dockerls',         -- Docker
-}
-
-for _, server in ipairs(langservers) do
-  if server == 'sumneko_lua' then
-    require('lspconfig')[server].setup {
-      capabilities = capabilities,
-      settings = {
-        Lua = {
-          diagnostics = {
-            globals = { 'vim', 'use' }
-          },
-        }
-      }
-    }
-  else
-    require('lspconfig')[server].setup { capabilities = capabilities }
-  end
-end
-```
-
-Inside of the `local langservers`, just add your server name and you're good to
-go. For example, if I want to have the rust language server, just add
-`rust_analyzer` to the langservers.
-
-Again, you can get this information from
-<a class="center after" href="https://github.com/neovim/nvim-lspconfig/blob/master/doc/server_configurations.md">here</a>.
-
-#### Installing the Server for LaTeX
-
-Since we're using NeoVim to take notes using `LaTeX`, then let's install the
-`LaTeX` language server, which is `texlab`. You can view the source code
-<a class="center after" href="https://github.com/latex-lsp/texlab">here</a>.
-To install it, run the following command:
+The language server for LaTeX is `texlab`. Run `:LspInstall texlab`.
+If that doesn't work, run.
 
 ```bash
 cargo install --git https://github.com/latex-lsp/texlab.git --locked
 ```
 
-Now, add this line to your `init.lua`:
+To activate it, put this in your `init.lua`:
 
 ```lua
 require('lspconfig').texlab.setup{}
 ```
-
-Now, when you type `\`, you will be able to see autocompletion.
 
 ### Demo of LSP
 
@@ -1305,21 +1254,14 @@ Now, when you type `\`, you will be able to see autocompletion.
 
 ## Credit
 
-I would like to give a thanks 👏 to
-<a class="center after" href="https://www.castel.dev">Gilles Castel</a>
-for teaching me all of this stuff. I would recommend to go and checkout his
-website!
+I would like to give a thanks 👏 to <a class="center after"
+href="https://www.castel.dev">Gilles Castel</a> for teaching me everything. I
+would recommend to go and checkout his website!
 
 ## Conclusion
 
-So, I have just proven to you that you can write **LaTeX**
+So, I have proven to you that you can write **LaTeX**
 
 - **fast**
 - **easily**
 - **efficiently**
-
-Stay tuned to learn about how I:
-
-- **draw figures**
-- **manage my notes**
-- **take notes**
