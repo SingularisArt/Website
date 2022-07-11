@@ -1,0 +1,70 @@
+* { margin: 0; padding: 0; }
+
+body {
+  font-family: Inter, sans-serif;
+  color: rgb(58, 52, 58);
+  font-size: 18px;
+  text-rendering: optimizelegibility;
+}
+
+hr {
+  display: block;
+  height: 0px;
+  border: 0;
+  border-top: 1px solid #8a8a8a;
+  margin: 0px;
+  padding: 0;
+}
+
+#grid {
+  display: grid;
+  gap: 1.5rem;
+
+  grid-template-columns: repeat(3, 250px);
+}
+
+#container {
+  background-image: url("");
+  position: relative;
+
+  max-width: 250px;
+
+  border-radius: 0px;
+  border: 1px solid #8a8a8a;
+
+  padding: 0px;
+  margin: 0px;
+
+  word-break: break-all;
+}
+
+h4 {
+  margin: 0;
+}
+
+.tags {
+  padding-top: 10px;
+  font-size: 70%;
+  text-transform: uppercase;
+  font-weight: 600;
+}
+
+.notes_header {
+  padding-left: 15px;
+  padding-right: 15px;
+  padding-bottom: 15px;
+}
+
+.notes_body {
+  padding-left: 15px;
+  padding-right: 15px;
+  padding-bottom: 25px;
+  padding-top: -100;
+  color: rgb(58, 52, 58);
+  font-style: normal;
+  font-size: 14px;
+}
+
+.notes_body:hover {
+  background-color: #fef;
+}

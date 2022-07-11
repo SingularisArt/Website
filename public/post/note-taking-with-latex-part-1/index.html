@@ -1,0 +1,904 @@
+<!doctype html><html lang=en-us><head><meta charset=utf-8><meta http-equiv=x-ua-compatible content="IE=edge,chrome=1"><meta name=viewport content="width=device-width,initial-scale=1,maximum-scale=1"><title>Hashem A. Damrah</title><meta name=keywords content><meta property="og:title" content="Note Taking with LaTeX: Part I (NeoVim)"><meta property="og:site_name" content><meta property="og:image" content="/img/author.jpg"><meta name=title content="Note Taking with LaTeX: Part I (NeoVim) - "><meta name=description content="I go over using NeoVim and LaTeX to take notes with, but I specifically talk about talking notes with Mathematics."><link rel="shortcut icon" href=https://damrah.netlify.app/images/favicon.ico><link rel=apple-touch-icon href=https://damrah.netlify.app/images/apple-touch-icon.png><link rel=apple-touch-icon-precomposed href=https://damrah.netlify.app/images/apple-touch-icon.png><link href="https://damrah.netlify.app/js/vendor/font-awesome/css/font-awesome.min.css?v=4.6.2" rel=stylesheet type=text/css><link href="https://damrah.netlify.app/js/vendor/fancybox/jquery.fancybox.css?v=2.1.5" rel=stylesheet type=text/css><link href=https://damrah.netlify.app/css/main.css rel=stylesheet type=text/css><link href=https://damrah.netlify.app/css/syntax.css rel=stylesheet type=text/css><script type=text/javascript id=hexo.configuration>var NexT=window.NexT||{},CONFIG={scheme:"Pisces",sidebar:{position:"left",display:"post"},fancybox:!0}</script><script async src="https://www.googletagmanager.com/gtag/js?id=G-9G7LLF1FQB"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag("js",new Date),gtag("config","G-9G7LLF1FQB")</script></head><style>body{font-size:18px;font-family:Inter,sans-serif}</style><body itemscope itemtype=http://schema.org/WebPage lang=zh-hans><div class="container one-collumn sidebar-position-left"><div class=headband></div><header id=header class=header itemscope itemtype=http://schema.org/WPHeader><div class=header-inner><head><link rel=stylesheet href=https://damrah.netlify.app/css/prism.css><script async src="https://www.googletagmanager.com/gtag/js?id=G-9G7LLF1FQB"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag("js",new Date),gtag("config","G-9G7LLF1FQB")</script><script>MathJax={tex:{inlineMath:[["$","$"],["\\(","\\)"]],displayMath:[["$$","$$"],["\\[","\\]"]],processEscapes:!0,processEnvironments:!0},options:{skipHtmlTags:["script","noscript","style","textarea","pre"]}},window.addEventListener("load",e=>{document.querySelectorAll("mjx-container").forEach(function(e){e.parentElement.classList+="has-jax"})})</script><script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script type=text/javascript id=MathJax-script async src=https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js></script></head><div class="site-meta custom-logo"><div class=custom-logo-site-title><a href=https://damrah.netlify.app class=brand rel=start><span class=logo-line-before><i></i></span>
+<span class=site-title>Hashem A. Damrah</span>
+<span class=logo-line-after><i></i></span></a></div><p class=site-subtitle></p></div><div class=site-nav-toggle style=background-color:#c66><button>
+<span class=btn-bar></span>
+<span class=btn-bar></span>
+<span class=btn-bar></span></button></div><nav class=site-nav><ul id=menu class=menu><li class=menu-item><a href=https://damrah.netlify.app/ rel=section><i class="menu-item-icon fa fa-fw fa-home"></i><br>Front Page</a></li><li class=menu-item><a href=https://damrah.netlify.app/post/ rel=section><i class="menu-item-icon fa fa-fw fa-archive"></i><br>All Posts</a></li><li class=menu-item><a href=https://damrah.netlify.app/about/ rel=section><i class="menu-item-icon fa fa-fw fa-user"></i><br>About</a></li><li class=menu-item><a href=https://damrah.netlify.app/notes rel=section><i class="menu-item-icon fa fa-fw fa-book"></i><br>School Notes</a></li><li class=menu-item><a href=https://damrah.netlify.app/book-notes rel=section><i class="menu-item-icon fa fa-fw fa-book"></i><br>Book Notes</a></li><li class=menu-item><a href=https://damrah.netlify.app/contact rel=section><i class="menu-item-icon fa fa-fw fa-phone"></i><br>Contact</a></li><li class=menu-item><a href=https://damrah.netlify.app/tags rel=section><i class="menu-item-icon fa fa-fw fa-tags"></i><br>Tags</a></li><li class="menu-item menu-item-search"><a href=javascript:; class=popup-trigger><i class="menu-item-icon fa fa-search fa-fw"></i><br>Search</a></li></ul><div class=site-search><div class=popup><span class="search-icon fa fa-search"></span>
+<input type=text id=local-search-input><div id=local-search-result></div><span class=popup-btn-close>close</span></div></div></nav></div></header><main id=main class=main><div class=main-inner><div class=content-wrap><div id=content class=content><style>.circle-image{position:relative;display:inline-block;border-radius:100%;overflow:hidden;width:150px;height:150px;display:block;margin-left:auto;margin-right:auto;border-radius:200px;box-sizing:border-box;border:3px solid #c66}.circle-image img{width:100%;height:100%;object-fit:cover}.popup-trigger{text-align:center}a.popup-trigger{display:block}</style><section id=posts class=posts-expand><article class="post post-type-normal" itemscope itemtype=http://schema.org/Article><header class=post-header><span class=circle-image><a href=https://damrah.netlify.app/post><img src=https://damrah.netlify.app/images/avatar.png alt=avatar class=profile-pic></a></span><br><h1 class=post-title itemprop="name headline"><a class=post-title-link href=https://damrah.netlify.app/post/note-taking-with-latex-part-1/ itemprop=url>Note Taking with LaTeX: Part I (NeoVim)</a></h1><h4 style=text-align:center;font-style:italic;color:#555 class=author>By: Hashem A. Damrah</h4><p style=text-align:center;color:#555>Description: I go over using NeoVim and LaTeX to take notes with, but I specifically talk about talking notes with Mathematics.</p><div class=post-meta><span class=post-time><span class=post-meta-item-icon><i class="fa fa-calendar-o"></i></span>
+<span class=post-meta-item-text>Published at:</span>
+<time itemprop=dateCreated datetime=2016-03-22T13:04:35+08:00 content="2022-01-01">2022-01-01</time></span>
+<span class=post-tag>&nbsp; | &nbsp;
+<span class=post-meta-item-icon><i class="fa fa-folder-o"></i></span>
+<span class=post-meta-item-text>Tags:</span>
+<span itemprop=about itemscope itemtype=https://schema.org/Thing><a href=https://damrah.netlify.app/tags/latex itemprop=url rel=index><span itemprop=name>latex</span></a>
+&nbsp;</span>
+<span itemprop=about itemscope itemtype=https://schema.org/Thing><a href=https://damrah.netlify.app/tags/tutorial itemprop=url rel=index><span itemprop=name>tutorial</span></a>
+&nbsp;</span>
+<span itemprop=about itemscope itemtype=https://schema.org/Thing><a href=https://damrah.netlify.app/tags/school itemprop=url rel=index><span itemprop=name>school</span></a>
+&nbsp;</span>
+<span itemprop=about itemscope itemtype=https://schema.org/Thing><a href=https://damrah.netlify.app/tags/notes itemprop=url rel=index><span itemprop=name>notes</span></a>
+&nbsp;</span>
+<span itemprop=about itemscope itemtype=https://schema.org/Thing><a href=https://damrah.netlify.app/tags/series itemprop=url rel=index><span itemprop=name>series</span></a>
+&nbsp;</span>
+<span itemprop=about itemscope itemtype=https://schema.org/Thing><a href=https://damrah.netlify.app/tags/note-taking itemprop=url rel=index><span itemprop=name>note taking</span></a>
+&nbsp;</span></span>
+<span>&nbsp; | &nbsp;
+<span class=post-meta-item-icon><i class="fa fa-eye"></i></span>
+<span class=post-meta-item-text>Reading:</span>
+<span class=leancloud-visitors-count>4796 words ~23min</span></span></div></header><style>.js-toggle-wrapper{display:table;margin:0 auto}.js-toggle{touch-action:pan-x;display:inline-block;position:relative;cursor:pointer;background-color:transparent;border:0;padding:0;-webkit-touch-callout:none;user-select:none;-webkit-tap-highlight-color:transparent;-webkit-tap-highlight-color:transparent}.js-toggle-screenreader-only{border:0;clip:rect(0 0 0 0);height:1px;margin:-1px;overflow:hidden;padding:0;position:absolute;width:1px}.js-toggle-track{width:50px;height:24px;padding:0;border-radius:30px;background-color:#0f1114;transition:all .2s ease}.js-toggle-track-check{position:absolute;width:17px;height:17px;left:5px;top:0;bottom:0;margin-top:auto;margin-bottom:auto;line-height:0;opacity:0;transition:opacity .25s ease}.js-toggle--checked .js-toggle-track-check{opacity:1;transition:opacity .25s ease}.js-toggle-track-x{position:absolute;width:17px;height:17px;right:5px;top:0;bottom:0;margin-top:auto;margin-bottom:auto;line-height:0;opacity:1;transition:opacity .25s ease}.js-toggle--checked .js-toggle-track-x{opacity:0}.js-toggle-thumb{position:absolute;top:1px;left:1px;width:22px;height:22px;border-radius:50%;background-color:#fafafa;box-sizing:border-box;transition:all .5s cubic-bezier(.23,1,.32,1)0ms;transform:translateX(0)}.js-toggle--checked .js-toggle-thumb{transform:translateX(26px);border-color:#19ab27}.js-toggle--focus .js-toggle-thumb{box-shadow:0 0 2px 3px #ffa7c4}.js-toggle:active .js-toggle-thumb{box-shadow:0 0 5px 5px #ffa7c4}</style><div class=js-toggle-wrapper><div class=js-toggle><div class=js-toggle-track><div class=js-toggle-track-check><img src="data:image/png;base64,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" role=presentation style=pointer-events:none;cursor:default width=16 height=16></div><div class=js-toggle-track-x><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAAXNSR0IArs4c6QAAAAlwSFlzAAALEwAACxMBAJqcGAAAAVlpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IlhNUCBDb3JlIDUuNC4wIj4KICAgPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4KICAgICAgPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIKICAgICAgICAgICAgeG1sbnM6dGlmZj0iaHR0cDovL25zLmFkb2JlLmNvbS90aWZmLzEuMC8iPgogICAgICAgICA8dGlmZjpPcmllbnRhdGlvbj4xPC90aWZmOk9yaWVudGF0aW9uPgogICAgICA8L3JkZjpEZXNjcmlwdGlvbj4KICAgPC9yZGY6UkRGPgo8L3g6eG1wbWV0YT4KTMInWQAABwNJREFUWAmtV1tsFFUY/s6Z2d22zLYlZakUCRVaQcqlWIiCiS1gTEB9UAO+GR9En3iQGI0xJiSiRB98MjEq8cEQTSBeHhQM0V7whtEGDWC90BYitxahtNtu25058/v/ZzvLbilawJNM5+yZ89+//1LgJhYRNLW1uDfBAvpGiIk2O5auvfFxqIH3ZJ8/u06GN6Z9+wVl5SjcD1IbZa/UPkPyYl2uR4dreoD2bnbYxTlBBRytkHXtAREphP5KuH4lddx9h70yxX05t7yYXwGb6W8nx1jibpl2rFlGBxcG9M18okOrn7Bnk/BAO/4bI0UeEE1zjBp3UmvjOxJXJdaKN/ZiIu4tOZrAb4aTdZAZArKmWeiiJZ6jt5tiagdCS9+6cgO1Ne6Mvhe+ixTIfyDVhipnK9p+P0Edqx9RW/YZtQVGmOLChRxNNlyPsTEgPQKMB3dbEHa0h1awYmQ83enTd2vmUtvKd1Glv2RkzBb+kZGRrKtjzG60Wguhd/lJZBingbcfWWe72vjT75bJDrhYtvA0hrurETDr5HyF2Knb1MM4ab//xIoOqueA0edRnkkinTyJdYvqLFDZO4zUPFCvVoDjJq4T7TE61IWh4x5KqxX5KVKkX8WZ/t2ov2cb3MHt4dhIyOxIJxJOOF6xRx/99BksXLoecWcXytILMNBDqKpnGZWPquYfPxY8iXGR9fK+SgFrgcRPXPjVqhehL+3EmZ5RGJQi1QBU8TPThQnOQzm+5UXGIcetUeEAfP13VwzpI+w1jGJWdSliNfvVhiMPiOsllJag4M/UGHiqM6dlBb2OTLKHHV6KkvogrJ4XhBWniWK/Gp1MQyf93FOeUXKmKk/FzJxbQtKLjFXYT4USupy8fQVir2ynVEBiZMG0qtOHMS/AW4Gwrk7BG3C1F0B5nqNKE0CME4MfVRLPnXkBKe+ipvoFhNQywOhdghvLi0F8ReyVXV4BKTBRbbe5f64zR/DHsdZw1hJfeWlHl/GNRJzDxrd5m192z78TMaVnKELZoINZS4BzQ7vtnZljSnha/pPCbkuxzXcupYwI5tIeCpGc0Yp9tWHZQy/rmYhRfNgg4bHJBYLzGkxsRJF4XKlE2jBOHNSv3kY7Tj6vthzPFl61BrYwqFlmEQhtSVXmLiksxLmtRgYXI1ULU61JJ4eVKmG3/5sCVgpbMT6OMJ2E08/29Xf3w6v4FnHdCjfWgXu/O8Z5mLdCkeRs2khHe1DqOtQwbHWTAnM5S2HNmhALYo5KjkPFrMMKjZl6HxhWIAb0BqE+/73GrBRQUsKYiBu4JX8ycI6wtw+i5ef3NZpsrKVSHYCP37jwGDgeE1SA0S/xtl5SU2fs1ApEp0qTLVRjgyycDSsLHMSwmFltZMStR3uLLg6BdLhDa5dC6ryU2pHBe1BVO9tUcwfitJt2CLJZUHoG6T7Op75u0IyK31TCPcwFqgPk/KCaD3dFOuZBCO7xvCT/j048b3I3c7F2+WuOW7qdgkucFYlcQ4qop3yzTX7WaKfOCccye3Ts1Etq0+a/BHCF1yPgF3tAUkR6OrtGmo6gl94qqcXKh3rDyrOkPa58URoWcov2Mo6M+0QjrqKB+b7++oMa9Sz+ZkM0mie6aAtnGUvhmxaI+TogPOSQedgWioGSHFLn3v4kLh4HRspNmOGv41k+55siLFp2z6xYeJjhljFcbmxJlr4ga06TbevSByz/glQq4BJx46/c+237PbBqEYKxX3HpmKZEnQnr65X20hqJYaNcLoFOLiJk2LuBbyg7Q0OEn+hm0P3honxFD6rdxYorKpeIoi4YSSvyQHQIbM5t4+YNxLj/OxhVOOE4585qGpjnq+wSx6Q9CtNxTjd5klB+g6Mv36r0+b9cZFi44WYkHdG2ZWb3TtOUOXyVAlKlpGvJIAJ3eBMyfYS5C0qRZGtC85j+4sOasDe9xznPYezhhO/2Q6eP2fSOvYHOjtuQ1a9Q1VKynVDaMc8E0tptdxUsTFpFIYjcZKcbnoaQTNdiqCwNlL4G7oziSqGnT1ALf34vhk4R5zU3qYV9ONp9K88RtouShE68JwaU8dFw5W617shWa9ykeaBIn2hcsvPgL00k45QdTCZuSVcTRNs+8fnyLvooQfR5iujAnR9bxfY2xOVOxFS8SK3Le0l48VyYu1M8HRe5JD8wKPTjYnifaK3Wfn/GChYQ8ZAi6WRzWgqLV5YrsVLnZaVSoXU1g9gOIDwFySiGi+Zdrnzr7J3r+SMuszlcQCRn8lNGcTuSy2jOI7o9mxjZo+vR3ej3tN+ifRSOyUTS0+VMOid93cCubeiy/6TImS0QxRSCq2vxKr45zV+FQnjWH6D2xg+E9EatLcLAdHTgtGGD80D6jM0+aOl4wJgO/f96R2aJKCQ3yvgftRhdFMOpd6oAAAAASUVORK5CYII=" role=presentation style=pointer-events:none;cursor:default width=16 height=16></div></div><div class=js-toggle-thumb></div><input class=js-toggle-screenreader-only type=checkbox aria-label="Switch between Dark and Light mode"></div></div><div class=post-body itemprop=articleBody><p>For a <strong>very long time</strong>, I have been trying to create the perfect setup for
+note taking in general (but more specifically, for <strong>math</strong>). Before, I used to
+use <a class="center after" href=https://www.notion.com>notion</a> to take my
+notes, which was okay, but I wanted something much more productive. And thus,
+my system was <strong>BORN</strong>!</p><p>Here are how some of my notes look like:</p><p><img src=images/note-1.png alt=notes-image-1>
+<img src=images/note-2.png alt=notes-image-2></p><p>You can look at my notes source code
+<a class="center after" href=https://damrah.netlify.app/notes/>here</a>.
+I also store all of my final notes
+<a class="center after" href=https://www.github.com/SingularisArt/notes>here</a>.</p><p>I created this method during the summer of my <strong>10th year</strong> in high school. I am
+preparing my self for when I go to university. So I set myself <strong>4</strong> goals and
+these goals must be met for me to use the system.</p><p>They are:</p><ul><li>Writing mathematical equations as fast (or faster) than my professor was an
+<strong>A MUST</strong>.</li><li>Drawing the figures must be as <strong>easy</strong>, <strong>fast</strong>, and <strong>simple</strong>.</li><li>It must feel like I am writing them on paper.</li><li>My notes are very easily
+<strong>manageable</strong> and easy to <strong>access</strong>.</li></ul><p>I will eventually have a ton of posts talking about this specific subject, but
+for now, I will go over <strong>Step 1</strong>.</p><h2 id=neovim-and-latex>NeoVim and LaTeX</h2><p><strong>NeoVim</strong> is a terminal-based text editor. It&rsquo;s just a better version of Vim,
+which was made back in the 91.</p><p>I literally use NeoVim for everything. (You can find my custom NeoVim config
+<a class="center after" href=https://www.github.com/SingularisArt/Death.NeoVim>here</a>).</p><p><strong>LaTeX</strong> is a markup language used by mostly professors who want to publish
+their papers, which is unfortunate because it&rsquo;s a great tool to take notes on,
+not just for school. This setup took me about 1 year to make and it&rsquo;s still a
+work in the progress. Luckily, for you, you won&rsquo;t have to figure anything out
+because I&rsquo;ve done all of that for you.</p><p>Now, with that out of the way, here is what my screen looks like when I am
+working with LaTeX:</p><p><img src=images/daily-life.png alt=code-with-latex></p><p>On the left side, I have my editor (<strong>NeoVim</strong>) and on the right side, I have
+my pdf viewer <strong>Zathura</strong>.</p><p>Here is a quick list of all of my utilities:</p><ul><li>OS (Operating System):
+<a class="center after" href=https://www.archlinux.org/><strong>Arch Linux</strong></a></li><li>WM (Window Manager):
+<a class="center after" href=https://www.dwm.suckless.org/><strong>DWM</strong></a></li><li>Text Editor:
+<a class="center after" href=https://www.github.com/neovim/neovim><strong>NeoVim</strong></a></li><li>Pdf Viewer:
+<a class="center after" href=https://www.github.com/pwmt/zathura><strong>Zathura</strong></a></li><li>Terminal Emulator:
+<a class="center after" href=https://docs.xfce.org/apps/terminal/start><strong>Xfce4-Terminal</strong></a></li></ul><p>I have a huge list of plugins that you can view
+<a class="center after" href=https://github.com/SingularisArt/Death.NeoVim/tree/master/pack/bundle/opt>here</a>),
+but the plugin that I use for <strong>LaTeX</strong> is
+<a class="center after" href=https://www.github.com/lervag/vimtex>vimtex</a>.
+It provides:</p><ul><li>Syntax highlighting</li><li>Auto compiling</li><li>Renaming entire environments</li><li>Shows you the toc (Table of Contents)</li></ul><p>Using <a class="center after" href=https://github.com/wbthomason/packer.nvim>Packer</a>, I configured it as
+follows:</p><div class=highlight><pre tabindex=0 style=color:#8a8a8a;background-color:#1c1c1c;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-lua data-lang=lua><span style=display:flex><span>use { <span style=color:#00afaf>&#39;lervag/vimtex&#39;</span> }
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>vim.cmd(let g:vimtex_view_method=<span style=color:#00afaf>&#39;zathura&#39;</span>)
+</span></span><span style=display:flex><span>vim.cmd(let g:tex_flavor=<span style=color:#00afaf>&#39;latex&#39;</span>)
+</span></span><span style=display:flex><span>vim.cmd(set conceallevel=<span style=color:#00afaf>2</span>)
+</span></span><span style=display:flex><span>vim.cmd(let g:vimtex_quickfix_enabled=<span style=color:#00afaf>0</span>)
+</span></span></code></pre></div><p>The first line tells vimtex which pdf viewer to use. The second line tells
+vimtex which type of tex to use. The third line configure the concealment. This
+is a feature where LaTeX code is replaced or made invisible when your cursor
+isn&rsquo;t on that line. By making <code>\\[</code>, <code>\\]</code>, <code>$</code> invisible, they&rsquo;re less
+obtrusive which gives you a better overview of the document. This feature also
+replaces <code>\\in</code> by <code>∈</code>. The final line tells vimtex to not open the QuickFix
+list every time it compiles a file for you.</p><video preload=auto width=100% autoplay loop muted playsinline class=html-video>
+<source src=https://damrah.netlify.app/post/note-taking-with-latex-part-1/videos/conceallevel.mp4 type=video/mp4><span>Your browser doesn't support embedded videos, but don't worry, you can <a href=https://damrah.netlify.app/post/note-taking-with-latex-part-1/videos/conceallevel.mp4>download it</a> and watch it with your favorite video player!</span></video><h2 id=snippets>Snippets</h2><h3 id=what-are-snippets>What are Snippets</h3><p>One of the major reasons why I&rsquo;m so fast at typing when it comes to <strong>LaTeX</strong>,
+is because of <strong>snippets</strong>.</p><p>A snippet is a short reusable piece of text that can be triggered by some other
+text.</p><p>Then, you have <strong>snippet managers</strong>, which manages the <strong>snippets</strong> that you make.
+There are many snippet managers out there, but I use
+<a class="center after" href=https://www.github.com/SirVer/ultisnips>UltiSnippets</a>
+as my <strong>snippet manager</strong>.</p><p>Now, you can have certain kind of <strong>snippets</strong> for certain kinds of languages.
+For example, you might have <strong>snippets</strong> for python, while having different
+<strong>snippets</strong> for <strong>LaTeX</strong>.</p><p>You can take a look over
+<a class="center after" href=https://github.com/SingularisArt/snippets/blob/master/plaintex.snippets>here</a>
+to see all of my <strong>LaTeX snippets</strong>, but I will be going over the most
+important ones in this article.</p><h3 id=installing-snippets>Installing Snippets</h3><p>Like before, go ahead and install these plugins via:</p><div class="highlight line-numbers"><pre tabindex=0 style=color:#8a8a8a;background-color:#1c1c1c;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-lua data-lang=lua><span style=display:flex><span>use { <span style=color:#00afaf>&#39;SirVer/ultisnips&#39;</span> }
+</span></span><span style=display:flex><span>use { <span style=color:#00afaf>&#39;honza/vim-snippets&#39;</span> }
+</span></span><span style=display:flex><span>use { <span style=color:#00afaf>&#39;hrsh7th/nvim-cmp&#39;</span> }
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#4e4e4e>-- Optional</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>use { <span style=color:#00afaf>&#39;hrsh7th/cmp-buffer&#39;</span> }
+</span></span><span style=display:flex><span>use { <span style=color:#00afaf>&#39;hrsh7th/cmp-path&#39;</span> }
+</span></span><span style=display:flex><span>use { <span style=color:#00afaf>&#39;hrsh7th/cmp-nvim-lsp&#39;</span> }
+</span></span><span style=display:flex><span>use { <span style=color:#00afaf>&#39;hrsh7th/cmp-nvim-lua&#39;</span> }
+</span></span><span style=display:flex><span>use { <span style=color:#00afaf>&#39;hrsh7th/cmp-calc&#39;</span> }
+</span></span><span style=display:flex><span>use { <span style=color:#00afaf>&#39;quangnguyen30192/cmp-nvim-ultisnips&#39;</span> }
+</span></span><span style=display:flex><span>use { <span style=color:#00afaf>&#39;kdheepak/cmp-latex-symbols&#39;</span> }
+</span></span></code></pre></div><p>You&rsquo;re gonna have to create a directory called: <code>after/plugin/</code> in your NeoVim config directory.
+This is where you&rsquo;re going to put your configuration in. The reason you put all
+of your plugin configuration here is because NeoVim will run all of the .lua
+files within this directory. This means you don&rsquo;t have to manually require each
+file.</p><p>Create a file called <code>after/plugin/cmp.lua</code> and place this configuration in it.</p><div class=highlight><pre tabindex=0 style=color:#8a8a8a;background-color:#1c1c1c;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-lua data-lang=lua><span style=display:flex><span><span style=color:#0087ff>local</span> cmp_status_ok, cmp = pcall(require, <span style=color:#00afaf>&#34;cmp&#34;</span>)
+</span></span><span style=display:flex><span><span style=color:#0087ff>if</span> <span style=color:#5f8700>not</span> cmp_status_ok <span style=color:#0087ff>then</span>
+</span></span><span style=display:flex><span>  <span style=color:#0087ff>return</span>
+</span></span><span style=display:flex><span><span style=color:#0087ff>end</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#0087ff>local</span> check_backspace = <span style=color:#0087ff>function</span>()
+</span></span><span style=display:flex><span>  <span style=color:#0087ff>local</span> col = vim.fn.col <span style=color:#00afaf>&#34;.&#34;</span> - <span style=color:#00afaf>1</span>
+</span></span><span style=display:flex><span>  <span style=color:#0087ff>return</span> col == <span style=color:#00afaf>0</span> <span style=color:#5f8700>or</span> vim.fn.getline(<span style=color:#00afaf>&#34;.&#34;</span>):sub(col, col):match <span style=color:#00afaf>&#34;%s&#34;</span>
+</span></span><span style=display:flex><span><span style=color:#0087ff>end</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#4e4e4e>--   פּ ﯟ   some other good icons</span>
+</span></span><span style=display:flex><span><span style=color:#0087ff>local</span> kind_icons = {
+</span></span><span style=display:flex><span>  Text = <span style=color:#00afaf>&#34;&#34;</span>,
+</span></span><span style=display:flex><span>  Method = <span style=color:#00afaf>&#34;m&#34;</span>,
+</span></span><span style=display:flex><span>  Function = <span style=color:#00afaf>&#34;&#34;</span>,
+</span></span><span style=display:flex><span>  Constructor = <span style=color:#00afaf>&#34;&#34;</span>,
+</span></span><span style=display:flex><span>  Field = <span style=color:#00afaf>&#34;&#34;</span>,
+</span></span><span style=display:flex><span>  Variable = <span style=color:#00afaf>&#34;&#34;</span>,
+</span></span><span style=display:flex><span>  Class = <span style=color:#00afaf>&#34;&#34;</span>,
+</span></span><span style=display:flex><span>  Interface = <span style=color:#00afaf>&#34;&#34;</span>,
+</span></span><span style=display:flex><span>  Module = <span style=color:#00afaf>&#34;&#34;</span>,
+</span></span><span style=display:flex><span>  Property = <span style=color:#00afaf>&#34;&#34;</span>,
+</span></span><span style=display:flex><span>  Unit = <span style=color:#00afaf>&#34;&#34;</span>,
+</span></span><span style=display:flex><span>  Value = <span style=color:#00afaf>&#34;&#34;</span>,
+</span></span><span style=display:flex><span>  Enum = <span style=color:#00afaf>&#34;&#34;</span>,
+</span></span><span style=display:flex><span>  Keyword = <span style=color:#00afaf>&#34;&#34;</span>,
+</span></span><span style=display:flex><span>  Snippet = <span style=color:#00afaf>&#34;&#34;</span>,
+</span></span><span style=display:flex><span>  Color = <span style=color:#00afaf>&#34;&#34;</span>,
+</span></span><span style=display:flex><span>  File = <span style=color:#00afaf>&#34;&#34;</span>,
+</span></span><span style=display:flex><span>  Reference = <span style=color:#00afaf>&#34;&#34;</span>,
+</span></span><span style=display:flex><span>  Folder = <span style=color:#00afaf>&#34;&#34;</span>,
+</span></span><span style=display:flex><span>  EnumMember = <span style=color:#00afaf>&#34;&#34;</span>,
+</span></span><span style=display:flex><span>  Constant = <span style=color:#00afaf>&#34;&#34;</span>,
+</span></span><span style=display:flex><span>  Struct = <span style=color:#00afaf>&#34;&#34;</span>,
+</span></span><span style=display:flex><span>  Event = <span style=color:#00afaf>&#34;&#34;</span>,
+</span></span><span style=display:flex><span>  Operator = <span style=color:#00afaf>&#34;&#34;</span>,
+</span></span><span style=display:flex><span>  TypeParameter = <span style=color:#00afaf>&#34;&#34;</span>,
+</span></span><span style=display:flex><span>}
+</span></span><span style=display:flex><span><span style=color:#4e4e4e>-- find more here: https://www.nerdfonts.com/cheat-sheet</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#0087ff>local</span> source_mapping = {
+</span></span><span style=display:flex><span>	nvim_lsp = <span style=color:#00afaf>&#34;[LSP]&#34;</span>,
+</span></span><span style=display:flex><span>	nvim_lua = <span style=color:#00afaf>&#34;[Lua]&#34;</span>,
+</span></span><span style=display:flex><span>	latex_symbols = <span style=color:#00afaf>&#34;[LaTeX]&#34;</span>,
+</span></span><span style=display:flex><span>	ultisnips = <span style=color:#00afaf>&#34;[Snippet]&#34;</span>,
+</span></span><span style=display:flex><span>	calc = <span style=color:#00afaf>&#34;[Calculator]&#34;</span>,
+</span></span><span style=display:flex><span>	gh_issues = <span style=color:#00afaf>&#34;[Issues]&#34;</span>,
+</span></span><span style=display:flex><span>	path = <span style=color:#00afaf>&#34;[Path]&#34;</span>,
+</span></span><span style=display:flex><span>	buffer = <span style=color:#00afaf>&#34;[Buffer]&#34;</span>,
+</span></span><span style=display:flex><span>}
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>cmp.setup {
+</span></span><span style=display:flex><span>	snippet = {
+</span></span><span style=display:flex><span>		expand = <span style=color:#0087ff>function</span>(args)
+</span></span><span style=display:flex><span>			vim.fn[<span style=color:#00afaf>&#34;UltiSnips#Anon&#34;</span>](args.body) <span style=color:#4e4e4e>-- For `ultisnips` users.</span>
+</span></span><span style=display:flex><span>			<span style=color:#4e4e4e>--require(&#39;luasnip&#39;).lsp_expand(args.body) -- For `luasnip` users.</span>
+</span></span><span style=display:flex><span>			<span style=color:#4e4e4e>-- require(&#39;snippy&#39;).expand_snippet(args.body) -- For `snippy` users.</span>
+</span></span><span style=display:flex><span>		<span style=color:#0087ff>end</span>,
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>		enabled = <span style=color:#0087ff>function</span>()
+</span></span><span style=display:flex><span>			<span style=color:#0087ff>local</span> lnum, col = vim.fn.line(<span style=color:#00afaf>&#34;.&#34;</span>), math.min(vim.fn.col(<span style=color:#00afaf>&#34;.&#34;</span>), #vim.fn.getline(<span style=color:#00afaf>&#34;.&#34;</span>))
+</span></span><span style=display:flex><span>			<span style=color:#0087ff>for</span> _, syn_id <span style=color:#0087ff>in</span> ipairs(vim.fn.synstack(lnum, col)) <span style=color:#0087ff>do</span>
+</span></span><span style=display:flex><span>				syn_id = vim.fn.synIDtrans(syn_id) <span style=color:#4e4e4e>-- Resolve :highlight links</span>
+</span></span><span style=display:flex><span>				<span style=color:#0087ff>if</span> vim.fn.synIDattr(syn_id, <span style=color:#00afaf>&#34;name&#34;</span>) == <span style=color:#00afaf>&#34;Comment&#34;</span> <span style=color:#0087ff>then</span>
+</span></span><span style=display:flex><span>					<span style=color:#0087ff>return</span> <span style=color:#d75f00>false</span>
+</span></span><span style=display:flex><span>				<span style=color:#0087ff>end</span>
+</span></span><span style=display:flex><span>			<span style=color:#0087ff>end</span>
+</span></span><span style=display:flex><span>			<span style=color:#0087ff>return</span> <span style=color:#d75f00>true</span>
+</span></span><span style=display:flex><span>		<span style=color:#0087ff>end</span>,
+</span></span><span style=display:flex><span>	},
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>	mapping = cmp.mapping.preset.insert({
+</span></span><span style=display:flex><span>		[<span style=color:#00afaf>&#34;&lt;C-y&gt;&#34;</span>] = cmp.mapping({
+</span></span><span style=display:flex><span>			i = cmp.mapping.abort(),
+</span></span><span style=display:flex><span>			c = cmp.mapping.close(),
+</span></span><span style=display:flex><span>		}),
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>    [<span style=color:#00afaf>&#39;&lt;C-e&gt;&#39;</span>] = cmp.mapping({
+</span></span><span style=display:flex><span>      i = cmp.mapping.abort(),
+</span></span><span style=display:flex><span>      c = cmp.mapping.close(),
+</span></span><span style=display:flex><span>    }),
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>    [<span style=color:#00afaf>&#39;&lt;A-j&gt;&#39;</span>] = cmp.mapping(cmp.mapping.scroll_docs(-<span style=color:#00afaf>4</span>), { <span style=color:#00afaf>&#39;i&#39;</span>, <span style=color:#00afaf>&#39;c&#39;</span> }),
+</span></span><span style=display:flex><span>    [<span style=color:#00afaf>&#39;&lt;A-k&gt;&#39;</span>] = cmp.mapping(cmp.mapping.scroll_docs(<span style=color:#00afaf>4</span>), { <span style=color:#00afaf>&#39;i&#39;</span>, <span style=color:#00afaf>&#39;c&#39;</span> }),
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>    [<span style=color:#00afaf>&#39;&lt;C-Space&gt;&#39;</span>] = cmp.mapping(cmp.mapping.complete(), { <span style=color:#00afaf>&#39;i&#39;</span>, <span style=color:#00afaf>&#39;c&#39;</span> }),
+</span></span><span style=display:flex><span>		[<span style=color:#00afaf>&#34;&lt;CR&gt;&#34;</span>] = cmp.mapping.confirm({ select = <span style=color:#d75f00>true</span> }),
+</span></span><span style=display:flex><span>	}),
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>  window = {
+</span></span><span style=display:flex><span>    documentation = {
+</span></span><span style=display:flex><span>      border = { <span style=color:#00afaf>&#34;╭&#34;</span>, <span style=color:#00afaf>&#34;─&#34;</span>, <span style=color:#00afaf>&#34;╮&#34;</span>, <span style=color:#00afaf>&#34;│&#34;</span>, <span style=color:#00afaf>&#34;╯&#34;</span>, <span style=color:#00afaf>&#34;─&#34;</span>, <span style=color:#00afaf>&#34;╰&#34;</span>, <span style=color:#00afaf>&#34;│&#34;</span> },
+</span></span><span style=display:flex><span>    }
+</span></span><span style=display:flex><span>  },
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>  formatting = {
+</span></span><span style=display:flex><span>    fields = { <span style=color:#00afaf>&#34;kind&#34;</span>, <span style=color:#00afaf>&#34;abbr&#34;</span>, <span style=color:#00afaf>&#34;menu&#34;</span> },
+</span></span><span style=display:flex><span>    format = <span style=color:#0087ff>function</span>(entry, vim_item)
+</span></span><span style=display:flex><span>      <span style=color:#4e4e4e>-- Kind icons</span>
+</span></span><span style=display:flex><span>      vim_item.kind = string.format(<span style=color:#00afaf>&#34;%s&#34;</span>, kind_icons[vim_item.kind])
+</span></span><span style=display:flex><span>      vim_item.menu = ({
+</span></span><span style=display:flex><span>        nvim_lsp = <span style=color:#00afaf>&#34;[LSP]&#34;</span>,
+</span></span><span style=display:flex><span>        nvim_lua = <span style=color:#00afaf>&#34;[Lua]&#34;</span>,
+</span></span><span style=display:flex><span>        latex_symbols = <span style=color:#00afaf>&#34;[LaTeX]&#34;</span>,
+</span></span><span style=display:flex><span>        ultisnips = <span style=color:#00afaf>&#34;[Snippet]&#34;</span>,
+</span></span><span style=display:flex><span>        calc = <span style=color:#00afaf>&#34;[Calculator]&#34;</span>,
+</span></span><span style=display:flex><span>        gh_issues = <span style=color:#00afaf>&#34;[Issues]&#34;</span>,
+</span></span><span style=display:flex><span>        path = <span style=color:#00afaf>&#34;[Path]&#34;</span>,
+</span></span><span style=display:flex><span>        buffer = <span style=color:#00afaf>&#34;[Buffer]&#34;</span>,
+</span></span><span style=display:flex><span>      })[entry.source.name]
+</span></span><span style=display:flex><span>      <span style=color:#0087ff>return</span> vim_item
+</span></span><span style=display:flex><span>    <span style=color:#0087ff>end</span>,
+</span></span><span style=display:flex><span>  },
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>	sources = cmp.config.sources({
+</span></span><span style=display:flex><span>		{ name = <span style=color:#00afaf>&#34;nvim_lsp&#34;</span> },
+</span></span><span style=display:flex><span>		{ name = <span style=color:#00afaf>&#34;nvim_lua&#34;</span> },
+</span></span><span style=display:flex><span>		{ name = <span style=color:#00afaf>&#34;latex_symbols&#34;</span> },
+</span></span><span style=display:flex><span>		{ name = <span style=color:#00afaf>&#34;ultisnips&#34;</span> },
+</span></span><span style=display:flex><span>		{ name = <span style=color:#00afaf>&#34;calc&#34;</span> },
+</span></span><span style=display:flex><span>		{ name = <span style=color:#00afaf>&#34;gh_issues&#34;</span> },
+</span></span><span style=display:flex><span>		{ name = <span style=color:#00afaf>&#34;path&#34;</span> },
+</span></span><span style=display:flex><span>		{ name = <span style=color:#00afaf>&#34;buffer&#34;</span> },
+</span></span><span style=display:flex><span>	}),
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>	experimental = {
+</span></span><span style=display:flex><span>		native_menu = <span style=color:#d75f00>false</span>,
+</span></span><span style=display:flex><span>		ghost_text = <span style=color:#d75f00>true</span>,
+</span></span><span style=display:flex><span>	},
+</span></span><span style=display:flex><span>}
+</span></span></code></pre></div><p>You don&rsquo;t need to worry too much about what is going on here, because it&rsquo;s not worth it.</p><video preload=auto width=100% autoplay loop muted playsinline class=html-video>
+<source src=https://damrah.netlify.app/post/note-taking-with-latex-part-1/videos/three-plugin-demo.mp4 type=video/mp4><span>Your browser doesn't support embedded videos, but don't worry, you can <a href=https://damrah.netlify.app/post/note-taking-with-latex-part-1/videos/three-plugin-demo.mp4>download it</a> and watch it with your favorite video player!</span></video><p>Next section, I will go over how to add/modify snippets yourself.</p><h3 id=adding-snippets>Adding Snippets</h3><p>To add snippets, you first must configure <code>UltiSnips</code> itself. Now, add this to
+you&rsquo;re <code>init.vim</code> or <code>.vimrc</code>:</p><div class=highlight><pre tabindex=0 style=color:#8a8a8a;background-color:#1c1c1c;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-vim data-lang=vim><span style=display:flex><span><span style=color:#4e4e4e>&#34; make YCM compatible with UltiSnips (using supertab)</span>
+</span></span><span style=display:flex><span><span style=color:#5f8700>let</span> g:ycm_key_list_select_completion = [<span style=color:#00afaf>&#39;&lt;C-j&gt;&#39;</span>, <span style=color:#00afaf>&#39;&lt;Down&gt;&#39;</span>]
+</span></span><span style=display:flex><span><span style=color:#5f8700>let</span> g:ycm_key_list_previous_completion = [<span style=color:#00afaf>&#39;&lt;C-k&gt;&#39;</span>, <span style=color:#00afaf>&#39;&lt;Up&gt;&#39;</span>]
+</span></span><span style=display:flex><span><span style=color:#5f8700>let</span> g:SuperTabDefaultCompletionType = <span style=color:#00afaf>&#39;&lt;C-n&gt;&#39;</span>
+</span></span><span style=display:flex><span><span style=color:#4e4e4e>
+</span></span></span><span style=display:flex><span><span style=color:#4e4e4e>&#34; better key bindings for UltiSnipsExpandTrigger</span>
+</span></span><span style=display:flex><span><span style=color:#5f8700>let</span> g:UltiSnipsExpandTrigger = <span style=color:#00afaf>&#34;&lt;Enter&gt;&#34;</span>
+</span></span><span style=display:flex><span><span style=color:#5f8700>let</span> g:UltiSnipsJumpForwardTrigger = <span style=color:#00afaf>&#34;&lt;Tab&gt;&#34;</span>
+</span></span><span style=display:flex><span><span style=color:#5f8700>let</span> g:UltiSnipsJumpBackwardTrigger = <span style=color:#00afaf>&#34;&lt;S-Tab&gt;&#34;</span>
+</span></span><span style=display:flex><span><span style=color:#4e4e4e>
+</span></span></span><span style=display:flex><span><span style=color:#4e4e4e>&#34; open the file in a vertical split</span>
+</span></span><span style=display:flex><span><span style=color:#5f8700>let</span> g:UltiSnipsEditSplit=<span style=color:#00afaf>&#39;vertical&#39;</span>
+</span></span><span style=display:flex><span><span style=color:#4e4e4e>
+</span></span></span><span style=display:flex><span><span style=color:#4e4e4e>&#34; the location of the snippets</span>
+</span></span><span style=display:flex><span><span style=color:#5f8700>let</span> g:UltiSnipsSnippetDirectories=[$HOME.<span style=color:#00afaf>&#34;/.config/nvim/UltiSnips/&#34;</span>, <span style=color:#00afaf>&#34;UltiSnips&#34;</span>]
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>iunmap &lt;Tab&gt;
+</span></span></code></pre></div><p>Let&rsquo;s go over these quickly. The 3 three lines are telling make <code>UltiSnips</code>
+compatible with YCM, which is a completion engine for Vim because they don&rsquo;t
+usually work together with ease.</p><p>The next 3 lines are telling <code>UltiSnips</code> what key presses you want to use to jump
+back and forth between those placeholders.</p><p>The next line is telling <code>UltiSnips</code> to open the snippets configuration
+vertically when you run: <code>:UltiSnipsEdit</code></p><p>The last line tells <code>UltiSnips</code> where to look for your snippets. You need to
+put the <strong>&ldquo;UltiSnips&rdquo;</strong> in the second item. (I explain it more
+<a href=https://damrah.netlify.app/post/note-taking-with-latex-part-1/#course-specific-snippets>here</a>)</p><h4 id=creating-your-own-snippets>Creating your own Snippets</h4><p>Place your snippets in <code>~/.config/nvim/UltiSnips/</code> or wherever you told
+<code>UltiSnips</code> to find them. Each language has it&rsquo;s own specific snippet file. For
+example, python snippets will be located at
+<code>~/.config/nvim/UltiSnips/python.snippets</code>.</p><p>Or, instead of manually creating that file, open a file with that extension. For
+example: <code>test.py</code>. Then, inside that file, type <code>:UltiSnipsEdit</code>. That will
+create the file <code>~/.config/nvim/UltiSnips/python.snippets</code> for you.</p><p>Here is a basic skeleton for a snippet:</p><div class=highlight><pre tabindex=0 style=color:#8a8a8a;background-color:#1c1c1c;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-vim data-lang=vim><span style=display:flex><span>snippet SNIPPET NAME <span style=color:#00afaf>&#34;SNIPPET DESCRIPTION&#34;</span>
+</span></span><span style=display:flex><span>...
+</span></span><span style=display:flex><span>endsnippet
+</span></span></code></pre></div><p>To add placeholders, do this:</p><div class=highlight><pre tabindex=0 style=color:#8a8a8a;background-color:#1c1c1c;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-vim data-lang=vim><span style=display:flex><span>snippet document <span style=color:#00afaf>&#34;Creates a document&#34;</span>
+</span></span><span style=display:flex><span>Document Name: $<span style=color:#00afaf>1</span>
+</span></span><span style=display:flex><span>$<span style=color:#00afaf>0</span>
+</span></span><span style=display:flex><span>endsnippet
+</span></span></code></pre></div><p>The <code>$1</code> and <code>$0</code> are where your placeholders will be. The <code>$0</code> is always the
+final placeholder. Now, you can create information within the placeholders like
+this:</p><div class=highlight><pre tabindex=0 style=color:#8a8a8a;background-color:#1c1c1c;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-vim data-lang=vim><span style=display:flex><span>snippet document <span style=color:#00afaf>&#34;Creates a document&#34;</span>
+</span></span><span style=display:flex><span>Document Name: ${<span style=color:#00afaf>1</span>:DOCUMENT NAME}
+</span></span><span style=display:flex><span>$<span style=color:#00afaf>0</span>
+</span></span><span style=display:flex><span>endsnippet
+</span></span></code></pre></div><p>Now, the placeholder says <strong>DOCUMENT NAME</strong>, and when you reach that
+placeholder, it will be highlighted in visual mode, and you can overwrite it.</p><p>Now you know the basics, let&rsquo;s get into some examples.</p><p>The code for this is probably the simplest.</p><video preload=auto width=100% autoplay loop muted playsinline class=html-video>
+<source src=https://damrah.netlify.app/post/note-taking-with-latex-part-1/videos/sign.mp4 type=video/mp4><span>Your browser doesn't support embedded videos, but don't worry, you can <a href=https://damrah.netlify.app/post/note-taking-with-latex-part-1/videos/sign.mp4>download it</a> and watch it with your favorite video player!</span></video><p>Here is the snippet code for it:</p><div class=highlight><pre tabindex=0 style=color:#8a8a8a;background-color:#1c1c1c;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-vim data-lang=vim><span style=display:flex><span>snippet sign <span style=color:#00afaf>&#34;Signature&#34;</span>
+</span></span><span style=display:flex><span>Yours sincerely,
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>Hashem A. Damrah
+</span></span><span style=display:flex><span>endsnippet
+</span></span></code></pre></div><p>You can also run shell commands inside snippets, but you have to use back ticks
+(``) for that.</p><video preload=auto width=100% autoplay loop muted playsinline class=html-video>
+<source src=https://damrah.netlify.app/post/note-taking-with-latex-part-1/videos/date.mp4 type=video/mp4><span>Your browser doesn't support embedded videos, but don't worry, you can <a href=https://damrah.netlify.app/post/note-taking-with-latex-part-1/videos/date.mp4>download it</a> and watch it with your favorite video player!</span></video><p>Here is the snippet code for it:</p><div class=highlight><pre tabindex=0 style=color:#8a8a8a;background-color:#1c1c1c;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-vim data-lang=vim><span style=display:flex><span>snippet date-time <span style=color:#00afaf>&#34;Today&#39;s date and Current Time&#34;</span>
+</span></span><span style=display:flex><span>`date <span style=color:#4e4e4e>&#34;+%b %d %Y %a %R`</span>
+</span></span><span style=display:flex><span>endsnippet
+</span></span></code></pre></div><h2 id=latex-snippets>LaTeX Snippets</h2><h3 id=environments>Environments</h3><p>To insert an environment, all I have to do is type <strong>beg</strong>. I created this
+snippet in a special manner. It only triggers whenever it&rsquo;s the first word
+typed on the line. Also, you don&rsquo;t need to hit <strong>TAB</strong> because it will
+automatically expand for you.</p><p>You start typing out what kind of environment you want. Then, once you&rsquo;re done,
+hit tab. That will move you into the environment.</p><div class=highlight><pre tabindex=0 style=color:#8a8a8a;background-color:#1c1c1c;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-vim data-lang=vim><span style=display:flex><span>snippet beg <span style=color:#00afaf>&#34;begin{} / end{}&#34;</span> bAi
+</span></span><span style=display:flex><span>\begin{$<span style=color:#00afaf>1</span>}[$<span style=color:#00afaf>2</span>]
+</span></span><span style=display:flex><span>	\label{$<span style=color:#00afaf>3</span>:${<span style=color:#00afaf>4</span>:${<span style=color:#00afaf>2</span><span style=color:#af0000>/\\\w+\{(.*?)\}|\\(.)|(\w+)|([^\w\\]+)/</span>(?<span style=color:#00afaf>4</span>:_:\L$<span style=color:#00afaf>1</span>$<span style=color:#00afaf>2</span>$<span style=color:#00afaf>3</span>\E)/ga}}}
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>	${VISUAL}$<span style=color:#00afaf>4</span>
+</span></span><span style=display:flex><span>\end{$<span style=color:#00afaf>1</span>}$<span style=color:#00afaf>0</span>
+</span></span><span style=display:flex><span>endsnippet
+</span></span></code></pre></div><ul><li>Line $3$ is preforming a regex expression. It&rsquo;s taking whatever you type
+in placeholder number $2$, making it all lowercase, and replacing the
+spaces with underscores.</li><li>The <strong>b</strong> means <strong>If the trigger word is the first word on the line, and no
+writing comes afterword, then expand</strong>.</li><li>The <strong>A</strong> means <strong>Expand without the trigger key, just expand right after the
+person types the trigger word</strong>.</li><li>The <strong>${VISUAL}</strong> means whatever you&rsquo;ve deleted will be pasted there.
+But, you have to visually select the text, then hit <strong>TAB</strong>.</li></ul><video preload=auto width=100% autoplay loop muted playsinline class=html-video>
+<source src=https://damrah.netlify.app/post/note-taking-with-latex-part-1/videos/beg-environment.mp4 type=video/mp4><span>Your browser doesn't support embedded videos, but don't worry, you can <a href=https://damrah.netlify.app/post/note-taking-with-latex-part-1/videos/beg-environment.mp4>download it</a> and watch it with your favorite video player!</span></video><p>Now, I have a ton of different environments that I commonly use. So, like the
+good programmer I am, I decided to waste even more time creating specific
+snippets for each environment:</p><video preload=auto width=100% autoplay loop muted playsinline class=html-video>
+<source src=https://damrah.netlify.app/post/note-taking-with-latex-part-1/videos/all-environments.mp4 type=video/mp4><span>Your browser doesn't support embedded videos, but don't worry, you can <a href=https://damrah.netlify.app/post/note-taking-with-latex-part-1/videos/all-environments.mp4>download it</a> and watch it with your favorite video player!</span></video><p>Sometimes you may want a specific environment with a specific label format, etc. So, I spent a little more time to create dozens of environment snippets.</p><p>Now, here are my final environment snippets.</p><div class=highlight><pre tabindex=0 style=color:#8a8a8a;background-color:#1c1c1c;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-vim data-lang=vim><span style=display:flex><span>snippet beg <span style=color:#00afaf>&#34;begin{} / end{}&#34;</span> bAi
+</span></span><span style=display:flex><span>\begin{$<span style=color:#00afaf>1</span>}[$<span style=color:#00afaf>2</span>]
+</span></span><span style=display:flex><span>	\label{$<span style=color:#00afaf>3</span>:${<span style=color:#00afaf>4</span>:${<span style=color:#00afaf>2</span><span style=color:#af0000>/\\\w+\{(.*?)\}|\\(.)|(\w+)|([^\w\\]+)/</span>(?<span style=color:#00afaf>4</span>:_:\L$<span style=color:#00afaf>1</span>$<span style=color:#00afaf>2</span>$<span style=color:#00afaf>3</span>\E)/ga}}}
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>	${VISUAL}$<span style=color:#00afaf>4</span>
+</span></span><span style=display:flex><span>\end{$<span style=color:#00afaf>1</span>}$<span style=color:#00afaf>0</span>
+</span></span><span style=display:flex><span>endsnippet
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>snippet doc <span style=color:#00afaf>&#34;Document Environment&#34;</span> bAi
+</span></span><span style=display:flex><span>\begin{document}
+</span></span><span style=display:flex><span>	${VISUAL}$<span style=color:#00afaf>1</span>
+</span></span><span style=display:flex><span>\end{document}$<span style=color:#00afaf>0</span>
+</span></span><span style=display:flex><span>endsnippet
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>snippet cnt <span style=color:#00afaf>&#34;Center Environment&#34;</span> bAi
+</span></span><span style=display:flex><span>\begin{center}
+</span></span><span style=display:flex><span>	${VISUAL}$<span style=color:#00afaf>1</span>
+</span></span><span style=display:flex><span>\end{center}$<span style=color:#00afaf>0</span>
+</span></span><span style=display:flex><span>endsnippet
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>snippet enum <span style=color:#00afaf>&#34;Enumerate Environment&#34;</span> bAi
+</span></span><span style=display:flex><span>\begin{enumerate}
+</span></span><span style=display:flex><span>	\label{enum:$<span style=color:#00afaf>1</span>}
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>	\item ${VISUAL}$<span style=color:#00afaf>2</span>
+</span></span><span style=display:flex><span>\end{enumerate}$<span style=color:#00afaf>0</span>
+</span></span><span style=display:flex><span>endsnippet
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>snippet item <span style=color:#00afaf>&#34;Itemize Environment&#34;</span> bAi
+</span></span><span style=display:flex><span>\begin{itemize}
+</span></span><span style=display:flex><span>	\label{item:$<span style=color:#00afaf>1</span>}
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>	\item ${VISUAL}$<span style=color:#00afaf>2</span>
+</span></span><span style=display:flex><span>\end{itemize}$<span style=color:#00afaf>0</span>
+</span></span><span style=display:flex><span>endsnippet
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>snippet case <span style=color:#00afaf>&#34;Cases Environment&#34;</span> bAi
+</span></span><span style=display:flex><span>\begin{cases}
+</span></span><span style=display:flex><span>	\label{case:$<span style=color:#00afaf>1</span>}
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>	${VISUAL}$<span style=color:#00afaf>2</span>
+</span></span><span style=display:flex><span>\end{cases}$<span style=color:#00afaf>0</span>
+</span></span><span style=display:flex><span>endsnippet
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>snippet prf <span style=color:#00afaf>&#34;Proof Environment&#34;</span> bAi
+</span></span><span style=display:flex><span>\begin{proof}
+</span></span><span style=display:flex><span>	\label{prf:$<span style=color:#00afaf>1</span>}
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>	${VISUAL}$<span style=color:#00afaf>2</span>
+</span></span><span style=display:flex><span>\end{proof}
+</span></span><span style=display:flex><span>endsnippet
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>snippet ali <span style=color:#00afaf>&#34;Align* Environment&#34;</span> bAi
+</span></span><span style=display:flex><span>\begin{align*}
+</span></span><span style=display:flex><span>	${VISUAL}$<span style=color:#00afaf>1</span>
+</span></span><span style=display:flex><span>.\end{align*}$<span style=color:#00afaf>0</span>
+</span></span><span style=display:flex><span>endsnippet
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>snippet ali <span style=color:#00afaf>&#34;Align Environment&#34;</span> bAi
+</span></span><span style=display:flex><span>\begin{align}
+</span></span><span style=display:flex><span>	${VISUAL}$<span style=color:#00afaf>1</span>
+</span></span><span style=display:flex><span>.\end{align}$<span style=color:#00afaf>0</span>
+</span></span><span style=display:flex><span>endsnippet
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>snippet eqt <span style=color:#00afaf>&#34;Equation Environment&#34;</span> bAi
+</span></span><span style=display:flex><span>\begin{equation}
+</span></span><span style=display:flex><span>	\label{eqt:$<span style=color:#00afaf>1</span>}
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>	${VISUAL}$<span style=color:#00afaf>2</span>
+</span></span><span style=display:flex><span>.\end{equation}$<span style=color:#00afaf>0</span>
+</span></span><span style=display:flex><span>endsnippet
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>snippet spt <span style=color:#00afaf>&#34;Equation Split Environment&#34;</span> bAi
+</span></span><span style=display:flex><span>\begin{equation}
+</span></span><span style=display:flex><span>	\label{spt:$<span style=color:#00afaf>1</span>}
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>	\begin{split}
+</span></span><span style=display:flex><span>		${VISUAL}$<span style=color:#00afaf>2</span>
+</span></span><span style=display:flex><span>	\end{split}
+</span></span><span style=display:flex><span>.\end{equation}$<span style=color:#00afaf>0</span>
+</span></span><span style=display:flex><span>endsnippet
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>context <span style=color:#00afaf>&#34;env(&#39;equation&#39;)&#34;</span>
+</span></span><span style=display:flex><span>snippet spt <span style=color:#00afaf>&#34;Equation Split Environment&#34;</span> bAi
+</span></span><span style=display:flex><span>\begin{split}
+</span></span><span style=display:flex><span>	${VISUAL}$<span style=color:#00afaf>1</span>
+</span></span><span style=display:flex><span>\end{split}$<span style=color:#00afaf>0</span>
+</span></span><span style=display:flex><span>endsnippet
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>snippet edt <span style=color:#00afaf>&#34;Equation Dat Environment&#34;</span> bAi
+</span></span><span style=display:flex><span>\begin{equation}
+</span></span><span style=display:flex><span>	\label{edt:$<span style=color:#00afaf>1</span>}
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>	\begin{alignedat}{$<span style=color:#00afaf>2</span>}
+</span></span><span style=display:flex><span>		${VISUAL}$<span style=color:#00afaf>3</span>
+</span></span><span style=display:flex><span>	\end{alignedat}
+</span></span><span style=display:flex><span>.\end{equation}$<span style=color:#00afaf>0</span>
+</span></span><span style=display:flex><span>endsnippet
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>context <span style=color:#00afaf>&#34;env(&#39;equation&#39;)&#34;</span>
+</span></span><span style=display:flex><span>snippet edt <span style=color:#00afaf>&#34;Equation Dat Environment&#34;</span> bAi
+</span></span><span style=display:flex><span>\begin{alignedat}{$<span style=color:#00afaf>1</span>}
+</span></span><span style=display:flex><span>	${VISUAL}$<span style=color:#00afaf>2</span>
+</span></span><span style=display:flex><span>\end{alignedat}$<span style=color:#00afaf>0</span>
+</span></span><span style=display:flex><span>endsnippet
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>snippet cse <span style=color:#00afaf>&#34;Equation Case Environment&#34;</span> bAi
+</span></span><span style=display:flex><span>\begin{equation}
+</span></span><span style=display:flex><span>	\label{cse:$<span style=color:#00afaf>1</span>}
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>	\begin{cases}
+</span></span><span style=display:flex><span>		${VISUAL}$<span style=color:#00afaf>2</span>
+</span></span><span style=display:flex><span>	\end{cases}
+</span></span><span style=display:flex><span>.\end{equation}$<span style=color:#00afaf>0</span>
+</span></span><span style=display:flex><span>endsnippet
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>context <span style=color:#00afaf>&#34;env(&#39;equation&#39;)&#34;</span>
+</span></span><span style=display:flex><span>snippet cse <span style=color:#00afaf>&#34;Equation Case Environment&#34;</span> bAi
+</span></span><span style=display:flex><span>\begin{cases}
+</span></span><span style=display:flex><span>	${VISUAL}$<span style=color:#00afaf>1</span>
+</span></span><span style=display:flex><span>\end{cases}$<span style=color:#00afaf>0</span>
+</span></span><span style=display:flex><span>endsnippet
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>snippet fig <span style=color:#00afaf>&#34;Figure Environment (Image)&#34;</span> bAi
+</span></span><span style=display:flex><span>\begin{figure}[${<span style=color:#00afaf>1</span>:htpb}]
+</span></span><span style=display:flex><span>	\centering
+</span></span><span style=display:flex><span>	\includegraphics[width=<span style=color:#00afaf>0</span>.<span style=color:#00afaf>8</span>\textwidth]{$<span style=color:#00afaf>2</span>}
+</span></span><span style=display:flex><span>	\caption{${<span style=color:#00afaf>3</span>}}
+</span></span><span style=display:flex><span>	\label{fig:${<span style=color:#00afaf>4</span>:${<span style=color:#00afaf>3</span><span style=color:#af0000>/\\\w+\{(.*?)\}|\\(.)|(\w+)|([^\w\\]+)/</span>(?<span style=color:#00afaf>4</span>:_:\L$<span style=color:#00afaf>1</span>$<span style=color:#00afaf>2</span>$<span style=color:#00afaf>3</span>\E)/ga}}}
+</span></span><span style=display:flex><span>\end{figure}$<span style=color:#00afaf>0</span>
+</span></span><span style=display:flex><span>endsnippet
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>snippet fig <span style=color:#00afaf>&#34;Figure Environment (PDF)&#34;</span> bAi
+</span></span><span style=display:flex><span>\begin{figure}[${<span style=color:#00afaf>1</span>:htpb}]
+</span></span><span style=display:flex><span>	\centering
+</span></span><span style=display:flex><span>	\incfig{$<span style=color:#00afaf>2</span>}
+</span></span><span style=display:flex><span>	\caption{${<span style=color:#00afaf>3</span>}}
+</span></span><span style=display:flex><span>	\label{fig:${<span style=color:#00afaf>4</span>:${<span style=color:#00afaf>2</span><span style=color:#af0000>/\\\w+\{(.*?)\}|\\(.)|(\w+)|([^\w\\]+)/</span>(?<span style=color:#00afaf>4</span>:_:\L$<span style=color:#00afaf>1</span>$<span style=color:#00afaf>2</span>$<span style=color:#00afaf>3</span>\E)/ga}}}
+</span></span><span style=display:flex><span>\end{figure}$<span style=color:#00afaf>0</span>
+</span></span><span style=display:flex><span>endsnippet
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>snippet tab <span style=color:#00afaf>&#34;Tabular / Array Environment&#34;</span> bAi
+</span></span><span style=display:flex><span>	\begin{${<span style=color:#00afaf>1</span>:t}${<span style=color:#00afaf>1</span><span style=color:#af0000>/(t)$|(a)$|(.*)/</span>(?<span style=color:#00afaf>1</span>:abular)(?<span style=color:#00afaf>2</span>:rray)/}}{${<span style=color:#00afaf>2</span>:c}}
+</span></span><span style=display:flex><span>		$<span style=color:#00afaf>0</span>${<span style=color:#00afaf>2</span><span style=color:#af0000>/(?&lt;=.)(c|l|r)|./</span>(?<span style=color:#00afaf>1</span>: &amp; )/g}
+</span></span><span style=display:flex><span>	\end{$<span style=color:#00afaf>1</span>${<span style=color:#00afaf>1</span><span style=color:#af0000>/(t)$|(a)$|(.*)/</span>(?<span style=color:#00afaf>1</span>:abular)(?<span style=color:#00afaf>2</span>:rray)/}}$<span style=color:#00afaf>0</span>
+</span></span><span style=display:flex><span>endsnippet
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>snippet tbl <span style=color:#00afaf>&#34;Table Environment&#34;</span> bAi
+</span></span><span style=display:flex><span>\begin{table}[${<span style=color:#00afaf>1</span>:htpb}]
+</span></span><span style=display:flex><span>	\centering
+</span></span><span style=display:flex><span>	\caption{${<span style=color:#00afaf>2</span>:caption}}
+</span></span><span style=display:flex><span>	\label{tab:${<span style=color:#00afaf>3</span>:${<span style=color:#00afaf>2</span><span style=color:#af0000>/\\\w+\{(.*?)\}|\\(.)|(\w+)|([^\w\\]+)/</span>(?<span style=color:#00afaf>4</span>:_:\L$<span style=color:#00afaf>1</span>$<span style=color:#00afaf>2</span>$<span style=color:#00afaf>3</span>\E)/ga}}}
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>	\begin{${<span style=color:#00afaf>4</span>:t}${<span style=color:#00afaf>4</span><span style=color:#af0000>/(t)$|(a)$|(.*)/</span>(?<span style=color:#00afaf>1</span>:abular)(?<span style=color:#00afaf>2</span>:rray)/}}{${<span style=color:#00afaf>5</span>:c}}
+</span></span><span style=display:flex><span>		$<span style=color:#00afaf>0</span>${<span style=color:#00afaf>5</span><span style=color:#af0000>/(?&lt;=.)(c|l|r)|./</span>(?<span style=color:#00afaf>1</span>: &amp; )/g}
+</span></span><span style=display:flex><span>	\end{$<span style=color:#00afaf>4</span>${<span style=color:#00afaf>4</span><span style=color:#af0000>/(t)$|(a)$|(.*)/</span>(?<span style=color:#00afaf>1</span>:abular)(?<span style=color:#00afaf>2</span>:rray)/}}
+</span></span><span style=display:flex><span>\end{table}$<span style=color:#00afaf>0</span>
+</span></span><span style=display:flex><span>endsnippet
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>pre_expand <span style=color:#00afaf>&#34;create_table(snip)&#34;</span>
+</span></span><span style=display:flex><span>snippet <span style=color:#00afaf>&#34;gentbl(\d+)x(\d+)&#34;</span> <span style=color:#00afaf>&#34;Generate table of *width* by *height*&#34;</span> wrAbi
+</span></span><span style=display:flex><span>endsnippet
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>pre_expand <span style=color:#00afaf>&#34;add_row(snip)&#34;</span>
+</span></span><span style=display:flex><span>snippet <span style=color:#00afaf>&#34;tr(\d+)&#34;</span> <span style=color:#00afaf>&#34;Add table row of dimension ...&#34;</span> wrAbi
+</span></span><span style=display:flex><span>endsnippet
+</span></span></code></pre></div><h3 id=inline-and-display-math>Inline and Display Math</h3><p>These are my two most frequency used snippets. They are responsible for bringing
+me into math mode. They are <code>ilm</code> (Inline Math) and <code>dm</code> (Display Math).</p><video preload=auto width=100% autoplay loop muted playsinline class=html-video>
+<source src=https://damrah.netlify.app/post/note-taking-with-latex-part-1/videos/math.mp4 type=video/mp4><span>Your browser doesn't support embedded videos, but don't worry, you can <a href=https://damrah.netlify.app/post/note-taking-with-latex-part-1/videos/math.mp4>download it</a> and watch it with your favorite video player!</span></video><div class=highlight><pre tabindex=0 style=color:#8a8a8a;background-color:#1c1c1c;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-vim data-lang=vim><span style=display:flex><span>snippet ilm <span style=color:#00afaf>&#34;Inline Math&#34;</span> wA
+</span></span><span style=display:flex><span>$${VISUAL}$<span style=color:#00afaf>1</span>$`!p
+</span></span><span style=display:flex><span><span style=color:#5f8700>if</span> t[<span style=color:#00afaf>2</span>] and t[<span style=color:#00afaf>2</span>][<span style=color:#00afaf>0</span>] not in [<span style=color:#00afaf>&#39;,&#39;</span>, <span style=color:#00afaf>&#39;.&#39;</span>, <span style=color:#00afaf>&#39;?&#39;</span>, <span style=color:#00afaf>&#39;-&#39;</span>, <span style=color:#00afaf>&#39; &#39;</span>]:
+</span></span><span style=display:flex><span>    snip.rv = <span style=color:#00afaf>&#39; &#39;</span>
+</span></span><span style=display:flex><span><span style=color:#5f8700>else</span>:
+</span></span><span style=display:flex><span>    snip.rv = <span style=color:#00afaf>&#39;&#39;</span>
+</span></span><span style=display:flex><span>`$<span style=color:#00afaf>2</span>
+</span></span><span style=display:flex><span>endsnippet
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>snippet dm <span style=color:#00afaf>&#34;Display Math&#34;</span> wA
+</span></span><span style=display:flex><span>\[
+</span></span><span style=display:flex><span>	${VISUAL}$<span style=color:#00afaf>1</span>
+</span></span><span style=display:flex><span>\].$<span style=color:#00afaf>0</span>
+</span></span><span style=display:flex><span>endsnippet
+</span></span></code></pre></div><ul><li>The <strong>w</strong> at the end of the first line means that this snippet will expand at
+word boundaries. So, <code>helloim</code> won&rsquo;t expand, but <code>hello im</code> will.</li></ul><h3 id=sub-and-super-scripts>Sub and Super scripts</h3><h4 id=sub-scripts>Sub Scripts</h4><p>Another handy snippet are these ones, which is used for sub scripts.</p><div style=text-align:center;line-height:1.5><p><code>a1</code> → <code>a_1</code><br><code>a_12</code> → <code>a_{12}</code><br><code>a_{12}3</code> → <code>a_{123}</code><br><code>a_{123}4</code> → <code>a_{1234}</code><br></p></div><video preload=auto width=100% autoplay loop muted playsinline class=html-video>
+<source src=https://damrah.netlify.app/post/note-taking-with-latex-part-1/videos/sub-scripts.mp4 type=video/mp4><span>Your browser doesn't support embedded videos, but don't worry, you can <a href=https://damrah.netlify.app/post/note-taking-with-latex-part-1/videos/sub-scripts.mp4>download it</a> and watch it with your favorite video player!</span></video><p>The code for these snippets use regular expressions for there trigger. The
+first expands if there is a variable, followed by a number.
+Here is the snippet code:</p><div class=highlight><pre tabindex=0 style=color:#8a8a8a;background-color:#1c1c1c;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-vim data-lang=vim><span style=display:flex><span>snippet <span style=color:#00afaf>&#39;([A-Za-z])(\d)&#39;</span> <span style=color:#00afaf>&#34;Auto subscript&#34;</span> wrA
+</span></span><span style=display:flex><span>`!p snip.rv = match.group(<span style=color:#00afaf>1</span>)`_`!p snip.rv = match.group(<span style=color:#00afaf>2</span>)`
+</span></span><span style=display:flex><span>endsnippet
+</span></span></code></pre></div><p>The second snippet checks if there is a variable, followed by an
+underscore, followed by two numbers.
+Here is the snippet code:</p><div class=highlight><pre tabindex=0 style=color:#8a8a8a;background-color:#1c1c1c;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-vim data-lang=vim><span style=display:flex><span>snippet <span style=color:#00afaf>&#39;([A-Za-z])_(\d\d)&#39;</span> <span style=color:#00afaf>&#34;Auto subscript 2&#34;</span> wrA
+</span></span><span style=display:flex><span>`!p snip.rv = match.group(<span style=color:#00afaf>1</span>)`_{`!p snip.rv = match.group(<span style=color:#00afaf>2</span>)`}
+</span></span><span style=display:flex><span>endsnippet
+</span></span></code></pre></div><p>The last and final snippet checks if there is a variable, followed by an
+underscore, followed by a group of {} with numbers inside. It also checks if
+there is a number in front of the closing bracket.
+Here is the snippet code:</p><div class=highlight><pre tabindex=0 style=color:#8a8a8a;background-color:#1c1c1c;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-vim data-lang=vim><span style=display:flex><span>snippet <span style=color:#00afaf>&#39;([A-Za-z])_\{(\d+)\}(\d)&#39;</span> <span style=color:#00afaf>&#34;Auto subscript 3+&#34;</span> wrA
+</span></span><span style=display:flex><span>`!p snip.rv = match.group(<span style=color:#00afaf>1</span>)`_{`!p snip.rv = match.group(<span style=color:#00afaf>2</span>) + match.group(<span style=color:#00afaf>3</span>)`}
+</span></span><span style=display:flex><span>endsnippet
+</span></span></code></pre></div><p>I also created a quick snippet that puts you in <strong>subscript</strong> mode:</p><div class=highlight><pre tabindex=0 style=color:#8a8a8a;background-color:#1c1c1c;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-vim data-lang=vim><span style=display:flex><span>snippet __ <span style=color:#00afaf>&#34;Super Script&#34;</span> A
+</span></span><span style=display:flex><span>_{$<span style=color:#00afaf>1</span>}$<span style=color:#00afaf>0</span>
+</span></span><span style=display:flex><span>endsnippet
+</span></span></code></pre></div><h4 id=super-scripts>Super Scripts</h4><p>As for the superscripts, I use some quick snippets for basic things like
+squaring, cubing, raising to a variable. Here is a quick view of the snippets:</p><div style=text-align:center;line-height:1.5><p><code>sq</code> → <code>^{2}</code><br><code>cb</code> → <code>^{3}</code><br><code>ss</code> → <code>^{}</code><br><code>compl</code> → <code>^{c}</code><br><code>invs</code> → <code>^{-1}</code><br></p></div><video preload=auto width=100% autoplay loop muted playsinline class=html-video>
+<source src=https://damrah.netlify.app/post/note-taking-with-latex-part-1/videos/super-scripts.mp4 type=video/mp4><span>Your browser doesn't support embedded videos, but don't worry, you can <a href=https://damrah.netlify.app/post/note-taking-with-latex-part-1/videos/super-scripts.mp4>download it</a> and watch it with your favorite video player!</span></video><p>Here are the snippets:</p><div class=highlight><pre tabindex=0 style=color:#8a8a8a;background-color:#1c1c1c;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-vim data-lang=vim><span style=display:flex><span>snippet sq <span style=color:#00afaf>&#34;Square&#34;</span> Aw
+</span></span><span style=display:flex><span>^{<span style=color:#00afaf>2</span>}
+</span></span><span style=display:flex><span>endsnippet
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>snippet cb <span style=color:#00afaf>&#34;Cube&#34;</span> Aw
+</span></span><span style=display:flex><span>^{<span style=color:#00afaf>3</span>}
+</span></span><span style=display:flex><span>endsnippet
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>snippet ss <span style=color:#00afaf>&#34;Super Script&#34;</span> Aw
+</span></span><span style=display:flex><span>^{$<span style=color:#00afaf>1</span>}$<span style=color:#00afaf>0</span>
+</span></span><span style=display:flex><span>endsnippet
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>snippet compl <span style=color:#00afaf>&#34;Complement&#34;</span> Aw
+</span></span><span style=display:flex><span>^{c}
+</span></span><span style=display:flex><span>endsnippet
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>snippet invs <span style=color:#00afaf>&#34;Inverse&#34;</span> Aw
+</span></span><span style=display:flex><span>^{-$<span style=color:#00afaf>1</span>}$<span style=color:#00afaf>0</span>
+</span></span><span style=display:flex><span>endsnippet
+</span></span></code></pre></div><h3 id=fractions>Fractions</h3><p>These snippets, are the funniest and they give you a big satisfaction whenever
+you pull them off.</p><video preload=auto width=100% autoplay loop muted playsinline class=html-video>
+<source src=https://damrah.netlify.app/post/note-taking-with-latex-part-1/videos/fractions.mp4 type=video/mp4><span>Your browser doesn't support embedded videos, but don't worry, you can <a href=https://damrah.netlify.app/post/note-taking-with-latex-part-1/videos/fractions.mp4>download it</a> and watch it with your favorite video player!</span></video><p>Now, let&rsquo;s start off with something very easy. Creating a simple fraction:</p><div class=highlight><pre tabindex=0 style=color:#8a8a8a;background-color:#1c1c1c;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-vim data-lang=vim><span style=display:flex><span>snippet <span style=color:#af0000>//</span> <span style=color:#00afaf>&#34;Fraction&#34;</span> iA
+</span></span><span style=display:flex><span>\frac{$<span style=color:#00afaf>1</span>}{$<span style=color:#00afaf>2</span>}$<span style=color:#00afaf>0</span>
+</span></span><span style=display:flex><span>endsnippet
+</span></span></code></pre></div><p>The core of the second snippet is regular expressions. It&rsquo;s used to match
+expressions like <code>3/</code>, <code>4\pi/</code>, <code>39_{\theta}/</code>.</p><div class=highlight><pre tabindex=0 style=color:#8a8a8a;background-color:#1c1c1c;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-vim data-lang=vim><span style=display:flex><span>snippet <span style=color:#00afaf>&#39;((\d+)|(\d*)(\\)?([A-Za-z]+)((\^|_)(\{\d+\}|\d))*)/&#39;</span> <span style=color:#00afaf>&#34;Fraction&#34;</span> wrA
+</span></span><span style=display:flex><span>\\frac{`!p snip.rv = match.group(<span style=color:#00afaf>1</span>)`}{$<span style=color:#00afaf>1</span>}$<span style=color:#00afaf>0</span>
+</span></span><span style=display:flex><span>endsnippet
+</span></span></code></pre></div><p>In the fourth case, I tried to find matching parenthesis. But, all of the work
+went in vain because you cannot with <code>UltiSnips</code>. So, I used Python.</p><div class=highlight><pre tabindex=0 style=color:#8a8a8a;background-color:#1c1c1c;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-vim data-lang=vim><span style=display:flex><span>priority <span style=color:#00afaf>1000</span>
+</span></span><span style=display:flex><span>snippet <span style=color:#00afaf>&#39;^.*\)/&#39;</span> <span style=color:#00afaf>&#34;() Fraction&#34;</span> wrA
+</span></span><span style=display:flex><span>`!p
+</span></span><span style=display:flex><span>stripped = match.string[:<span style=color:#00afaf>-1</span>]
+</span></span><span style=display:flex><span>depth = <span style=color:#00afaf>0</span>
+</span></span><span style=display:flex><span>i = len(stripped) - <span style=color:#00afaf>1</span>
+</span></span><span style=display:flex><span>while True:
+</span></span><span style=display:flex><span>	<span style=color:#5f8700>if</span> stripped[i] == <span style=color:#00afaf>&#39;)&#39;</span>: depth += <span style=color:#00afaf>1</span>
+</span></span><span style=display:flex><span>	<span style=color:#5f8700>if</span> stripped[i] == <span style=color:#00afaf>&#39;(&#39;</span>: depth -= <span style=color:#00afaf>1</span>
+</span></span><span style=display:flex><span>	<span style=color:#5f8700>if</span> depth == <span style=color:#00afaf>0</span>: break;
+</span></span><span style=display:flex><span>	i -= <span style=color:#00afaf>1</span>
+</span></span><span style=display:flex><span>snip.rv = stripped[<span style=color:#00afaf>0</span>:i] + <span style=color:#00afaf>&#34;\\frac{&#34;</span> + stripped[i+<span style=color:#00afaf>1</span>:<span style=color:#00afaf>-1</span>] + <span style=color:#00afaf>&#34;}&#34;</span>
+</span></span><span style=display:flex><span>`{$<span style=color:#00afaf>1</span>}$<span style=color:#00afaf>0</span>
+</span></span><span style=display:flex><span>endsnippet
+</span></span></code></pre></div><p>The last section that I want to show you is your selection to make your own
+fraction using <strong>visual mode</strong>.</p><video preload=auto width=100% autoplay loop muted playsinline class=html-video>
+<source src=https://damrah.netlify.app/post/note-taking-with-latex-part-1/videos/tab-fractions.mp4 type=video/mp4><span>Your browser doesn't support embedded videos, but don't worry, you can <a href=https://damrah.netlify.app/post/note-taking-with-latex-part-1/videos/tab-fractions.mp4>download it</a> and watch it with your favorite video player!</span></video><div class=highlight><pre tabindex=0 style=color:#8a8a8a;background-color:#1c1c1c;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-vim data-lang=vim><span style=display:flex><span>snippet / <span style=color:#00afaf>&#34;Fraction&#34;</span> iA
+</span></span><span style=display:flex><span>\\frac{${VISUAL}}{$<span style=color:#00afaf>1</span>}$<span style=color:#00afaf>0</span>
+</span></span><span style=display:flex><span>endsnippet
+</span></span></code></pre></div><h3 id=greek-letters>Greek Letters</h3><p>I use the Greek letters all the time and I wanted a quick way to type them. So,
+I created this snippet:</p><p><video preload=auto width=100% autoplay loop muted playsinline class=html-video>
+<source src=https://damrah.netlify.app/post/note-taking-with-latex-part-1/videos/greek-letters-lowercase.mp4 type=video/mp4><span>Your browser doesn't support embedded videos, but don't worry, you can <a href=https://damrah.netlify.app/post/note-taking-with-latex-part-1/videos/greek-letters-lowercase.mp4>download it</a> and watch it with your favorite video player!</span></video>
+<video preload=auto width=100% autoplay loop muted playsinline class=html-video>
+<source src=https://damrah.netlify.app/post/note-taking-with-latex-part-1/videos/greek-letters-uppercase.mp4 type=video/mp4><span>Your browser doesn't support embedded videos, but don't worry, you can <a href=https://damrah.netlify.app/post/note-taking-with-latex-part-1/videos/greek-letters-uppercase.mp4>download it</a> and watch it with your favorite video player!</span></video></p><div class=highlight><pre tabindex=0 style=color:#8a8a8a;background-color:#1c1c1c;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-vim data-lang=vim><span style=display:flex><span>snippet <span style=color:#00afaf>&#39;(alp|Alp|bet|Bet|gam|Gam|del|Del|eps|Eps|zet|Zet|eta|Zet|the|The|iot|Iot|kap|Kap|lam|Lam|mu|Mu|nu|Nu|xi|Xi|omi|Omi|pi|Pi|rho|Rho|sig|Sig|tau|Tau|ups|Ups|phi|Phi|chi|Chi|psi|Psi|ome|Ome)&#39;</span> <span style=color:#00afaf>&#34;All Greek Letters&#34;</span> riA
+</span></span><span style=display:flex><span>`!p
+</span></span><span style=display:flex><span><span style=color:#5f8700>if</span> match.group(<span style=color:#00afaf>1</span>) == <span style=color:#00afaf>&#39;alp&#39;</span>:
+</span></span><span style=display:flex><span>	snip.rv = <span style=color:#00afaf>&#39;\\alpha&#39;</span>
+</span></span><span style=display:flex><span>elif match.group(<span style=color:#00afaf>1</span>) == <span style=color:#00afaf>&#39;Alp&#39;</span>:
+</span></span><span style=display:flex><span>	snip.rv = <span style=color:#00afaf>&#39;\\Alpha&#39;</span>
+</span></span><span style=display:flex><span>elif match.group(<span style=color:#00afaf>1</span>) == <span style=color:#00afaf>&#39;bet&#39;</span>:
+</span></span><span style=display:flex><span>	snip.rv = <span style=color:#00afaf>&#39;\\beta&#39;</span>
+</span></span><span style=display:flex><span>elif match.group(<span style=color:#00afaf>1</span>) == <span style=color:#00afaf>&#39;Bet&#39;</span>:
+</span></span><span style=display:flex><span>	snip.rv = <span style=color:#00afaf>&#39;\\Beta&#39;</span>
+</span></span><span style=display:flex><span>elif match.group(<span style=color:#00afaf>1</span>) == <span style=color:#00afaf>&#39;gam&#39;</span>:
+</span></span><span style=display:flex><span>	snip.rv = <span style=color:#00afaf>&#39;\\gamma&#39;</span>
+</span></span><span style=display:flex><span>elif match.group(<span style=color:#00afaf>1</span>) == <span style=color:#00afaf>&#39;Gam&#39;</span>:
+</span></span><span style=display:flex><span>	snip.rv = <span style=color:#00afaf>&#39;\\Gamma&#39;</span>
+</span></span><span style=display:flex><span>elif match.group(<span style=color:#00afaf>1</span>) == <span style=color:#00afaf>&#39;del&#39;</span>:
+</span></span><span style=display:flex><span>	snip.rv = <span style=color:#00afaf>&#39;\\delta&#39;</span>
+</span></span><span style=display:flex><span>elif match.group(<span style=color:#00afaf>1</span>) == <span style=color:#00afaf>&#39;Del&#39;</span>:
+</span></span><span style=display:flex><span>	snip.rv = <span style=color:#00afaf>&#39;\\Delta&#39;</span>
+</span></span><span style=display:flex><span>elif match.group(<span style=color:#00afaf>1</span>) == <span style=color:#00afaf>&#39;eps&#39;</span>:
+</span></span><span style=display:flex><span>	snip.rv = <span style=color:#00afaf>&#39;\\epsilon&#39;</span>
+</span></span><span style=display:flex><span>elif match.group(<span style=color:#00afaf>1</span>) == <span style=color:#00afaf>&#39;Eps&#39;</span>:
+</span></span><span style=display:flex><span>	snip.rv = <span style=color:#00afaf>&#39;\\Epsilon&#39;</span>
+</span></span><span style=display:flex><span>elif match.group(<span style=color:#00afaf>1</span>) == <span style=color:#00afaf>&#39;zet&#39;</span>:
+</span></span><span style=display:flex><span>	snip.rv = <span style=color:#00afaf>&#39;\\zeta&#39;</span>
+</span></span><span style=display:flex><span>elif match.group(<span style=color:#00afaf>1</span>) == <span style=color:#00afaf>&#39;Zet&#39;</span>:
+</span></span><span style=display:flex><span>	snip.rv = <span style=color:#00afaf>&#39;\\Zeta&#39;</span>
+</span></span><span style=display:flex><span>elif match.group(<span style=color:#00afaf>1</span>) == <span style=color:#00afaf>&#39;eta&#39;</span>:
+</span></span><span style=display:flex><span>	snip.rv = <span style=color:#00afaf>&#39;\\eta&#39;</span>
+</span></span><span style=display:flex><span>elif match.group(<span style=color:#00afaf>1</span>) == <span style=color:#00afaf>&#39;Zet&#39;</span>:
+</span></span><span style=display:flex><span>	snip.rv = <span style=color:#00afaf>&#39;\\Eta&#39;</span>
+</span></span><span style=display:flex><span>elif match.group(<span style=color:#00afaf>1</span>) == <span style=color:#00afaf>&#39;the&#39;</span>:
+</span></span><span style=display:flex><span>	snip.rv = <span style=color:#00afaf>&#39;\\theta&#39;</span>
+</span></span><span style=display:flex><span>elif match.group(<span style=color:#00afaf>1</span>) == <span style=color:#00afaf>&#39;The&#39;</span>:
+</span></span><span style=display:flex><span>	snip.rv = <span style=color:#00afaf>&#39;\\Theta&#39;</span>
+</span></span><span style=display:flex><span>elif match.group(<span style=color:#00afaf>1</span>) == <span style=color:#00afaf>&#39;iot&#39;</span>:
+</span></span><span style=display:flex><span>	snip.rv = <span style=color:#00afaf>&#39;\\iota&#39;</span>
+</span></span><span style=display:flex><span>elif match.group(<span style=color:#00afaf>1</span>) == <span style=color:#00afaf>&#39;Iot&#39;</span>:
+</span></span><span style=display:flex><span>	snip.rv = <span style=color:#00afaf>&#39;\\Iota&#39;</span>
+</span></span><span style=display:flex><span>elif match.group(<span style=color:#00afaf>1</span>) == <span style=color:#00afaf>&#39;kap&#39;</span>:
+</span></span><span style=display:flex><span>	snip.rv = <span style=color:#00afaf>&#39;\\kappa&#39;</span>
+</span></span><span style=display:flex><span>elif match.group(<span style=color:#00afaf>1</span>) == <span style=color:#00afaf>&#39;Kap&#39;</span>:
+</span></span><span style=display:flex><span>	snip.rv = <span style=color:#00afaf>&#39;\\Kappa&#39;</span>
+</span></span><span style=display:flex><span>elif match.group(<span style=color:#00afaf>1</span>) == <span style=color:#00afaf>&#39;lam&#39;</span>:
+</span></span><span style=display:flex><span>	snip.rv = <span style=color:#00afaf>&#39;\\lambda&#39;</span>
+</span></span><span style=display:flex><span>elif match.group(<span style=color:#00afaf>1</span>) == <span style=color:#00afaf>&#39;Lam&#39;</span>:
+</span></span><span style=display:flex><span>	snip.rv = <span style=color:#00afaf>&#39;\\Lambda&#39;</span>
+</span></span><span style=display:flex><span>elif match.group(<span style=color:#00afaf>1</span>) == <span style=color:#00afaf>&#39;mu&#39;</span>:
+</span></span><span style=display:flex><span>	snip.rv = <span style=color:#00afaf>&#39;\\mu&#39;</span>
+</span></span><span style=display:flex><span>elif match.group(<span style=color:#00afaf>1</span>) == <span style=color:#00afaf>&#39;Mu&#39;</span>:
+</span></span><span style=display:flex><span>	snip.rv = <span style=color:#00afaf>&#39;\\Mu&#39;</span>
+</span></span><span style=display:flex><span>elif match.group(<span style=color:#00afaf>1</span>) == <span style=color:#00afaf>&#39;nu&#39;</span>:
+</span></span><span style=display:flex><span>	snip.rv = <span style=color:#00afaf>&#39;\\nu&#39;</span>
+</span></span><span style=display:flex><span>elif match.group(<span style=color:#00afaf>1</span>) == <span style=color:#00afaf>&#39;Nu&#39;</span>:
+</span></span><span style=display:flex><span>	snip.rv = <span style=color:#00afaf>&#39;\\Nu&#39;</span>
+</span></span><span style=display:flex><span>elif match.group(<span style=color:#00afaf>1</span>) == <span style=color:#00afaf>&#39;xi&#39;</span>:
+</span></span><span style=display:flex><span>	snip.rv = <span style=color:#00afaf>&#39;\\xi&#39;</span>
+</span></span><span style=display:flex><span>elif match.group(<span style=color:#00afaf>1</span>) == <span style=color:#00afaf>&#39;Xi&#39;</span>:
+</span></span><span style=display:flex><span>	snip.rv = <span style=color:#00afaf>&#39;\\Xi&#39;</span>
+</span></span><span style=display:flex><span>elif match.group(<span style=color:#00afaf>1</span>) == <span style=color:#00afaf>&#39;omi&#39;</span>:
+</span></span><span style=display:flex><span>	snip.rv = <span style=color:#00afaf>&#39;\\omicron&#39;</span>
+</span></span><span style=display:flex><span>elif match.group(<span style=color:#00afaf>1</span>) == <span style=color:#00afaf>&#39;Omi&#39;</span>:
+</span></span><span style=display:flex><span>	snip.rv = <span style=color:#00afaf>&#39;\\Omicron&#39;</span>
+</span></span><span style=display:flex><span>elif match.group(<span style=color:#00afaf>1</span>) == <span style=color:#00afaf>&#39;pi&#39;</span>:
+</span></span><span style=display:flex><span>	snip.rv = <span style=color:#00afaf>&#39;\\pi&#39;</span>
+</span></span><span style=display:flex><span>elif match.group(<span style=color:#00afaf>1</span>) == <span style=color:#00afaf>&#39;Pi&#39;</span>:
+</span></span><span style=display:flex><span>	snip.rv = <span style=color:#00afaf>&#39;\\Pi&#39;</span>
+</span></span><span style=display:flex><span>elif match.group(<span style=color:#00afaf>1</span>) == <span style=color:#00afaf>&#39;rho&#39;</span>:
+</span></span><span style=display:flex><span>	snip.rv = <span style=color:#00afaf>&#39;\\rho&#39;</span>
+</span></span><span style=display:flex><span>elif match.group(<span style=color:#00afaf>1</span>) == <span style=color:#00afaf>&#39;Rho&#39;</span>:
+</span></span><span style=display:flex><span>	snip.rv = <span style=color:#00afaf>&#39;\\Rho&#39;</span>
+</span></span><span style=display:flex><span>elif match.group(<span style=color:#00afaf>1</span>) == <span style=color:#00afaf>&#39;sig&#39;</span>:
+</span></span><span style=display:flex><span>	snip.rv = <span style=color:#00afaf>&#39;\\sigma&#39;</span>
+</span></span><span style=display:flex><span>elif match.group(<span style=color:#00afaf>1</span>) == <span style=color:#00afaf>&#39;Sig&#39;</span>:
+</span></span><span style=display:flex><span>	snip.rv = <span style=color:#00afaf>&#39;\\Sigma&#39;</span>
+</span></span><span style=display:flex><span>elif match.group(<span style=color:#00afaf>1</span>) == <span style=color:#00afaf>&#39;tau&#39;</span>:
+</span></span><span style=display:flex><span>	snip.rv = <span style=color:#00afaf>&#39;\\tau&#39;</span>
+</span></span><span style=display:flex><span>elif match.group(<span style=color:#00afaf>1</span>) == <span style=color:#00afaf>&#39;Tau&#39;</span>:
+</span></span><span style=display:flex><span>	snip.rv = <span style=color:#00afaf>&#39;\\Tau&#39;</span>
+</span></span><span style=display:flex><span>elif match.group(<span style=color:#00afaf>1</span>) == <span style=color:#00afaf>&#39;ups&#39;</span>:
+</span></span><span style=display:flex><span>	snip.rv = <span style=color:#00afaf>&#39;\\upsilon&#39;</span>
+</span></span><span style=display:flex><span>elif match.group(<span style=color:#00afaf>1</span>) == <span style=color:#00afaf>&#39;Ups&#39;</span>:
+</span></span><span style=display:flex><span>	snip.rv = <span style=color:#00afaf>&#39;\\Upsilon&#39;</span>
+</span></span><span style=display:flex><span>elif match.group(<span style=color:#00afaf>1</span>) == <span style=color:#00afaf>&#39;phi&#39;</span>:
+</span></span><span style=display:flex><span>	snip.rv = <span style=color:#00afaf>&#39;\\phi&#39;</span>
+</span></span><span style=display:flex><span>elif match.group(<span style=color:#00afaf>1</span>) == <span style=color:#00afaf>&#39;Phi&#39;</span>:
+</span></span><span style=display:flex><span>	snip.rv = <span style=color:#00afaf>&#39;\\Phi&#39;</span>
+</span></span><span style=display:flex><span>elif match.group(<span style=color:#00afaf>1</span>) == <span style=color:#00afaf>&#39;chi&#39;</span>:
+</span></span><span style=display:flex><span>	snip.rv = <span style=color:#00afaf>&#39;\\chi&#39;</span>
+</span></span><span style=display:flex><span>elif match.group(<span style=color:#00afaf>1</span>) == <span style=color:#00afaf>&#39;Chi&#39;</span>:
+</span></span><span style=display:flex><span>	snip.rv = <span style=color:#00afaf>&#39;\\Chi&#39;</span>
+</span></span><span style=display:flex><span>elif match.group(<span style=color:#00afaf>1</span>) == <span style=color:#00afaf>&#39;psi&#39;</span>:
+</span></span><span style=display:flex><span>	snip.rv = <span style=color:#00afaf>&#39;\\psi&#39;</span>
+</span></span><span style=display:flex><span>elif match.group(<span style=color:#00afaf>1</span>) == <span style=color:#00afaf>&#39;Psi&#39;</span>:
+</span></span><span style=display:flex><span>	snip.rv = <span style=color:#00afaf>&#39;\\Psi&#39;</span>
+</span></span><span style=display:flex><span>elif match.group(<span style=color:#00afaf>1</span>) == <span style=color:#00afaf>&#39;ome&#39;</span>:
+</span></span><span style=display:flex><span>	snip.rv = <span style=color:#00afaf>&#39;\\omega&#39;</span>
+</span></span><span style=display:flex><span>elif match.group(<span style=color:#00afaf>1</span>) == <span style=color:#00afaf>&#39;Ome&#39;</span>:
+</span></span><span style=display:flex><span>	snip.rv = <span style=color:#00afaf>&#39;\\Omega&#39;</span>
+</span></span><span style=display:flex><span>`$<span style=color:#00afaf>2</span>
+</span></span><span style=display:flex><span>endsnippet
+</span></span></code></pre></div><p>I know this looks crazy, but it&rsquo;s really not. What it&rsquo;s doing is finding out
+what you typed and replace it based on that.</p><h3 id=context>Context</h3><p>The number one problem that I had when I first started using UltiSnips was:
+<strong>My snippets kept colliding with me writing text.</strong></p><p>For example, let&rsquo;s say you&rsquo;re typing <code>newsroom</code>. Since it has <code>sr</code>, this will
+expand to <code>\sqrt{}</code>, which will result in <code>new\\sqrt{}oom</code>.</p><p>The solution to keep this from happening is to use something called <code>context</code>.
+This will help us determine if we are in the correct environment to expand the
+snippet. Here&rsquo;s the code for it:</p><div class=highlight><pre tabindex=0 style=color:#8a8a8a;background-color:#1c1c1c;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-vim data-lang=vim><span style=display:flex><span>global !p
+</span></span><span style=display:flex><span>def math():
+</span></span><span style=display:flex><span>	return vim.eval(<span style=color:#00afaf>&#39;vimtex#syntax#in_mathzone()&#39;</span>) == <span style=color:#00afaf>&#39;1&#39;</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>def not_math():
+</span></span><span style=display:flex><span>	return vim.eval(<span style=color:#00afaf>&#39;vimtex#syntax#in_mathzone()&#39;</span>) == <span style=color:#00afaf>&#39;0&#39;</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>def comment():
+</span></span><span style=display:flex><span>	return vim.eval(<span style=color:#00afaf>&#39;vimtex#syntax#in_comment()&#39;</span>) == <span style=color:#00afaf>&#39;1&#39;</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>def env(name):
+</span></span><span style=display:flex><span>	[x,y] = vim.eval(<span style=color:#00afaf>&#34;vimtex#env#is_inside(&#39;&#34;</span> + name + <span style=color:#00afaf>&#34;&#39;)&#34;</span>)
+</span></span><span style=display:flex><span>	return x != <span style=color:#00afaf>&#39;0&#39;</span> and y != <span style=color:#00afaf>&#39;0&#39;</span>
+</span></span><span style=display:flex><span>endglobal
+</span></span></code></pre></div><p>Now we can add <code>context math()</code> to the snippets you would like to expand only
+in math mode.</p><div class=highlight><pre tabindex=0 style=color:#8a8a8a;background-color:#1c1c1c;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-vim data-lang=vim><span style=display:flex><span>context <span style=color:#00afaf>&#34;math()&#34;</span>
+</span></span><span style=display:flex><span>snippet ss <span style=color:#00afaf>&#34;Superscript&#34;</span> iA
+</span></span><span style=display:flex><span>^{$<span style=color:#00afaf>1</span>}$<span style=color:#00afaf>0</span>
+</span></span><span style=display:flex><span>endsnippet
+</span></span></code></pre></div><video preload=auto width=100% autoplay loop muted playsinline class=html-video>
+<source src=https://damrah.netlify.app/post/note-taking-with-latex-part-1/videos/context.mp4 type=video/mp4><span>Your browser doesn't support embedded videos, but don't worry, you can <a href=https://damrah.netlify.app/post/note-taking-with-latex-part-1/videos/context.mp4>download it</a> and watch it with your favorite video player!</span></video><h3 id=postfix>Postfix</h3><p>Some other snippets I find worthy of being shared are my postfix snippets.</p><div style=text-align:center;line-height:1.5><p><code>--</code> → <code>\overline{}</code><br><code>..</code> → <code>\dot{}</code><br><code>,,</code> → <code>\vec{}</code><br><code>,.</code> → <code>\hat{}</code><br><code>z--</code> → <code>\overline{z}</code><br><code>z..</code> → <code>\dot{z}</code><br><code>z,,</code> → <code>\vec{z}</code><br><code>z,.</code> → <code>\hat{z}</code><br><code>(zz)--</code> → <code>\overline{zz}</code></p></div><p>These snippets are a real-time saver because you can type in the same order the
+lecturer writes on the blackboard.</p><video preload=auto width=100% autoplay loop muted playsinline class=html-video>
+<source src=https://damrah.netlify.app/post/note-taking-with-latex-part-1/videos/postfix.mp4 type=video/mp4><span>Your browser doesn't support embedded videos, but don't worry, you can <a href=https://damrah.netlify.app/post/note-taking-with-latex-part-1/videos/postfix.mp4>download it</a> and watch it with your favorite video player!</span></video><p>Here&rsquo;s the snippet code:</p><div class=highlight><pre tabindex=0 style=color:#8a8a8a;background-color:#1c1c1c;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-vim data-lang=vim><span style=display:flex><span>context <span style=color:#00afaf>&#34;math()&#34;</span>
+</span></span><span style=display:flex><span>snippet -- <span style=color:#00afaf>&#34;Bar&#34;</span> i
+</span></span><span style=display:flex><span>\overline{$<span style=color:#00afaf>1</span>}$<span style=color:#00afaf>0</span>
+</span></span><span style=display:flex><span>endsnippet
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>context <span style=color:#00afaf>&#34;math()&#34;</span>
+</span></span><span style=display:flex><span>snippet <span style=color:#00afaf>&#39;(\S|\(.*?\))--&#39;</span> <span style=color:#00afaf>&#34;Bar&#34;</span> riA
+</span></span><span style=display:flex><span>\overline{`!p snip.rv=match.group(<span style=color:#00afaf>1</span>).replace(<span style=color:#00afaf>&#39;(&#39;</span>, <span style=color:#00afaf>&#39;&#39;</span>).replace(<span style=color:#00afaf>&#39;)&#39;</span>, <span style=color:#00afaf>&#39;&#39;</span>)`}
+</span></span><span style=display:flex><span>endsnippet
+</span></span></code></pre></div><div class=highlight><pre tabindex=0 style=color:#8a8a8a;background-color:#1c1c1c;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-vim data-lang=vim><span style=display:flex><span>context <span style=color:#00afaf>&#34;math()&#34;</span>
+</span></span><span style=display:flex><span>snippet .. <span style=color:#00afaf>&#34;Dot&#34;</span> i
+</span></span><span style=display:flex><span>\dot{$<span style=color:#00afaf>1</span>}$<span style=color:#00afaf>0</span>
+</span></span><span style=display:flex><span>endsnippet
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>context <span style=color:#00afaf>&#34;math()&#34;</span>
+</span></span><span style=display:flex><span>snippet <span style=color:#00afaf>&#39;(\S)\.\.&#39;</span> <span style=color:#00afaf>&#34;Dot&#34;</span> riA
+</span></span><span style=display:flex><span>\dot{`!p snip.rv=match.group(<span style=color:#00afaf>1</span>)`}
+</span></span><span style=display:flex><span>endsnippet
+</span></span></code></pre></div><div class=highlight><pre tabindex=0 style=color:#8a8a8a;background-color:#1c1c1c;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-vim data-lang=vim><span style=display:flex><span>context <span style=color:#00afaf>&#34;math()&#34;</span>
+</span></span><span style=display:flex><span>snippet ,, <span style=color:#00afaf>&#34;Vec&#34;</span> i
+</span></span><span style=display:flex><span>\vec{$<span style=color:#00afaf>1</span>}$<span style=color:#00afaf>0</span>
+</span></span><span style=display:flex><span>endsnippet
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>context <span style=color:#00afaf>&#34;math()&#34;</span>
+</span></span><span style=display:flex><span>snippet <span style=color:#00afaf>&#39;(\S),,&#39;</span> <span style=color:#00afaf>&#34;Vec&#34;</span> riA
+</span></span><span style=display:flex><span>\vec{`!p snip.rv=match.group(<span style=color:#00afaf>1</span>)`}
+</span></span><span style=display:flex><span>endsnippet
+</span></span></code></pre></div><div class=highlight><pre tabindex=0 style=color:#8a8a8a;background-color:#1c1c1c;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-vim data-lang=vim><span style=display:flex><span>context <span style=color:#00afaf>&#34;math()&#34;</span>
+</span></span><span style=display:flex><span>snippet ,. <span style=color:#00afaf>&#34;Hat&#34;</span> i
+</span></span><span style=display:flex><span>\hat{$<span style=color:#00afaf>1</span>}$<span style=color:#00afaf>0</span>
+</span></span><span style=display:flex><span>endsnippet
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>context <span style=color:#00afaf>&#34;math()&#34;</span>
+</span></span><span style=display:flex><span>snippet <span style=color:#00afaf>&#39;(\S)\,\.&#39;</span> <span style=color:#00afaf>&#34;Hat&#34;</span> riA
+</span></span><span style=display:flex><span>\hat{`!p snip.rv=match.group(<span style=color:#00afaf>1</span>)`}
+</span></span><span style=display:flex><span>endsnippet
+</span></span></code></pre></div><h3 id=bra-ket-and-bracket>Bra, Ket, and Bracket</h3><p>I don&rsquo;t use these snippets often, but I think they&rsquo;re cool. So, here they are:</p><div style=text-align:center;line-height:1.5><p><code>&lt;a|</code> → <code>\bra{a}</code><br><code>&lt;q|</code> → <code>\bra{\psi}</code><br><code>|a></code> → <code>\ket{a}</code><br><code>|q></code> → <code>\ket{\psi}</code><br><code>&lt;a|b></code> → <code>\braket{a|b}</code></p></div><video preload=auto width=100% autoplay loop muted playsinline class=html-video>
+<source src=https://damrah.netlify.app/post/note-taking-with-latex-part-1/videos/bra-ket-bracket.mp4 type=video/mp4><span>Your browser doesn't support embedded videos, but don't worry, you can <a href=https://damrah.netlify.app/post/note-taking-with-latex-part-1/videos/bra-ket-bracket.mp4>download it</a> and watch it with your favorite video player!</span></video><p>Here&rsquo;s the snippet code:</p><div class=highlight><pre tabindex=0 style=color:#8a8a8a;background-color:#1c1c1c;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-vim data-lang=vim><span style=display:flex><span>snippet <span style=color:#00afaf>&#39;\&lt;(.*?)\|&#39;</span> <span style=color:#00afaf>&#34;Bra&#34;</span> riA
+</span></span><span style=display:flex><span>\bra{`!p snip.rv = match.group(<span style=color:#00afaf>1</span>).replace(<span style=color:#00afaf>&#39;q&#39;</span>, f<span style=color:#00afaf>&#39;\psi&#39;</span>).replace(<span style=color:#00afaf>&#39;f&#39;</span>, f<span style=color:#00afaf>&#39;\phi&#39;</span>)`}
+</span></span><span style=display:flex><span>endsnippet
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>snippet <span style=color:#00afaf>&#39;\|(.*?)\&gt;&#39;</span> <span style=color:#00afaf>&#34;Ket&#34;</span> riA
+</span></span><span style=display:flex><span>\ket{`!p snip.rv = match.group(<span style=color:#00afaf>1</span>).replace(<span style=color:#00afaf>&#39;q&#39;</span>, f<span style=color:#00afaf>&#39;\psi&#39;</span>).replace(<span style=color:#00afaf>&#39;f&#39;</span>, f<span style=color:#00afaf>&#39;\phi&#39;</span>)`}
+</span></span><span style=display:flex><span>endsnippet
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>snippet <span style=color:#00afaf>&#39;\\(bra|ket){(.*?)}([^\|]*?)\&gt;&#39;</span> <span style=color:#00afaf>&#34;Braket&#34;</span> riA
+</span></span><span style=display:flex><span>\braket{`!p snip.rv = match.group(<span style=color:#00afaf>2</span>)`|`!p snip.rv = match.group(<span style=color:#00afaf>3</span>).replace(<span style=color:#00afaf>&#39;q&#39;</span>, f<span style=color:#00afaf>&#39;\psi&#39;</span>).replace(<span style=color:#00afaf>&#39;f&#39;</span>, f<span style=color:#00afaf>&#39;\phi&#39;</span>)`}
+</span></span><span style=display:flex><span>endsnippet
+</span></span></code></pre></div><h3 id=school-lessons>School lessons</h3><p>I don&rsquo;t really use these that often because I created scripts that do a lot of
+work when:</p><ul><li>Organizing</li><li>Changing</li><li>Switching</li><li>Loading</li><li>Reloading</li></ul><p>Between:</p><ul><li>Classes</li><li>Lessons</li><li>Lectures</li></ul><p>You can find these scripts
+<a class="center after" href=https://www.github.com/SingularisArt/Singularis/tree/master/local/scripts/school>here</a>,
+but eventually, I will create a blog post about how I made those scripts, how I
+use them, etc.</p><video preload=auto width=100% autoplay loop muted playsinline class=html-video>
+<source src=https://damrah.netlify.app/post/note-taking-with-latex-part-1/videos/school-lessons.mp4 type=video/mp4><span>Your browser doesn't support embedded videos, but don't worry, you can <a href=https://damrah.netlify.app/post/note-taking-with-latex-part-1/videos/school-lessons.mp4>download it</a> and watch it with your favorite video player!</span></video><div class=highlight><pre tabindex=0 style=color:#8a8a8a;background-color:#1c1c1c;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-vim data-lang=vim><span style=display:flex><span>snippet les <span style=color:#00afaf>&#34;Lesson&#34;</span>
+</span></span><span style=display:flex><span>\lesson{${<span style=color:#00afaf>1</span>:LESSON NUMBER}}{`date <span style=color:#00afaf>&#34;+%b %d %Y %a (%H:%M:%S)&#34;</span>`}{${<span style=color:#00afaf>3</span>:LESSON NAME}}
+</span></span><span style=display:flex><span>\label{les_$<span style=color:#00afaf>1</span>:${<span style=color:#00afaf>4</span>:${<span style=color:#00afaf>3</span><span style=color:#af0000>/\\\w+\{(.*?)\}|\\(.)|(\w+)|([^\w\\]+)/</span>(?<span style=color:#00afaf>4</span>:_:\L$<span style=color:#00afaf>1</span>$<span style=color:#00afaf>2</span>$<span style=color:#00afaf>3</span>\E)/ga}}}
+</span></span><span style=display:flex><span>$<span style=color:#00afaf>0</span>
+</span></span><span style=display:flex><span>endsnippet
+</span></span></code></pre></div><h3 id=course-specific-snippets>Course Specific Snippets</h3><p>Beside my commonly used snippets, I have some snippets that are only required
+in some of my classes. You can easily load this snippets by putting this in
+your <code>.vimrc</code>:</p><div class=highlight><pre tabindex=0 style=color:#8a8a8a;background-color:#1c1c1c;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-vim data-lang=vim><span style=display:flex><span>set rtp+=~<span style=color:#af0000>/Documents/</span>school-notes/current-course
+</span></span></code></pre></div><p>The <code>current-course</code> folder I&rsquo;m pointing to is a
+<a href=https://en.wikipedia.org/wiki/Symbolic_link>symlink</a> to my current class.
+I&rsquo;ll talk more about that on my next post.</p><p>In that folder, I have a ton of things like my lecture notes, assignments, and
+my snippets. I store my snippets in the folder: <code>current-course/UltiSnips</code>.</p><p>You may recall when I had you put the <strong>&ldquo;UltiSnips&rdquo;</strong> in the list when
+configuring UltiSnips. The reason is because UltiSnips looks at every single
+folder in the rtp (run time path) and search for this folder. If it finds it,
+it&rsquo;ll source all of the snippet files it finds.</p><p>Here are some of my snippets for my Calculus 1 class.</p><video preload=auto width=100% autoplay loop muted playsinline class=html-video>
+<source src=https://damrah.netlify.app/post/note-taking-with-latex-part-1/videos/course-specific-snippets.mp4 type=video/mp4><span>Your browser doesn't support embedded videos, but don't worry, you can <a href=https://damrah.netlify.app/post/note-taking-with-latex-part-1/videos/course-specific-snippets.mp4>download it</a> and watch it with your favorite video player!</span></video><p>I use a ton of trigonometry in my Calculus class:</p><div class=highlight><pre tabindex=0 style=color:#8a8a8a;background-color:#1c1c1c;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-vim data-lang=vim><span style=display:flex><span>snippet dtan <span style=color:#00afaf>&#34;Definition of Tangent&#34;</span> Ai
+</span></span><span style=display:flex><span>\tan = \left(${<span style=color:#00afaf>1</span>:\theta}\right) = \frac{\sin \left($<span style=color:#00afaf>1</span>\right)}{\cos \left($<span style=color:#00afaf>1</span>\right)}
+</span></span><span style=display:flex><span>endsnippet
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>snippet dcot <span style=color:#00afaf>&#34;Definition of Cotangent&#34;</span> Ai
+</span></span><span style=display:flex><span>\cot \left(${<span style=color:#00afaf>1</span>:\theta}\right) = \frac{<span style=color:#00afaf>1</span>}{tan \left($<span style=color:#00afaf>1</span>\left)}
+</span></span><span style=display:flex><span>endsnippet
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>snippet dsec <span style=color:#00afaf>&#34;Definition of Secant&#34;</span> Ai
+</span></span><span style=display:flex><span>\sec \left(${<span style=color:#00afaf>1</span>:\theta}\right) = \frac{<span style=color:#00afaf>1</span>}{cos \left($<span style=color:#00afaf>1</span>\left)}
+</span></span><span style=display:flex><span>endsnippet
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span>snippet dcsc <span style=color:#00afaf>&#34;Definition of Cosecant&#34;</span> Ai
+</span></span><span style=display:flex><span>\csc \left(${<span style=color:#00afaf>1</span>:\theta}\right) = \frac{<span style=color:#00afaf>1</span>}{sin \left($<span style=color:#00afaf>1</span>\left)}
+</span></span><span style=display:flex><span>endsnippet
+</span></span></code></pre></div><h3 id=putting-it-all-together>Putting it all Together</h3><p>I have hundreds of other snippets that I use on a daily basis.</p><p>For example, I have:</p><div style=text-align:center;line-height:1.5><p><code>+-</code> → <code>\pm</code><br><code>sr</code> → <code>\sqrt{}</code><br><code>sn</code> → <code>\sqrt[]{}</code><br><code>sum</code> → <code>sum_{n = 1}^{\infty}</code><br><code>lim</code> → <code>lim_{n \to \infty}</code><br><code>prt</code> → <code>\partial</code><br><code>int</code> → <code>\int</code><br></p></div><p><video preload=auto width=100% autoplay loop muted playsinline class=html-video>
+<source src=https://damrah.netlify.app/post/note-taking-with-latex-part-1/videos/quadratic-formula.mp4 type=video/mp4><span>Your browser doesn't support embedded videos, but don't worry, you can <a href=https://damrah.netlify.app/post/note-taking-with-latex-part-1/videos/quadratic-formula.mp4>download it</a> and watch it with your favorite video player!</span></video>
+<video preload=auto width=100% autoplay loop muted playsinline class=html-video>
+<source src=https://damrah.netlify.app/post/note-taking-with-latex-part-1/videos/sum.mp4 type=video/mp4><span>Your browser doesn't support embedded videos, but don't worry, you can <a href=https://damrah.netlify.app/post/note-taking-with-latex-part-1/videos/sum.mp4>download it</a> and watch it with your favorite video player!</span></video>
+<video preload=auto width=100% autoplay loop muted playsinline class=html-video>
+<source src=https://damrah.netlify.app/post/note-taking-with-latex-part-1/videos/limit.mp4 type=video/mp4><span>Your browser doesn't support embedded videos, but don't worry, you can <a href=https://damrah.netlify.app/post/note-taking-with-latex-part-1/videos/limit.mp4>download it</a> and watch it with your favorite video player!</span></video>
+<video preload=auto width=100% autoplay loop muted playsinline class=html-video>
+<source src=https://damrah.netlify.app/post/note-taking-with-latex-part-1/videos/greek.mp4 type=video/mp4><span>Your browser doesn't support embedded videos, but don't worry, you can <a href=https://damrah.netlify.app/post/note-taking-with-latex-part-1/videos/greek.mp4>download it</a> and watch it with your favorite video player!</span></video>
+<video preload=auto width=100% autoplay loop muted playsinline class=html-video>
+<source src=https://damrah.netlify.app/post/note-taking-with-latex-part-1/videos/quantum-mechanics-1.mp4 type=video/mp4><span>Your browser doesn't support embedded videos, but don't worry, you can <a href=https://damrah.netlify.app/post/note-taking-with-latex-part-1/videos/quantum-mechanics-1.mp4>download it</a> and watch it with your favorite video player!</span></video>
+<video preload=auto width=100% autoplay loop muted playsinline class=html-video>
+<source src=https://damrah.netlify.app/post/note-taking-with-latex-part-1/videos/quantum-mechanics-2.mp4 type=video/mp4><span>Your browser doesn't support embedded videos, but don't worry, you can <a href=https://damrah.netlify.app/post/note-taking-with-latex-part-1/videos/quantum-mechanics-2.mp4>download it</a> and watch it with your favorite video player!</span></video></p><p>You can view all my latex snippets
+<a href=https://github.com/SingularisArt/snippets/blob/master/plaintex.snippets>here</a>.</p><h2 id=correct-spelling-mistakes>Correct spelling mistakes</h2><p>I use this a <strong>TON</strong>. It&rsquo;s so handy because I don&rsquo;t have to leave insert mode,
+hover over the word, press <strong>z=</strong>, select the correct word, then go all the way
+back. UHHH, that was a lot of work! Also, if the word isn&rsquo;t corrected
+correctly, I can exit insert mode, press <strong>u</strong>, and select the correct word,
+and from now on, it will always be corrected to the correct one, which is the
+one that I chose. AMAZING!</p><video preload=auto width=100% autoplay loop muted playsinline class=html-video>
+<source src=https://damrah.netlify.app/post/note-taking-with-latex-part-1/videos/correct-words.mp4 type=video/mp4><span>Your browser doesn't support embedded videos, but don't worry, you can <a href=https://damrah.netlify.app/post/note-taking-with-latex-part-1/videos/correct-words.mp4>download it</a> and watch it with your favorite video player!</span></video><p>Now, put this in your <code>init.vim</code> or <code>.vimrc</code>:</p><div class=highlight><pre tabindex=0 style=color:#8a8a8a;background-color:#1c1c1c;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-vim data-lang=vim><span style=display:flex><span>setlocal spell
+</span></span><span style=display:flex><span>set spelllang=en
+</span></span><span style=display:flex><span>inoremap &lt;C-l&gt; &lt;C-g&gt;u&lt;Esc&gt;[s1z=`]a&lt;C-g&gt;u
+</span></span></code></pre></div><h2 id=auto-completion>Auto completion</h2><p>Now, besides <code>snippets</code> helping me out a ton when taking notes, I also have
+<code>autocompletion</code>.</p><p>This is possible by using
+<a class="center after" href=https://en.wikipedia.org/wiki/Language_Server_Protocol>LSP</a>.
+<code>LSP</code> is a <code>language server protocol</code>, which allows me to get autocompletion,
+suggestions, etc based on the language that I&rsquo;m using.</p><h3 id=setting-lsp-in-neovim>Setting LSP in NeoVim</h3><p>We first need to install these plugins:</p><div class=highlight><pre tabindex=0 style=color:#8a8a8a;background-color:#1c1c1c;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-vim data-lang=vim><span style=display:flex><span>use { <span style=color:#00afaf>&#39;neovim/nvim-lspconfig&#39;</span> }
+</span></span><span style=display:flex><span>use { <span style=color:#00afaf>&#39;onsails/lspkind-nvim&#39;</span> }
+</span></span><span style=display:flex><span>use { <span style=color:#00afaf>&#39;tami5/lspsaga.nvim&#39;</span> }
+</span></span><span style=display:flex><span>use { <span style=color:#00afaf>&#39;williamboman/nvim-lsp-installer&#39;</span> }
+</span></span></code></pre></div><h3 id=install-your-language-server>Install your language server</h3><p>Installing your language server is super easy. For a complete list of all of
+the language servers NeoVim offers, head over
+<a class="center after" href=https://github.com/neovim/nvim-lspconfig/blob/master/doc/server_configurations.md>here</a>.
+To install your language server, just run <code>:LspInstall [lang name]</code>. Now, you
+have your language server installed in NeoVim.</p><p>But, you need to server installed on your computer. To do that, head over
+<a class="center after" href=https://github.com/neovim/nvim-lspconfig/blob/master/doc/server_configurations.md>here</a>
+and find your language. Follow the link that they provide and install it from
+there.</p><p>For example, I want to have the <code>python</code> language server. So, I just run
+<code>:LspInstall python</code> in NeoVim. Then, I run <code>pip3 install 'python-lsp-server[all]'</code>. Now, I have my server.</p><p>To activate it <code>python</code>, put this in your <code>init.lua</code>:</p><div class=highlight><pre tabindex=0 style=color:#8a8a8a;background-color:#1c1c1c;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-lua data-lang=lua><span style=display:flex><span>require(<span style=color:#00afaf>&#39;lspconfig&#39;</span>).pylsp.setup{}
+</span></span></code></pre></div><p>But, for me, I have a ton of servers, and my goal is to only keep them growing.
+So, here is a better way of doing it:</p><div class=highlight><pre tabindex=0 style=color:#8a8a8a;background-color:#1c1c1c;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-lua data-lang=lua><span style=display:flex><span><span style=color:#4e4e4e>-- LSP Servers to install</span>
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#0087ff>local</span> capabilities = require(<span style=color:#00afaf>&#39;cmp_nvim_lsp&#39;</span>).update_capabilities(vim.lsp.protocol.make_client_capabilities())
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#0087ff>local</span> langservers = {
+</span></span><span style=display:flex><span>  <span style=color:#00afaf>&#39;sumneko_lua&#39;</span>,      <span style=color:#4e4e4e>-- Lua</span>
+</span></span><span style=display:flex><span>  <span style=color:#00afaf>&#39;vimls&#39;</span>,            <span style=color:#4e4e4e>-- Vim</span>
+</span></span><span style=display:flex><span>  <span style=color:#00afaf>&#39;texlab&#39;</span>,           <span style=color:#4e4e4e>-- LaTeX</span>
+</span></span><span style=display:flex><span>  <span style=color:#00afaf>&#39;pylsp&#39;</span>,            <span style=color:#4e4e4e>-- Python</span>
+</span></span><span style=display:flex><span>  <span style=color:#00afaf>&#39;bashls&#39;</span>,           <span style=color:#4e4e4e>-- Bash</span>
+</span></span><span style=display:flex><span>  <span style=color:#00afaf>&#39;clangd&#39;</span>,           <span style=color:#4e4e4e>-- C++,C</span>
+</span></span><span style=display:flex><span>  <span style=color:#00afaf>&#39;omnisharp&#39;</span>,        <span style=color:#4e4e4e>-- C#</span>
+</span></span><span style=display:flex><span>  <span style=color:#00afaf>&#39;cmake&#39;</span>,            <span style=color:#4e4e4e>-- CMake</span>
+</span></span><span style=display:flex><span>  <span style=color:#00afaf>&#39;html&#39;</span>,             <span style=color:#4e4e4e>-- HTML</span>
+</span></span><span style=display:flex><span>  <span style=color:#00afaf>&#39;cssls&#39;</span>,            <span style=color:#4e4e4e>-- CSS</span>
+</span></span><span style=display:flex><span>  <span style=color:#00afaf>&#39;jsonls&#39;</span>,           <span style=color:#4e4e4e>-- JSON</span>
+</span></span><span style=display:flex><span>  <span style=color:#00afaf>&#39;rust_analyzer&#39;</span>,    <span style=color:#4e4e4e>-- Rust</span>
+</span></span><span style=display:flex><span>  <span style=color:#00afaf>&#39;tsserver&#39;</span>,         <span style=color:#4e4e4e>-- Typescript/Javascript</span>
+</span></span><span style=display:flex><span>  <span style=color:#00afaf>&#39;yamlls&#39;</span>,           <span style=color:#4e4e4e>-- Yaml</span>
+</span></span><span style=display:flex><span>  <span style=color:#00afaf>&#39;solc&#39;</span>,             <span style=color:#4e4e4e>-- Solidity</span>
+</span></span><span style=display:flex><span>  <span style=color:#00afaf>&#39;solang&#39;</span>,           <span style=color:#4e4e4e>-- Solidity</span>
+</span></span><span style=display:flex><span>  <span style=color:#00afaf>&#39;solidity_ls&#39;</span>,      <span style=color:#4e4e4e>-- Solidity</span>
+</span></span><span style=display:flex><span>  <span style=color:#00afaf>&#39;dockerls&#39;</span>,         <span style=color:#4e4e4e>-- Docker</span>
+</span></span><span style=display:flex><span>}
+</span></span><span style=display:flex><span>
+</span></span><span style=display:flex><span><span style=color:#0087ff>for</span> _, server <span style=color:#0087ff>in</span> ipairs(langservers) <span style=color:#0087ff>do</span>
+</span></span><span style=display:flex><span>  <span style=color:#0087ff>if</span> server == <span style=color:#00afaf>&#39;sumneko_lua&#39;</span> <span style=color:#0087ff>then</span>
+</span></span><span style=display:flex><span>    require(<span style=color:#00afaf>&#39;lspconfig&#39;</span>)[server].setup {
+</span></span><span style=display:flex><span>      capabilities = capabilities,
+</span></span><span style=display:flex><span>      settings = {
+</span></span><span style=display:flex><span>        Lua = {
+</span></span><span style=display:flex><span>          diagnostics = {
+</span></span><span style=display:flex><span>            globals = { <span style=color:#00afaf>&#39;vim&#39;</span>, <span style=color:#00afaf>&#39;use&#39;</span> }
+</span></span><span style=display:flex><span>          },
+</span></span><span style=display:flex><span>        }
+</span></span><span style=display:flex><span>      }
+</span></span><span style=display:flex><span>    }
+</span></span><span style=display:flex><span>  <span style=color:#0087ff>else</span>
+</span></span><span style=display:flex><span>    require(<span style=color:#00afaf>&#39;lspconfig&#39;</span>)[server].setup { capabilities = capabilities }
+</span></span><span style=display:flex><span>  <span style=color:#0087ff>end</span>
+</span></span><span style=display:flex><span><span style=color:#0087ff>end</span>
+</span></span></code></pre></div><p>Inside of the <code>local langservers</code>, just add your server name and you&rsquo;re good to
+go. For example, if I want to have the rust language server, just add
+<code>rust_analyzer</code> to the langservers.</p><p>Again, you can get this information from
+<a class="center after" href=https://github.com/neovim/nvim-lspconfig/blob/master/doc/server_configurations.md>here</a>.</p><h4 id=installing-the-server-for-latex>Installing the Server for LaTeX</h4><p>Since we&rsquo;re using NeoVim to take notes using <code>LaTeX</code>, then let&rsquo;s install the
+<code>LaTeX</code> language server, which is <code>texlab</code>. You can view the source code
+<a class="center after" href=https://github.com/latex-lsp/texlab>here</a>.
+To install it, run the following command:</p><div class=highlight><pre tabindex=0 style=color:#8a8a8a;background-color:#1c1c1c;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-bash data-lang=bash><span style=display:flex><span>cargo install --git https://github.com/latex-lsp/texlab.git --locked
+</span></span></code></pre></div><p>Now, add this line to your <code>init.lua</code>:</p><div class=highlight><pre tabindex=0 style=color:#8a8a8a;background-color:#1c1c1c;-moz-tab-size:4;-o-tab-size:4;tab-size:4><code class=language-lua data-lang=lua><span style=display:flex><span>require(<span style=color:#00afaf>&#39;lspconfig&#39;</span>).texlab.setup{}
+</span></span></code></pre></div><p>Now, when you type <code>\</code>, you will be able to see autocompletion.</p><h3 id=demo-of-lsp>Demo of LSP</h3><video preload=auto width=100% autoplay loop muted playsinline class=html-video>
+<source src=https://damrah.netlify.app/post/note-taking-with-latex-part-1/videos/lsp.mp4 type=video/mp4><span>Your browser doesn't support embedded videos, but don't worry, you can <a href=https://damrah.netlify.app/post/note-taking-with-latex-part-1/videos/lsp.mp4>download it</a> and watch it with your favorite video player!</span></video><h2 id=credit>Credit</h2><p>I would like to give a thanks 👏 to
+<a class="center after" href=https://www.castel.dev>Gilles Castel</a>
+for teaching me all of this stuff. I would recommend to go and checkout his
+website!</p><h2 id=conclusion>Conclusion</h2><p>So, I have just proven to you that you can write <strong>LaTeX</strong></p><ul><li><strong>fast</strong></li><li><strong>easily</strong></li><li><strong>efficiently</strong></li></ul><p>Stay tuned to learn about how I:</p><ul><li><strong>draw figures</strong></li><li><strong>manage my notes</strong></li><li><strong>take notes</strong></li></ul></div><div id=disqus_thread></div><script>(function(){var e=document,t=e.createElement("script");t.src="https://damrah-netlify-app.disqus.com/embed.js",t.setAttribute("data-timestamp",+new Date),(e.head||e.body).appendChild(t)})()</script><noscript>Please enable JavaScript to view the <a href=https://disqus.com/?ref_noscript>comments powered by Disqus.</a></noscript><footer class=post-footer><div class=post-tags><a href=https://damrah.netlify.app/tags/latex rel=tag title=latex>#latex#</a>
+<a href=https://damrah.netlify.app/tags/tutorial rel=tag title=tutorial>#tutorial#</a>
+<a href=https://damrah.netlify.app/tags/school rel=tag title=school>#school#</a>
+<a href=https://damrah.netlify.app/tags/notes rel=tag title=notes>#notes#</a>
+<a href=https://damrah.netlify.app/tags/series rel=tag title=series>#series#</a>
+<a href=https://damrah.netlify.app/tags/note-taking rel=tag title="note taking">#note taking#</a></div><div class=post-nav><div class="post-nav-next post-nav-item"><a href=https://damrah.netlify.app/notes/ rel=next title=notes><i class="fa fa-chevron-left"></i> notes</a></div><div class="post-nav-prev post-nav-item"><a href=https://damrah.netlify.app/contact/ rel=prev title="Contact Me">Contact Me <i class="fa fa-chevron-right"></i></a></div></div></footer></article></section></div></div><div class=sidebar-toggle><style>.js-toggle-wrapper{display:table;margin:0 auto}.js-toggle{touch-action:pan-x;display:inline-block;position:relative;cursor:pointer;background-color:transparent;border:0;padding:0;-webkit-touch-callout:none;user-select:none;-webkit-tap-highlight-color:transparent;-webkit-tap-highlight-color:transparent}.js-toggle-screenreader-only{border:0;clip:rect(0 0 0 0);height:1px;margin:-1px;overflow:hidden;padding:0;position:absolute;width:1px}.js-toggle-track{width:50px;height:24px;padding:0;border-radius:30px;background-color:#0f1114;transition:all .2s ease}.js-toggle-track-check{position:absolute;width:17px;height:17px;left:5px;top:0;bottom:0;margin-top:auto;margin-bottom:auto;line-height:0;opacity:0;transition:opacity .25s ease}.js-toggle--checked .js-toggle-track-check{opacity:1;transition:opacity .25s ease}.js-toggle-track-x{position:absolute;width:17px;height:17px;right:5px;top:0;bottom:0;margin-top:auto;margin-bottom:auto;line-height:0;opacity:1;transition:opacity .25s ease}.js-toggle--checked .js-toggle-track-x{opacity:0}.js-toggle-thumb{position:absolute;top:1px;left:1px;width:22px;height:22px;border-radius:50%;background-color:#fafafa;box-sizing:border-box;transition:all .5s cubic-bezier(.23,1,.32,1)0ms;transform:translateX(0)}.js-toggle--checked .js-toggle-thumb{transform:translateX(26px);border-color:#19ab27}.js-toggle--focus .js-toggle-thumb{box-shadow:0 0 2px 3px #ffa7c4}.js-toggle:active .js-toggle-thumb{box-shadow:0 0 5px 5px #ffa7c4}</style><div class=js-toggle-wrapper><div class=js-toggle><div class=js-toggle-track><div class=js-toggle-track-check><img src="data:image/png;base64,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" role=presentation style=pointer-events:none width=16 height=16></div><div class=js-toggle-track-x><img src="data:image/png;base64,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" role=presentation style=pointer-events:none width=16 height=16></div></div><div class=js-toggle-thumb></div><input class=js-toggle-screenreader-only type=checkbox aria-label="Switch between Dark and Light mode"></div></div><script>var body=document.body,switcher=document.getElementsByClassName("js-toggle")[0];switcher.addEventListener("click",function(){this.classList.toggle("js-toggle--checked"),this.classList.add("js-toggle--focus"),this.classList.contains("js-toggle--checked")?(body.classList.add("dark-mode"),localStorage.setItem("darkMode","true")):(body.classList.remove("dark-mode"),setTimeout(function(){localStorage.removeItem("darkMode")},100))}),localStorage.getItem("darkMode")&&(switcher.classList.add("js-toggle--checked"),body.classList.add("dark-mode"))</script><div class=sidebar-toggle-line-wrap><span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+<span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+<span class="sidebar-toggle-line sidebar-toggle-line-last"></span></div></div><aside id=sidebar class=sidebar><div class=sidebar-inner , id=sidebar-inner><ul class="sidebar-nav motion-element" style=display:inline><li class="sidebar-nav-toc sidebar-nav-active" data-target=post-toc-wrap style=display:inline>Table of Content<br></li><li class=sidebar-nav-overview data-target=site-overview style=display:inline>Site Information<br></li></ul><section class="site-overview sidebar-panel"><div class="site-author motion-element" itemprop=author itemscope itemtype=http://schema.org/Person><img class=site-author-image itemprop=image src=https://damrah.netlify.app/images/avatar.jpg alt><p class=site-author-name itemprop=name></p><p class="site-description motion-element" itemprop=description>This post talks about how I take notes with LaTeX: Part I</p></div><nav class="site-state motion-element"><div class="site-state-item site-state-posts"><a href=https://damrah.netlify.app/post/><span class=site-state-item-count>1</span>
+<span class=site-state-item-name>Blogs</span></a></div><div class="site-state-item site-state-categories"><a href=https://damrah.netlify.app/categories/><span class=site-state-item-count>0</span>
+<span class=site-state-item-name>Categories</span></a></div><div class="site-state-item site-state-tags"><a href=https://damrah.netlify.app/tags/><span class=site-state-item-count>6</span>
+<span class=site-state-item-name>Tags</span></a></div></nav><div class="links-of-author motion-element"><span class=links-of-author-item><a href=https://github.com/SingularisArt/ target=_blank title=GitHub><i class="fa fa-fw fa-github"></i>
+GitHub</a></span>
+<span class=links-of-author-item><a href=https://www.reddit.com/user/Desperate_Party_9259 target=_blank title=Reddit><i class="fa fa-fw fa-reddit"></i>
+Reddit</a></span>
+<span class=links-of-author-item><a href=https://stackoverflow.com/users/16841521/singularisart target=_blank title="Stack Overflow"><i class="fa fa-fw fa-stack-overflow"></i>
+Stack Overflow</a></span>
+<span class=links-of-author-item><a href=https://www.quora.com/profile/SingularisArt target=_blank title=Quora><i class="fa fa-fw fa-quora"></i>
+Quora</a></span></div></section><section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active"><div class=post-toc><div class=post-toc-content><nav id=TableOfContents><ul><li><a href=#neovim-and-latex>NeoVim and LaTeX</a></li><li><a href=#snippets>Snippets</a><ul><li><a href=#what-are-snippets>What are Snippets</a></li><li><a href=#installing-snippets>Installing Snippets</a></li><li><a href=#adding-snippets>Adding Snippets</a></li></ul></li><li><a href=#latex-snippets>LaTeX Snippets</a><ul><li><a href=#environments>Environments</a></li><li><a href=#inline-and-display-math>Inline and Display Math</a></li><li><a href=#sub-and-super-scripts>Sub and Super scripts</a></li><li><a href=#fractions>Fractions</a></li><li><a href=#greek-letters>Greek Letters</a></li><li><a href=#context>Context</a></li><li><a href=#postfix>Postfix</a></li><li><a href=#bra-ket-and-bracket>Bra, Ket, and Bracket</a></li><li><a href=#school-lessons>School lessons</a></li><li><a href=#course-specific-snippets>Course Specific Snippets</a></li><li><a href=#putting-it-all-together>Putting it all Together</a></li></ul></li><li><a href=#correct-spelling-mistakes>Correct spelling mistakes</a></li><li><a href=#auto-completion>Auto completion</a><ul><li><a href=#setting-lsp-in-neovim>Setting LSP in NeoVim</a></li><li><a href=#install-your-language-server>Install your language server</a></li><li><a href=#demo-of-lsp>Demo of LSP</a></li></ul></li><li><a href=#credit>Credit</a></li><li><a href=#conclusion>Conclusion</a></li></ul></nav></div></div></section></div></aside></div></main><footer id=footer class=footer><div class=footer-inner><script src=https://damrah.netlify.app/js/prism.js></script><div class=copyright><span itemprop=copyrightYear>&copy;
+2020 - 2022</span>
+<span class=with-love><i class="fa fa-heart"></i></span>
+<span class=author itemprop=copyrightHolder></span></div><div class=powered-by>Made with <a href=https://gohugo.io/>Hugo</a>. Deployed by <a href=https://www.netlify.com>Netlify</a>. Comments made with <a href=https://disqus.com/>Diqus</a>. Comments made with <a href=https://github.com/SingularisArt/hugo-dark-blueberry>Dark BlueBerry</a>.</div></div></footer><div class=back-to-top><i class="fa fa-arrow-up"></i>
+<span id=scrollpercent><span>0</span>%</span></div></div><script type=text/javascript>Object.prototype.toString.call(window.Promise)!=="[object Function]"&&(window.Promise=null)</script><script type=text/javascript src="https://damrah.netlify.app/js/vendor/jquery/index.js?v=2.1.3"></script>
+<script type=text/javascript src="https://damrah.netlify.app/js/vendor/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+<script type=text/javascript src="https://damrah.netlify.app/js/vendor/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+<script type=text/javascript src="https://damrah.netlify.app/js/vendor/velocity/velocity.min.js?v=1.2.1"></script>
+<script type=text/javascript src="https://damrah.netlify.app/js/vendor/velocity/velocity.ui.min.js?v=1.2.1"></script>
+<script src="https://damrah.netlify.app/js/vendor/ua-parser-js/dist/ua-parser.min.js?v=0.7.9"></script>
+<script src="https://damrah.netlify.app/js/vendor/fancybox/jquery.fancybox.pack.js?v=2.1.5"></script>
+<script type=text/javascript src=https://damrah.netlify.app/js/utils.js></script>
+<script type=text/javascript src=https://damrah.netlify.app/js/motion.js></script>
+<script type=text/javascript src=https://damrah.netlify.app/js/affix.js></script>
+<script type=text/javascript src=https://damrah.netlify.app/js/schemes/pisces.js></script>
+<script type=text/javascript src=https://damrah.netlify.app/js/scrollspy.js></script>
+<script type=text/javascript src=https://damrah.netlify.app/js/post-details.js></script>
+<script type=text/javascript src=https://damrah.netlify.app/js/toc.js></script>
+<script type=text/javascript src=https://damrah.netlify.app/js/bootstrap.js></script>
+<script type=text/javascript src=https://damrah.netlify.app/js/search.js></script>
+<script>MathJax={tex:{inlineMath:[["$","$"]],displayMath:[["\\[","\\]"]],processEscapes:!0,processEnvironments:!0},options:{skipHtmlTags:["script","noscript","style","textarea","pre"]}},window.addEventListener("load",e=>{document.querySelectorAll("mjx-container").forEach(function(e){e.parentElement.classList+="has-jax"})})</script><script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+<script type=text/javascript id=MathJax-script async src=https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js></script></body>
