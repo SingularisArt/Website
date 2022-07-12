@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>note taking on </title>
+    <link>https://damrah.netlify.app/tags/note-taking/</link>
+    <description>Recent content in note taking on </description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sat, 01 Jan 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://damrah.netlify.app/tags/note-taking/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Note Taking with LaTeX: Part I (NeoVim)</title>
+      <link>https://damrah.netlify.app/post/note-taking-with-latex-part-1/</link>
+      <pubDate>Sat, 01 Jan 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://damrah.netlify.app/post/note-taking-with-latex-part-1/</guid>
+      <description>For a very long time, I have been trying to create the perfect setup for note taking in general (but more specifically, for math). Before, I used to use notion to take my notes, which was okay, but I wanted something much more productive. And thus, my system was BORN!
+Here are how some of my notes look like:
+You can look at my notes source code here. I also store all my final notes here.</description>
+    </item>
+    
+  </channel>
+</rss>

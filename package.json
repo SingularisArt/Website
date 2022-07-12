@@ -1,0 +1,6 @@
+{
+  "dependencies": {
+    "@algolia/autocomplete-js": "^1.7.1",
+    "@algolia/autocomplete-theme-classic": "^1.7.1"
+  }
+}
