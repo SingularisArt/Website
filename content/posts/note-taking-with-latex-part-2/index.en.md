@@ -10,7 +10,7 @@ authorLink: 'https://github.com/SingularisArt'
 description: 'I go over using LaTeX to create, use, and manage your citations. I also talk about how to use Zotero, a citation managing application.'
 images: []
 
-tags: ['tutorial', 'notes', 'note taking']
+tags: ['tutorial', 'notes', 'note taking', 'latex note taking series']
 categories: ['latex', 'school']
 
 lightgallery: true

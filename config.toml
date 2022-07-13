@@ -585,6 +585,22 @@ ignoreErrors = ["error-remote-getjson", "error-missing-instagram-accesstoken"]
         title = ""
       [[languages.en.menu.main]]
         weight = 6
+        identifier = "lecture notes"
+        pre = ""
+        post = ""
+        name = "Lecture Notes"
+        url = "/lecture-notes/"
+        title = ""
+      [[languages.en.menu.main]]
+        weight = 7
+        identifier = "book notes"
+        pre = ""
+        post = ""
+        name = "Book Notes"
+        url = "/book-notes/"
+        title = ""
+      [[languages.en.menu.main]]
+        weight = 8
         identifier = "github"
         pre = "<i class='fab fa-github fa-fw' aria-hidden='true'></i>"
         post = ""

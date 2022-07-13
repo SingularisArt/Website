@@ -10,7 +10,7 @@ authorLink: 'https://github.com/SingularisArt'
 description: 'I go over using NeoVim and LaTeX to take notes with, but I specifically talk about talking notes with Mathematics.'
 images: []
 
-tags: ['tutorial', 'notes', 'note taking']
+tags: ['tutorial', 'notes', 'note taking', 'latex note taking series']
 categories: ['latex', 'school']
 
 lightgallery: true
@@ -21,26 +21,47 @@ math:
   enable: true
 ---
 
+
+---
+
+
+
+The rendered output looks like this:
+
+Inline Formula: {{< raw >}}\(\mathbf{E}=\sum_{i} \mathbf{E}_{i}=\mathbf{E}_{1}+\mathbf{E}_{2}+\mathbf{E}_{3}+\cdots\){{< /raw >}}
+
+Block Formula:
+
+{{< raw>}}
+\[ a=b+c \\ d+e=f \]
+{{< /raw >}}
+
+
+
+---
+
+
 For a **very long time**, I have been trying to create the perfect setup for
 note taking in general (but more specifically, for **math**). Before, I used to
 use [notion](https://www.notion.com) to take my
-
 
 notes, which was okay, but I wanted something much more productive. And thus,
 my system was **BORN**!
 
 Here are how some of my notes look like:
 
-![notes-image-01](note-01.png)
-![notes-image-02](note-02.png)
-<!-- ![notes-image-03](note-03.png) -->
-<!-- ![notes-image-04](note-04.png) -->
-<!-- ![notes-image-05](note-05.png) -->
-<!-- ![notes-image-06](note-06.png) -->
-<!-- ![notes-image-07](note-07.png) -->
-<!-- ![notes-image-08](note-08.png) -->
-<!-- ![notes-image-09](note-09.png) -->
-<!-- ![notes-image-10](note-10.png) -->
+<figure>
+  <img src="note-01.png"/>
+  <img src="note-02.png"/>
+  <img src="note-03.png"/>
+  <img src="note-04.png"/>
+  <img src="note-05.png"/>
+  <img src="note-06.png"/>
+  <img src="note-07.png"/>
+  <img src="note-08.png"/>
+  <img src="note-09.png"/>
+  <img src="note-10.png"/>
+</figure>
 
 You can look at my notes source code [here](https://damrah.netlify.app/notes).
 I also store all my final notes
@@ -78,7 +99,9 @@ because I've done everything for you.
 Now, with that out of the way, here is what my screen looks like when I am
 working with LaTeX:
 
-![code-with-latex](daily-life.png)
+<figure>
+  <img src="daily-life.png"/>
+</figure>
 
 On the left side, I have my editor (**NeoVim**) and on the right side, I have
 my pdf viewer **Zathura**.
