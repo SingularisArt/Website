@@ -21,26 +21,6 @@ math:
   enable: true
 ---
 
-
----
-
-
-
-The rendered output looks like this:
-
-Inline Formula: {{< raw >}}\(\mathbf{E}=\sum_{i} \mathbf{E}_{i}=\mathbf{E}_{1}+\mathbf{E}_{2}+\mathbf{E}_{3}+\cdots\){{< /raw >}}
-
-Block Formula:
-
-{{< raw>}}
-\[ a=b+c \\ d+e=f \]
-{{< /raw >}}
-
-
-
----
-
-
 For a **very long time**, I have been trying to create the perfect setup for
 note taking in general (but more specifically, for **math**). Before, I used to
 use [notion](https://www.notion.com) to take my
