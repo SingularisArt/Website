@@ -32,6 +32,12 @@ enableEmoji = true
 # ignore some build errors
 ignoreErrors = ["error-remote-getjson", "error-missing-instagram-accesstoken"]
 
+# redirects
+[[redirects]]
+  from = "*"
+  to = "https://singularisart.github.io/"
+  status = 404
+
 # Author config
 [author]
   name = "Hashem A. Damrah"
