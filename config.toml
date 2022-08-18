@@ -1,4 +1,4 @@
-baseURL = "https://example.com"
+baseURL = "https://singularisart.github.io"
 
 # theme
 theme = ["hugo-video", "LoveIt"]
