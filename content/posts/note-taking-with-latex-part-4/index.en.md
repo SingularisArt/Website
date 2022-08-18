@@ -10,7 +10,7 @@ authorLink: 'https://github.com/SingularisArt'
 description: 'I go over how I manage all my lecture notes, assignments, book notes, journal, and all my other LaTeX documents.'
 images: []
 
-tags: ['tutorial', 'notes', 'note taking', 'latex note taking series']
+tags: ['series', 'note taking with latex' ]
 categories: ['latex', 'school']
 
 lightgallery: true

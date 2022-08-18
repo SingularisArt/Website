@@ -10,7 +10,7 @@ authorLink: 'https://github.com/SingularisArt'
 description: 'I go over using NeoVim and LaTeX to take notes with, but I specifically talk about talking notes with Mathematics.'
 images: []
 
-tags: ['tutorial', 'notes', 'note taking', 'latex note taking series']
+tags: ['series', 'favorite', 'note taking with latex' ]
 categories: ['latex', 'school']
 
 lightgallery: true

@@ -10,7 +10,7 @@ authorLink: 'https://github.com/SingularisArt'
 description: 'I go over how to create, use, manage and share figures using Inkscape with LaTeX along with NeoVim.'
 images: []
 
-tags: ['tutorial', 'notes', 'note taking', 'latex note taking series']
+tags: ['series', 'note taking with latex' ]
 categories: ['latex', 'school']
 
 lightgallery: true

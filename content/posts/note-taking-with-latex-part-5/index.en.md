@@ -10,7 +10,7 @@ authorLink: 'https://github.com/SingularisArt'
 description: 'I go over how I do research using LaTeX, along with other scripts that I and others have written.'
 images: []
 
-tags: ['tutorial', 'notes', 'note taking', 'latex note taking series']
+tags: ['series', 'note taking with latex' ]
 categories: ['latex', 'school']
 
 lightgallery: true
