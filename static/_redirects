@@ -1,2 +1,2 @@
 # Redirects from what the browser requests to what we serve
-/     https://singularisart.github.io/
+/*     https://singularisart.github.io/:splat
