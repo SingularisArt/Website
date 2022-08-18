@@ -213,7 +213,7 @@ ignoreErrors = ["error-remote-getjson", "error-missing-instagram-accesstoken"]
   [params.social]
     GitHub = ""
     Linkedin = ""
-    Twitter = ""
+    Twitter = "SingularisArt"
     Instagram = ""
     Facebook = ""
     Telegram = ""
@@ -541,200 +541,110 @@ ignoreErrors = ["error-remote-getjson", "error-missing-instagram-accesstoken"]
   taxonomyTerm = ["HTML"]
 
 # Multilingual
-[languages]
-  [languages.en]
-    weight = 1
-    languageCode = "en"
-    languageName = "English"
-    hasCJKLanguage = false
-    copyright = "This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License."
-    [languages.en.menu]
-      [[languages.en.menu.main]]
-        weight = 1
-        identifier = "posts"
-        pre = ""
-        post = ""
-        name = "Posts"
-        url = "/posts/"
-        title = ""
-      [[languages.en.menu.main]]
-        weight = 2
-        identifier = "tags"
-        pre = ""
-        post = ""
-        name = "Tags"
-        url = "/tags/"
-        title = ""
-      [[languages.en.menu.main]]
-        weight = 3
-        identifier = "categories"
-        pre = ""
-        post = ""
-        name = "Categories"
-        url = "/categories/"
-        title = ""
-      [[languages.en.menu.main]]
-        weight = 4
-        identifier = "about"
-        pre = ""
-        post = ""
-        name = "About"
-        url = "/about/"
-        title = ""
-      [[languages.en.menu.main]]
-        weight = 5
-        identifier = "contact"
-        pre = ""
-        post = ""
-        name = "Contact"
-        url = "/contact/"
-        title = ""
-      [[languages.en.menu.main]]
-        weight = 6
-        identifier = "lecture notes"
-        pre = ""
-        post = ""
-        name = "Lecture Notes"
-        url = "/lecture-notes/"
-        title = ""
-      [[languages.en.menu.main]]
-        weight = 7
-        identifier = "discipline notes"
-        pre = ""
-        post = ""
-        name = "Discipline Notes"
-        url = "/discipline-notes/"
-        title = ""
-      [[languages.en.menu.main]]
-        weight = 8
-        identifier = "github"
-        pre = "<i class='fab fa-github fa-fw' aria-hidden='true'></i>"
-        post = ""
-        name = ""
-        url = "https://github.com/SingularisArt"
-        title = "GitHub"
-    [languages.en.params]
-      [languages.en.params.search]
+[languages.en]
+  weight = 1
+  languageCode = "en"
+  languageName = "English"
+  hasCJKLanguage = false
+  copyright = "This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License."
+  [languages.en.menu]
+    [[languages.en.menu.main]]
+      weight = 1
+      identifier = "posts"
+      pre = ""
+      post = ""
+      name = "Posts"
+      url = "/posts/"
+      title = ""
+    [[languages.en.menu.main]]
+      weight = 2
+      identifier = "tags"
+      pre = ""
+      post = ""
+      name = "Tags"
+      url = "/tags/"
+      title = ""
+    [[languages.en.menu.main]]
+      weight = 3
+      identifier = "categories"
+      pre = ""
+      post = ""
+      name = "Categories"
+      url = "/categories/"
+      title = ""
+    [[languages.en.menu.main]]
+      weight = 4
+      identifier = "about"
+      pre = ""
+      post = ""
+      name = "About"
+      url = "/about/"
+      title = ""
+    [[languages.en.menu.main]]
+      weight = 5
+      identifier = "contact"
+      pre = ""
+      post = ""
+      name = "Contact"
+      url = "/contact/"
+      title = ""
+    [[languages.en.menu.main]]
+      weight = 6
+      identifier = "lecture notes"
+      pre = ""
+      post = ""
+      name = "Lecture Notes"
+      url = "/lecture-notes/"
+      title = ""
+    [[languages.en.menu.main]]
+      weight = 7
+      identifier = "discipline notes"
+      pre = ""
+      post = ""
+      name = "Discipline Notes"
+      url = "/discipline-notes/"
+      title = ""
+    [[languages.en.menu.main]]
+      weight = 8
+      identifier = "github"
+      pre = "<i class='fab fa-github fa-fw' aria-hidden='true'></i>"
+      post = ""
+      name = ""
+      url = "https://github.com/SingularisArt"
+      title = "GitHub"
+  [languages.en.params]
+    [languages.en.params.search]
+      enable = true
+      type = "algolia"
+      contentLength = 4000
+      placeholder = ""
+      maxResultLength = 10
+      snippetLength = 30
+      highlightTag = "em"
+      absoluteURL = false
+      [languages.en.params.search.algolia]
+        index = "Website"
+        appID = "41VO31NSRC"
+        searchKey = "dc92d19dfcb193ad66e4de3a1f9386a1"
+    [languages.en.params.home]
+      rss = 10
+      [languages.en.params.home.profile]
         enable = true
-        type = "algolia"
-        contentLength = 4000
-        placeholder = ""
-        maxResultLength = 10
-        snippetLength = 30
-        highlightTag = "em"
-        absoluteURL = false
-        [languages.en.params.search.algolia]
-          index = "Website"
-          appID = "41VO31NSRC"
-          searchKey = "dc92d19dfcb193ad66e4de3a1f9386a1"
-      [languages.en.params.home]
-        rss = 10
-        [languages.en.params.home.profile]
-          enable = true
-          gravatarEmail = ""
-          avatarURL = "/images/avatar.png"
-          title = ""
-          subtitle = "Welcome to my Website! Here, I teach anything that peaks my interest, which includes, LaTeX, Math, Computer Science, Physics, and so on."
-          typeit = true
-          social = true
-          disclaimer = ""
-      [languages.en.params.social]
-        GitHub = "https://github.com/SingularisArt"
-        # Twitter = "xxxx"
-        # Instagram = "xxxx"
-        # Facebook = "xxxx"
-        # Telegram = "xxxx"
-        # Youtubelegacy = "xxxx"
-        # Phone = "555-555-555"
-        Email = "dermdorm2@gmail.com"
-        RSS = true
-
-  [languages.zh-cn]
-    weight = 2
-    languageCode = "zh-CN"
-    languageName = "简体中文"
-    hasCJKLanguage = true
-    copyright = "This work is licensed under a Creative Commons Attribution-NonCommercial 4.0 International License."
-    [languages.zh-cn.menu]
-      [[languages.zh-cn.menu.main]]
-        weight = 1
-        identifier = "posts"
-        pre = ""
-        post = ""
-        name = "所有文章"
-        url = "/posts/"
+        gravatarEmail = ""
+        avatarURL = "/images/avatar.png"
         title = ""
-      [[languages.zh-cn.menu.main]]
-        weight = 2
-        identifier = "tags"
-        pre = ""
-        post = ""
-        name = "标签"
-        url = "/tags/"
-        title = ""
-      [[languages.zh-cn.menu.main]]
-        weight = 3
-        identifier = "categories"
-        pre = ""
-        post = ""
-        name = "分类"
-        url = "/categories/"
-        title = ""
-      [[languages.zh-cn.menu.main]]
-        weight = 4
-        identifier = "documentation"
-        pre = ""
-        name = "文档"
-        url = "/categories/documentation/"
-        title = ""
-      [[languages.zh-cn.menu.main]]
-        weight = 5
-        identifier = "about"
-        pre = ""
-        post = ""
-        name = "关于"
-        url = "/about/"
-        title = ""
-      [[languages.zh-cn.menu.main]]
-        weight = 6
-        identifier = "github"
-        pre = "<i class='fab fa-github fa-fw' aria-hidden='true'></i>"
-        post = ""
-        name = ""
-        url = "https://github.com/SingularisArt"
-        title = "GitHub"
-    [languages.zh-cn.params]
-      [languages.zh-cn.params.search]
-        enable = true
-        type = "algolia"
-        contentLength = 4000
-        placeholder = ""
-        maxResultLength = 10
-        snippetLength = 50
-        highlightTag = "em"
-        absoluteURL = false
-        [languages.zh-cn.params.search.algolia]
-          index = "Website"
-          appID = "41VO31NSRC"
-          searchKey = "dc92d19dfcb193ad66e4de3a1f9386a1"
-      [languages.zh-cn.params.home]
-        rss = 10
-        [languages.zh-cn.params.home.profile]
-          enable = true
-          gravatarEmail = ""
-          avatarURL = "/images/avatar.png"
-          title = ""
-          subtitle = "一个简洁、优雅且高效的 Hugo 主题"
-          typeit = true
-          social = true
-          disclaimer = ""
-      [languages.zh-cn.params.social]
-        GitHub = "https://github.com/SingularisArt"
-        # Twitter = "xxxx"
-        # Instagram = "xxxx"
-        # Facebook = "xxxx"
-        # Telegram = "xxxx"
-        # Youtubelegacy = "xxxx"
-        # Phone = "555-555-555"
-        Email = "dermdorm2@gmail.com"
-        RSS = true
+        subtitle = "Welcome to my Website! Here, I teach anything that peaks my interest, which includes, LaTeX, Math, Computer Science, Physics, and so on."
+        typeit = true
+        social = true
+        disclaimer = ""
+    [languages.en.params.social]
+      GitHub = "SingularisArt"
+      Twitter = "SingularisArt"
+      Linkedin = "hashem-damrah-a735b4231"
+      # Instagram = "xxxx"
+      # Facebook = "xxxx"
+      # Telegram = "xxxx"
+      # Youtubelegacy = "xxxx"
+      # Phone = "555-555-555"
+      Email = "dermdorm2@gmail.com"
+      RSS = true
