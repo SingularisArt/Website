@@ -1,22 +1,25 @@
 ---
-weight: 1
 title: 'Note Taking with LaTeX: Part VI (Journaling)'
 subtitle: ''
-date: 2022-06-01
-lastmod: 2022-06-01
+date: ''
+lastmod: ''
 draft: true
 author: 'Hashem A. Damrah'
 authorLink: 'https://github.com/SingularisArt'
-description: 'I go over how I journal using LaTeX.'
+description: ''
 images: []
 
-tags: ['series', 'note taking with latex' ]
-categories: ['latex', 'school']
+tags: ['note taking with latex' ]
+categories: ['latex', 'school', 'notes']
+
+series_name: 'Note Taking with LaTeX'
 
 lightgallery: true
 
 toc:
   auto: true
 math:
+  enable: true
+comments:
   enable: true
 ---

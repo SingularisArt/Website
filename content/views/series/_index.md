@@ -1,4 +1,0 @@
----
-title: 'Series'
-layout: 'series'
----
