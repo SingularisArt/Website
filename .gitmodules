@@ -1,10 +1,3 @@
-[submodule "themes/hugo-video"]
-	path = themes/hugo-video
-	url = https://github.com/martignoni/hugo-video.git
 [submodule "LoveIt"]
 	path = themes/LoveIt
 	url = https://github.com/dillonzq/LoveIt
-[submodule "singularisart.github.io"]
-	path = public
-	url = https://github.com/SingularisArt/singularisart.github.io
-	branch = main

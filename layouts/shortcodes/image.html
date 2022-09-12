@@ -1,0 +1,11 @@
+{{- $image_src := .Get "src" -}}
+{{- $width := "100%" -}}
+
+{{- $file := .Page.File.TranslationBaseName -}}
+{{- $image_path := printf "/images/%s/%s" $file $image_src -}}
+
+<img
+  src="{{ $image_path }}"
+  width="{{ or (.Get "width") $width }}"
+  {{ with .Get "height" }}height="{{ . }}"{{ end }}
+/>
