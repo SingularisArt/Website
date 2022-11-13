@@ -1,0 +1,10 @@
+Prerequisites
+NeoVim
+Snippets
+VimTex
+LSP Completion
+Tmux
+Drawing Figures
+Managing Notes
+Creating Citations
+Doing Research

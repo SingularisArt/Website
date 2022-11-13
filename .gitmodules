@@ -1,3 +1,6 @@
 [submodule "LoveIt"]
 	path = themes/LoveIt
 	url = https://github.com/dillonzq/LoveIt
+[submodule "singularisart.github.io"]
+	path = public
+	url = https://github.com/SingularisArt/singularisart.github.io

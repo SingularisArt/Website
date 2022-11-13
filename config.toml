@@ -96,6 +96,10 @@ ignoreErrors = ["error-remote-getjson", "error-missing-instagram-accesstoken"]
   # website images for Open Graph and Twitter Cards
   images = ["/logo.png"]
 
+  [params.multipage]
+    displayPaginator = false
+    displayPrevAndNext = true
+
   # Header config
   [params.header]
     # desktop header mode ["fixed", "normal", "auto"]
@@ -527,14 +531,6 @@ ignoreErrors = ["error-remote-getjson", "error-missing-instagram-accesstoken"]
       title = ""
     [[languages.en.menu.main]]
       weight = 7
-      identifier = "discipline notes"
-      pre = ""
-      post = ""
-      name = "Discipline Notes"
-      url = "/discipline-notes/"
-      title = ""
-    [[languages.en.menu.main]]
-      weight = 8
       identifier = "github"
       pre = "<i class='fab fa-github fa-fw' aria-hidden='true'></i>"
       post = ""
@@ -586,7 +582,7 @@ ignoreErrors = ["error-remote-getjson", "error-missing-instagram-accesstoken"]
       Codepen = "SingularisArt"
       FreeCodeCamp = "SingularisArt"
       Bitbucket = ""
-      Stackoverflow = "16841521"
+      Stackoverflow = "19841556"
       Weibo = ""
       Odnoklassniki = ""
       VK = ""
